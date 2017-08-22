@@ -10,7 +10,7 @@ namespace Dominio
     {
         static void Main(string[] args)
         {
-            //Nuevo Repositorio 21/08/17
+            //Nuevo Repositorio 21/08/17.
             FuenteRSS lFuenteRSS = new FuenteRSS("Mañana a las 9am","Barrio UTN");
             TextoFijo lTextoFijo = new TextoFijo();
 
