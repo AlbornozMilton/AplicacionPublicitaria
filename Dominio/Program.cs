@@ -17,6 +17,7 @@ namespace Dominio
             Console.WriteLine( lFuenteRSS.Texto +" "+ lFuenteRSS.NombreFuente);
             Console.WriteLine(lTextoFijo.Texto);
 
+
             Console.ReadKey();
         }
     }
