@@ -8,7 +8,9 @@ namespace Dominio
 {
     public class FuenteRSS: Fuente
     {
+        private string iURL;
         private string iNombreFuente;
+        private string iDescripcion;
 
         //obtener pTexto desde el RSS
         public FuenteRSS(string pTexto, string pNombreFuente) : base(pTexto)

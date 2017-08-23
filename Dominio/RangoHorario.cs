@@ -8,24 +8,50 @@ namespace Dominio
 {
     class RangoHorario
     {
-        private DateTime iHoraInicio;
-        private DateTime iHoraFin;
+        private int iCodRangoHora;
+        private TimeSpan iHoraInicio;
+        private int iDuracion; // en minutos
 
         //CONSTRUCTOR
-        public RangoHorario(DateTime pHoraInicio, DateTime pHoraFin)
+        public RangoHorario(int pCodRangoHora, TimeSpan pHoraInicio, int pDuracion)
         {
+            this.iCodRangoHora = pCodRangoHora;
             this.iHoraInicio = pHoraInicio;
-            this.iHoraFin = pHoraFin;
+            this.iDuracion = pDuracion;
         }
         //PROPIEDADES
-        public DateTime HoraInicio
+        public int CodRangoHora
+        {
+            get { return this.iCodRangoHora; }
+        }
+
+        public TimeSpan HoraInicio
         {
             get { return this.iHoraInicio; }
         }
-        public DateTime HoraFin
+
+        public int Duracion
         {
-            get { return this.iHoraFin; }
+            get { return this.iDuracion; }
         }
+
+        public TimeSpan HoraFin
+        {
+            get { return this.iHoraInicio.Add(new TimeSpan(0,this.iDuracion,0)); }
+        }
+
+        public string HoraInicioString
+        {
+            get { return String.Format("{0}-{1}-{2}", this.iHoraInicio.Hours, this.iHoraInicio.Minutes, this.iHoraInicio.Seconds); }
+                
+        }
+
+        public string HoraFinString
+        {
+            get { return String.Format("{0}-{1}-{2}", this.HoraFin.Hours, this.HoraFin.Minutes, this.HoraFin.Seconds); }
+
+        }
+
         //METODOS
     }
 }

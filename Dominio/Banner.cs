@@ -12,6 +12,7 @@ namespace Dominio
         private int iIdBanner;
         private string iNombre;
         private Fuente iFuente;
+        private RangoFecha iRangoFecha;
 
 
         //contructor 
