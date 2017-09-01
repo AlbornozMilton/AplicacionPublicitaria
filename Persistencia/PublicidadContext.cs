@@ -14,6 +14,24 @@ namespace Persistencia
 
         public DbSet <Imagen> Imagen { get; set; }
 
-        public DbSet <>
+        public DbSet <RangoFecha> RangoFecha { get; set; }
+
+        public DbSet <Banner> Banner { get; set; }
+
+        public DbSet <RangoHorario> RangoHorario { get; set; }
+
+        public DbSet <Dia> Dia { get; set; }
+
+        public DbSet <Fuente> Fuente { get; set; }
+
+        public DbSet <FuenteRSS> FuenteRSS { get; set; }
+
+        public DbSet <TextoFijo> TextoFijo { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+        }
     }
 }
