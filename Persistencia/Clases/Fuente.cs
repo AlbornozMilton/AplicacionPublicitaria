@@ -8,5 +8,7 @@ namespace Persistencia.Clases
 {
     public class Fuente
     {
+        public int Id { get; set; }
+
     }
 }
