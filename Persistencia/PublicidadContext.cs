@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Persistencia.Clases;
 
 namespace Persistencia
@@ -29,8 +30,10 @@ namespace Persistencia
         public DbSet <TextoFijo> TextoFijo { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
+            mBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //Elimina las "s" y "es" del nombre de las clases.
+
 
         }
     }
