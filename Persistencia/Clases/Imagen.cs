@@ -15,5 +15,7 @@ namespace Persistencia.Clases
         public int NroSec { get; set; }
 
         public int Tiempo { get; set; }
+
+        public Campania Campania { get; set; }
     }
 }

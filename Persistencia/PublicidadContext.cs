@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Persistencia.Clases;
+using Persistencia.Mappings;
 
 namespace Persistencia
 {
@@ -33,8 +34,15 @@ namespace Persistencia
         protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
             mBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //Elimina las "s" y "es" del nombre de las clases.
+            //Mappigs de las configuraciones de las Clases
+            mBuilder.Configurations.Add(new CampaniaMap());
+            mBuilder.Configurations.Add(new BannerMap());
+            mBuilder.Configurations.Add(new ImagenMap());
+            mBuilder.Configurations.Add(new DiaMap());
+            mBuilder.Configurations.Add(new RangoFechaMap());
+            mBuilder.Configurations.Add(new RangoHorarioMap());
 
-
+            base.OnModelCreating(mBuilder);
         }
     }
 }
