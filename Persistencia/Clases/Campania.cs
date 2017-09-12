@@ -16,7 +16,7 @@ namespace Persistencia.Clases
 
         public int CantCiclos { get; set; }
 
-        //ListaImagen
+        public virtual List<Imagen> Imagenes { get; set; }
 
         public RangoFecha RangoFecha { get; set; }
         

@@ -61,7 +61,15 @@
     <Compile Include="Clases\RangoFecha.cs" />
     <Compile Include="Clases\RangoHorario.cs" />
     <Compile Include="Clases\TextoFijo.cs" />
+    <Compile Include="Mappings\BannerMap.cs" />
     <Compile Include="Mappings\CampaniaMap.cs" />
+    <Compile Include="Mappings\DiaMap.cs" />
+    <Compile Include="Mappings\FuenteMap.cs" />
+    <Compile Include="Mappings\FuenteRSSMap.cs" />
+    <Compile Include="Mappings\ImagenMap.cs" />
+    <Compile Include="Mappings\RangoFechaMap.cs" />
+    <Compile Include="Mappings\RangoHorarioMap.cs" />
+    <Compile Include="Mappings\TextoFijoMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
