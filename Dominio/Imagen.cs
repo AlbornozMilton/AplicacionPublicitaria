@@ -11,6 +11,7 @@ namespace AplicacionPublicitaria.Dominio
         private String iNombre;
         private int iNumSec;
         private int iTiempo;
+        private Campania Campania;
 
 
 

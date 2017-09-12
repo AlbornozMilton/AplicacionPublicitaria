@@ -17,7 +17,5 @@ namespace Dominio
         {
             this.iNombreFuente = pNombreFuente;
         }
-
-        public string NombreFuente { get { return this.iNombreFuente; } }
     }
 }
