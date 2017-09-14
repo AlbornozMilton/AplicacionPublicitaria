@@ -17,7 +17,7 @@ namespace Persistencia.Clases
         public int Tiempo { get; set; }
 
         //public int Campania_Id { get; set; }
-
+        
         public Campania Campania { get; set; }
     }
 }
