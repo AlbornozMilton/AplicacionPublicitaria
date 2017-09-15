@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class Campania
     {
-        public int Id { get; set; }
+        public int CampaniaId { get; set; }
 
         public string Nombre { get; set; }
 

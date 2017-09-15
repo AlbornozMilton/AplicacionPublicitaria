@@ -23,21 +23,25 @@ namespace Persistencia
             //Campania unaCamp = db.Campania.Find(1);
             //Imagen unaim = new Imagen
             //{
-            //    Nombre = "im1",
-            //    NroSec = 2,
-            //    Tiempo = 1,
+            //    Nombre = "im3",
+            //    NroSec = 6,
+            //    Tiempo = 10,
             //    Campania = unaCamp
             //};
             //db.Imagen.Add(unaim);
 
-            Imagen unaIm = db.Imagen.Find(1);
-            Campania unaCamp = unaIm.Campania;
-            
-            Console.WriteLine(unaCamp.Nombre.ToString());
-            //Console.WriteLine("{0} {1} {2}", unaIm.Nombre, unaIm.Id, unaIm.Campania.Id);
+            //var unaIm = db.Imagen.Include("Campania").Where(a => a.Id==1).FirstOrDefault<Imagen>();
+            //Console.WriteLine("{0} {1} {2}", unaIm.Nombre, unaIm.Id, unaIm.Campania.Nombre);
 
-            //Campania unaC = db.Campania.Find(index);
-            //    Console.WriteLine("{0} {1}", unaC.Nombre,unaC.Id);
+            Campania unaCamp = db.Campania.Find(1);
+            List<Imagen> lista = unaCamp.Imagenes.ToList();
+
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item.Nombre);
+            }
+
+
             db.SaveChanges();
             Console.WriteLine("EXITO");
             Console.ReadKey();

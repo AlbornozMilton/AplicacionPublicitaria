@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class FuenteRSS
     {
-        public int Id { get; set; }
+        public int FuenteRSSId { get; set; }
 
         public string URL { get; set; }
 

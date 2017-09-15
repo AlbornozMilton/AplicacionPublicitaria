@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class RangoHorario
     {
-        public int Id { get; set; }
+        public int RangoHorarioId { get; set; }
 
         public DateTime HoraInicio { get; set; }
 

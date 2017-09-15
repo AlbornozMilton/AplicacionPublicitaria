@@ -15,7 +15,7 @@ namespace Persistencia.Mappings
         /// </summary>
         public RangoFechaMap()
         {
-            this.Property(r => r.Id)
+            this.Property(r => r.RangoFechaId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(r => r.FechaInicio)

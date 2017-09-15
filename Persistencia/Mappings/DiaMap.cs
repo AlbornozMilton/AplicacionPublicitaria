@@ -15,7 +15,7 @@ namespace Persistencia.Mappings
         /// </summary>
         public DiaMap()
         {
-            this.Property(d => d.Id)
+            this.Property(d => d.DiaId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(d => d.Nombre)

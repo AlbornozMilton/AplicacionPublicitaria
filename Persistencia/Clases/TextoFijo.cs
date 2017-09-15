@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class TextoFijo
     {
-        public int Id { get; set; }
+        public int TextoFijoId { get; set; }
 
         public string Texto { get; set; }
     }

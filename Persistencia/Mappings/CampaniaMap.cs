@@ -16,7 +16,7 @@ namespace Persistencia.Mappings
         /// </summary>
         public CampaniaMap()
         {
-            this.Property(pCamp => pCamp.Id)
+            this.Property(pCamp => pCamp.CampaniaId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(pCamp => pCamp.Nombre)

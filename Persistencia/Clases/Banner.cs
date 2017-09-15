@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class Banner
     {
-        public int Id { get; set; }
+        public int BannerId { get; set; }
 
         public string Nombre { get; set; }
 
