@@ -23,6 +23,7 @@ namespace Persistencia.Mappings
 
             this.Property(r => r.FechaFin)
                  .IsRequired();
+
         }   
     }
 }

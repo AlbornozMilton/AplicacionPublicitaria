@@ -23,6 +23,9 @@ namespace Persistencia.Mappings
 
             this.Property(r => r.HoraFin)
                 .IsRequired();
+
+            this.HasRequired(h => h.RangoFecha)
+                .WithMany(f => f.Horarios);
         }
 
     }

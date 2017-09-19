@@ -22,7 +22,8 @@ namespace Persistencia.Mappings
             this.Property(b => b.Nombre)
                 .IsRequired();
 
-            this.HasRequired(b => b.RangoFecha);
+            this.HasRequired(b => b.RangoFecha)
+                .WithMany(r => r.Banners);
             this.HasRequired(b => b.Fuente);
         }
     }

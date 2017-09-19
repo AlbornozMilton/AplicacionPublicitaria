@@ -29,7 +29,8 @@ namespace Persistencia.Mappings
                 .IsRequired();
 
             //Establece la relacio muchos a 1 con RangoFecha.
-            //this.HasRequired(pCamp => pCamp.RangoFecha);
+            this.HasRequired(pCamp => pCamp.RangoFecha)
+                .WithMany(r => r.Campanias);
         }
         
     }

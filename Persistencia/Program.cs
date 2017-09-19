@@ -15,17 +15,26 @@ namespace Persistencia
 
             //Campania unaCamp = new Campania
             //{
-            //    Nombre = "Juli",
-            //    Duracion = 15,
-            //    CantCiclos = 8
+            //    Nombre = "Campania3",
+            //    Duracion = 5,
+            //    CantCiclos = 1,
+            //    RangoFecha = db.RangoFecha.Find(2)
             //};
             //db.Campania.Add(unaCamp);
-            //Campania unaCamp = db.Campania.Find(1);
+
+            //RangoFecha unRangF = new RangoFecha
+            //{
+            //FechaInicio = new DateTime(2017, 6, 8),
+            //FechaFin = new DateTime(2017, 6, 10)
+            //};
+            //db.RangoFecha.Add(unRangF);
+
+            //Campania unaCamp = db.Campania.Find(2);
             //Imagen unaim = new Imagen
             //{
-            //    Nombre = "im3",
-            //    NroSec = 6,
-            //    Tiempo = 10,
+            //    Nombre = "IM3",
+            //    NroSec = 2,
+            //    Tiempo = 6,
             //    Campania = unaCamp
             //};
             //db.Imagen.Add(unaim);
@@ -33,15 +42,15 @@ namespace Persistencia
             //var unaIm = db.Imagen.Include("Campania").Where(a => a.Id==1).FirstOrDefault<Imagen>();
             //Console.WriteLine("{0} {1} {2}", unaIm.Nombre, unaIm.Id, unaIm.Campania.Nombre);
 
-            Campania unaCamp = db.Campania.Find(1);
-            List<Imagen> lista = unaCamp.Imagenes.ToList();
+            //Campania unaCamp = db.Campania.Find(1);
+            //List<Imagen> lista = unaCamp.Imagenes.ToList();
 
-            foreach (var item in lista)
-            {
-                Console.WriteLine(item.Nombre);
-            }
+            //foreach (var item in lista)
+            //{
+            //    Console.WriteLine(item.Nombre);
+            //}
 
-
+            db.Campania.Remove(db.Campania.Find(1));
             db.SaveChanges();
             Console.WriteLine("EXITO");
             Console.ReadKey();

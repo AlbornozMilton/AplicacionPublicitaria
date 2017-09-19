@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Clases
 {
-    public class TextoFijo
-    {
-        public int TextoFijoId { get; set; }
-
+    public class TextoFijo:Fuente
+    { 
         public string Texto { get; set; }
     }
 }

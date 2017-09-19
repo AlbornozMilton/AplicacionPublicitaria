@@ -14,5 +14,9 @@ namespace Persistencia.Clases
 
         public DateTime HoraFin { get; set; }
 
+        public int RangoFechaId { get; set; }
+
+        public RangoFecha RangoFecha { get; set; }
+
     }
 }
