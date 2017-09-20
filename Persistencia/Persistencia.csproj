@@ -62,6 +62,7 @@
     <Compile Include="Clases\RangoHorario.cs" />
     <Compile Include="Clases\TextoFijo.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="IGenericRepository.cs" />
     <Compile Include="Mappings\BannerMap.cs" />
     <Compile Include="Mappings\CampaniaMap.cs" />
     <Compile Include="Mappings\DiaMap.cs" />
