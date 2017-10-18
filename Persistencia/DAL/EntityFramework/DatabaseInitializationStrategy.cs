@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio
+namespace Persistencia.DAL.EntityFramework
 {
-    class Program
+    class DatabaseInitializationStrategy
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

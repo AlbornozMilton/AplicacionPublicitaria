@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistencia.Clases
+namespace Persistencia.DAL
 {
-    public class Fuente
+    class IRepositorio
     {
-        public int FuenteId { get; set; }
-
     }
 }
