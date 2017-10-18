@@ -10,6 +10,7 @@ namespace Dominio
     {
         private int iCodRangoHora;
         private TimeSpan iHoraInicio;
+        private TimeSpan iHoraFin;
         private int iDuracion; //en minutos
 
         //CONSTRUCTORES --------------------------------------------------------------
@@ -17,6 +18,7 @@ namespace Dominio
         {
             this.iCodRangoHora = pCodRangoHora;
             this.iHoraInicio = pHoraInicio;
+            this.iHoraFin = pHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
             this.iDuracion = pDuracion;
         }
         //PROPIEDADES--------------------------------------------------------------
@@ -25,6 +27,12 @@ namespace Dominio
             get { return this.iCodRangoHora; }
         }
 
+        public int Duracion
+        {
+            get { return this.HoraFin.Subtract(this.iHoraInicio).Minutes; }
+          //  get { return this.iDuracion; }
+        }
+        // segun lo que se elige se elimina o cambio get de HoraFin o Duracion
         public TimeSpan HoraFin
         {
            get { return this.iHoraInicio.Add(new TimeSpan(0, this.iDuracion, 0)); }

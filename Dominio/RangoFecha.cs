@@ -59,7 +59,7 @@ namespace Dominio
 
         public void AgregarDia(DateTime pDia)
         {
-            //por si se agrega un dia que no este en el rango de fechas preestablecido
+            //por si se agrega un dia que no este en el rango de fechas pre-establecido
             if (!(pDia>=this.iFechaInicio || pDia <= this.iFechaFin))
             {
                 throw new Exception();
