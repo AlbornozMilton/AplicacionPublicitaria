@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacionPublicitaria.Dominio
+namespace Dominio
 {
     class Campania
     {
@@ -13,13 +13,15 @@ namespace AplicacionPublicitaria.Dominio
         private float iDuracion;
         private int iCantCiclos;
         private List<Imagen> iListaImagenes;
+        private RangoFecha iRangoFecha;
+
 
         //constructor de la campania
         public Campania()
         {
             this.iListaImagenes = new List<Imagen>();
-        }
 
+        }
 
     }
 }

@@ -8,21 +8,43 @@ namespace Dominio
 {
     class Dia
     {
-        private string iNombreDia;
-        private List<RangoHorario> iListaHorarios;
+        private DateTime iDia;
+      //  private TimeSpan iHoraInicio;
+        //private TimeSpan iHoraFin;
+        private DateTime iHoraFinEjemplo;
+
+        //private List<RangoHorario> iListaHorarios;
 
         //CONSTRUCTOR
-        public Dia(string pNombreDia)
+      
+        public Dia(DateTime pDia, TimeSpan pHoraInicio, int pDuracion)
         {
-            this.iNombreDia = pNombreDia;
+            this.iDia = pDia.Date;
+            this.iHoraFinEjemplo = this.iDia.AddMinutes(pDuracion);
+           // this.iHoraInicio = pHoraInicio;
+            //this.iHoraFin = this.iHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
             //this.iListaHorarios = new List<RangoHorario>();  <--VER
         }
         //PROPIEDADES
-        public string NombreDia
+        public DateTime GetDia
         {
-            get { return this.iNombreDia; }
+            get { return this.iDia.Date; }
+            //VER SI SE PUEDE DEVOLVER EL NOMBRE DEL DIA EJ: MIERCOLES
         }
 
-        //METODOS
+        public int GetHoraInicio
+        {
+            get { return this.iDia.Hour; }
+        }
+
+        public int GetHoraFin
+        {
+            get { return this.iHoraFinEjemplo.Hour; }
+        }
+
+        public int GetDuracion
+        {
+            get { return this.iHoraFinEjemplo.Subtract(this.iDia).Minutes; }
+        }
     }
 }

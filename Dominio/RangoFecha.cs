@@ -16,24 +16,25 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class RangoFecha
+   class RangoFecha
     {
         private int iCodRangoFecha;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
-        private RangoHorario iRangoHorario;
-
+        private List<Dia> iListaDia;
+        //private RangoHorario iRangoHorario;
 
         //CONSTRUCTOR
-        public RangoFecha(int pCodRangoFecha, DateTime pFechaInicio, DateTime pFechaFin, RangoHorario pRangoHorario)
-        {
+        public RangoFecha(int pCodRangoFecha, DateTime pFechaInicio, DateTime pFechaFin)
+        { 
+            //ver como tratar el codigo de rango de fecha
             this.iCodRangoFecha = pCodRangoFecha;
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
-            this.iRangoHorario = pRangoHorario;
+          //  this.iRangoHorario = pRangoHorario;
         }
 
-        //PROPIEDADES
+        //PROPIEDADES----------------------------------------------------------
         public int CodFecha
         {
             get { return this.iCodRangoFecha; }
@@ -50,12 +51,7 @@ namespace Dominio
             get { return this.iFechaFin.Date; }
         }
 
-        public RangoHorario RangoHorario
-        {
-            get { return this.iRangoHorario; }
-        }
-
-        //METODOS
+        //METODOS----------------------------------------------------------
 
         public string FechaString(DateTime pFecha)
         {
