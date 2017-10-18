@@ -6,33 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class FuenteRSS: ITextoFuente
+    public class FuenteRSS: Fuente
     {
-        private string iURL;
         private string iNombreFuente;
-        private string iDescripcion;
-        private string iTexto;
 
         //obtener pTexto desde el RSS
-        public FuenteRSS(string pTexto, string pNombreFuente)
+        public FuenteRSS(string pTexto, string pNombreFuente) : base(pTexto)
         {
             this.iNombreFuente = pNombreFuente;
-            this.iTexto = pTexto;
-        }
-
-        string ITextoFuente.GetDetalles()
-        {
-            return this.iDescripcion;
-        }
-
-        string ITextoFuente.GetNombreFuente()
-        {
-            return this.iNombreFuente;
-        }
-
-        string ITextoFuente.GetTexto()
-        {
-            return this.iTexto;
         }
     }
 }
