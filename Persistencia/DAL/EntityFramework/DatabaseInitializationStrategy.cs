@@ -8,5 +8,6 @@ namespace Persistencia.DAL.EntityFramework
 {
     class DatabaseInitializationStrategy
     {
+
     }
 }

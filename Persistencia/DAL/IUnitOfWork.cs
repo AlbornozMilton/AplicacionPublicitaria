@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
-    class IUnitOfWork
+    interface IUnitOfWork: IDisposable
     {
+        void Complete();
+
+        IRepositorioCliente RepositorioCliente { get; }
     }
 }
