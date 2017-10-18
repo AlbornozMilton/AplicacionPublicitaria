@@ -51,6 +51,13 @@
   <ItemGroup>
     <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\BannerMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\CampaniaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\DiaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\RangoHorarioMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\TextoFijoMap.cs" />
     <Compile Include="DAL\EntityFramework\PublicacionContext.cs" />
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioBanner.cs" />
