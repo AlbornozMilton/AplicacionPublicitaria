@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    class RangoFecha
+    public class RangoFecha
     {
+        public int RangoFechaId { get; set; }
+
+        public DateTime FechaInicio { get; set; }
+
+        public DateTime FechaFin { get; set; }
+
+        public virtual List<Banner> Banners { get; set; }
+
+        public virtual List<Campania> Campanias { get; set; }
+
+        public virtual List<RangoHorario> Horarios { get; set; }
     }
 }

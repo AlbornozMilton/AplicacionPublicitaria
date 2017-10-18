@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    class Campania
+    public class Campania
     {
+        public int CampaniaId { get; set; }
+
+        public string Nombre { get; set; }
+
+        public int Duracion { get; set; }
+
+        public int CantCiclos { get; set; }
+
+        public virtual List<Imagen> Imagenes { get; set; }
+
+        public RangoFecha RangoFecha { get; set; }
     }
 }

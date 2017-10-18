@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    class Banner
+    public class Banner
     {
+        public int BannerId { get; set; }
+
+        public string Nombre { get; set; }
+
+        public RangoFecha RangoFecha { get; set; }
+
+        public Fuente Fuente { get; set; }
     }
 }

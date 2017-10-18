@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    class Fuente
+    public class Fuente
     {
+        public int FuenteId { get; set; }
     }
 }
