@@ -10,6 +10,6 @@ namespace Persistencia.DAL
     {
         void Complete();
 
-        IRepositorioCliente RepositorioCliente { get; }
+        IRepositorioBanner RepositorioBanner { get; }
     }
 }

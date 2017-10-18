@@ -18,17 +18,15 @@ namespace Persistencia.DAL.EntityFramework
             {
                 throw new ArgumentNullException(nameof(pContext));
             }
-            //asigna el contexto 
             this.iDbContext = pContext;
-
-            //SE UTILIZA LOS GETTERS!! ¿?--------------sin atributo ??? iClientRepository???
-            //SE INSTANCIA CON TODAS LAS IMPLEMENTACIONES DEFINIDAS
-            this.RepositorioCliente = new RepositorioCliente(this.iDbContext); //porque el this???-->por el constructor de AccountRepository
+         
+            //this --> por el constructor de AccountRepository
+            this.RepositorioBanner = new RepositorioBanner(this.iDbContext); 
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
 
-        public IRepositorioCliente RepositorioCliente { get; private set; }
+        public IRepositorioBanner RepositorioBanner { get; private set; }
 
         /// <summary>
         /// Realiza el método SaveChanges();
