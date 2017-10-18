@@ -57,6 +57,15 @@
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="Dominio\Banner.cs" />
+    <Compile Include="Dominio\Campania.cs" />
+    <Compile Include="Dominio\Dia.cs" />
+    <Compile Include="Dominio\Fuente.cs" />
+    <Compile Include="Dominio\FuenteRSS.cs" />
+    <Compile Include="Dominio\Imagen.cs" />
+    <Compile Include="Dominio\RangoFecha.cs" />
+    <Compile Include="Dominio\RangoHorario.cs" />
+    <Compile Include="Dominio\TextoFijo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\EntityFramework\Mapping\" />
-    <Folder Include="Dominio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
