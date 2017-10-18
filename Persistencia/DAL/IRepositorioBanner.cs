@@ -7,8 +7,8 @@ using Persistencia.Dominio;
 
 namespace Persistencia.DAL
 {
-    //BORRAR
-    class IRepositorioCliente
+    interface IRepositorioBanner:IRepositorio<Banner>
     {
+
     }
 }

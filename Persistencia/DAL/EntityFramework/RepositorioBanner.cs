@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistencia.Dominio;
 
-namespace Persistencia.DAL
+namespace Persistencia.DAL.EntityFramework
 {
-    //BORRAR
-    class IRepositorioCliente
+    class RepositorioBanner:Repositorio<Banner,PublicacionContext>, IRepositorioBanner
     {
+
     }
 }
