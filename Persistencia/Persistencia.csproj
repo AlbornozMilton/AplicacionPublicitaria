@@ -56,7 +56,6 @@
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioBanner.cs" />
-    <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Dominio\Banner.cs" />
     <Compile Include="Dominio\Campania.cs" />
