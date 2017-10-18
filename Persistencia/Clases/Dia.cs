@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class Dia
     {
-        public int Id { get; set; }
+        public int DiaId { get; set; }
         public string Nombre { get; set; }
 
         //listaHorarios<RangoHorario>

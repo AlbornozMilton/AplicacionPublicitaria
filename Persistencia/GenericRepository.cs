@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistencia.Clases
+namespace Persistencia
 {
-    public class TextoFijo:Fuente
-    { 
-        public string Texto { get; set; }
+    class GenericRepository
+    {
     }
 }

@@ -16,7 +16,7 @@ namespace Persistencia.Mappings
         /// </summary>
         public CampaniaMap()
         {
-            this.Property(pCamp => pCamp.Id)
+            this.Property(pCamp => pCamp.CampaniaId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(pCamp => pCamp.Nombre)
@@ -29,7 +29,8 @@ namespace Persistencia.Mappings
                 .IsRequired();
 
             //Establece la relacio muchos a 1 con RangoFecha.
-            this.HasRequired(pCamp => pCamp.RangoFecha);
+            this.HasRequired(pCamp => pCamp.RangoFecha)
+                .WithMany(r => r.Campanias);
         }
         
     }

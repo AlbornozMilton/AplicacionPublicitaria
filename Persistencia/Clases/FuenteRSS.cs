@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Clases
 {
-    public class FuenteRSS
+    public class FuenteRSS:Fuente
     {
-        public int Id { get; set; }
-
         public string URL { get; set; }
 
         public string Descripcion { get; set; }

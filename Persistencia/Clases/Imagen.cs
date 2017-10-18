@@ -8,7 +8,7 @@ namespace Persistencia.Clases
 {
     public class Imagen
     {
-        public int Id { get; set; }
+        public int ImagenId { get; set; }
 
         public string Nombre { get; set; }
 
@@ -16,6 +16,8 @@ namespace Persistencia.Clases
 
         public int Tiempo { get; set; }
 
+        public int CampaniaId { get; set; }
+        
         public Campania Campania { get; set; }
     }
 }

@@ -8,10 +8,16 @@ namespace Persistencia.Clases
 {
     public class RangoFecha
     {
-        public int Id { get; set; }
+        public int RangoFechaId { get; set; }
 
         public DateTime FechaInicio { get; set; }
 
         public DateTime FechaFin { get; set; }
+
+        public virtual List<Banner> Banners { get; set; }
+
+        public virtual List<Campania> Campanias { get; set; }
+
+        public virtual List<RangoHorario> Horarios { get; set; }
     }
 }

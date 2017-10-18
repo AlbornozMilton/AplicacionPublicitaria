@@ -15,7 +15,7 @@ namespace Persistencia.Mappings
         /// </summary>
         public RangoHorarioMap()
         {
-            this.Property(r => r.Id)
+            this.Property(r => r.RangoHorarioId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(r => r.HoraInicio)
@@ -23,6 +23,9 @@ namespace Persistencia.Mappings
 
             this.Property(r => r.HoraFin)
                 .IsRequired();
+
+            this.HasRequired(h => h.RangoFecha)
+                .WithMany(f => f.Horarios);
         }
 
     }

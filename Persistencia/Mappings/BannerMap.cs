@@ -16,13 +16,14 @@ namespace Persistencia.Mappings
         /// </summary>
         public BannerMap()
         {
-            this.Property(b => b.Id)
+            this.Property(b => b.BannerId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(b => b.Nombre)
                 .IsRequired();
 
-            this.HasRequired(b => b.RangoFecha);
+            this.HasRequired(b => b.RangoFecha)
+                .WithMany(r => r.Banners);
             this.HasRequired(b => b.Fuente);
         }
     }

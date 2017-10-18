@@ -12,6 +12,11 @@ namespace Persistencia
 {
     internal class PublicidadContext:DbContext
     {
+        public PublicidadContext():base("PublicidadDB")
+        {
+
+        }
+
         public DbSet <Campania> Campania { get; set; }
 
         public DbSet <Imagen> Imagen { get; set; }
