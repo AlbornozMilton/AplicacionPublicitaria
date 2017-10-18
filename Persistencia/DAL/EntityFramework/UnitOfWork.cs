@@ -28,10 +28,11 @@ namespace Persistencia.DAL.EntityFramework
 
         public IRepositorioBanner RepositorioBanner { get; private set; }
 
+        //---implementacion de IUnitOfWork 
+
         /// <summary>
         /// Realiza el método SaveChanges();
         /// </summary>
-        //implementacion de IUnitOfWork 
         public void Complete()
         {
             this.iDbContext.SaveChanges();
