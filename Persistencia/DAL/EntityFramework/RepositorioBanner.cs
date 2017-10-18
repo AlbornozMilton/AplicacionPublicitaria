@@ -9,6 +9,9 @@ namespace Persistencia.DAL.EntityFramework
 {
     class RepositorioBanner:Repositorio<Banner,PublicacionContext>, IRepositorioBanner
     {
+        public RepositorioBanner(PublicacionContext pContext):base(pContext)
+        {
 
+        }
     }
 }

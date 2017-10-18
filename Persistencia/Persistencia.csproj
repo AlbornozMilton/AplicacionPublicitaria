@@ -61,11 +61,9 @@
     <Compile Include="DAL\EntityFramework\PublicacionContext.cs" />
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioBanner.cs" />
-    <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioBanner.cs" />
-    <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Dominio\Banner.cs" />
     <Compile Include="Dominio\Campania.cs" />
