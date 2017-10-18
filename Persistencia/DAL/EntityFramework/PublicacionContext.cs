@@ -8,7 +8,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Persistencia.Dominio;
 
-[assembly: InternalsVisibleTo("Dominio")]
+//[assembly: InternalsVisibleTo("Dominio")]
 
 namespace Persistencia.DAL.EntityFramework
 {
