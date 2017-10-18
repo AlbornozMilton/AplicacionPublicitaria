@@ -9,18 +9,17 @@ namespace Dominio
     class RangoHorario
     {
         private int iCodRangoHora;
-        private DateTime iFechaInicio;
-        private DateTime iFechaFin;
-        private List<Dia> iDias;
+        private TimeSpan iHoraInicio;
+        private int iDuracion; //en minutos
 
-        //CONSTRUCTOR
-        public RangoHorario(int pCodRangoHora, DateTime pFechaInicio, DateTime pFechaFin)
+        //CONSTRUCTORES --------------------------------------------------------------
+        public RangoHorario(int pCodRangoHora,TimeSpan pHoraInicio ,int pDuracion)
         {
             this.iCodRangoHora = pCodRangoHora;
-            this.iFechaInicio = pFechaInicio;
-            this.iFechaFin = pFechaFin;
+            this.iHoraInicio = pHoraInicio;
+            this.iDuracion = pDuracion;
         }
-        //PROPIEDADES
+        //PROPIEDADES--------------------------------------------------------------
         public int CodRangoHora
         {
             get { return this.iCodRangoHora; }
@@ -28,7 +27,9 @@ namespace Dominio
 
         public TimeSpan HoraFin
         {
-            get { return this.iHoraInicio.Add(new TimeSpan(0,this.iDuracion,0)); }
+           get { return this.iHoraInicio.Add(new TimeSpan(0, this.iDuracion, 0)); }
+        //buscar como instanciar TimeSpan teniendo en cuento los ticks y minutos
+        // get { return this.iHoraInicio.Add(new TimeSpan(0,this.iDuracion,0)); }
         }
 
         public string HoraInicioString
@@ -43,6 +44,7 @@ namespace Dominio
 
         }
 
-        //METODOS
+        //METODOS --------------------------------------------------------------
+
     }
 }

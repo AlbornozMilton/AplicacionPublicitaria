@@ -28,10 +28,9 @@ namespace Dominio
         public RangoFecha(int pCodRangoFecha, DateTime pFechaInicio, DateTime pFechaFin)
         { 
             //ver como tratar el codigo de rango de fecha
-            this.iCodRangoFecha = pCodRangoFecha;
+            this.iCodRangoFecha = pCodRangoFecha; 
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
-          //  this.iRangoHorario = pRangoHorario;
         }
 
         //PROPIEDADES----------------------------------------------------------
@@ -58,7 +57,17 @@ namespace Dominio
             return String.Format("{0}/{1}/{2}",pFecha.Day,pFecha.Month,pFecha.Day);
         }
 
-        
+        public void AgregarDia(DateTime pDia)
+        {
+            //por si se agrega un dia que no este en el rango de fechas preestablecido
+            if (!(pDia>=this.iFechaInicio || pDia <= this.iFechaFin))
+            {
+                throw new Exception();
+            }
+
+            this.iListaDia.Add(new Dia(pDia));
+
+        }
 
     }
 }

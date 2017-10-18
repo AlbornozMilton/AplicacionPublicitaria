@@ -9,42 +9,33 @@ namespace Dominio
     class Dia
     {
         private DateTime iDia;
-      //  private TimeSpan iHoraInicio;
-        //private TimeSpan iHoraFin;
-        private DateTime iHoraFinEjemplo;
-
-        //private List<RangoHorario> iListaHorarios;
+        private List<RangoHorario> iHorarios;
 
         //CONSTRUCTOR
-      
-        public Dia(DateTime pDia, TimeSpan pHoraInicio, int pDuracion)
+        public Dia(DateTime pDia)
         {
             this.iDia = pDia.Date;
-            this.iHoraFinEjemplo = this.iDia.AddMinutes(pDuracion);
-           // this.iHoraInicio = pHoraInicio;
-            //this.iHoraFin = this.iHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
-            //this.iListaHorarios = new List<RangoHorario>();  <--VER
         }
+
         //PROPIEDADES
         public DateTime GetDia
         {
             get { return this.iDia.Date; }
             //VER SI SE PUEDE DEVOLVER EL NOMBRE DEL DIA EJ: MIERCOLES
+            // es mejor devolver un string en formato fecha??
+        }
+        //METODOS -------------------------------------------
+        public void AgregarHorario(TimeSpan pHoraInicio, int pDuracion)
+        {
+            // chequear que no se ingrese un horario que se superponga 
+            // con otro tanto del mismo u otro banner o campaña para el mismo dia
+            // el mismo DIA es igual para TODOS , es como una clave primaria
+            // tener un DIA en memoria para que se carguen los horarios en el dia y utilizarla para operar ¿?
+
+            this.iHorarios.Add( new RangoHorario(1,pHoraInicio,pDuracion));
+            //tener en cuenta codigo de horario
         }
 
-        public int GetHoraInicio
-        {
-            get { return this.iDia.Hour; }
-        }
-
-        public int GetHoraFin
-        {
-            get { return this.iHoraFinEjemplo.Hour; }
-        }
-
-        public int GetDuracion
-        {
-            get { return this.iHoraFinEjemplo.Subtract(this.iDia).Minutes; }
-        }
+        //Sobrecargar metodo ToString???
     }
 }
