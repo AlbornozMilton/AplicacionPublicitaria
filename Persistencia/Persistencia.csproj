@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\BannerMap.cs" />
     <Compile Include="DAL\EntityFramework\PublicacionContext.cs" />
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
@@ -65,8 +66,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\EntityFramework\Mapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
