@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistencia
+namespace Persistencia.Dominio
 {
-    class GenericRepository
+    class RangoFecha
     {
     }
 }
