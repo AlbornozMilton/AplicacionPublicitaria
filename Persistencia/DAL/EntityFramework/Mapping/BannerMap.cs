@@ -23,3 +23,4 @@ namespace Persistencia.DAL.EntityFramework.Mapping
                 .IsRequired();
         }
     }
+}

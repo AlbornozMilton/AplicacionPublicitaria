@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Persistencia.Clases;
+using Persistencia.DAL.EntityFramework;
 
 namespace Persistencia
 {
@@ -11,7 +11,7 @@ namespace Persistencia
     {
         static void Main(string[] args)
         {
-            PublicidadContext db = new PublicidadContext();
+            PublicacionContext db = new PublicacionContext();
 
             //Campania unaCamp = new Campania
             //{
