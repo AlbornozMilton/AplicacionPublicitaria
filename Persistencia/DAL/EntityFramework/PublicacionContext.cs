@@ -11,6 +11,7 @@ namespace Persistencia.DAL.EntityFramework
     {
         public PublicacionContext():base("AplicacionPublicitariaDB")
         {
+
         }
 
         //ATRIBUTOS       
