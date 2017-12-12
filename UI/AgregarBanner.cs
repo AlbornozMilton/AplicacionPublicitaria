@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Form2 : Form
+    public partial class AgregarBanner : Form
     {
-        public Form2()
+        public AgregarBanner()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
