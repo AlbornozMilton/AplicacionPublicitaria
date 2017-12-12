@@ -139,4 +139,7 @@
   <data name="FondoVentanas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoVentanas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_AgregarImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_AgregarImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
