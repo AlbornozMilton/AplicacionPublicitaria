@@ -123,9 +123,59 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_Configurar {
+            get {
+                object obj = ResourceManager.GetObject("btn_Configurar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_Confirmar {
+            get {
+                object obj = ResourceManager.GetObject("btn_Confirmar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_Editar {
             get {
                 object obj = ResourceManager.GetObject("btn_Editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_Imagenes {
+            get {
+                object obj = ResourceManager.GetObject("btn_Imagenes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_Listar {
+            get {
+                object obj = ResourceManager.GetObject("btn_Listar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_Reproducir {
+            get {
+                object obj = ResourceManager.GetObject("btn_Reproducir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
