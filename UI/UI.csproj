@@ -107,7 +107,7 @@
     <None Include="Resources\btn_Editar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Adelante - Copy.png" />
+    <None Include="Resources\btn_AgregarImagen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
