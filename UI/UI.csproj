@@ -85,9 +85,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\btn_Adelante.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FondoVentanas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Atras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Editar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
