@@ -112,5 +112,20 @@
   <ItemGroup>
     <None Include="Resources\btn_AgregarImagen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Configurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Imagenes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Listar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Reproducir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Confirmar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
