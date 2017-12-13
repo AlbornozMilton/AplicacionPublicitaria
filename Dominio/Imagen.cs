@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacionPublicitaria.Dominio
+namespace Dominio
 {
     class Imagen
     {
@@ -12,7 +12,6 @@ namespace AplicacionPublicitaria.Dominio
         private int iNumSec;
         private int iTiempo;
         private Campania Campania;
-
 
 
 

@@ -10,15 +10,25 @@ namespace Dominio
     {
         //private RangoFecha iRangoFechas 
         private int iIdBanner;
-        private string iNombre;
-        private Fuente iFuente;
+        private string iNombreBanner;
+        private ITextoFuente iFuente;
+        private RangoFecha iRangoFecha;
 
-
-        //contructor 
-        public Banner(int pIdBanner, string pNombre)
+        //CONSTRUCTOR--------------------------------------------------------------------------- 
+        public Banner(int pIdBanner, DateTime pFechaInicio, DateTime pFechaFinal)
         {
             this.iIdBanner = pIdBanner;
-            this.iNombre = pNombre;
+            this.iNombreBanner = this.iFuente.GetNombreFuente(); //necesario ??
+            this.iRangoFecha = new RangoFecha(1, pFechaInicio, pFechaFinal);
         }
+
+        // PROPIEDADES ---------------------------------------------------------------------------
+        public string GetNombreBanner { get { return this.iFuente.GetNombreFuente(); } }
+
+        //ver! - nombre fuente quedaria mejor ?
+        public string GetNombreBanner2 { get { return this.iNombreBanner; } }
+
+        //METODOS ---------------------------------------------------------------------------
+
     }
 }

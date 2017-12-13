@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Fuente
     {
-        protected string iTexto;
+        private string iTexto;
 
         public Fuente(string pTexto)
         {

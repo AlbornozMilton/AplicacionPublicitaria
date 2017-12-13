@@ -8,21 +8,34 @@ namespace Dominio
 {
     class Dia
     {
-        private string iNombreDia;
-        private List<RangoHorario> iListaHorarios;
+        private DateTime iDia;
+        private List<RangoHorario> iHorarios;
 
         //CONSTRUCTOR
-        public Dia(string pNombreDia)
+        public Dia(DateTime pDia)
         {
-            this.iNombreDia = pNombreDia;
-            //this.iListaHorarios = new List<RangoHorario>();  <--VER
-        }
-        //PROPIEDADES
-        public string NombreDia
-        {
-            get { return this.iNombreDia; }
+            this.iDia = pDia.Date;
         }
 
-        //METODOS
+        //PROPIEDADES
+        public DateTime GetDia
+        {
+            get { return this.iDia.Date; }
+            //VER SI SE PUEDE DEVOLVER EL NOMBRE DEL DIA EJ: MIERCOLES
+            // es mejor devolver un string en formato fecha??
+        }
+        //METODOS -------------------------------------------
+        public void AgregarHorario(TimeSpan pHoraInicio, int pDuracion)
+        {
+            // chequear que no se ingrese un horario que se superponga 
+            // con otro tanto del mismo u otro banner o campaña para el mismo dia
+            // el mismo DIA es igual para TODOS , es como una clave primaria
+            // tener un DIA en memoria para que se carguen los horarios en el dia y utilizarla para operar ¿?
+
+            this.iHorarios.Add( new RangoHorario(1,pHoraInicio,pDuracion));
+            //tener en cuenta codigo de horario
+        }
+
+        //Sobrecargar metodo ToString???
     }
 }

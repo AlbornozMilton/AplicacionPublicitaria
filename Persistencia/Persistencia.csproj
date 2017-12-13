@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E713231E-5509-490E-B49B-9258DEE8E9AD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ProjectGuid>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <RootNamespace>Persistencia</RootNamespace>
     <AssemblyName>Persistencia</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,14 +32,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -52,42 +53,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Banner.cs" />
-    <Compile Include="Clases\Campania.cs" />
-    <Compile Include="Clases\Dia.cs" />
-    <Compile Include="Clases\Fuente.cs" />
-    <Compile Include="Clases\FuenteRSS.cs" />
-    <Compile Include="Clases\Imagen.cs" />
-    <Compile Include="Clases\RangoFecha.cs" />
-    <Compile Include="Clases\RangoHorario.cs" />
-    <Compile Include="Clases\TextoFijo.cs" />
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="IGenericRepository.cs" />
-    <Compile Include="Mappings\BannerMap.cs" />
-    <Compile Include="Mappings\CampaniaMap.cs" />
-    <Compile Include="Mappings\DiaMap.cs" />
-    <Compile Include="Mappings\FuenteMap.cs" />
-    <Compile Include="Mappings\FuenteRSSMap.cs" />
-    <Compile Include="Mappings\ImagenMap.cs" />
-    <Compile Include="Mappings\RangoFechaMap.cs" />
-    <Compile Include="Mappings\RangoHorarioMap.cs" />
-    <Compile Include="Mappings\TextoFijoMap.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\BannerMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\CampaniaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\DiaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\RangoHorarioMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\TextoFijoMap.cs" />
+    <Compile Include="DAL\EntityFramework\PublicacionContext.cs" />
+    <Compile Include="DAL\EntityFramework\Repositorio.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioBanner.cs" />
+    <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
+    <Compile Include="DAL\IRepositorio.cs" />
+    <Compile Include="DAL\IRepositorioBanner.cs" />
+    <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="Dominio\Banner.cs" />
+    <Compile Include="Dominio\Campania.cs" />
+    <Compile Include="Dominio\Dia.cs" />
+    <Compile Include="Dominio\Fuente.cs" />
+    <Compile Include="Dominio\FuenteRSS.cs" />
+    <Compile Include="Dominio\Imagen.cs" />
+    <Compile Include="Dominio\RangoFecha.cs" />
+    <Compile Include="Dominio\RangoHorario.cs" />
+    <Compile Include="Dominio\TextoFijo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicidadContext.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
