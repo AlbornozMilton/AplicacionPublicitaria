@@ -12,7 +12,8 @@ namespace Persistencia.DAL.EntityFramework
     {
         protected override void Seed(DbContext context)
         {
-            //instanciar clases y relaciones
+            //instanciar clases y relaciones <-- CREO QUE NO
+            //aca va lo que queremos que se cargue en la base de datos al crearse. (DATOS FIJO DEL PROGRAMA)
 
             base.Seed(context);
         }
