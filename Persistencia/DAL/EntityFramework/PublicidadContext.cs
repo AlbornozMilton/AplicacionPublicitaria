@@ -7,9 +7,9 @@ using Persistencia.DAL.EntityFramework.Mapping;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    public class PublicacionContext: DbContext
+    public class PublicidadContext : DbContext
     {
-        public PublicacionContext():base("AplicacionPublicitariaDB")
+        public PublicidadContext() : base("AplicacionPublicitariaDB")
         {
 
         }
@@ -27,8 +27,8 @@ namespace Persistencia.DAL.EntityFramework
         protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
             mBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //Elimina las "s" y "es" del nombre de las clases.
-            //Mappigs de las configuraciones de las Clases
-            
+                                                                           //Mappigs de las configuraciones de las Clases
+
             mBuilder.Configurations.Add(new BannerMap());
             mBuilder.Configurations.Add(new CampaniaMap());
             mBuilder.Configurations.Add(new DiaMap());
@@ -37,7 +37,7 @@ namespace Persistencia.DAL.EntityFramework
             mBuilder.Configurations.Add(new RangoFechaMap());
             mBuilder.Configurations.Add(new RangoHorarioMap());
             mBuilder.Configurations.Add(new TextoFijoMap());
-            
+
             base.OnModelCreating(mBuilder);
         }
     }

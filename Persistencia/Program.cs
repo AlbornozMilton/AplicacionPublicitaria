@@ -11,7 +11,7 @@ namespace Persistencia
     {
         static void Main(string[] args)
         {
-            PublicacionContext db = new PublicacionContext();
+            PublicidadContext db = new PublicidadContext();
 
             //Campania unaCamp = new Campania
             //{
