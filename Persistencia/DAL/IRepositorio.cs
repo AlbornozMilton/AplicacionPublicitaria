@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
-    interface IRepositorio<TEntity> where TEntity : class
+    public interface IRepositorio<TEntity> where TEntity : class
     {
         void Add(TEntity pEntity);
         void Remove(TEntity pEntity);

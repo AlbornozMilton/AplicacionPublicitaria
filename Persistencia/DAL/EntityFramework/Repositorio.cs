@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>
+    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>
         where TEntity : class
         where TDbContext : DbContext
     {

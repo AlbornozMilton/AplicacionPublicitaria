@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class UnitOfWork:IUnitOfWork
+    public class UnitOfWork:IUnitOfWork
     {
         //atributo para utilizar un solo Contexto
         private readonly PublicidadContext iDbContext;
@@ -21,10 +21,12 @@ namespace Persistencia.DAL.EntityFramework
             this.iDbContext = pContext;
          
             //this --> por el constructor de AccountRepository
-            this.RepositorioBanner = new RepositorioBanner(this.iDbContext); 
+            this.RepositorioCampania = new RepositorioCampania(this.iDbContext); 
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
+
+        public IRepositorioCampania RepositorioCampania { get; private set; }
 
         public IRepositorioBanner RepositorioBanner { get; private set; }
 
