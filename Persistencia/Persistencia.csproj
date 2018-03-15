@@ -62,7 +62,7 @@
     <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoHorarioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\TextoFijoMap.cs" />
-    <Compile Include="DAL\EntityFramework\PublicacionContext.cs" />
+    <Compile Include="DAL\EntityFramework\PublicidadContext.cs" />
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioBanner.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />

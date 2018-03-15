@@ -50,10 +50,9 @@
     <Compile Include="Campania.cs" />
     <Compile Include="ControladorBanner.cs" />
     <Compile Include="Dia.cs" />
-    <Compile Include="Fuente.cs" />
     <Compile Include="FuenteRSS.cs" />
+    <Compile Include="IFuente.cs" />
     <Compile Include="Imagen.cs" />
-    <Compile Include="ITextoFuente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RangoFecha.cs" />

@@ -9,10 +9,10 @@ namespace Persistencia.DAL.EntityFramework
     class UnitOfWork:IUnitOfWork
     {
         //atributo para utilizar un solo Contexto
-        private readonly PublicacionContext iDbContext;
+        private readonly PublicidadContext iDbContext;
 
         //Constructor
-        public UnitOfWork(PublicacionContext pContext)
+        public UnitOfWork(PublicidadContext pContext)
         {
             if (pContext == null)
             {

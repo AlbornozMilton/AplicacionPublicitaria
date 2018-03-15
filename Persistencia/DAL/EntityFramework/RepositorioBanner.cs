@@ -7,9 +7,9 @@ using Persistencia.Dominio;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class RepositorioBanner:Repositorio<Banner,PublicacionContext>, IRepositorioBanner
+    class RepositorioBanner:Repositorio<Banner,PublicidadContext>, IRepositorioBanner
     {
-        public RepositorioBanner(PublicacionContext pContext):base(pContext)
+        public RepositorioBanner(PublicidadContext pContext):base(pContext)
         {
 
         }
