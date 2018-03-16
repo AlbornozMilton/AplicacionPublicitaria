@@ -27,9 +27,9 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(I => I.Tiempo)
                 .IsRequired();
 
-            //Establece una relacion de muchos a 1 con Campania. FK: CampaniaId 
-            this.HasRequired(i => i.Campania)//establece que una imagen no se puede guardar sin una campaña asociada
-                .WithMany(c => c.Imagenes);//hace referencia que una campaña posee muchas imagenes
+            //////////////Establece una relacion de muchos a 1 con Campania. FK: CampaniaId 
+            ////////////this.HasRequired(i => i.Campania)//establece que una imagen no se puede guardar sin una campaña asociada
+            ////////////    .WithMany(c => c.Imagenes);//hace referencia que una campaña posee muchas imagenes
         }
     }
 }

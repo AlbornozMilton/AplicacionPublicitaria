@@ -14,10 +14,10 @@ namespace Persistencia.Dominio
 
         public int Duracion { get; set; }
 
-        public int CantCiclos { get; set; }
+        ////////public int CantCiclos { get; set; }
 
-        public virtual List<Imagen> Imagenes { get; set; }
+        ////////public virtual List<Imagen> Imagenes { get; set; }
 
-        public RangoFecha RangoFecha { get; set; }
+        ////////public RangoFecha RangoFecha { get; set; }
     }
 }

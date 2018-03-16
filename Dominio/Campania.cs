@@ -11,17 +11,23 @@ namespace Dominio
         private int iIdCampania;
         private string iNombre;
         private float iDuracion;
-        private int iCantCiclos;
+        ////////private int iCantCiclos;
 
-        private List<Imagen> iListaImagen;
-        private RangoFecha iRangoFecha;
+        ////////private List<Imagen> iListaImagen;
+        ////////private RangoFecha iRangoFecha;
 
 
-        //constructor de la campania
-        public Campania()
+        //////////constructor de la campania
+        ////////public Campania()
+        ////////{
+        ////////    this.iListaImagen = new List<Imagen>();
+
+        ////////}
+
+        public Campania(string pNombre, int pDuracion)
         {
-            this.iListaImagen = new List<Imagen>();
-
+            iNombre = pNombre;
+            iDuracion = pDuracion;
         }
 
     }

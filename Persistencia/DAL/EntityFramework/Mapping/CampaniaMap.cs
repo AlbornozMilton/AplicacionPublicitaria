@@ -24,12 +24,12 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(pCamp => pCamp.Duracion)
                 .IsRequired();
 
-            this.Property(pCamp => pCamp.CantCiclos)
-                .IsRequired();
+            //////this.Property(pCamp => pCamp.CantCiclos)
+            //////    .IsRequired();
 
             //Establece la relacio muchos a 1 con RangoFecha.
-            this.HasRequired(pCamp => pCamp.RangoFecha)
-                .WithMany(r => r.Campanias);
+            ////this.HasRequired(pCamp => pCamp.RangoFecha)
+            ////    .WithMany(r => r.Campanias);
         }
 
     }

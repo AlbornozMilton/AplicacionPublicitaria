@@ -8,7 +8,7 @@ using pers = Persistencia.Dominio;
 
 namespace Dominio.AutoMapper
 {
-    class AutoMapper
+    public class AutoMapper
     {
         public static void Mapear()
         {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
@@ -72,11 +73,6 @@ namespace UI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -140,6 +136,16 @@ namespace UI
         private void pictureBox6_MouseLeave(object sender, EventArgs e)
         {
             label12.Visible = false;
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(tbx_Duracion.Text));
         }
     }
 }

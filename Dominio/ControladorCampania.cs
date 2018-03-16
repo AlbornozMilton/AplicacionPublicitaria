@@ -8,14 +8,16 @@ using AutoMapper;
 
 namespace Dominio
 {
-    class ControladorCampania
+    public class ControladorCampania
     {
-        UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext ());
+        UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext());
 
-        public void AgregarCampania (Campania pCampania)
+        public void AgregarCampania (string pNombre, int pDuracion)
         {
-            var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(pCampania);
+
+            var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pDuracion));
             iUOfW.RepositorioCampania.Add(MapCamp);
+            iUOfW.Complete();
         }
 
     }
