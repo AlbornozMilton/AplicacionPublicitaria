@@ -30,5 +30,20 @@ namespace Dominio
             iDuracion = pDuracion;
         }
 
+        public int CampaniaId
+        {
+            get { return this.iIdCampania; }
+            private set { this.iIdCampania = value; }
+        }
+        public string Nombre
+        {
+            get { return this.iNombre; }
+            private set { this.iNombre = value; }
+        }
+        public float Duracion
+        {
+            get { return this.iDuracion; }
+            private set { this.iDuracion = value; }
+        }
     }
 }
