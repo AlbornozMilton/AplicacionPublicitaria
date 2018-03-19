@@ -7,7 +7,7 @@ using Persistencia.Dominio;
 
 namespace Persistencia.DAL
 {
-    interface IRepositorioBanner:IRepositorio<Banner>
+    public interface IRepositorioBanner:IRepositorio<Banner>
     {
 
     }

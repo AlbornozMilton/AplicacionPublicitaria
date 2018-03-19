@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>UI</RootNamespace>
     <AssemblyName>UI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -126,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Confirmar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{09ebc083-9da4-4190-b90a-95b70cad7f49}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

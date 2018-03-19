@@ -78,6 +78,7 @@
     <Compile Include="Dominio\RangoFecha.cs" />
     <Compile Include="Dominio\RangoHorario.cs" />
     <Compile Include="Dominio\TextoFijo.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
