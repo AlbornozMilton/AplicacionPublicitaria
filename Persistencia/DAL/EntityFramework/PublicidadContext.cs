@@ -9,7 +9,7 @@ namespace Persistencia.DAL.EntityFramework
 {
     public class PublicidadContext : DbContext
     {
-        public PublicidadContext() : base("AplicacionPublicitariaDB")
+        public PublicidadContext(): base("AplicacionPublicitariaDB-")
         {
             Database.SetInitializer<PublicidadContext>(new DatabaseInitializationStrategy());
         }

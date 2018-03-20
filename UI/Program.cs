@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Persistencia.DAL.EntityFramework;
+using System.Data.Entity;
 
 namespace UI
 {
@@ -17,9 +18,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            UnitOfWork UoW = new UnitOfWork(new PublicidadContext());
-            UoW.Complete();
-            Application.Run(new AgregarBanner());
+            new PublicidadContext().Database.Create();
         }
     }
 }
