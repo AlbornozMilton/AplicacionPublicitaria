@@ -64,8 +64,8 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.tbx_Duracion = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -295,7 +296,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(233, 81);
+            this.label11.Location = new System.Drawing.Point(234, 67);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 14);
             this.label11.TabIndex = 27;
@@ -306,7 +307,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::UI.Properties.Resources.btn_Agregar;
-            this.pictureBox3.Location = new System.Drawing.Point(195, 43);
+            this.pictureBox3.Location = new System.Drawing.Point(195, 29);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -332,7 +333,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(183, 81);
+            this.label10.Location = new System.Drawing.Point(192, 67);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 14);
             this.label10.TabIndex = 26;
@@ -342,7 +343,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::UI.Properties.Resources.btn_Cerrar;
-            this.pictureBox4.Location = new System.Drawing.Point(236, 43);
+            this.pictureBox4.Location = new System.Drawing.Point(236, 29);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(35, 35);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -395,6 +396,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.pictureBox7);
@@ -412,7 +415,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 59);
+            this.label13.Location = new System.Drawing.Point(188, 59);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 14);
             this.label13.TabIndex = 28;
@@ -422,7 +425,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(66, 59);
+            this.label12.Location = new System.Drawing.Point(230, 59);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 14);
             this.label12.TabIndex = 28;
@@ -432,7 +435,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::UI.Properties.Resources.btn_AgregarImagen;
-            this.pictureBox7.Location = new System.Drawing.Point(16, 21);
+            this.pictureBox7.Location = new System.Drawing.Point(191, 21);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(35, 35);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -444,7 +447,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::UI.Properties.Resources.btn_Cerrar;
-            this.pictureBox6.Location = new System.Drawing.Point(69, 21);
+            this.pictureBox6.Location = new System.Drawing.Point(232, 21);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(35, 35);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -510,26 +513,30 @@
             this.label9.Text = "X";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // tbx_Duracion
-            // 
-            this.tbx_Duracion.Location = new System.Drawing.Point(572, 65);
-            this.tbx_Duracion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tbx_Duracion.Name = "tbx_Duracion";
-            this.tbx_Duracion.Size = new System.Drawing.Size(272, 22);
-            this.tbx_Duracion.TabIndex = 24;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(465, 69);
+            this.label14.Location = new System.Drawing.Point(19, 38);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 18);
             this.label14.TabIndex = 23;
             this.label14.Text = "Duracion";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(99, 38);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(53, 22);
+            this.numericUpDown1.TabIndex = 29;
             // 
             // AgregarCampaña
             // 
@@ -538,8 +545,6 @@
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
             this.ClientSize = new System.Drawing.Size(874, 364);
-            this.Controls.Add(this.tbx_Duracion);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_Cancelar);
@@ -567,6 +572,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,8 +615,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbx_Duracion;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

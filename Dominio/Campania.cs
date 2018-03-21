@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Campania
+    public class Campania
     {
         private int iIdCampania;
         private string iNombre;

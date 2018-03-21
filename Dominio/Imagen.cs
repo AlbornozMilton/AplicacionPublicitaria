@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Imagen
+    public class Imagen
     {
         private String iNombre;
         private int iNumSec;

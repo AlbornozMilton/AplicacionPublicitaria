@@ -145,7 +145,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(tbx_Duracion.Text));
+        //    new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(tbx_Duracion.Text));
         }
     }
 }
