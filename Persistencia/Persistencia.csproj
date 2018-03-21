@@ -76,6 +76,7 @@
     <Compile Include="Dominio\Dia.cs" />
     <Compile Include="Dominio\Fuente.cs" />
     <Compile Include="Dominio\FuenteRSS.cs" />
+    <Compile Include="Dominio\IFuente.cs" />
     <Compile Include="Dominio\Imagen.cs" />
     <Compile Include="Dominio\RangoFecha.cs" />
     <Compile Include="Dominio\RangoHorario.cs" />
