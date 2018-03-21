@@ -14,6 +14,6 @@ namespace Persistencia.Dominio
 
         public RangoFecha RangoFecha { get; set; }
 
-        public Fuente Fuente { get; set; }
+        public IFuente Fuente { get; set; }
     }
 }

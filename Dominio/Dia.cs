@@ -25,7 +25,7 @@ namespace Dominio
             // es mejor devolver un string en formato fecha??
         }
         //METODOS -------------------------------------------
-        public void AgregarHorario(TimeSpan pHoraInicio, int pDuracion)
+        public void AgregarHorario(DateTime pHoraInicio, int pDuracion)
         {
             // chequear que no se ingrese un horario que se superponga 
             // con otro tanto del mismo u otro banner o campaña para el mismo dia

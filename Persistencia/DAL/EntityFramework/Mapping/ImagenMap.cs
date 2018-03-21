@@ -21,11 +21,14 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(I => I.Nombre)
                 .IsRequired();
 
-            this.Property(I => I.NroSec)
+            this.Property(I => I.NumSecuencia)
                 .IsRequired();
 
-            this.Property(I => I.Tiempo)
+            this.Property(I => I.Ruta)
                 .IsRequired();
+
+            this.HasRequired<Campania>(I => I.Campania)
+                .WithMany(C => C.Imagenes);
 
             //////////////Establece una relacion de muchos a 1 con Campania. FK: CampaniaId 
             ////////////this.HasRequired(i => i.Campania)//establece que una imagen no se puede guardar sin una campaña asociada

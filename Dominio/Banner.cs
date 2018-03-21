@@ -6,27 +6,40 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Banner
+    class Banner
     {
         //private RangoFecha iRangoFechas 
         private int iIdBanner;
-        private string iNombreBanner;
+        private string iNombre;
         private IFuente iFuente;
         private RangoFecha iRangoFecha;
 
         //CONSTRUCTOR--------------------------------------------------------------------------- 
-        public Banner(int pIdBanner, DateTime pFechaInicio, DateTime pFechaFinal)
-        {
-            this.iIdBanner = pIdBanner;
-            this.iNombreBanner = this.iFuente.GetNombreFuente(); //necesario ??
-            this.iRangoFecha = new RangoFecha(1, pFechaInicio, pFechaFinal);
-        }
+        //////public Banner(int pIdBanner, DateTime pFechaInicio, DateTime pFechaFinal)
+        //////{
+        //////    this.iIdBanner = pIdBanner;
+        //////    this.iNombre = this.iFuente.GetNombreFuente(); //necesario ??
+        //////    this.iRangoFecha = new RangoFecha(1, pFechaInicio, pFechaFinal);
+        //////}
 
         // PROPIEDADES ---------------------------------------------------------------------------
-        public string GetNombreBanner { get { return this.iFuente.GetNombreFuente(); } }
+        public int BannerId
+        {
+            get { return this.iIdBanner; }
+            private set { this.iIdBanner = value; }
+        }
 
-        //ver! - nombre fuente quedaria mejor ?
-        public string GetNombreBanner2 { get { return this.iNombreBanner; } }
+        public string Nombre
+        {
+            get { return this.iNombre; }
+            private set { this.iNombre = value; }
+        }
+
+        public RangoFecha RangoFecha
+        {
+            get { return this.iRangoFecha; }
+            private set { this.iRangoFecha = value; }
+        }
 
         //METODOS ---------------------------------------------------------------------------
 

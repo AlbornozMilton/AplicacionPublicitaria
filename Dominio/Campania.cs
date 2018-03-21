@@ -10,11 +10,10 @@ namespace Dominio
     {
         private int iIdCampania;
         private string iNombre;
-        private float iDuracion;
-        ////////private int iCantCiclos;
+        private float iIntervaloTiempo;
 
-        ////////private List<Imagen> iListaImagen;
-        ////////private RangoFecha iRangoFecha;
+        private List<Imagen> iListaImagen;
+        private RangoFecha iRangoFecha;
 
 
         //////////constructor de la campania
@@ -24,10 +23,10 @@ namespace Dominio
 
         ////////}
 
-        public Campania(string pNombre, int pDuracion)
+        public Campania(string pNombre, int pIntTiempo)
         {
             iNombre = pNombre;
-            iDuracion = pDuracion;
+            iIntervaloTiempo = pIntTiempo;
         }
 
         public int CampaniaId
@@ -40,10 +39,22 @@ namespace Dominio
             get { return this.iNombre; }
             private set { this.iNombre = value; }
         }
-        public float Duracion
+        public float IntervaloTiempo
         {
-            get { return this.iDuracion; }
-            private set { this.iDuracion = value; }
+            get { return this.iIntervaloTiempo; }
+            private set { this.iIntervaloTiempo = value; }
+        }
+
+        public RangoFecha RangoFecha
+        {
+            get { return this.iRangoFecha; }
+            private set { this.iRangoFecha = value; }
+        }
+
+        public List<Imagen> Imagenes
+        {
+            get { return this.iListaImagen; }
+            private set { this.iListaImagen = value; }
         }
     }
 }
