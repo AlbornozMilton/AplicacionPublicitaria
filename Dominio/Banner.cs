@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Banner
+    public class Banner
     {
         //private RangoFecha iRangoFechas 
         private int iIdBanner;

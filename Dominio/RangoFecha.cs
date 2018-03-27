@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   class RangoFecha
+   public class RangoFecha
     {
         private int iCodRangoFecha;
         private DateTime iFechaInicio;

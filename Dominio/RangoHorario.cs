@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class RangoHorario
+    public class RangoHorario
     {
         private int iCodRangoHora;
         private DateTime iHoraInicio;
