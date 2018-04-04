@@ -31,7 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox_ImagenCamp = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer_IntervaloImagen = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker_IniTimer = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +76,8 @@
         private System.Windows.Forms.PictureBox pictureBox_ImagenCamp;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer timer_ImagenesCampania;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer_IntervaloImagen;
+        private System.Windows.Forms.Timer timer2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_IniTimer;
     }
 }
