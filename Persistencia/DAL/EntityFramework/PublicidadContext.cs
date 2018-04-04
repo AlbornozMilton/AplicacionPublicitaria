@@ -20,9 +20,9 @@ namespace Persistencia.DAL.EntityFramework
         //public virtual DbSet<Dia> Dia { get; set; }
         //public virtual DbSet<FuenteRSS> FuenteRSS { get; set; }
         //public virtual DbSet<TextoFijo> TentoFijo { get; set; }
-        //public virtual DbSet<Imagen> Imagen { get; set; }
-        //public virtual DbSet<RangoFecha> RangoFecha { get; set; }
-        //public virtual DbSet<RangoHorario> RangoHorario { get; set; }
+        public virtual DbSet<Imagen> Imagen { get; set; }
+        public virtual DbSet<RangoFecha> RangoFecha { get; set; }
+        public virtual DbSet<RangoHorario> RangoHorario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
@@ -33,9 +33,9 @@ namespace Persistencia.DAL.EntityFramework
             mBuilder.Configurations.Add(new CampaniaMap());
             //mBuilder.Configurations.Add(new DiaMap());
             //mBuilder.Configurations.Add(new FuenteRSSMap());
-            //mBuilder.Configurations.Add(new ImagenMap());
-            //mBuilder.Configurations.Add(new RangoFechaMap());
-            //mBuilder.Configurations.Add(new RangoHorarioMap());
+            mBuilder.Configurations.Add(new ImagenMap());
+            mBuilder.Configurations.Add(new RangoFechaMap());
+            mBuilder.Configurations.Add(new RangoHorarioMap());
             //mBuilder.Configurations.Add(new TextoFijoMap());
 
             base.OnModelCreating(mBuilder);

@@ -15,6 +15,7 @@ namespace Dominio.AutoMapper
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Campania, pers.Campania>().ReverseMap();
+                cfg.CreateMap<Imagen, pers.Imagen>().ReverseMap();
 
                 //cfg.CreateMap<, pers.Domicilio>().ReverseMap();
 

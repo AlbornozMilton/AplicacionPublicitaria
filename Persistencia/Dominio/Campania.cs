@@ -14,7 +14,7 @@ namespace Persistencia.Dominio
 
         public int IntervaloTiempo { get; set; }
 
-        public virtual List<Imagen> Imagenes { get; set; }
+        public List<Imagen> Imagenes { get; set; }
 
         public RangoFecha RangoFecha { get; set; }
     }

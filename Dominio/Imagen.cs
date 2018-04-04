@@ -34,13 +34,17 @@ namespace Dominio
             get { return this.iRuta; }
             private set { this.iRuta = value; }
         }
+
         public Campania Campania
         {
             get { return this.iCampania; }
             private set { this.iCampania = value; }
         }
 
-
-
+        public Imagen (string pNombre, string pRuta)
+        {
+            this.iNombre = pNombre;
+            this.iRuta = pRuta;
+        }
     }
 }

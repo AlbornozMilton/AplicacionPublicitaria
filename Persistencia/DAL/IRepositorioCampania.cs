@@ -9,6 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioCampania : IRepositorio<Campania>
     {
-
+        
     }
 }
