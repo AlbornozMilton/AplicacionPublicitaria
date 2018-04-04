@@ -10,7 +10,7 @@ namespace Dominio
     {
         private int iIdCampania;
         private string iNombre;
-        private float iIntervaloTiempo;
+        private int iIntervaloTiempo;
 
         private List<Imagen> iListaImagen;
         private RangoFecha iRangoFecha;
@@ -34,7 +34,7 @@ namespace Dominio
             get { return this.iNombre; }
             private set { this.iNombre = value; }
         }
-        public float IntervaloTiempo
+        public int IntervaloTiempo
         {
             get { return this.iIntervaloTiempo; }
             private set { this.iIntervaloTiempo = value; }
