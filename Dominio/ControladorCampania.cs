@@ -22,7 +22,8 @@ namespace Dominio
 
         public Campania ObtenerCampania(int pId)
         {
-            Campania campania = Mapper.Map<Persistencia.Dominio.Campania, Campania> (iUOfW.RepositorioCampania.Get(pId));
+            Persistencia.Dominio.Campania campaniaPers = iUOfW.RepositorioCampania.Get(pId);
+            Campania campania = Mapper.Map<Persistencia.Dominio.Campania, Campania> (campaniaPers);
             return campania;
         }
     }   

@@ -133,5 +133,10 @@ namespace UI
                 dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
             }
         }
+
+        private void btn_PantallaOp_Click(object sender, EventArgs e)
+        {
+            new PantallaOperativa().ShowDialog();
+        }
     }
 }

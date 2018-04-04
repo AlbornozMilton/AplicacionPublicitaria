@@ -41,6 +41,10 @@ namespace Dominio
             private set { this.iCampania = value; }
         }
 
+        public Imagen()
+        {
+
+        }
         public Imagen (string pNombre, string pRuta)
         {
             this.iNombre = pNombre;

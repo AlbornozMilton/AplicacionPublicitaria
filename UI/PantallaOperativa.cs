@@ -58,8 +58,10 @@ namespace UI
              InitializeComponent();
             this.timer_IntervaloImagen.Interval = 1000;
             this.timer_IntervaloImagen.Enabled = true;
-            this.iCampaniaActual = ControladorCampania.ObtenerCampania();
+            this.iCampaniaActual = new ControladorCampania().ObtenerCampania(1);
             this.timer_IntervaloImagen.Interval = (iCampaniaActual.IntervaloTiempo) * 1000;
+            this.timer_IntervaloImagen.Enabled = true;
+            this.timer_IntervaloImagen.Start();
             this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
             this.pictureBox_ImagenCamp.SizeMode = PictureBoxSizeMode.StretchImage;
         }
@@ -73,7 +75,7 @@ namespace UI
 
         private Image ImagenCampania (Campania pCampania)
         {
-            if (indice > (pCampania.Imagenes.Count))
+            if (indice >= (pCampania.Imagenes.Count))
             {
                 MessageBox.Show("Termino");
                 return null;

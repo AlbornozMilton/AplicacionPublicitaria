@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBox_ImagenCamp = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer_IntervaloImagen = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker_IniTimer = new System.ComponentModel.BackgroundWorker();
@@ -41,16 +40,14 @@
             // 
             this.pictureBox_ImagenCamp.Location = new System.Drawing.Point(25, 22);
             this.pictureBox_ImagenCamp.Name = "pictureBox_ImagenCamp";
-            this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(736, 338);
+            this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(736, 412);
+            this.pictureBox_ImagenCamp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_ImagenCamp.TabIndex = 0;
             this.pictureBox_ImagenCamp.TabStop = false;
             // 
-            // textBox1
+            // timer_IntervaloImagen
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 414);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(736, 20);
-            this.textBox1.TabIndex = 2;
+            this.timer_IntervaloImagen.Tick += new System.EventHandler(this.timer_IntervaloImagen_Tick);
             // 
             // PantallaOperativa
             // 
@@ -59,22 +56,20 @@
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
             this.ClientSize = new System.Drawing.Size(784, 500);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox_ImagenCamp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PantallaOperativa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaOperativa";
             this.Load += new System.EventHandler(this.PantallaOperativa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox_ImagenCamp;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer timer_ImagenesCampania;
         private System.Windows.Forms.Timer timer_IntervaloImagen;
         private System.Windows.Forms.Timer timer2;

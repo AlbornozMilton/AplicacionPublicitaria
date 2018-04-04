@@ -76,6 +76,7 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btn_PantallaOp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_AgregarHora)).BeginInit();
@@ -619,6 +620,16 @@
             this.label9.Text = "X";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
+            // btn_PantallaOp
+            // 
+            this.btn_PantallaOp.Location = new System.Drawing.Point(379, 321);
+            this.btn_PantallaOp.Name = "btn_PantallaOp";
+            this.btn_PantallaOp.Size = new System.Drawing.Size(75, 23);
+            this.btn_PantallaOp.TabIndex = 23;
+            this.btn_PantallaOp.Text = "operativa";
+            this.btn_PantallaOp.UseVisualStyleBackColor = true;
+            this.btn_PantallaOp.Click += new System.EventHandler(this.btn_PantallaOp_Click);
+            // 
             // AgregarCampaña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -626,6 +637,7 @@
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
             this.ClientSize = new System.Drawing.Size(874, 364);
+            this.Controls.Add(this.btn_PantallaOp);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_Cancelar);
@@ -703,6 +715,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_HoraHasta;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Ruta;
+        private System.Windows.Forms.Button btn_PantallaOp;
     }
 }
 

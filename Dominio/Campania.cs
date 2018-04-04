@@ -15,6 +15,14 @@ namespace Dominio
         private List<Imagen> iListaImagen;
         private RangoFecha iRangoFecha;
 
+        /// <summary>
+        /// Para el Mapper
+        /// </summary>
+        public Campania()
+        {
+
+        }
+
         public Campania(string pNombre, int pIntTiempo, RangoFecha pRangoFecha, List<Imagen> pImagenes)
         {
             iNombre = pNombre;
