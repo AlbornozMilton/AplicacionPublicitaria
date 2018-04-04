@@ -11,6 +11,7 @@ namespace Dominio
         private string iNombreFuente;
         private string iTexto;
         private string iDetalles;
+        private string iURL;
 
         //obtener pTexto desde el RSS
         public FuenteRSS(string pTexto, string pNombreFuente)// : base(pTexto)

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Persistencia.DAL.EntityFramework;
-using System.Data.Entity;
+using Dominio;
 
 namespace UI
 {
@@ -18,7 +17,8 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new PublicidadContext().Database.Create();
+            Dominio.AutoMapper.AutoMapper.Mapear();
+            new AgregarCampaña().ShowDialog();
         }
     }
 }

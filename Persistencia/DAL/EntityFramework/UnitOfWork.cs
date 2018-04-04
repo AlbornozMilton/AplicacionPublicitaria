@@ -21,10 +21,12 @@ namespace Persistencia.DAL.EntityFramework
             this.iDbContext = pContext;
          
             //this --> por el constructor de AccountRepository
-            this.RepositorioBanner = new RepositorioBanner(this.iDbContext); 
+            this.RepositorioCampania = new RepositorioCampania(this.iDbContext); 
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
+
+        public IRepositorioCampania RepositorioCampania { get; private set; }
 
         public IRepositorioBanner RepositorioBanner { get; private set; }
 

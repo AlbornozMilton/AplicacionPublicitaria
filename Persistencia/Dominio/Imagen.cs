@@ -12,9 +12,9 @@ namespace Persistencia.Dominio
 
         public string Nombre { get; set; }
 
-        public int NroSec { get; set; }
+        public int NumSecuencia { get; set; }
 
-        public int Tiempo { get; set; }
+        public string Ruta { get; set; }
 
         public int CampaniaId { get; set; }
 

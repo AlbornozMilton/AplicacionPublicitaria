@@ -21,10 +21,7 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(pCamp => pCamp.Nombre)
                 .IsRequired();
 
-            this.Property(pCamp => pCamp.Duracion)
-                .IsRequired();
-
-            this.Property(pCamp => pCamp.CantCiclos)
+            this.Property(pCamp => pCamp.IntervaloTiempo)
                 .IsRequired();
 
             //Establece la relacio muchos a 1 con RangoFecha.

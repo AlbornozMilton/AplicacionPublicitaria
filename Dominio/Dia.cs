@@ -25,16 +25,16 @@ namespace Dominio
             // es mejor devolver un string en formato fecha??
         }
         //METODOS -------------------------------------------
-        public void AgregarHorario(TimeSpan pHoraInicio, int pDuracion)
-        {
-            // chequear que no se ingrese un horario que se superponga 
-            // con otro tanto del mismo u otro banner o campaña para el mismo dia
-            // el mismo DIA es igual para TODOS , es como una clave primaria
-            // tener un DIA en memoria para que se carguen los horarios en el dia y utilizarla para operar ¿?
+        //public void AgregarHorario(DateTime pHoraInicio, int pDuracion)
+        //{
+        //    // chequear que no se ingrese un horario que se superponga 
+        //    // con otro tanto del mismo u otro banner o campaña para el mismo dia
+        //    // el mismo DIA es igual para TODOS , es como una clave primaria
+        //    // tener un DIA en memoria para que se carguen los horarios en el dia y utilizarla para operar ¿?
 
-            this.iHorarios.Add( new RangoHorario(1,pHoraInicio,pDuracion));
-            //tener en cuenta codigo de horario
-        }
+        //    this.iHorarios.Add( new RangoHorario(1,pHoraInicio,pDuracion));
+        //    //tener en cuenta codigo de horario
+        //}
 
         //Sobrecargar metodo ToString???
     }

@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>
+    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>
         where TEntity : class
         where TDbContext : DbContext
     {
@@ -41,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
             this.iDbContext.Set<TEntity>().Remove(pEntity);
         }
 
-        public TEntity Get(int pId)
+        public virtual TEntity Get(int pId)
         {
             return this.iDbContext.Set<TEntity>().Find(pId);
         }

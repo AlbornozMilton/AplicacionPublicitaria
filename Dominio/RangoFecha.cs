@@ -16,40 +16,67 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-   class RangoFecha
+   public class RangoFecha
     {
         private int iCodRangoFecha;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
-        private List<Dia> iListaDia;
-        //private RangoHorario iRangoHorario;
+        private List<string> iListaDia;
+        private List<RangoHorario> iRangoHorario;
+        private List<Banner> iListaBanners;
+        private List<Campania> iListaCampanias;
 
         //CONSTRUCTOR
-        public RangoFecha(int pCodRangoFecha, DateTime pFechaInicio, DateTime pFechaFin)
+        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, List<string>pListDias, List<RangoHorario>pHorarios)
         { 
-            //ver como tratar el codigo de rango de fecha
-            this.iCodRangoFecha = pCodRangoFecha; 
+            //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
+            this.iListaDia = pListDias;
+            this.iRangoHorario = pHorarios;
         }
 
         //PROPIEDADES----------------------------------------------------------
-        public int CodFecha
+        public int RangoFechaId
         {
             get { return this.iCodRangoFecha; }
-
+            private set { this.iCodRangoFecha = value; }
         }
 
         public DateTime FechaInicio
         {
-            get { return this.iFechaInicio.Date; }
+            get { return this.iFechaInicio; }
+            private set { this.iFechaInicio = value; }
         }
 
         public DateTime FechaFin
         {
-            get { return this.iFechaFin.Date; }
+            get { return this.iFechaFin; }
+            private set { this.iFechaFin = value; }
         }
 
+        public List<string> Dias
+        {
+            get { return this.iListaDia; }
+            private set { this.iListaDia = value; }
+        }
+
+        public List<RangoHorario> Horarios
+        {
+            get { return this.iRangoHorario; }
+            private set { this.iRangoHorario = value; }
+        }
+        public List<Banner> Banners
+        {
+            get { return this.iListaBanners; }
+            private set { this.iListaBanners = value; }
+        }
+
+        public List<Campania> Campanias
+        {
+            get { return this.iListaCampanias; }
+            private set { this.iListaCampanias = value; }
+        }
         //METODOS----------------------------------------------------------
 
         public string FechaString(DateTime pFecha)
@@ -57,17 +84,17 @@ namespace Dominio
             return String.Format("{0}/{1}/{2}",pFecha.Day,pFecha.Month,pFecha.Day);
         }
 
-        public void AgregarDia(DateTime pDia)
-        {
-            //por si se agrega un dia que no este en el rango de fechas pre-establecido
-            if (!(pDia>=this.iFechaInicio || pDia <= this.iFechaFin))
-            {
-                throw new Exception();
-            }
+        //public void AgregarDia(DateTime pDia)
+        //{
+        //    //por si se agrega un dia que no este en el rango de fechas pre-establecido
+        //    if (!(pDia>=this.iFechaInicio || pDia <= this.iFechaFin))
+        //    {
+        //        throw new Exception();
+        //    }
 
-            this.iListaDia.Add(new Dia(pDia));
+        //    this.iListaDia.Add(new Dia(pDia));
 
-        }
+        //}
 
     }
 }

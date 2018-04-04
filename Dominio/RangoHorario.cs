@@ -6,51 +6,66 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class RangoHorario
+    public class RangoHorario
     {
         private int iCodRangoHora;
-        private TimeSpan iHoraInicio;
-        private TimeSpan iHoraFin;
-        private int iDuracion; //en minutos
+        private DateTime iHoraInicio;
+        private DateTime iHoraFin; //TIMESPAN ???
+
+        private RangoFecha iRangoFecha;
+
 
         //CONSTRUCTORES --------------------------------------------------------------
-        public RangoHorario(int pCodRangoHora,TimeSpan pHoraInicio ,int pDuracion)
+        public RangoHorario(DateTime pHoraInicio ,DateTime pHoraFin)
         {
-            this.iCodRangoHora = pCodRangoHora;
             this.iHoraInicio = pHoraInicio;
-            this.iHoraFin = pHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
-            this.iDuracion = pDuracion;
+            this.iHoraFin = pHoraFin;
+            //this.iHoraFin = pHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
         }
         //PROPIEDADES--------------------------------------------------------------
-        public int CodRangoHora
+        public int RangoHorarioId
         {
             get { return this.iCodRangoHora; }
+            private set { this.iCodRangoHora = value; }
         }
 
-        public int Duracion
+        public DateTime HoraInicio
         {
-            get { return this.HoraFin.Subtract(this.iHoraInicio).Minutes; }
-          //  get { return this.iDuracion; }
-        }
-        // segun lo que se elige se elimina o cambio get de HoraFin o Duracion
-        public TimeSpan HoraFin
-        {
-           get { return this.iHoraInicio.Add(new TimeSpan(0, this.iDuracion, 0)); }
-        //buscar como instanciar TimeSpan teniendo en cuento los ticks y minutos
-        // get { return this.iHoraInicio.Add(new TimeSpan(0,this.iDuracion,0)); }
+            get { return this.iHoraInicio; }
+            private set { this.iHoraInicio = value; }
         }
 
-        public string HoraInicioString
+        public DateTime HoraFin
         {
-            get { return String.Format("{0}-{1}-{2}", this.iHoraInicio.Hours, this.iHoraInicio.Minutes, this.iHoraInicio.Seconds); }
-                
+            get { return this.iHoraFin; }
+            private set { this.iHoraFin = value; }
         }
 
-        public string HoraFinString
+        public RangoFecha RangoFecha
         {
-            get { return String.Format("{0}-{1}-{2}", this.HoraFin.Hours, this.HoraFin.Minutes, this.HoraFin.Seconds); }
-
+            get { return this.iRangoFecha; }
+            private set { this.iRangoFecha = value; }
         }
+
+
+        //////public TimeSpan HoraFin
+        //////{
+        //////   get { return this.iHoraInicio.Add(new TimeSpan(0, this.iDuracion, 0)); }
+        ////////buscar como instanciar TimeSpan teniendo en cuento los ticks y minutos
+        //////// get { return this.iHoraInicio.Add(new TimeSpan(0,this.iDuracion,0)); }
+        //////}
+
+        ////////public string HoraInicioString
+        ////////{
+        ////////    get { return String.Format("{0}-{1}-{2}", this.iHoraInicio.Hours, this.iHoraInicio.Minutes, this.iHoraInicio.Seconds); }
+
+        ////////}
+
+        ////////public string HoraFinString
+        ////////{
+        ////////    get { return String.Format("{0}-{1}-{2}", this.HoraFin.Hours, this.HoraFin.Minutes, this.HoraFin.Seconds); }
+
+        ////////}
 
         //METODOS --------------------------------------------------------------
 
