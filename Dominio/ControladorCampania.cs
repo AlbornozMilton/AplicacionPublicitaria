@@ -20,9 +20,10 @@ namespace Dominio
             iUOfW.Complete();
         }
 
-        //public Campania ObtenerCampania()
-        //{
-
-        //}
+        public Campania ObtenerCampania(int pId)
+        {
+            Campania campania = Mapper.Map<Persistencia.Dominio.Campania, Campania> (iUOfW.RepositorioCampania.Get(pId));
+            return campania;
+        }
     }   
 }
