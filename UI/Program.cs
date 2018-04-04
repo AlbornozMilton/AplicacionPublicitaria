@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+
 namespace UI
 {
     static class Program
@@ -17,7 +18,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Dominio.AutoMapper.AutoMapper.Mapear();
-            Application.Run(new AgregarCampaña());
+            new AgregarCampaña().ShowDialog();
         }
     }
 }

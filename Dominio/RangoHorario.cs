@@ -16,11 +16,11 @@ namespace Dominio
 
 
         //CONSTRUCTORES --------------------------------------------------------------
-        public RangoHorario(int pCodRangoHora,DateTime pHoraInicio ,int pDuracion)
+        public RangoHorario(DateTime pHoraInicio ,DateTime pHoraFin)
         {
-            this.iCodRangoHora = pCodRangoHora;
             this.iHoraInicio = pHoraInicio;
-            this.iHoraFin = pHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
+            this.iHoraFin = pHoraFin;
+            //this.iHoraFin = pHoraInicio.Add(new TimeSpan(0, pDuracion, 0));
         }
         //PROPIEDADES--------------------------------------------------------------
         public int RangoHorarioId

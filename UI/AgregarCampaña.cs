@@ -9,73 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
+
+using System.Diagnostics;
+using System.IO;
+
 namespace UI
 {
     public partial class AgregarCampaña : Form
     {
+        List<RangoHorario> horarios = new List<RangoHorario>();
+        List<Imagen> imagenes = new List<Imagen>();
+
         public AgregarCampaña()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -86,16 +33,6 @@ namespace UI
         private void label8_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox3_MouseHover(object sender, EventArgs e)
@@ -143,9 +80,58 @@ namespace UI
             Close();
         }
 
+        private List<string>DevolverDias(List<CheckBox> pDiasSeleccionados)
+        {
+            List<string> dias = new List<string>();
+            foreach (var dia in pDiasSeleccionados)
+            {
+                if (dia.Checked)
+                {
+                    dias.Add(dia.Text);
+                }
+            }
+            return dias;
+        }
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-        //    new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(tbx_Duracion.Text));
+            List<string> dias = DevolverDias(new List<CheckBox>() { cbx_Lunes,cbx_Martes,cbx_Miercoles,cbx_Jueves,cbx_Viernes, cbx_Sabado,cbx_Domingo });
+            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value, dtp_FechaHasta.Value,dias,horarios,imagenes);
+        }
+
+        private void btn_BorrarHora_Click(object sender, EventArgs e)
+        {
+            if (dgv_Horarios.CurrentRow != null)
+            {
+                dgv_Horarios.Rows.Remove(dgv_Horarios.CurrentRow);
+            }
+            //Agregar para que tambien borre de la lista HORARIOS
+            //horarios.RemoveAt(dgv_Horarios.CurrentRow.Index);//andara?
+        }
+
+        private void btn_BorrarImagen_Click(object sender, EventArgs e)
+        {
+            if (dgv_Imagenes.CurrentRow != null)
+            {
+                dgv_Imagenes.Rows.Remove(dgv_Imagenes.CurrentRow);
+            }
+        }
+
+        private void btn_AgregarHora_Click(object sender, EventArgs e)
+        {
+            horarios.Add(new RangoHorario(dtp_HoraDesde.Value,dtp_HoraHasta.Value));
+            dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.TimeOfDay, horarios.Last<RangoHorario>().HoraFin.TimeOfDay);
+        }
+
+        private void btn_AgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog buscarImagenes = new OpenFileDialog();
+            buscarImagenes.ShowDialog();
+            if (buscarImagenes.FileName != "")
+            {
+                Imagen imagenSeleccionada = new Imagen(buscarImagenes.SafeFileName,buscarImagenes.FileName);
+                imagenes.Add(imagenSeleccionada);
+                dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
+            }
         }
     }
 }

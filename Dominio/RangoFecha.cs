@@ -27,12 +27,13 @@ namespace Dominio
         private List<Campania> iListaCampanias;
 
         //CONSTRUCTOR
-        public RangoFecha(int pCodRangoFecha, DateTime pFechaInicio, DateTime pFechaFin)
+        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, List<string>pListDias, List<RangoHorario>pHorarios)
         { 
-            //ver como tratar el codigo de rango de fecha
-            this.iCodRangoFecha = pCodRangoFecha; 
+            //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
+            this.iListaDia = pListDias;
+            this.iRangoHorario = pHorarios;
         }
 
         //PROPIEDADES----------------------------------------------------------

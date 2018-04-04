@@ -13,5 +13,9 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
+        public override Campania Get(int pIdCampania)
+        {
+            return iDbContext.Campania.Include("Imagenes").Include("RangoFecha").Where(c => c.CampaniaId == pIdCampania).SingleOrDefault();
+        }
     }
 }

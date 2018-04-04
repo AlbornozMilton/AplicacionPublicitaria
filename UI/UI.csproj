@@ -150,6 +150,10 @@
       <Project>{f503976a-7726-4687-9916-c940c48a0fb6}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,13 +12,17 @@ namespace Dominio
     {
         UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext());
 
-        public void AgregarCampania (string pNombre, int pDuracion)
+        public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, List<string> pListDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
         {
-
-            var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pDuracion));
+            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pListDias,pHorarios);
+            var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pIntTiempo,pRangoFecha,pImagenes));
             iUOfW.RepositorioCampania.Add(MapCamp);
             iUOfW.Complete();
         }
 
-    }
+        //public Campania ObtenerCampania()
+        //{
+
+        //}
+    }   
 }
