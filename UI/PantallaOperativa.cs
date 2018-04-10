@@ -51,22 +51,25 @@ namespace UI
         // }
 
         private Campania iCampaniaActual;
-        int indice = 0;
+        private Campania iCampaniaSiguiente;
+        private int indiceimg = 0;
 
         public PantallaOperativa()
          {
-             InitializeComponent();
+            InitializeComponent();
             this.timer_IntervaloImagen.Interval = 1000;
             this.timer_IntervaloImagen.Enabled = true;
-            this.iCampaniaActual = new ControladorCampania().ObtenerCampania(1);
+            this.timer_IntervaloCamp.Interval = 1000;
+            this.timer_IntervaloCamp.Enabled = true;
+            this.iCampaniaActual = new ControladorCampania().ObtenerCampaniaActual();
             this.timer_IntervaloImagen.Interval = (iCampaniaActual.IntervaloTiempo) * 1000;
-            this.timer_IntervaloImagen.Enabled = true;
-            this.timer_IntervaloImagen.Start();
+            this.timer_IntervaloCamp.Interval = (iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalSeconds - DateTime.Now.TimeOfDay.TotalSeconds) * 1000;
+            //  this.timer_IntervaloImagen.Enabled = true;
+            //  this.timer_IntervaloImagen.Start();
             this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
             this.pictureBox_ImagenCamp.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
-        
         private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
          {
              this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
@@ -75,23 +78,24 @@ namespace UI
 
         private Image ImagenCampania (Campania pCampania)
         {
-            if (indice >= (pCampania.Imagenes.Count))
+            if (indiceimg >= (pCampania.Imagenes.Count))
             {
-                MessageBox.Show("Termino");
-                return null;
+                indiceimg = 0;
             }
-            else
-            {
-                Imagen imagenActual = pCampania.Imagenes[indice];
-                indice++;
-                return Image.FromFile(imagenActual.Ruta);
-            }
+            Imagen imagenActual = pCampania.Imagenes[indiceimg];
+            indiceimg++;
+            return Image.FromFile(imagenActual.Ruta);
+            
         }
-
 
         private void PantallaOperativa_Load(object sender, EventArgs e)
         {
        
+        }
+
+        private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
