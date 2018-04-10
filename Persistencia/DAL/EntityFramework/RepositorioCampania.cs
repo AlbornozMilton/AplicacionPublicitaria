@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia.Dominio;
+using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -16,6 +17,11 @@ namespace Persistencia.DAL.EntityFramework
         public override Campania Get(int pIdCampania)
         {
             return iDbContext.Campania.Include("Imagenes").Where(c => c.CampaniaId == pIdCampania).SingleOrDefault();
+        }
+
+        public override IEnumerable<Campania> GetAll()
+        {
+            return (iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Dias").Include("RangoFecha.Horarios")).ToList();
         }
     }
 }

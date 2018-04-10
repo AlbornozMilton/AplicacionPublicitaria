@@ -46,7 +46,7 @@ namespace Persistencia.DAL.EntityFramework
             return this.iDbContext.Set<TEntity>().Find(pId);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return this.iDbContext.Set<TEntity>().ToList();
         }

@@ -9,14 +9,18 @@ namespace Dominio
     public class RangoHorario
     {
         private int iCodRangoHora;
-        private DateTime iHoraInicio;
-        private DateTime iHoraFin; //TIMESPAN ???
+        private TimeSpan iHoraInicio;
+        private TimeSpan iHoraFin; //TIMESPAN ???
 
         private RangoFecha iRangoFecha;
 
 
         //CONSTRUCTORES --------------------------------------------------------------
-        public RangoHorario(DateTime pHoraInicio ,DateTime pHoraFin)
+        public RangoHorario()
+        {
+
+        }
+        public RangoHorario(TimeSpan pHoraInicio ,TimeSpan pHoraFin)
         {
             this.iHoraInicio = pHoraInicio;
             this.iHoraFin = pHoraFin;
@@ -29,13 +33,13 @@ namespace Dominio
             private set { this.iCodRangoHora = value; }
         }
 
-        public DateTime HoraInicio
+        public TimeSpan HoraInicio
         {
             get { return this.iHoraInicio; }
             private set { this.iHoraInicio = value; }
         }
 
-        public DateTime HoraFin
+        public TimeSpan HoraFin
         {
             get { return this.iHoraFin; }
             private set { this.iHoraFin = value; }
