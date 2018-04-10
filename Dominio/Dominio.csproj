@@ -57,6 +57,7 @@
     <Compile Include="ControladorBanner.cs" />
     <Compile Include="ControladorCampania.cs" />
     <Compile Include="Dia.cs" />
+    <Compile Include="DiaSemana.cs" />
     <Compile Include="FuenteRSS.cs" />
     <Compile Include="IFuente.cs" />
     <Compile Include="Imagen.cs" />

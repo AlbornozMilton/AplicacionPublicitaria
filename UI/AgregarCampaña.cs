@@ -20,6 +20,9 @@ namespace UI
         List<RangoHorario> horarios = new List<RangoHorario>();
         List<Imagen> imagenes = new List<Imagen>();
 
+
+        List<Campania> campaniasHoy = new List<Campania>();
+
         public AgregarCampaña()
         {
             InitializeComponent();
@@ -80,21 +83,21 @@ namespace UI
             Close();
         }
 
-        private List<string>DevolverDias(List<CheckBox> pDiasSeleccionados)
+        private List<Dia>DevolverDias(List<CheckBox> pDiasSeleccionados)
         {
-            List<string> dias = new List<string>();
+            List<Dia> dias = new List<Dia>();
             foreach (var dia in pDiasSeleccionados)
             {
                 if (dia.Checked)
                 {
-                    dias.Add(dia.Text);
+                    dias.Add(new Dia(dia.Name));
                 }
             }
             return dias;
         }
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            List<string> dias = DevolverDias(new List<CheckBox>() { cbx_Lunes,cbx_Martes,cbx_Miercoles,cbx_Jueves,cbx_Viernes, cbx_Sabado,cbx_Domingo });
+            List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday,Tuesday,cbx_Miercoles,cbx_Jueves,cbx_Viernes, Saturday,cbx_Domingo });
             new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value, dtp_FechaHasta.Value,dias,horarios,imagenes);
         }
 
@@ -118,8 +121,8 @@ namespace UI
 
         private void btn_AgregarHora_Click(object sender, EventArgs e)
         {
-            horarios.Add(new RangoHorario(dtp_HoraDesde.Value,dtp_HoraHasta.Value));
-            dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.TimeOfDay, horarios.Last<RangoHorario>().HoraFin.TimeOfDay);
+            horarios.Add(new RangoHorario((dtp_HoraDesde.Value.TimeOfDay),dtp_HoraHasta.Value.TimeOfDay));
+            dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString("hh:mm") , horarios.Last<RangoHorario>().HoraFin.ToString("hh:mm"));
         }
 
         private void btn_AgregarImagen_Click(object sender, EventArgs e)
@@ -137,6 +140,12 @@ namespace UI
         private void btn_PantallaOp_Click(object sender, EventArgs e)
         {
             new PantallaOperativa().ShowDialog();
+        }
+
+        private void AgregarCampaña_Load(object sender, EventArgs e)
+        {
+            campaniasHoy = new ControladorCampania().ObtenerCampaniasParaElDia(DateTime.Today);
+            Campania campañiaAhora = new ControladorCampania().ObtenerCampaniaActual(campaniasHoy);
         }
     }
 }

@@ -6,24 +6,46 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Dia
+    public class Dia
     {
-        private DateTime iDia;
-        private List<RangoHorario> iHorarios;
+        private int diaId;
+        private string nombre;
+        private List<RangoFecha> rgosFechas;
 
         //CONSTRUCTOR
-        public Dia(DateTime pDia)
+        public Dia()
         {
-            this.iDia = pDia.Date;
+
+        }
+        public Dia(string pDia)
+        {
+            this.nombre = pDia;
         }
 
         //PROPIEDADES
-        public DateTime GetDia
+        public int DiaId
         {
-            get { return this.iDia.Date; }
-            //VER SI SE PUEDE DEVOLVER EL NOMBRE DEL DIA EJ: MIERCOLES
-            // es mejor devolver un string en formato fecha??
+            get { return this.diaId; }
+            private set { this.diaId = value; }
         }
+        public string Nombre
+        {
+            get { return this.nombre; }
+            private set { this.nombre = value; }
+        }
+        public List<RangoFecha> RangosFechas
+        {
+            get { return this.rgosFechas; }
+            private set { this.rgosFechas = value; }
+        }
+
+
+        //public DateTime GetDia
+        //{
+        //    get { return this.iDia.Date; }
+        //VER SI SE PUEDE DEVOLVER EL NOMBRE DEL DIA EJ: MIERCOLES
+        // es mejor devolver un string en formato fecha??
+        //}
         //METODOS -------------------------------------------
         //public void AgregarHorario(DateTime pHoraInicio, int pDuracion)
         //{

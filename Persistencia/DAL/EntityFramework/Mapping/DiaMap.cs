@@ -16,11 +16,14 @@ namespace Persistencia.DAL.EntityFramework.Mapping
         public DiaMap()
         {
             this.Property(d => d.DiaId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(d => d.Nombre)
-                .IsRequired()
-                .HasMaxLength(10);
+                .IsRequired();
+
+            this.HasMany(d => d.RangosFechas)
+                .WithMany(f => f.Dias);
+
         }
     }
 }

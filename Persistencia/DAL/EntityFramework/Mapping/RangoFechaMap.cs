@@ -24,11 +24,6 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(r => r.FechaFin)
                  .IsRequired();
 
-            //////////////this.Property(r => r.Dias)
-            //////////////    .IsRequired();
-
-
-
         }
     }
 }
