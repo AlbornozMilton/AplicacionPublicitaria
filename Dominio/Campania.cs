@@ -13,6 +13,7 @@ namespace Dominio
         private int iIntervaloTiempo;
 
         private List<Imagen> iListaImagen;
+        private IEnumerator<Imagen> iEnumeradorListaImg;
         private RangoFecha iRangoFecha;
 
         /// <summary>
@@ -57,7 +58,28 @@ namespace Dominio
         public List<Imagen> Imagenes
         {
             get { return this.iListaImagen; }
-            private set { this.iListaImagen = value; }
+            private set
+            {   this.iListaImagen = value;
+                this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
+            }
+        }
+
+        /// Devuelve la siguiente imagen a mostrar (de forma cíclica)
+        
+        public Imagen SiguienteImagen()
+        {
+            Imagen imagenSiguiente;
+            if (this.iEnumeradorListaImg.MoveNext())
+            {
+                imagenSiguiente = this.iEnumeradorListaImg.Current;
+            }
+            else
+            {
+                this.iEnumeradorListaImg.Reset();
+                this.iEnumeradorListaImg.MoveNext();
+                imagenSiguiente = this.iEnumeradorListaImg.Current;
+            }
+            return imagenSiguiente;
         }
     }
 }
