@@ -118,7 +118,9 @@ namespace UI
 
         private void btn_AgregarHora_Click(object sender, EventArgs e)
         {
-            horarios.Add(new RangoHorario((dtp_HoraDesde.Value.TimeOfDay),dtp_HoraHasta.Value.TimeOfDay));
+            TimeSpan horaDesde = new TimeSpan(dtp_HoraDesde.Value.Hour, dtp_HoraDesde.Value.Minute, 00);
+            TimeSpan horaHasta = new TimeSpan(dtp_HoraHasta.Value.Hour, dtp_HoraHasta.Value.Minute, 00);
+            horarios.Add(new RangoHorario(horaDesde,horaHasta));
             dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
         }
 

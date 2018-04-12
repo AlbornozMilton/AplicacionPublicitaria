@@ -65,6 +65,7 @@ namespace Dominio
         /// <returns></returns>
         public Campania ObtenerCampaniaActual(List<Campania> pLista)
         {
+            //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
             Campania campaniaActual = null;
             int indice = 0;
             //int indHorario;
@@ -86,9 +87,23 @@ namespace Dominio
         /// Devuleve la campaña que corresponde mostrar luego de la actual
         /// </summary>
         /// <returns></returns>
-        public Campania ObtenerProximaCampania(List<Campania> pLista)
+        public Campania ObtenerCampaniaSiguiente(List<Campania> pLista, TimeSpan pHoraFin)
         {
-            return null;
+            //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
+            Campania campaniaSiguiente = null;
+            //int indiceHorario = 0;
+            //int indHorario;
+            for (int i = 0; i < pLista.Count; i++)
+            {
+                foreach (var rangHor in pLista[i].RangoFecha.Horarios)
+                {
+                    if (pHoraFin == rangHor.HoraInicio)
+                    {
+                        campaniaSiguiente = pLista[i];
+                    }
+                }
+            }
+            return campaniaSiguiente;
         }
         //public List<Campania> CampaniasDelDia()
         //{
