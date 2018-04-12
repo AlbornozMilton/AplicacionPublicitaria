@@ -13,87 +13,80 @@ namespace UI
 {
     public partial class PantallaOperativa : Form
     {
-        // private Campania iCampaniaActual;
-        // private Campania iCampaniaSiguiente;
-
-        // public PantallaOperativa()
-        // {
-        //     InitializeComponent();
-        //     this.ConfigurarTimers();
-        //     this.ConfigurarCampanias();
-        // }
-
-        // private void ConfigurarTimers()
-        // {
-        //     this.timer_IntervaloImagen.Interval = 1000;
-        //     this.timer_IntervaloImagen.Enabled = true;
-
-        // }
-
-        //private void ConfigurarCampanias()
-        //{
-        //     this.iCampaniaActual = ControladorCampania.ObtenerCampaniaSiguiente();
-        //     this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-        //     this.timer_IntervaloImagen.Interval = iCampaniaActual.iIntervaloTiempo * 1000;
-        //     this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente();
-        //}
-
-        //private Image ImagenCampania (Campania pCampania)
-        //{
-        //     Imagen imagenActual = pCampania.ProximaImagen();
-        //     return Image.FromFile(imagenActual.iRuta);
-        //}
-
-        // private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
-        // {
-        //     this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-        //     this.timer_IntervaloImagen.Interval = iCampaniaActual.iIntervaloTiempo * 1000;
-        // }
-
+        private List<Campania> iCampaniasHoy = new List<Campania>();
         private Campania iCampaniaActual;
-        private Campania iCampaniaSiguiente;
-        private int indiceimg = 0;
+        //private Campania iCampaniaSiguiente;
+        //private int indiceimg = 0;
 
-        public PantallaOperativa()
-         {
+        public PantallaOperativa(List<Campania> pCampaniashoy)
+        {
+            this.iCampaniasHoy = pCampaniashoy;
             InitializeComponent();
+            this.ConfigurarTimers();
+            this.ConfigurarCampania();
+        }
+
+        private void ConfigurarTimers()
+        {
             this.timer_IntervaloImagen.Interval = 1000;
             this.timer_IntervaloImagen.Enabled = true;
             this.timer_IntervaloCamp.Interval = 1000;
             this.timer_IntervaloCamp.Enabled = true;
-            this.iCampaniaActual = new ControladorCampania().ObtenerCampaniaActual();
-            this.timer_IntervaloImagen.Interval = (iCampaniaActual.IntervaloTiempo) * 1000;
-            this.timer_IntervaloCamp.Interval = (iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalSeconds - DateTime.Now.TimeOfDay.TotalSeconds) * 1000;
+          //  this.backgroundWorker_CambioCamp.RunWorkerAsync();
+        }
+
+        private void ConfigurarCampania()
+        {
+            this.iCampaniaActual = new ControladorCampania().ObtenerCampaniaActual(this.iCampaniasHoy); //ver si el controlador se puede crear antes
+            this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
             //  this.timer_IntervaloImagen.Enabled = true;
             //  this.timer_IntervaloImagen.Start();
             this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-            this.pictureBox_ImagenCamp.SizeMode = PictureBoxSizeMode.StretchImage;
+           // this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);  //nose si se ejecuta en algun momento
+        }
+
+        private Image ImagenCampania(Campania pCampania)
+        {
+            Imagen imagenActual = pCampania.SiguienteImagen();
+            this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
+            return Image.FromFile(imagenActual.Ruta);
+
+            //por si no anda el enumerador
+
+            //if (indiceimg >= (pCampania.Imagenes.Count))
+            //{
+            //    indiceimg = 0;
+            //}
+            //Imagen imagenActual = pCampania.Imagenes[indiceimg];
+            //indiceimg++;
+            //this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
+            //return Image.FromFile(imagenActual.Ruta);
         }
 
         private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
          {
              this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-             this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
          }
 
-        private Image ImagenCampania (Campania pCampania)
+        private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
         {
-            if (indiceimg >= (pCampania.Imagenes.Count))
-            {
-                indiceimg = 0;
-            }
-            Imagen imagenActual = pCampania.Imagenes[indiceimg];
-            indiceimg++;
-            return Image.FromFile(imagenActual.Ruta);
-            
+            MessageBox.Show("Fin Campania");
+
+        //    this.iCampaniaActual = this.iCampaniaSiguiente;
+        //    this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
+        //    //  this.timer_IntervaloImagen.Enabled = true;
+        //    //  this.timer_IntervaloImagen.Start();
+        //    //this.backgroundWorker_CambioCamp.RunWorkerAsync();
+        //    this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
+        ////    this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);
         }
+
+        //private void backgroundWorker_CambioCamp_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);
+        //}
 
         private void PantallaOperativa_Load(object sender, EventArgs e)
-        {
-       
-        }
-
-        private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
         {
 
         }

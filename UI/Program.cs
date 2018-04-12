@@ -18,7 +18,7 @@ namespace UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Dominio.AutoMapper.AutoMapper.Mapear();
-            new AgregarCampaña().ShowDialog();
+            new Menu().ShowDialog();
         }
     }
 }

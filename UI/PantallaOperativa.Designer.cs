@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox_ImagenCamp = new System.Windows.Forms.PictureBox();
             this.timer_IntervaloImagen = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker_IniTimer = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker_CambioCamp = new System.ComponentModel.BackgroundWorker();
             this.timer_IntervaloCamp = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,7 @@
             this.Name = "PantallaOperativa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaOperativa";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PantallaOperativa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).EndInit();
             this.ResumeLayout(false);
@@ -76,7 +77,7 @@
         private System.Windows.Forms.PictureBox pictureBox_ImagenCamp;
         private System.Windows.Forms.Timer timer_ImagenesCampania;
         private System.Windows.Forms.Timer timer_IntervaloImagen;
-        private System.ComponentModel.BackgroundWorker backgroundWorker_IniTimer;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_CambioCamp;
         private System.Windows.Forms.Timer timer_IntervaloCamp;
     }
 }
