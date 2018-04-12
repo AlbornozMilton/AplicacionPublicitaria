@@ -38,6 +38,9 @@
             // 
             // pictureBox_ImagenCamp
             // 
+            this.pictureBox_ImagenCamp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_ImagenCamp.Location = new System.Drawing.Point(25, 22);
             this.pictureBox_ImagenCamp.Name = "pictureBox_ImagenCamp";
             this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(736, 412);

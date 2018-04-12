@@ -18,12 +18,9 @@ namespace UI
         //private Campania iCampaniaSiguiente;
         //private int indiceimg = 0;
 
-        public PantallaOperativa(List<Campania> pCampaniashoy)
+        public PantallaOperativa()
         {
-            this.iCampaniasHoy = pCampaniashoy;
             InitializeComponent();
-            this.ConfigurarTimers();
-            this.ConfigurarCampania();
         }
 
         private void ConfigurarTimers()
@@ -88,7 +85,9 @@ namespace UI
 
         private void PantallaOperativa_Load(object sender, EventArgs e)
         {
-
+            iCampaniasHoy = new ControladorCampania().ObtenerCampaniasParaElDia(DateTime.Now);
+            this.ConfigurarTimers();
+            this.ConfigurarCampania();
         }
     }
 }

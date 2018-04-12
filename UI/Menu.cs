@@ -13,16 +13,13 @@ namespace UI
 {
     public partial class Menu : Form
     {
-
-        List<Campania> campaniasHoy = new List<Campania>();
-
         public Menu()
         {
             InitializeComponent();
         }
         private void PresentarPubl_Click(object sender, EventArgs e)
         {
-            new PantallaOperativa(campaniasHoy).ShowDialog();
+            new PantallaOperativa().ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,11 +35,6 @@ namespace UI
         private void label3_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            campaniasHoy = new ControladorCampania().ObtenerCampaniasParaElDia(DateTime.Now);
         }
     }
 }

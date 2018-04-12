@@ -20,9 +20,6 @@ namespace UI
         List<RangoHorario> horarios = new List<RangoHorario>();
         List<Imagen> imagenes = new List<Imagen>();
 
-
-        List<Campania> campaniasHoy = new List<Campania>();
-
         public AgregarCampaña()
         {
             InitializeComponent();
@@ -135,16 +132,6 @@ namespace UI
                 imagenes.Add(imagenSeleccionada);
                 dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
             }
-        }
-
-        private void btn_PantallaOp_Click(object sender, EventArgs e)
-        {
-            new PantallaOperativa().ShowDialog();
-        }
-
-        private void AgregarCampaña_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

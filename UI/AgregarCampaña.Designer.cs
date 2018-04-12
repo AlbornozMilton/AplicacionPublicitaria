@@ -628,7 +628,6 @@
             this.btn_PantallaOp.TabIndex = 23;
             this.btn_PantallaOp.Text = "operativa";
             this.btn_PantallaOp.UseVisualStyleBackColor = true;
-            this.btn_PantallaOp.Click += new System.EventHandler(this.btn_PantallaOp_Click);
             // 
             // AgregarCampaña
             // 
@@ -654,7 +653,6 @@
             this.Name = "AgregarCampaña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.AgregarCampaña_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
