@@ -49,15 +49,12 @@ namespace Dominio
         /// <returns></returns>
         public List<Campania> ObtenerCampaniasParaElDia(DateTime pDia)
         {
-            IEnumerable<Persistencia.Dominio.Campania> listaEnum = iUOfW.RepositorioCampania.GetAll();
+            IEnumerable<Persistencia.Dominio.Campania> listaEnum = iUOfW.RepositorioCampania.GetCampaniasParaElDia(pDia);
             List<Campania> campanias = new List<Campania>();
-            foreach (var camp in listaEnum)
+            foreach (var campania in listaEnum)
             {
-                Campania unaCampania = (Mapper.Map<Persistencia.Dominio.Campania, Campania>(camp));
-                if ((((unaCampania.RangoFecha.Dias.Where(d => d.Nombre == pDia.DayOfWeek.ToString())).Count()) != 0) && (pDia.Date >= unaCampania.RangoFecha.FechaInicio.Date) && (pDia.Date <= unaCampania.RangoFecha.FechaFin.Date))
-                {
-                    campanias.Add(unaCampania);
-                }
+                Campania unaCampania = (Mapper.Map<Persistencia.Dominio.Campania, Campania>(campania));
+                campanias.Add(unaCampania);
             }
             return campanias;
         }

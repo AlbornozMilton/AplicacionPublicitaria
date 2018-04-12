@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbx_Nombre = new System.Windows.Forms.TextBox();
@@ -41,11 +41,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbx_Miercoles = new System.Windows.Forms.CheckBox();
-            this.cbx_Viernes = new System.Windows.Forms.CheckBox();
+            this.Wednesday = new System.Windows.Forms.CheckBox();
+            this.Friday = new System.Windows.Forms.CheckBox();
             this.Saturday = new System.Windows.Forms.CheckBox();
-            this.cbx_Domingo = new System.Windows.Forms.CheckBox();
-            this.cbx_Jueves = new System.Windows.Forms.CheckBox();
+            this.Sunday = new System.Windows.Forms.CheckBox();
+            this.Thursday = new System.Windows.Forms.CheckBox();
             this.Tuesday = new System.Windows.Forms.CheckBox();
             this.Monday = new System.Windows.Forms.CheckBox();
             this.dtp_FechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -164,11 +164,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbx_Miercoles);
-            this.groupBox1.Controls.Add(this.cbx_Viernes);
+            this.groupBox1.Controls.Add(this.Wednesday);
+            this.groupBox1.Controls.Add(this.Friday);
             this.groupBox1.Controls.Add(this.Saturday);
-            this.groupBox1.Controls.Add(this.cbx_Domingo);
-            this.groupBox1.Controls.Add(this.cbx_Jueves);
+            this.groupBox1.Controls.Add(this.Sunday);
+            this.groupBox1.Controls.Add(this.Thursday);
             this.groupBox1.Controls.Add(this.Tuesday);
             this.groupBox1.Controls.Add(this.Monday);
             this.groupBox1.Controls.Add(this.dtp_FechaHasta);
@@ -186,27 +186,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Duración de la campaña";
             // 
-            // cbx_Miercoles
+            // Wednesday
             // 
-            this.cbx_Miercoles.AutoSize = true;
-            this.cbx_Miercoles.ForeColor = System.Drawing.Color.White;
-            this.cbx_Miercoles.Location = new System.Drawing.Point(74, 161);
-            this.cbx_Miercoles.Name = "cbx_Miercoles";
-            this.cbx_Miercoles.Size = new System.Drawing.Size(84, 18);
-            this.cbx_Miercoles.TabIndex = 17;
-            this.cbx_Miercoles.Text = "Miércoles";
-            this.cbx_Miercoles.UseVisualStyleBackColor = true;
+            this.Wednesday.AutoSize = true;
+            this.Wednesday.ForeColor = System.Drawing.Color.White;
+            this.Wednesday.Location = new System.Drawing.Point(74, 161);
+            this.Wednesday.Name = "Wednesday";
+            this.Wednesday.Size = new System.Drawing.Size(84, 18);
+            this.Wednesday.TabIndex = 17;
+            this.Wednesday.Text = "Miércoles";
+            this.Wednesday.UseVisualStyleBackColor = true;
             // 
-            // cbx_Viernes
+            // Friday
             // 
-            this.cbx_Viernes.AutoSize = true;
-            this.cbx_Viernes.ForeColor = System.Drawing.Color.White;
-            this.cbx_Viernes.Location = new System.Drawing.Point(158, 113);
-            this.cbx_Viernes.Name = "cbx_Viernes";
-            this.cbx_Viernes.Size = new System.Drawing.Size(73, 18);
-            this.cbx_Viernes.TabIndex = 16;
-            this.cbx_Viernes.Text = "Viernes";
-            this.cbx_Viernes.UseVisualStyleBackColor = true;
+            this.Friday.AutoSize = true;
+            this.Friday.ForeColor = System.Drawing.Color.White;
+            this.Friday.Location = new System.Drawing.Point(158, 113);
+            this.Friday.Name = "Friday";
+            this.Friday.Size = new System.Drawing.Size(73, 18);
+            this.Friday.TabIndex = 16;
+            this.Friday.Text = "Viernes";
+            this.Friday.UseVisualStyleBackColor = true;
             // 
             // Saturday
             // 
@@ -219,27 +219,27 @@
             this.Saturday.Text = "Sábado";
             this.Saturday.UseVisualStyleBackColor = true;
             // 
-            // cbx_Domingo
+            // Sunday
             // 
-            this.cbx_Domingo.AutoSize = true;
-            this.cbx_Domingo.ForeColor = System.Drawing.Color.White;
-            this.cbx_Domingo.Location = new System.Drawing.Point(158, 161);
-            this.cbx_Domingo.Name = "cbx_Domingo";
-            this.cbx_Domingo.Size = new System.Drawing.Size(81, 18);
-            this.cbx_Domingo.TabIndex = 14;
-            this.cbx_Domingo.Text = "Domingo";
-            this.cbx_Domingo.UseVisualStyleBackColor = true;
+            this.Sunday.AutoSize = true;
+            this.Sunday.ForeColor = System.Drawing.Color.White;
+            this.Sunday.Location = new System.Drawing.Point(158, 161);
+            this.Sunday.Name = "Sunday";
+            this.Sunday.Size = new System.Drawing.Size(81, 18);
+            this.Sunday.TabIndex = 14;
+            this.Sunday.Text = "Domingo";
+            this.Sunday.UseVisualStyleBackColor = true;
             // 
-            // cbx_Jueves
+            // Thursday
             // 
-            this.cbx_Jueves.AutoSize = true;
-            this.cbx_Jueves.ForeColor = System.Drawing.Color.White;
-            this.cbx_Jueves.Location = new System.Drawing.Point(74, 185);
-            this.cbx_Jueves.Name = "cbx_Jueves";
-            this.cbx_Jueves.Size = new System.Drawing.Size(69, 18);
-            this.cbx_Jueves.TabIndex = 13;
-            this.cbx_Jueves.Text = "Jueves";
-            this.cbx_Jueves.UseVisualStyleBackColor = true;
+            this.Thursday.AutoSize = true;
+            this.Thursday.ForeColor = System.Drawing.Color.White;
+            this.Thursday.Location = new System.Drawing.Point(74, 185);
+            this.Thursday.Name = "Thursday";
+            this.Thursday.Size = new System.Drawing.Size(69, 18);
+            this.Thursday.TabIndex = 13;
+            this.Thursday.Text = "Jueves";
+            this.Thursday.UseVisualStyleBackColor = true;
             // 
             // Tuesday
             // 
@@ -372,7 +372,7 @@
             // 
             // dtp_HoraDesde
             // 
-            this.dtp_HoraDesde.CustomFormat = "HH:mm:ss";
+            this.dtp_HoraDesde.CustomFormat = "HH:mm";
             this.dtp_HoraDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_HoraDesde.Location = new System.Drawing.Point(82, 26);
             this.dtp_HoraDesde.Name = "dtp_HoraDesde";
@@ -382,7 +382,7 @@
             // 
             // dtp_HoraHasta
             // 
-            this.dtp_HoraHasta.CustomFormat = "HH:mm:ss";
+            this.dtp_HoraHasta.CustomFormat = "HH:mm";
             this.dtp_HoraHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_HoraHasta.Location = new System.Drawing.Point(82, 65);
             this.dtp_HoraHasta.Name = "dtp_HoraHasta";
@@ -396,32 +396,32 @@
             this.dgv_Horarios.AllowUserToDeleteRows = false;
             this.dgv_Horarios.AllowUserToOrderColumns = true;
             this.dgv_Horarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Horarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Horarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Horarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_HoraDesde,
             this.clm_HoraHasta});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Horarios.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Horarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Horarios.Location = new System.Drawing.Point(6, 106);
             this.dgv_Horarios.Name = "dgv_Horarios";
             this.dgv_Horarios.ReadOnly = true;
             this.dgv_Horarios.RowHeadersVisible = false;
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Horarios.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Horarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Horarios.Size = new System.Drawing.Size(265, 91);
             this.dgv_Horarios.TabIndex = 21;
@@ -530,32 +530,32 @@
             this.dgv_Imagenes.AllowUserToAddRows = false;
             this.dgv_Imagenes.AllowUserToDeleteRows = false;
             this.dgv_Imagenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Imagenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Imagenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Imagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Imagenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Nombre,
             this.clm_Ruta});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Imagenes.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Imagenes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Imagenes.Location = new System.Drawing.Point(6, 81);
             this.dgv_Imagenes.Name = "dgv_Imagenes";
             this.dgv_Imagenes.ReadOnly = true;
             this.dgv_Imagenes.RowHeadersVisible = false;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Imagenes.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Imagenes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_Imagenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Imagenes.Size = new System.Drawing.Size(270, 92);
             this.dgv_Imagenes.TabIndex = 26;
@@ -685,11 +685,11 @@
         private System.Windows.Forms.CheckBox Monday;
         private System.Windows.Forms.DateTimePicker dtp_FechaHasta;
         private System.Windows.Forms.DateTimePicker dtp_FechaDesde;
-        private System.Windows.Forms.CheckBox cbx_Miercoles;
-        private System.Windows.Forms.CheckBox cbx_Viernes;
+        private System.Windows.Forms.CheckBox Wednesday;
+        private System.Windows.Forms.CheckBox Friday;
         private System.Windows.Forms.CheckBox Saturday;
-        private System.Windows.Forms.CheckBox cbx_Domingo;
-        private System.Windows.Forms.CheckBox cbx_Jueves;
+        private System.Windows.Forms.CheckBox Sunday;
+        private System.Windows.Forms.CheckBox Thursday;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_Aceptar;

@@ -14,8 +14,8 @@ namespace Dominio.AutoMapper
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Campania, pers.Campania>()
-                .ForMember(dest => dest.Imagenes, opt => opt.MapFrom(src => src.Imagenes)).ReverseMap();
+                cfg.CreateMap<Campania, pers.Campania>().ReverseMap();
+                //.ForMember(dest => dest.Imagenes, opt => opt.MapFrom(src => src.Imagenes)).ReverseMap();
                 cfg.CreateMap<Imagen, pers.Imagen>().ReverseMap();
                 cfg.CreateMap<RangoFecha, pers.RangoFecha>().ReverseMap();
                 cfg.CreateMap<RangoHorario, pers.RangoHorario>().ReverseMap();

@@ -9,7 +9,7 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioCampania : IRepositorio<Campania>
     {
-
+        IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia);
 
     }
 }
