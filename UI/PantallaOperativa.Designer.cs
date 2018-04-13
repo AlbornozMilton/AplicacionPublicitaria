@@ -52,6 +52,10 @@
             // 
             this.timer_IntervaloImagen.Tick += new System.EventHandler(this.timer_IntervaloImagen_Tick);
             // 
+            // backgroundWorker_CambioCamp
+            // 
+            this.backgroundWorker_CambioCamp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_CambioCamp_DoWork);
+            // 
             // timer_IntervaloCamp
             // 
             this.timer_IntervaloCamp.Tick += new System.EventHandler(this.timer_IntervaloCamp_Tick);

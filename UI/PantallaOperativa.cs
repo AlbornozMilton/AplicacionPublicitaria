@@ -13,6 +13,7 @@ namespace UI
 {
     public partial class PantallaOperativa : Form
     {
+        private ControladorCampania iControladorCampania = new ControladorCampania();
         private List<Campania> iCampaniasHoy = new List<Campania>();
         private Campania iCampaniaActual;
         private Campania iCampaniaSiguiente;
@@ -33,7 +34,7 @@ namespace UI
 
         private void ConfigurarCampania()
         {
-            this.iCampaniaActual = new ControladorCampania().ObtenerCampaniaActual(this.iCampaniasHoy); //ver si el controlador se puede crear antes
+            this.iCampaniaActual = iControladorCampania.ObtenerCampaniaActual(this.iCampaniasHoy); //ver si el controlador se puede crear antes
             this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
             this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
            // this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);  //nose si se ejecuta en algun momento
@@ -70,12 +71,12 @@ namespace UI
 
         private void backgroundWorker_CambioCamp_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(iCampaniasHoy, iCampaniaActual.RangoFecha.Horarios[0].HoraFin);
+            this.iCampaniaSiguiente = iControladorCampania.ObtenerCampaniaSiguiente(iCampaniasHoy, iCampaniaActual.RangoFecha.Horarios[0].HoraFin);
         }
 
         private void PantallaOperativa_Load(object sender, EventArgs e)
         {
-            iCampaniasHoy = new ControladorCampania().ObtenerCampaniasParaElDia(DateTime.Now);
+            iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
             this.ConfigurarTimers();
             this.ConfigurarCampania();
         }

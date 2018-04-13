@@ -95,7 +95,7 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday,Tuesday,Wednesday,Thursday,Friday, Saturday,Sunday });
-            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value, dtp_FechaHasta.Value,dias,horarios,imagenes);
+            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date,dias,horarios,imagenes);
         }
 
         private void btn_BorrarHora_Click(object sender, EventArgs e)
