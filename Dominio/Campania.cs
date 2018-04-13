@@ -30,6 +30,7 @@ namespace Dominio
             iIntervaloTiempo = pIntTiempo;
             iRangoFecha = pRangoFecha;
             this.iListaImagen = new List<Imagen>();
+            this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
             iListaImagen = pImagenes;
         }
 

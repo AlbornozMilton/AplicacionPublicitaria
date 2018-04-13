@@ -83,6 +83,17 @@ namespace Dominio
             return campaniaActual;
         }
 
+        public Campania GenerarCampaniaNula(TimeSpan pHoraInicio)
+        {
+            List<Dia> listaDias = new List<Dia>();
+            listaDias.Add(new Dia(DateTime.Today.DayOfWeek.ToString()));
+            List<RangoHorario> listaHorarios = new List<RangoHorario>();
+            listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
+            List<Imagen> listaImagenes = new List<Imagen>();
+            listaImagenes.Add(new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenesmias\\Presentacion.png"));
+            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
+        }
+
         /// <summary>
         /// Devuleve la campaña que corresponde mostrar luego de la actual
         /// </summary>
@@ -90,9 +101,9 @@ namespace Dominio
         public Campania ObtenerCampaniaSiguiente(List<Campania> pLista, TimeSpan pHoraFin)
         {
             //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
-            Campania campaniaSiguiente = null;
             //int indiceHorario = 0;
             //int indHorario;
+            Campania campaniaSiguiente = null;
             for (int i = 0; i < pLista.Count; i++)
             {
                 foreach (var rangHor in pLista[i].RangoFecha.Horarios)
@@ -102,6 +113,10 @@ namespace Dominio
                         campaniaSiguiente = pLista[i];
                     }
                 }
+            }
+            if (campaniaSiguiente == null)
+            {
+                campaniaSiguiente = GenerarCampaniaNula(pHoraFin);
             }
             return campaniaSiguiente;
         }
