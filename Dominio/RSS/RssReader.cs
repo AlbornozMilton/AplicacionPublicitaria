@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Dominio.RSS
 {
-	public class RssReader: IRssReader
+	public abstract class RssReader: IRssReader
 	{
 		public IEnumerable<RssItem> Read(String pUrl)
 		{
