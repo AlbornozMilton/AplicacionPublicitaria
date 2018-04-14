@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    public class FuenteRSS
+    public class FuenteRSS: Fuente
     {
         public string URL { get; set; }
 
