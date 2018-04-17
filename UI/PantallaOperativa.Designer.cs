@@ -66,14 +66,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 500);
             this.Controls.Add(this.pictureBox_ImagenCamp);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "PantallaOperativa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaOperativa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PantallaOperativa_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PantallaOperativa_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).EndInit();
             this.ResumeLayout(false);
 
