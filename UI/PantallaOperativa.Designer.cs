@@ -82,7 +82,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox_ImagenCamp;
-        private System.Windows.Forms.Timer timer_ImagenesCampania;
         private System.Windows.Forms.Timer timer_IntervaloImagen;
         private System.ComponentModel.BackgroundWorker backgroundWorker_CambioCamp;
         private System.Windows.Forms.Timer timer_IntervaloCamp;

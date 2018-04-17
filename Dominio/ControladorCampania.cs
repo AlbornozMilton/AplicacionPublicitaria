@@ -80,17 +80,24 @@ namespace Dominio
                 }
                 indice++;
             }
+            if (campaniaActual == null)
+            {
+                campaniaActual = GenerarCampaniaNula(DateTime.Now.TimeOfDay);
+            }
             return campaniaActual;
         }
 
         public Campania GenerarCampaniaNula(TimeSpan pHoraInicio)
         {
+             IEnumerator<Imagen> iEnumeradorListaImg;
             List<Dia> listaDias = new List<Dia>();
             listaDias.Add(new Dia(DateTime.Today.DayOfWeek.ToString()));
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            listaImagenes.Add(new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenesmias\\Presentacion.png"));
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Dell\\Desktop\\Publicidades\\PubliciteAqui.jpg");
+            listaImagenes.Add(imagenPublicidad);
+            iEnumeradorListaImg = listaImagenes.GetEnumerator();
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
         }
 
