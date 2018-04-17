@@ -135,5 +135,10 @@ namespace UI
                 dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
             }
         }
+
+        private void AgregarCampaña_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
