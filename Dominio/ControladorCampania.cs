@@ -67,18 +67,23 @@ namespace Dominio
         {
             //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
             Campania campaniaActual = null;
-            int indice = 0;
+            int ind = 0;
+            
             //int indHorario;
-            while (campaniaActual == null && indice < pLista.Count)
+            while (campaniaActual == null && ind < pLista.Count)
             {
-                foreach (var rangHor in pLista[indice].RangoFecha.Horarios)
+                int ind2 = 0;
+                while (campaniaActual == null && ind2 < pLista[ind].RangoFecha.Horarios.Count)
                 {
+                    RangoHorario rangHor = pLista[ind].RangoFecha.Horarios[ind2];
                     if (((DateTime.Now.TimeOfDay.TotalMinutes) >= rangHor.HoraInicio.TotalMinutes) && (DateTime.Now.TimeOfDay.TotalMinutes <= rangHor.HoraFin.TotalMinutes))
                     {
-                        campaniaActual = pLista[indice];
+                        campaniaActual = pLista[ind];
+                        campaniaActual.RangoFecha.Horarios.RemoveAll(r => r != rangHor);
                     }
+                    ind2++;
                 }
-                indice++;
+                ind++;
             }
             if (campaniaActual == null)
             {
@@ -89,15 +94,13 @@ namespace Dominio
 
         public Campania GenerarCampaniaNula(TimeSpan pHoraInicio)
         {
-             IEnumerator<Imagen> iEnumeradorListaImg;
             List<Dia> listaDias = new List<Dia>();
             listaDias.Add(new Dia(DateTime.Today.DayOfWeek.ToString()));
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Dell\\Desktop\\Publicidades\\PubliciteAqui.jpg");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenes mias\\Presentacion.png");
             listaImagenes.Add(imagenPublicidad);
-            iEnumeradorListaImg = listaImagenes.GetEnumerator();
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
         }
 
@@ -113,12 +116,16 @@ namespace Dominio
             Campania campaniaSiguiente = null;
             for (int i = 0; i < pLista.Count; i++)
             {
-                foreach (var rangHor in pLista[i].RangoFecha.Horarios)
+                int ind2 = 0;
+                while (campaniaSiguiente == null && ind2 < pLista[i].RangoFecha.Horarios.Count)
                 {
+                    RangoHorario rangHor = pLista[i].RangoFecha.Horarios[ind2];
                     if (pHoraFin == rangHor.HoraInicio)
                     {
                         campaniaSiguiente = pLista[i];
+                        campaniaSiguiente.RangoFecha.Horarios.RemoveAll(r => r != rangHor);
                     }
+                    ind2++;
                 }
             }
             if (campaniaSiguiente == null)
