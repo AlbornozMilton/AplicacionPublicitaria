@@ -9,14 +9,21 @@ namespace Dominio
 	public class Fuente :IFuente
 	{
 		private int iFuenteId;
+		private string iNombreFuente;
 		private TipoFuente iTipoFuente;
-		private string iTexto;
-		private string iDetalles;
+		private IList<IItem> iItems;
+		
+		public int FuenteId { get { return this.iFuenteId; }  set { this.iFuenteId = value; } }
+		public IList<IItem> Items { get { return this.iItems; }  set { this.iItems = value; } }
 
-		public int FuenteId { get { return this.iFuenteId; } set { this.iFuenteId = value; } }
+		public string NombreFuente { get { return this.iNombreFuente; } set { this.iNombreFuente = value; } }
 		public TipoFuente TipoFuente { get { return this.iTipoFuente; } set { this.iTipoFuente = value; } }
-		public string Texto { get { return this.iTexto; } set { this.iTexto = value; } }
-		public string Detalles { get { return this.iDetalles; } set { this.iDetalles = value; } }
+
+		public Fuente(string pNombre, TipoFuente pTipo)
+		{
+			iNombreFuente = pNombre;
+			iTipoFuente = pTipo;
+		}
 	}
 
 	public enum TipoFuente

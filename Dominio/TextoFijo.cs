@@ -10,15 +10,8 @@ namespace Dominio
 	{
 		private string iNombreFuente;
 
-		public TextoFijo(string pText, string pNombre, string pDetalle)
+		public TextoFijo(string pText, string pNombre) :base(pNombre,TipoFuente.TextoFijo)
 		{
-			this.iNombreFuente = pNombre;
-		}
-
-		public string Nombre
-		{
-			get { return this.iNombreFuente; }
-			set { this.iNombreFuente = value; }
 		}
 	}
 }

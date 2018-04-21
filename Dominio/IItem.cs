@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-	public interface IFuente
+	public interface IItem
 	{
-		string NombreFuente { get; set; }
-		TipoFuente TipoFuente { get; set; }
-    }
+		string getTitulo { get; set; }
+		string getTexto { get; set; }
+		DateTime? getFecha { get; set; }
+	}
 }

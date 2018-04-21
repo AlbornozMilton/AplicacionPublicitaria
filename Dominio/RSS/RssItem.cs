@@ -2,7 +2,7 @@
 
 namespace Dominio.RSS
 {
-	public class RssItem
+	public class RssItem:IItem
 	{
 		/// <summary>
 		/// Título del ítem.
@@ -23,5 +23,9 @@ namespace Dominio.RSS
 		/// Fecha de publicación.
 		/// </summary>
 		public DateTime? PublishingDate { get; set; }
+
+		public string getTitulo { get { return Title; } set { Title = value; } }
+		public string getTexto { get { return Description; } set { Description = value; } }
+		public DateTime? getFecha { get { return PublishingDate; } set { PublishingDate = value; } }
 	}
 }
