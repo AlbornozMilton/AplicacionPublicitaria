@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace UI
 {
-	public partial class AgregarBanner : Form
+	public partial class ItemsFuentes : Form
 	{
-		public AgregarBanner()
+		public ItemsFuentes()
 		{
 			InitializeComponent();
 		}
-
 	}
 }

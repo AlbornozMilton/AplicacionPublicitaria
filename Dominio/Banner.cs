@@ -41,7 +41,14 @@ namespace Dominio
             private set { this.iRangoFecha = value; }
         }
 
-        //METODOS ---------------------------------------------------------------------------
+		public IFuente Fuente
+		{
+			get { return this.iFuente; }
+			private set { this.iFuente = value; }
+		}
 
-    }
+
+		//METODOS ---------------------------------------------------------------------------
+
+	}
 }

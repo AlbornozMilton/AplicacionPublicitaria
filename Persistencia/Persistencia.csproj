@@ -57,6 +57,7 @@
     <Compile Include="DAL\EntityFramework\Mapping\BannerMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\CampaniaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\DiaMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\FuenteMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Dominio\Dia.cs" />
     <Compile Include="Dominio\Fuente.cs" />
     <Compile Include="Dominio\FuenteRSS.cs" />
-    <Compile Include="Dominio\IFuente.cs" />
     <Compile Include="Dominio\Imagen.cs" />
     <Compile Include="Dominio\RangoFecha.cs" />
     <Compile Include="Dominio\RangoHorario.cs" />
