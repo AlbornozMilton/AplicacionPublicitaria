@@ -33,8 +33,8 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
 			this.comboBox_TipoFuente = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.btnAceptar = new System.Windows.Forms.Button();
+			this.btnCancelar = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.ckb_miercoles = new System.Windows.Forms.CheckBox();
 			this.ckb_viernes = new System.Windows.Forms.CheckBox();
@@ -53,28 +53,33 @@
 			this.btnAgregarHorario = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
-			this.btnBorarHorario = new System.Windows.Forms.PictureBox();
+			this.btnBorrarHorario = new System.Windows.Forms.PictureBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
 			this.dGV_horarios = new System.Windows.Forms.DataGridView();
-			this.label13 = new System.Windows.Forms.Label();
-			this.btnAgregarRss = new System.Windows.Forms.PictureBox();
+			this.lbl_nuevaFuente = new System.Windows.Forms.Label();
+			this.btnNuevaFuente = new System.Windows.Forms.PictureBox();
 			this.cbx_FuenteRss = new System.Windows.Forms.ComboBox();
-			this.groupBox_Texto = new System.Windows.Forms.GroupBox();
-			this.textBox_Texto = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.panel_items = new System.Windows.Forms.Panel();
 			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.groupBox_items = new System.Windows.Forms.GroupBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.lbl_eliminarItem = new System.Windows.Forms.Label();
+			this.btn_eliminarItem = new System.Windows.Forms.PictureBox();
+			this.button3 = new System.Windows.Forms.Button();
+			this.lbl_modItem = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.gpb_Horarios.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnBorarHorario)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnAgregarRss)).BeginInit();
-			this.groupBox_Texto.SuspendLayout();
-			this.panel_items.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
+			this.groupBox_items.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -120,7 +125,7 @@
 			this.lbl_tipoFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_tipoFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_tipoFuente.ForeColor = System.Drawing.Color.White;
-			this.lbl_tipoFuente.Location = new System.Drawing.Point(6, 288);
+			this.lbl_tipoFuente.Location = new System.Drawing.Point(13, 287);
 			this.lbl_tipoFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbl_tipoFuente.Name = "lbl_tipoFuente";
 			this.lbl_tipoFuente.Size = new System.Drawing.Size(96, 18);
@@ -130,30 +135,30 @@
 			// comboBox_TipoFuente
 			// 
 			this.comboBox_TipoFuente.FormattingEnabled = true;
-			this.comboBox_TipoFuente.Location = new System.Drawing.Point(109, 288);
+			this.comboBox_TipoFuente.Location = new System.Drawing.Point(116, 288);
 			this.comboBox_TipoFuente.Name = "comboBox_TipoFuente";
-			this.comboBox_TipoFuente.Size = new System.Drawing.Size(91, 21);
+			this.comboBox_TipoFuente.Size = new System.Drawing.Size(102, 21);
 			this.comboBox_TipoFuente.TabIndex = 27;
 			// 
-			// button1
+			// btnAceptar
 			// 
-			this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(450, 555);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(81, 33);
-			this.button1.TabIndex = 28;
-			this.button1.Text = "Aceptar";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAceptar.Location = new System.Drawing.Point(450, 530);
+			this.btnAceptar.Name = "btnAceptar";
+			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
+			this.btnAceptar.TabIndex = 28;
+			this.btnAceptar.Text = "Aceptar";
+			this.btnAceptar.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// btnCancelar
 			// 
-			this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(549, 555);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(81, 33);
-			this.button2.TabIndex = 29;
-			this.button2.Text = "Cancelar";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnCancelar.Location = new System.Drawing.Point(549, 530);
+			this.btnCancelar.Name = "btnCancelar";
+			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
+			this.btnCancelar.TabIndex = 29;
+			this.btnCancelar.Text = "Cancelar";
+			this.btnCancelar.UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
 			// 
@@ -317,7 +322,7 @@
 			this.gpb_Horarios.Controls.Add(this.btnAgregarHorario);
 			this.gpb_Horarios.Controls.Add(this.label5);
 			this.gpb_Horarios.Controls.Add(this.label10);
-			this.gpb_Horarios.Controls.Add(this.btnBorarHorario);
+			this.gpb_Horarios.Controls.Add(this.btnBorrarHorario);
 			this.gpb_Horarios.Controls.Add(this.label12);
 			this.gpb_Horarios.Controls.Add(this.dateTimePicker4);
 			this.gpb_Horarios.Controls.Add(this.dateTimePicker3);
@@ -325,7 +330,7 @@
 			this.gpb_Horarios.ForeColor = System.Drawing.Color.White;
 			this.gpb_Horarios.Location = new System.Drawing.Point(305, 44);
 			this.gpb_Horarios.Name = "gpb_Horarios";
-			this.gpb_Horarios.Size = new System.Drawing.Size(334, 216);
+			this.gpb_Horarios.Size = new System.Drawing.Size(325, 216);
 			this.gpb_Horarios.TabIndex = 31;
 			this.gpb_Horarios.TabStop = false;
 			this.gpb_Horarios.Text = "Horarios del banner";
@@ -333,7 +338,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(290, 67);
+			this.label11.Location = new System.Drawing.Point(275, 67);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(35, 13);
 			this.label11.TabIndex = 27;
@@ -343,7 +348,7 @@
 			// btnAgregarHorario
 			// 
 			this.btnAgregarHorario.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnAgregarHorario.Location = new System.Drawing.Point(249, 29);
+			this.btnAgregarHorario.Location = new System.Drawing.Point(234, 29);
 			this.btnAgregarHorario.Name = "btnAgregarHorario";
 			this.btnAgregarHorario.Size = new System.Drawing.Size(35, 35);
 			this.btnAgregarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -366,22 +371,22 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(246, 67);
+			this.label10.Location = new System.Drawing.Point(231, 67);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(44, 13);
 			this.label10.TabIndex = 26;
 			this.label10.Text = "Agregar";
 			this.label10.Visible = false;
 			// 
-			// btnBorarHorario
+			// btnBorrarHorario
 			// 
-			this.btnBorarHorario.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnBorarHorario.Location = new System.Drawing.Point(290, 29);
-			this.btnBorarHorario.Name = "btnBorarHorario";
-			this.btnBorarHorario.Size = new System.Drawing.Size(35, 35);
-			this.btnBorarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnBorarHorario.TabIndex = 25;
-			this.btnBorarHorario.TabStop = false;
+			this.btnBorrarHorario.Image = global::UI.Properties.Resources.btn_Cerrar;
+			this.btnBorrarHorario.Location = new System.Drawing.Point(275, 29);
+			this.btnBorrarHorario.Name = "btnBorrarHorario";
+			this.btnBorrarHorario.Size = new System.Drawing.Size(35, 35);
+			this.btnBorrarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnBorrarHorario.TabIndex = 25;
+			this.btnBorrarHorario.TabStop = false;
 			// 
 			// label12
 			// 
@@ -389,7 +394,7 @@
 			this.label12.BackColor = System.Drawing.Color.Transparent;
 			this.label12.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label12.ForeColor = System.Drawing.Color.White;
-			this.label12.Location = new System.Drawing.Point(21, 69);
+			this.label12.Location = new System.Drawing.Point(24, 60);
 			this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(51, 18);
@@ -410,7 +415,7 @@
 			// 
 			this.dateTimePicker3.CustomFormat = "HH:mm";
 			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker3.Location = new System.Drawing.Point(82, 65);
+			this.dateTimePicker3.Location = new System.Drawing.Point(82, 60);
 			this.dateTimePicker3.Name = "dateTimePicker3";
 			this.dateTimePicker3.ShowUpDown = true;
 			this.dateTimePicker3.Size = new System.Drawing.Size(95, 20);
@@ -419,59 +424,40 @@
 			// dGV_horarios
 			// 
 			this.dGV_horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dGV_horarios.Location = new System.Drawing.Point(6, 106);
+			this.dGV_horarios.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.dGV_horarios.Location = new System.Drawing.Point(3, 91);
 			this.dGV_horarios.Name = "dGV_horarios";
-			this.dGV_horarios.Size = new System.Drawing.Size(322, 104);
+			this.dGV_horarios.Size = new System.Drawing.Size(319, 122);
 			this.dGV_horarios.TabIndex = 21;
 			// 
-			// label13
+			// lbl_nuevaFuente
 			// 
-			this.label13.AutoSize = true;
-			this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label13.Location = new System.Drawing.Point(592, 307);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(44, 13);
-			this.label13.TabIndex = 28;
-			this.label13.Text = "Agregar";
-			this.label13.Visible = false;
+			this.lbl_nuevaFuente.AutoSize = true;
+			this.lbl_nuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.lbl_nuevaFuente.Location = new System.Drawing.Point(564, 308);
+			this.lbl_nuevaFuente.Name = "lbl_nuevaFuente";
+			this.lbl_nuevaFuente.Size = new System.Drawing.Size(75, 13);
+			this.lbl_nuevaFuente.TabIndex = 28;
+			this.lbl_nuevaFuente.Text = "Nueva Fuente";
+			this.lbl_nuevaFuente.Visible = false;
 			// 
-			// btnAgregarRss
+			// btnNuevaFuente
 			// 
-			this.btnAgregarRss.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnAgregarRss.Location = new System.Drawing.Point(595, 276);
-			this.btnAgregarRss.Name = "btnAgregarRss";
-			this.btnAgregarRss.Size = new System.Drawing.Size(35, 35);
-			this.btnAgregarRss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnAgregarRss.TabIndex = 34;
-			this.btnAgregarRss.TabStop = false;
+			this.btnNuevaFuente.Image = global::UI.Properties.Resources.btn_Agregar;
+			this.btnNuevaFuente.Location = new System.Drawing.Point(580, 270);
+			this.btnNuevaFuente.Name = "btnNuevaFuente";
+			this.btnNuevaFuente.Size = new System.Drawing.Size(35, 35);
+			this.btnNuevaFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnNuevaFuente.TabIndex = 34;
+			this.btnNuevaFuente.TabStop = false;
 			// 
 			// cbx_FuenteRss
 			// 
 			this.cbx_FuenteRss.FormattingEnabled = true;
 			this.cbx_FuenteRss.Location = new System.Drawing.Point(297, 288);
 			this.cbx_FuenteRss.Name = "cbx_FuenteRss";
-			this.cbx_FuenteRss.Size = new System.Drawing.Size(289, 21);
+			this.cbx_FuenteRss.Size = new System.Drawing.Size(261, 21);
 			this.cbx_FuenteRss.TabIndex = 34;
-			// 
-			// groupBox_Texto
-			// 
-			this.groupBox_Texto.Controls.Add(this.textBox_Texto);
-			this.groupBox_Texto.ForeColor = System.Drawing.Color.White;
-			this.groupBox_Texto.Location = new System.Drawing.Point(16, 334);
-			this.groupBox_Texto.Name = "groupBox_Texto";
-			this.groupBox_Texto.Size = new System.Drawing.Size(614, 81);
-			this.groupBox_Texto.TabIndex = 33;
-			this.groupBox_Texto.TabStop = false;
-			this.groupBox_Texto.Text = "Texto";
-			// 
-			// textBox_Texto
-			// 
-			this.textBox_Texto.Location = new System.Drawing.Point(6, 19);
-			this.textBox_Texto.Multiline = true;
-			this.textBox_Texto.Name = "textBox_Texto";
-			this.textBox_Texto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox_Texto.Size = new System.Drawing.Size(602, 54);
-			this.textBox_Texto.TabIndex = 0;
 			// 
 			// label3
 			// 
@@ -479,29 +465,94 @@
 			this.label3.BackColor = System.Drawing.Color.Transparent;
 			this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.Color.White;
-			this.label3.Location = new System.Drawing.Point(236, 287);
+			this.label3.Location = new System.Drawing.Point(231, 287);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(59, 18);
 			this.label3.TabIndex = 35;
 			this.label3.Text = "Fuente";
 			// 
-			// panel_items
-			// 
-			this.panel_items.Controls.Add(this.dGV_itemsFuente);
-			this.panel_items.Location = new System.Drawing.Point(16, 421);
-			this.panel_items.Name = "panel_items";
-			this.panel_items.Size = new System.Drawing.Size(614, 124);
-			this.panel_items.TabIndex = 36;
-			// 
 			// dGV_itemsFuente
 			// 
 			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_itemsFuente.Location = new System.Drawing.Point(0, 0);
+			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(614, 124);
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
 			this.dGV_itemsFuente.TabIndex = 0;
+			// 
+			// groupBox_items
+			// 
+			this.groupBox_items.Controls.Add(this.dGV_itemsFuente);
+			this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.groupBox_items.Location = new System.Drawing.Point(16, 327);
+			this.groupBox_items.Name = "groupBox_items";
+			this.groupBox_items.Size = new System.Drawing.Size(614, 128);
+			this.groupBox_items.TabIndex = 36;
+			this.groupBox_items.TabStop = false;
+			this.groupBox_items.Text = "Items";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.label2.Location = new System.Drawing.Point(16, 499);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(62, 13);
+			this.label2.TabIndex = 37;
+			this.label2.Text = "Nuevo Item";
+			this.label2.Visible = false;
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::UI.Properties.Resources.btn_Agregar;
+			this.pictureBox1.Location = new System.Drawing.Point(32, 461);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox1.TabIndex = 38;
+			this.pictureBox1.TabStop = false;
+			// 
+			// lbl_eliminarItem
+			// 
+			this.lbl_eliminarItem.AutoSize = true;
+			this.lbl_eliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.lbl_eliminarItem.Location = new System.Drawing.Point(195, 499);
+			this.lbl_eliminarItem.Name = "lbl_eliminarItem";
+			this.lbl_eliminarItem.Size = new System.Drawing.Size(66, 13);
+			this.lbl_eliminarItem.TabIndex = 40;
+			this.lbl_eliminarItem.Text = "Eliminar Item";
+			this.lbl_eliminarItem.Visible = false;
+			// 
+			// btn_eliminarItem
+			// 
+			this.btn_eliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
+			this.btn_eliminarItem.Location = new System.Drawing.Point(210, 461);
+			this.btn_eliminarItem.Name = "btn_eliminarItem";
+			this.btn_eliminarItem.Size = new System.Drawing.Size(35, 35);
+			this.btn_eliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btn_eliminarItem.TabIndex = 39;
+			this.btn_eliminarItem.TabStop = false;
+			// 
+			// button3
+			// 
+			this.button3.Image = global::UI.Properties.Resources.btn_Editar;
+			this.button3.Location = new System.Drawing.Point(127, 461);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(35, 35);
+			this.button3.TabIndex = 41;
+			this.button3.UseVisualStyleBackColor = true;
+			// 
+			// lbl_modItem
+			// 
+			this.lbl_modItem.AutoSize = true;
+			this.lbl_modItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.lbl_modItem.Location = new System.Drawing.Point(106, 499);
+			this.lbl_modItem.Name = "lbl_modItem";
+			this.lbl_modItem.Size = new System.Drawing.Size(73, 13);
+			this.lbl_modItem.TabIndex = 42;
+			this.lbl_modItem.Text = "Modificar Item";
+			this.lbl_modItem.Visible = false;
 			// 
 			// AgregarBanner
 			// 
@@ -509,17 +560,22 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Maroon;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
-			this.ClientSize = new System.Drawing.Size(651, 600);
-			this.Controls.Add(this.panel_items);
+			this.ClientSize = new System.Drawing.Size(651, 575);
+			this.Controls.Add(this.lbl_modItem);
+			this.Controls.Add(this.button3);
+			this.Controls.Add(this.lbl_eliminarItem);
+			this.Controls.Add(this.btn_eliminarItem);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.groupBox_items);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label13);
-			this.Controls.Add(this.groupBox_Texto);
-			this.Controls.Add(this.btnAgregarRss);
+			this.Controls.Add(this.lbl_nuevaFuente);
+			this.Controls.Add(this.btnNuevaFuente);
 			this.Controls.Add(this.cbx_FuenteRss);
 			this.Controls.Add(this.gpb_Horarios);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnCancelar);
+			this.Controls.Add(this.btnAceptar);
 			this.Controls.Add(this.comboBox_TipoFuente);
 			this.Controls.Add(this.lbl_tipoFuente);
 			this.Controls.Add(this.label9);
@@ -533,13 +589,13 @@
 			this.gpb_Horarios.ResumeLayout(false);
 			this.gpb_Horarios.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnBorarHorario)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnAgregarRss)).EndInit();
-			this.groupBox_Texto.ResumeLayout(false);
-			this.groupBox_Texto.PerformLayout();
-			this.panel_items.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
+			this.groupBox_items.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -552,8 +608,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbl_tipoFuente;
         private System.Windows.Forms.ComboBox comboBox_TipoFuente;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox ckb_miercoles;
         private System.Windows.Forms.CheckBox ckb_viernes;
@@ -572,18 +628,22 @@
         private System.Windows.Forms.PictureBox btnAgregarHorario;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox btnBorarHorario;
+        private System.Windows.Forms.PictureBox btnBorrarHorario;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DataGridView dGV_horarios;
         private System.Windows.Forms.ComboBox cbx_FuenteRss;
-        private System.Windows.Forms.GroupBox groupBox_Texto;
-        private System.Windows.Forms.TextBox textBox_Texto;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox btnAgregarRss;
+        private System.Windows.Forms.Label lbl_nuevaFuente;
+        private System.Windows.Forms.PictureBox btnNuevaFuente;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Panel panel_items;
 		private System.Windows.Forms.DataGridView dGV_itemsFuente;
+		private System.Windows.Forms.GroupBox groupBox_items;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label lbl_eliminarItem;
+		private System.Windows.Forms.PictureBox btn_eliminarItem;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Label lbl_modItem;
 	}
 }
