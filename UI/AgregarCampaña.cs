@@ -96,6 +96,7 @@ namespace UI
         {
             List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday,Tuesday,Wednesday,Thursday,Friday, Saturday,Sunday });
             new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date,dias,horarios,imagenes);
+            new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
         }
 
         private void btn_BorrarHora_Click(object sender, EventArgs e)
