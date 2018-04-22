@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    public class TextoFijo
+    public class TextoFijo: Fuente
     {
-        public string Texto { get; set; }
+		public string Nombre { get; set; }
     }
 }

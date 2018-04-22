@@ -8,30 +8,15 @@ namespace Dominio
 {
     public class FuenteRSS: IFuente
     {
-        private string iNombreFuente;
-        private string iTexto;
-        private string iDetalles;
-        private string iURL;
+		private string iURL;
+		private string iDescripcion;
 
-        //obtener pTexto desde el RSS
-        public FuenteRSS(string pTexto, string pNombreFuente)// : base(pTexto)
+        public FuenteRSS()
         {
-            this.iNombreFuente = pNombreFuente;
         }
 
-        public string GetTexto()
-        {
-            return this.iTexto;
-        }
-        public string GetNombreFuente()
-        {
-            return this.iNombreFuente;
-        }
+		public string URL { get { return this.iURL; } set { this.iURL = value; } }
 
-        public string GetDetalles()
-        {
-            return this.iDetalles;
-        }
-
-    }
+		public string Descripcion { get { return this.iDescripcion; } set { this.iDescripcion = value; } }
+	}
 }

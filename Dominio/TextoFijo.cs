@@ -6,32 +6,19 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class TextoFijo : IFuente
-    {
-        private string iTextoPred;
-        private string iNombreFuente;
-        private string iDetalles;
+	class TextoFijo : Fuente
+	{
+		private string iNombreFuente;
 
-        public TextoFijo(string pText, string pNombre, string pDetalle)
-        {
-            this.iTextoPred = pText;
-            this.iNombreFuente = pNombre;
-            this.iDetalles = pDetalle;
-        }
+		public TextoFijo(string pText, string pNombre, string pDetalle)
+		{
+			this.iNombreFuente = pNombre;
+		}
 
-        public string GetDetalles()
-        {
-            return this.iDetalles;
-        }
-
-        public string GetNombreFuente()
-        {
-            return this.iNombreFuente;
-        }
-
-        public string GetTexto()
-        {
-            return this.iTextoPred;
-        }
-    }
+		public string Nombre
+		{
+			get { return this.iNombreFuente; }
+			set { this.iNombreFuente = value; }
+		}
+	}
 }
