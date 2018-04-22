@@ -30,8 +30,8 @@ namespace Dominio
             iIntervaloTiempo = pIntTiempo;
             iRangoFecha = pRangoFecha;
             this.iListaImagen = new List<Imagen>();
+            this.iListaImagen = pImagenes;
             this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
-            iListaImagen = pImagenes;
         }
 
         public int CampaniaId

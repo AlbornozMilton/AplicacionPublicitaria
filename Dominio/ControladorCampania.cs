@@ -65,24 +65,32 @@ namespace Dominio
         /// <returns></returns>
         public Campania ObtenerCampaniaActual(List<Campania> pLista)
         {
-            //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
             Campania campaniaActual = null;
-            int indice = 0;
-            //int indHorario;
-            while (campaniaActual == null && indice < pLista.Count)
+            int i= 0;
+            while (campaniaActual == null && i < pLista.Count)
             {
-                foreach (var rangHor in pLista[indice].RangoFecha.Horarios)
+                foreach (var rangHor in pLista[i].RangoFecha.Horarios)
                 {
                     if (((DateTime.Now.TimeOfDay.TotalMinutes) >= rangHor.HoraInicio.TotalMinutes) && (DateTime.Now.TimeOfDay.TotalMinutes <= rangHor.HoraFin.TotalMinutes))
                     {
-                        campaniaActual = pLista[indice];
+                        var c = pLista[i];
+                        campaniaActual = new Campania(c.Nombre, c.IntervaloTiempo, new RangoFecha(rangHor), c.Imagenes);
                     }
                 }
-                indice++;
+                i++;
+            }
+            if (campaniaActual == null)
+            {
+                campaniaActual = GenerarCampaniaNula(DateTime.Now.TimeOfDay);
             }
             return campaniaActual;
         }
 
+        /// <summary>
+        /// Devuleve la campaña que se muestra por defecto como relleno de espacios sin publicidad
+        /// </summary>
+        /// <param name="pHoraInicio"></param>
+        /// <returns></returns>
         public Campania GenerarCampaniaNula(TimeSpan pHoraInicio)
         {
             List<Dia> listaDias = new List<Dia>();
@@ -90,7 +98,8 @@ namespace Dominio
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            listaImagenes.Add(new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenesmias\\Presentacion.png"));
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenes mias\\Presentacion.png");
+            listaImagenes.Add(imagenPublicidad);
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
         }
 
@@ -100,29 +109,25 @@ namespace Dominio
         /// <returns></returns>
         public Campania ObtenerCampaniaSiguiente(List<Campania> pLista, TimeSpan pHoraFin)
         {
-            //agregar el tema hacer una compia de la campania y vaciar la lista de horarios menos el de ahora.
-            //int indiceHorario = 0;
-            //int indHorario;
             Campania campaniaSiguiente = null;
-            for (int i = 0; i < pLista.Count; i++)
+            int i = 0;
+            while (campaniaSiguiente == null &&  i < pLista.Count)
             {
                 foreach (var rangHor in pLista[i].RangoFecha.Horarios)
                 {
                     if (pHoraFin == rangHor.HoraInicio)
                     {
-                        campaniaSiguiente = pLista[i];
+                        var c = pLista[i];
+                        campaniaSiguiente = new Campania(c.Nombre, c.IntervaloTiempo, new RangoFecha(rangHor), c.Imagenes);
                     }
                 }
+                i++;
             }
             if (campaniaSiguiente == null)
             {
                 campaniaSiguiente = GenerarCampaniaNula(pHoraFin);
             }
-            return campaniaSiguiente;
+        return campaniaSiguiente;
         }
-        //public List<Campania> CampaniasDelDia()
-        //{
-        //    iUOfW.RepositorioCampania.GetAllCampaniasDelDia();
-        //}
     }   
 }

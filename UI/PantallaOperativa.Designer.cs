@@ -41,9 +41,9 @@
             this.pictureBox_ImagenCamp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_ImagenCamp.Location = new System.Drawing.Point(25, 22);
+            this.pictureBox_ImagenCamp.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_ImagenCamp.Name = "pictureBox_ImagenCamp";
-            this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(736, 412);
+            this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(784, 500);
             this.pictureBox_ImagenCamp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_ImagenCamp.TabIndex = 0;
             this.pictureBox_ImagenCamp.TabStop = false;
@@ -66,14 +66,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 500);
             this.Controls.Add(this.pictureBox_ImagenCamp);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "PantallaOperativa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaOperativa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PantallaOperativa_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PantallaOperativa_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).EndInit();
             this.ResumeLayout(false);
 
@@ -82,7 +86,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox_ImagenCamp;
-        private System.Windows.Forms.Timer timer_ImagenesCampania;
         private System.Windows.Forms.Timer timer_IntervaloImagen;
         private System.ComponentModel.BackgroundWorker backgroundWorker_CambioCamp;
         private System.Windows.Forms.Timer timer_IntervaloCamp;

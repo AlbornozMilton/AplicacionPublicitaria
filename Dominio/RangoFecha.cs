@@ -39,6 +39,18 @@ namespace Dominio
             this.iListaDia = pListDias;
             this.iRangoHorario = pHorarios;
         }
+        /// <summary>
+        /// Metodo para devolver las campañas actual y siguiente con el unico horario necesario
+        /// </summary>
+        /// <param name="pRangoH"></param>
+        public RangoFecha(RangoHorario pRangoH)
+        {
+            this.iFechaInicio = DateTime.Today.Date;
+            this.iFechaFin = DateTime.Today.Date;
+            this.iListaDia = null;
+            this.iRangoHorario = new List<RangoHorario>();
+            iRangoHorario.Add(pRangoH);
+        }
 
         //PROPIEDADES----------------------------------------------------------
         public int RangoFechaId
@@ -86,6 +98,14 @@ namespace Dominio
         public string FechaString(DateTime pFecha)
         {
             return String.Format("{0}/{1}/{2}",pFecha.Day,pFecha.Month,pFecha.Day);
+        }
+        public RangoFecha AgregarHorario(RangoHorario pRangoH)
+        {
+            this.Horarios = new List<RangoHorario>();
+            this.Horarios.Add(pRangoH);
+            return this;
+
+
         }
 
         //public void AgregarDia(DateTime pDia)

@@ -16,7 +16,7 @@ namespace UI
         private ControladorCampania iControladorCampania = new ControladorCampania();
         private List<Campania> iCampaniasHoy = new List<Campania>();
         private Campania iCampaniaActual;
-        private Campania iCampaniaSiguiente = new Campania();
+        private Campania iCampaniaSiguiente;
 
         public PantallaOperativa()
         {
@@ -29,19 +29,22 @@ namespace UI
             this.timer_IntervaloImagen.Enabled = true;
             this.timer_IntervaloCamp.Interval = 1000;
             this.timer_IntervaloCamp.Enabled = true;
-            
         }
 
-        private void ConfigurarCampania()
+        private void ObtenerPrimerCampania()
         {
-            this.iCampaniaActual = iControladorCampania.ObtenerCampaniaActual(this.iCampaniasHoy); //ver si el controlador se puede crear antes
-            this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
-            this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-            this.backgroundWorker_CambioCamp.RunWorkerAsync();
-            // this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);  //nose si se ejecuta en algun momento
+            this.iCampaniaActual = iControladorCampania.ObtenerCampaniaActual(this.iCampaniasHoy);
+            this.MostrarCampania();
         }
 
-        private Image ImagenCampania(Campania pCampania)
+        private void MostrarCampania()
+        {
+            this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
+            this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+            this.backgroundWorker_CambioCamp.RunWorkerAsync();
+        }
+
+        private Image ObtenerImagenCampania(Campania pCampania)
         {
             Imagen imagenActual = pCampania.SiguienteImagen();
             this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
@@ -49,23 +52,14 @@ namespace UI
         }
 
         private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
-         {
-             this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-         }
+        {
+             this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+        }
 
         private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
         {
             this.iCampaniaActual = this.iCampaniaSiguiente;
-            //if (iCampaniaSiguiente == null)
-            //{
-            //    this.timer_IntervaloCamp.Interval = 60000;
-            //    this.pictureBox_ImagenCamp.Image = Properties.Resources.btn_Adelante;
-            //}
-            //else
-            this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
-            this.pictureBox_ImagenCamp.Image = this.ImagenCampania(this.iCampaniaActual);
-                ////    this.iCampaniaSiguiente = ControladorCampania.ObtenerCampaniaSiguiente(listahoy);
-            this.backgroundWorker_CambioCamp.RunWorkerAsync();
+            this.MostrarCampania();
         }
 
         private void backgroundWorker_CambioCamp_DoWork(object sender, DoWorkEventArgs e)
@@ -73,14 +67,21 @@ namespace UI
             this.iCampaniaSiguiente = iControladorCampania.ObtenerCampaniaSiguiente(iCampaniasHoy, iCampaniaActual.RangoFecha.Horarios[0].HoraFin);
         }
 
+        private void PantallaOperativa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 27)
+            {
+                Close();
+            }
+        }
+
         private void PantallaOperativa_Load(object sender, EventArgs e)
         {
             iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
             this.ConfigurarTimers();
-            this.ConfigurarCampania();
+            this.ObtenerPrimerCampania();
         }
-
     }
 }
-//ver q me devuelva el rango horaario actual en los 2 metodos
-//otro timer de un min en seg plano
+
+//checkbox dias,q ya los marque
