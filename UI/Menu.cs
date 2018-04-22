@@ -17,15 +17,6 @@ namespace UI
         {
             InitializeComponent();
         }
-        private void PresentarPubl_Click(object sender, EventArgs e)
-        {
-            new PantallaOperativa().ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new AgregarCampaña().ShowDialog();
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -35,6 +26,16 @@ namespace UI
         private void label3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_AgregarCampania_Click(object sender, EventArgs e)
+        {
+            new AgregarCampaña().ShowDialog();
+        }
+
+        private void btn_Reproducir_Click(object sender, EventArgs e)
+        {
+            new PantallaOperativa().ShowDialog();
         }
     }
 }

@@ -155,13 +155,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Adelante.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FondoVentanas.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{f503976a-7726-4687-9916-c940c48a0fb6}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\btn_Agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Adelante.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_AgregarImagen.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Atras.png" />
@@ -173,13 +186,13 @@
     <None Include="Resources\btn_Cerrar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Editar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_AgregarImagen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\btn_Configurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Confirmar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Editar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Imagenes.png" />
@@ -189,19 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Reproducir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_Confirmar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{f503976a-7726-4687-9916-c940c48a0fb6}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
-      <Project>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</Project>
-      <Name>Persistencia</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
