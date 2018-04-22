@@ -11,10 +11,10 @@ namespace Dominio
 		private int iFuenteId;
 		private string iNombreFuente;
 		private TipoFuente iTipoFuente;
-		private IList<IItem> iItems;
+		private List<IItem> iItems = new List<IItem>();
 		
 		public int FuenteId { get { return this.iFuenteId; }  set { this.iFuenteId = value; } }
-		public IList<IItem> Items { get { return this.iItems; }  set { this.iItems = value; } }
+		public List<IItem> Items { get { return this.iItems; }  set { this.iItems = value; } }
 
 		public string NombreFuente { get { return this.iNombreFuente; } set { this.iNombreFuente = value; } }
 		public TipoFuente TipoFuente { get { return this.iTipoFuente; } set { this.iTipoFuente = value; } }

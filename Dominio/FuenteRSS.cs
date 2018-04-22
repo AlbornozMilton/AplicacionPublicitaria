@@ -10,16 +10,29 @@ namespace Dominio
     public class FuenteRSS: Fuente, IFuente
     {
 		private IRssReader ReaderRss { get; }
+		//private string Uri;
 		/// <summary>
 		/// pReader ya resuelto. Guarda Uri. Hacer try/catch
 		/// </summary>
 		public FuenteRSS(string pUri, IRssReader pReader) : base(pUri, TipoFuente.RSS)
 		{
 			ReaderRss = pReader;
-			foreach (var item in pReader.Read(pUri))
+			//Uri = pUri;
+			ObtenerItems();
+        }
+
+		public void ReLoadItems()
+		{
+			base.Items.Clear();
+			ObtenerItems();
+		}
+
+		private void ObtenerItems()
+		{
+			foreach (var item in ReaderRss.Read(base.NombreFuente))
 			{
 				base.Items.Add(item);
 			}
-        }
+		}
 	}
 }
