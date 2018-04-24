@@ -103,6 +103,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_Borrar {
+            get {
+                object obj = ResourceManager.GetObject("btn_Borrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_Buscar {
             get {
                 object obj = ResourceManager.GetObject("btn_Buscar", resourceCulture);
@@ -216,6 +226,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap Ok {
             get {
                 object obj = ResourceManager.GetObject("Ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PorDefecto {
+            get {
+                object obj = ResourceManager.GetObject("PorDefecto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
