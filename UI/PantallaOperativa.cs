@@ -78,6 +78,7 @@ namespace UI
         private void PantallaOperativa_Load(object sender, EventArgs e)
         {
             iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
+			//obtener banner del dia
             this.ConfigurarTimers();
             this.ObtenerPrimerCampania();
         }
