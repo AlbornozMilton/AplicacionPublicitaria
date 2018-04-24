@@ -71,7 +71,9 @@
     <Compile Include="Fuente.cs" />
     <Compile Include="FuenteRSS.cs" />
     <Compile Include="IFuente.cs" />
+    <Compile Include="IItem.cs" />
     <Compile Include="Imagen.cs" />
+    <Compile Include="ItemGenerico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RangoFecha.cs" />

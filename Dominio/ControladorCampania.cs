@@ -98,7 +98,7 @@ namespace Dominio
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenes mias\\Presentacion.png");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Parque Ciudad con los pi\\20151003_165506.jpg");
             listaImagenes.Add(imagenPublicidad);
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
         }

@@ -8,17 +8,13 @@ namespace Dominio
 {
 	class TextoFijo : Fuente
 	{
-		private string iNombreFuente;
-
-		public TextoFijo(string pText, string pNombre, string pDetalle)
+		public TextoFijo(string pNombreFuente) :base(pNombreFuente,TipoFuente.TextoFijo)
 		{
-			this.iNombreFuente = pNombre;
 		}
 
-		public string Nombre
+		public void AgregarItem(string pTitulo,string pTexto, DateTime pFecha)
 		{
-			get { return this.iNombreFuente; }
-			set { this.iNombreFuente = value; }
+			base.Items.Add(new ItemGenerico(pTitulo, pTexto, pFecha));
 		}
 	}
 }

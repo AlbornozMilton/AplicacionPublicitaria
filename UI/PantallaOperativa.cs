@@ -14,9 +14,13 @@ namespace UI
     public partial class PantallaOperativa : Form
     {
         private ControladorCampania iControladorCampania = new ControladorCampania();
+		private ControladorBanner iControladorBanner = new ControladorBanner();
         private List<Campania> iCampaniasHoy = new List<Campania>();
         private Campania iCampaniaActual;
         private Campania iCampaniaSiguiente;
+
+		private string TextoDeslizable;
+		private int contTextDeslz = 0;
 
         public PantallaOperativa()
         {
@@ -29,7 +33,12 @@ namespace UI
             this.timer_IntervaloImagen.Enabled = true;
             this.timer_IntervaloCamp.Interval = 1000;
             this.timer_IntervaloCamp.Enabled = true;
-        }
+
+			timer_Banner.Interval = 1000000; 
+			timer_Banner.Enabled = true;
+			timer_TextoDeslizable.Interval = 1000;
+			timer_TextoDeslizable.Enabled = true;
+		}
 
         private void ObtenerPrimerCampania()
         {
@@ -75,13 +84,30 @@ namespace UI
             }
         }
 
-        private void PantallaOperativa_Load(object sender, EventArgs e)
-        {
-            iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
-            this.ConfigurarTimers();
+		private void PantallaOperativa_Load(object sender, EventArgs e)
+		{
+			iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
+			//obtener banner del dia
+			iControladorBanner.GenerarBannerDelDia();
+
+			TextoDeslizable = iControladorBanner.TextoDeFuenteActual();
+			TextoBanner.Text = "";
+
+			this.ConfigurarTimers();
             this.ObtenerPrimerCampania();
         }
-    }
+
+		private void timer_TextoDeslizable_Tick(object sender, EventArgs e)
+		{
+			if (contTextDeslz > TextoDeslizable.Length - 1)
+			{
+				contTextDeslz = 0;
+				this.TextoBanner.Text = "";
+			}
+			this.TextoBanner.Text += this.TextoDeslizable.Substring(contTextDeslz, 1);
+			contTextDeslz++;
+		}
+	}
 }
 
 //checkbox dias,q ya los marque
