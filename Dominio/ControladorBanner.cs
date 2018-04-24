@@ -9,7 +9,7 @@ namespace Dominio
 {
     public class ControladorBanner
     {
-		private static List<Banner> BannersDelDia = new List<Banner>();
+		private List<Banner> BannersDelDia = new List<Banner>();
 		private Banner BannerActual { get; }
 		private Banner BannerProximo { get; }
 
@@ -31,5 +31,9 @@ namespace Dominio
 
 		// para cada fin de banner, actualizar bd con sus items
 
+		public string TextoDeFuenteActual()
+		{
+			return "Texto de pruebaa";
+		}
 	}
 }

@@ -36,6 +36,8 @@
 			this.panel_ContendorBanner = new System.Windows.Forms.Panel();
 			this.panel_Banner = new System.Windows.Forms.Panel();
 			this.TextoBanner = new System.Windows.Forms.Label();
+			this.timer_TextoDeslizable = new System.Windows.Forms.Timer(this.components);
+			this.timer_Banner = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).BeginInit();
 			this.panel_ContendorBanner.SuspendLayout();
 			this.panel_Banner.SuspendLayout();
@@ -48,7 +50,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox_ImagenCamp.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox_ImagenCamp.Name = "pictureBox_ImagenCamp";
-			this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(789, 442);
+			this.pictureBox_ImagenCamp.Size = new System.Drawing.Size(784, 442);
 			this.pictureBox_ImagenCamp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox_ImagenCamp.TabIndex = 0;
 			this.pictureBox_ImagenCamp.TabStop = false;
@@ -76,6 +78,9 @@
 			// 
 			// panel_Banner
 			// 
+			this.panel_Banner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel_Banner.BackColor = System.Drawing.Color.White;
 			this.panel_Banner.Controls.Add(this.TextoBanner);
 			this.panel_Banner.Location = new System.Drawing.Point(12, 15);
@@ -92,6 +97,10 @@
 			this.TextoBanner.TabIndex = 0;
 			this.TextoBanner.Text = "label1";
 			// 
+			// timer_TextoDeslizable
+			// 
+			this.timer_TextoDeslizable.Tick += new System.EventHandler(this.timer_TextoDeslizable_Tick);
+			// 
 			// PantallaOperativa
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,8 +109,8 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(784, 500);
-			this.Controls.Add(this.panel_ContendorBanner);
 			this.Controls.Add(this.pictureBox_ImagenCamp);
+			this.Controls.Add(this.panel_ContendorBanner);
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.KeyPreview = true;
@@ -128,5 +137,7 @@
 		private System.Windows.Forms.Panel panel_ContendorBanner;
 		private System.Windows.Forms.Panel panel_Banner;
 		private System.Windows.Forms.Label TextoBanner;
+		private System.Windows.Forms.Timer timer_TextoDeslizable;
+		private System.Windows.Forms.Timer timer_Banner;
 	}
 }
