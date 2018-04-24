@@ -30,7 +30,7 @@ namespace UI
                 case TipoMensaje.Exito:
                     {
                         lbl_Titulo.Text = "¡Exito!";
-                        pbox_Icono.Image = Properties.Resources.Ok;
+                        pbox_Icono.Image = Properties.Resources.if_Symbol_Check_49258;
                     }
                     break;
                 case TipoMensaje.Alerta:
