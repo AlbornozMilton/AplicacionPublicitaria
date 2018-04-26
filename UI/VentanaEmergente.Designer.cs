@@ -38,9 +38,10 @@
             // pbox_Icono
             // 
             this.pbox_Icono.BackColor = System.Drawing.Color.Transparent;
-            this.pbox_Icono.Location = new System.Drawing.Point(47, 60);
+            this.pbox_Icono.Location = new System.Drawing.Point(34, 60);
             this.pbox_Icono.Name = "pbox_Icono";
-            this.pbox_Icono.Size = new System.Drawing.Size(67, 63);
+            this.pbox_Icono.Size = new System.Drawing.Size(80, 80);
+            this.pbox_Icono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Icono.TabIndex = 0;
             this.pbox_Icono.TabStop = false;
             // 

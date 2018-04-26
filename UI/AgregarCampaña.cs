@@ -19,6 +19,7 @@ namespace UI
     {
         List<RangoHorario> horarios = new List<RangoHorario>();
         List<Imagen> imagenes = new List<Imagen>();
+        ControladorCampania iControladorCampania=  new ControladorCampania();
 
         public AgregarCampaña()
         {
@@ -95,7 +96,7 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday,Tuesday,Wednesday,Thursday,Friday, Saturday,Sunday });
-            new ControladorCampania().AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date,dias,horarios,imagenes);
+            iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date,dias,horarios,imagenes);
             new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
         }
 
@@ -123,24 +124,26 @@ namespace UI
             {
                 TimeSpan horaDesde = new TimeSpan(dtp_HoraDesde.Value.Hour, dtp_HoraDesde.Value.Minute, 00);
                 TimeSpan horaHasta = new TimeSpan(dtp_HoraHasta.Value.Hour, dtp_HoraHasta.Value.Minute, 00);
-                RangoHorario encontrados = null;
-                encontrados = horarios.Find(h => (h.HoraInicio >= horaDesde && horaDesde <= h.HoraFin) || (horaHasta <= h.HoraFin && horaHasta > h.HoraInicio));
-                if (encontrados == null)
+                Boolean hayColision = false;
+                
+                foreach (var rangHor in horarios)
+                {
+                    if ((horaDesde >= rangHor.HoraInicio && horaDesde <= rangHor.HoraFin) || (horaHasta <= rangHor.HoraFin && horaHasta > rangHor.HoraInicio))
+                    {
+                        hayColision = true;
+                        throw new Exception("Rango choca con otro");
+                    }
+                }
+                if (!hayColision)
                 {
                     horarios.Add(new RangoHorario(horaDesde, horaHasta));
                     dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
                 }
-                else
-                {
-                    throw new Exception("Rango choca con otro");
-                }
             }
             catch (Exception E)
             {
-
-                new VentanaEmergente(E.Message,VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
             }
-            
         }
 
         private void btn_AgregarImagen_Click(object sender, EventArgs e)

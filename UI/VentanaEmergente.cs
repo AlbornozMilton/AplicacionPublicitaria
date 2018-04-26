@@ -30,19 +30,19 @@ namespace UI
                 case TipoMensaje.Exito:
                     {
                         lbl_Titulo.Text = "¡Exito!";
-                        pbox_Icono.Image = Properties.Resources.if_Symbol_Check_49258;
+                        pbox_Icono.Image = Properties.Resources.Exito;
                     }
                     break;
                 case TipoMensaje.Alerta:
                     {
                         lbl_Titulo.Text = "¡Alerta!";
-                        pbox_Icono.Image = Properties.Resources.Warning;
+                        pbox_Icono.Image = Properties.Resources.Advertencia;
                     }
                     break;
                 case TipoMensaje.Informacion:
                     {
                         lbl_Titulo.Text = "Informacion";
-                        pbox_Icono.Image = Properties.Resources.Info;
+                        pbox_Icono.Image = Properties.Resources.Informacion;
                     }
                     break;
                 default:
