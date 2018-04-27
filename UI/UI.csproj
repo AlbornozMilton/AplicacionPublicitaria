@@ -239,5 +239,14 @@
   <ItemGroup>
     <None Include="Resources\PorDefecto.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Informacion.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
