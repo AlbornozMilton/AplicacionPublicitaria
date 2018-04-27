@@ -22,6 +22,7 @@ namespace Dominio
         /// <param name="pListDias"></param>
         /// <param name="pHorarios"></param>
         /// <param name="pImagenes"></param>
+        
         public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, List<Dia> pListDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
         {
             RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pListDias,pHorarios);
@@ -29,6 +30,14 @@ namespace Dominio
             iUOfW.RepositorioCampania.Add(MapCamp);
             iUOfW.Complete();
         }
+
+        public List<Campania> ObtenerTodasCampanias()
+        {
+            IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
+            List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
+            return listaCampanias;
+        }
+
 
         /// <summary>
         /// Devuelve una campaña a partir de un ID ingresado

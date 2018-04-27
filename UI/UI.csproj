@@ -92,6 +92,12 @@
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </Compile>
+    <Compile Include="EliminarCampañia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarCampañia.Designer.cs">
+      <DependentUpon>EliminarCampañia.cs</DependentUpon>
+    </Compile>
     <Compile Include="IoCContainerLocator.cs" />
     <Compile Include="ItemsFuentes.cs">
       <SubType>Form</SubType>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCampaña.resx">
       <DependentUpon>AgregarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCampañia.resx">
+      <DependentUpon>EliminarCampañia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemsFuentes.resx">
       <DependentUpon>ItemsFuentes.cs</DependentUpon>
