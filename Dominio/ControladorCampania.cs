@@ -141,5 +141,56 @@ namespace Dominio
             }
             return true;
         }
+
+        public List<string> DiasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            List<string> listaDias = new List<string>();
+            TimeSpan diferencia = pFechaHasta - pFechaDesde;
+            for (int i = 0; i <= (diferencia.Days); i++)
+            {
+                DateTime nuevaFecha = pFechaDesde.AddDays(i);
+                if (!listaDias.Contains(nuevaFecha.DayOfWeek.ToString()))
+                {
+                    listaDias.Add(nuevaFecha.DayOfWeek.ToString());
+                }
+            }
+            return listaDias;
+        }
+        public Boolean ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
+        {
+            if (pNombre == "")
+            {
+                throw new Exception("Se debe ingresar un Nombre para la campaña");
+            }
+            else
+            {
+                if (pDias == 0)
+                {
+                    throw new Exception("Debe seleccionar los dias");
+                }
+                else
+                {
+                    if (pHorarios == 0)
+                    {
+                        throw new Exception("Debe ingresar como mínimo un rango horario");
+                    }
+                    else
+                    {
+                        if (pImagenes == 0)
+                        {
+                            throw new Exception("Se deben insertar las imagenes a mostrar");
+                        }
+                        else
+                        {
+                            if (pIntTiempo == 0)
+                            {
+                                throw new Exception("Debe seleccionar un intervalo de tiempo");
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
     }   
 }

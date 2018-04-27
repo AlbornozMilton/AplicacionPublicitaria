@@ -95,9 +95,20 @@ namespace UI
         }
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday,Tuesday,Wednesday,Thursday,Friday, Saturday,Sunday });
-            iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUpDown_IntTiempo.Text),dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date,dias,horarios,imagenes);
-            new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+            try
+            {
+                List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday });
+                if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Count, dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
+                {
+                    iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
+                    new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    Close();
+                }
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+            }
         }
 
         private void btn_BorrarHora_Click(object sender, EventArgs e)
@@ -158,6 +169,30 @@ namespace UI
         private void AgregarCampaña_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtp_FechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((DateTime.Compare(dtp_FechaDesde.Value.Date,dtp_FechaHasta.Value.Date)) > 0)
+                {
+                    throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de incio");
+                }
+                List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+                List<CheckBox> checksDias = new List<CheckBox>() {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+                foreach (var dia in checksDias)
+                {
+                    if (dias.Contains(dia.Name))
+                    {
+                        dia.Enabled = true;
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+            }
         }
     }
 }
