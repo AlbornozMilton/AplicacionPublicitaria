@@ -50,9 +50,9 @@
             this.lbl_Mensaje.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mensaje.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Mensaje.ForeColor = System.Drawing.Color.White;
-            this.lbl_Mensaje.Location = new System.Drawing.Point(120, 60);
+            this.lbl_Mensaje.Location = new System.Drawing.Point(120, 50);
             this.lbl_Mensaje.Name = "lbl_Mensaje";
-            this.lbl_Mensaje.Size = new System.Drawing.Size(248, 49);
+            this.lbl_Mensaje.Size = new System.Drawing.Size(248, 79);
             this.lbl_Mensaje.TabIndex = 1;
             this.lbl_Mensaje.Text = "Mensaje";
             this.lbl_Mensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -129,5 +129,17 @@ namespace Dominio
             }
         return campaniaSiguiente;
         }
+
+        public Boolean ControlColisionHorarios(List<RangoHorario> pHorarios, TimeSpan pHoraDesde, TimeSpan pHoraHasta)
+        {
+            foreach (var rangHor in pHorarios)
+            {
+                if ((pHoraDesde >= rangHor.HoraInicio && pHoraDesde <= rangHor.HoraFin) || (pHoraHasta <= rangHor.HoraFin && pHoraHasta > rangHor.HoraInicio))
+                {
+                    throw new Exception("El rango ingresado se superpone con otro ya cargado");
+                }
+            }
+            return true;
+        }
     }   
 }

@@ -124,20 +124,17 @@ namespace UI
             {
                 TimeSpan horaDesde = new TimeSpan(dtp_HoraDesde.Value.Hour, dtp_HoraDesde.Value.Minute, 00);
                 TimeSpan horaHasta = new TimeSpan(dtp_HoraHasta.Value.Hour, dtp_HoraHasta.Value.Minute, 00);
-                Boolean hayColision = false;
-                
-                foreach (var rangHor in horarios)
+                if (horaHasta.TotalMinutes > horaDesde.TotalMinutes)
                 {
-                    if ((horaDesde >= rangHor.HoraInicio && horaDesde <= rangHor.HoraFin) || (horaHasta <= rangHor.HoraFin && horaHasta > rangHor.HoraInicio))
+                    if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
                     {
-                        hayColision = true;
-                        throw new Exception("Rango choca con otro");
-                    }
+                        horarios.Add(new RangoHorario(horaDesde, horaHasta));
+                        dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
+                    } 
                 }
-                if (!hayColision)
+                else
                 {
-                    horarios.Add(new RangoHorario(horaDesde, horaHasta));
-                    dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
+                    throw new Exception("La hora de fin debe ser mayor a la hora de inicio por al menos 1 minuto");
                 }
             }
             catch (Exception E)
