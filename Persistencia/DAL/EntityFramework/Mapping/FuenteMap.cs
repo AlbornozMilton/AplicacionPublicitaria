@@ -15,8 +15,8 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 			this.Property(pCamp => pCamp.FuenteId)
 				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-			this.Property(pCamp => pCamp.NombreFuente)
-				.IsRequired();
+			//this.Property(pCamp => pCamp.NombreFuente)
+			//	.IsRequired();
 
 			this.Property(pCamp => pCamp.TipoFuente)
 				.IsRequired();

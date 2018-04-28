@@ -11,7 +11,7 @@ namespace Persistencia.DAL.EntityFramework
         //atributo para utilizar un solo Contexto
         private readonly PublicidadContext iDbContext;
 
-        //Constructor
+        //Constructor - Al construirse tambi{en instancia sus getters
         public UnitOfWork(PublicidadContext pContext)
         {
             if (pContext == null)
@@ -21,7 +21,9 @@ namespace Persistencia.DAL.EntityFramework
             this.iDbContext = pContext;
          
             //this --> por el constructor de AccountRepository
-            this.RepositorioCampania = new RepositorioCampania(this.iDbContext); 
+            this.RepositorioCampania = new RepositorioCampania(this.iDbContext);
+
+			this.RepositorioBanner = new RepositorioBanner(this.iDbContext);
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
