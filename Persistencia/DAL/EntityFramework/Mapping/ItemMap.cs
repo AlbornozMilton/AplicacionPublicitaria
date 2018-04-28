@@ -25,7 +25,7 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 				.IsRequired();
 
 			//Establece la relacio muchos a 1 con Fuente.
-			this.HasOptional(i => i.Fuente)
+			this.HasRequired(i => i.Fuente)
 				.WithMany(f => f.Items);
 		}
 
