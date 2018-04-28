@@ -19,10 +19,9 @@ namespace UI
         private Campania iCampaniaActual;
         private Campania iCampaniaSiguiente;
 
-		private string TextoDeslizable;
-		private int contTextDeslz = 0;
+		private int posx;
 
-        public PantallaOperativa()
+		public PantallaOperativa()
         {
             InitializeComponent();
         }
@@ -36,7 +35,7 @@ namespace UI
 
 			timer_Banner.Interval = 1000000; 
 			timer_Banner.Enabled = true;
-			timer_TextoDeslizable.Interval = 1000;
+			timer_TextoDeslizable.Interval = 10;
 			timer_TextoDeslizable.Enabled = true;
 		}
 
@@ -90,22 +89,27 @@ namespace UI
 			//obtener banner del dia
 			iControladorBanner.GenerarBannerDelDia();
 
-			TextoDeslizable = iControladorBanner.TextoDeFuenteActual();
-			TextoBanner.Text = "";
-
+			//concatenacion de items fuente panel_ContendorBanner.Location.X 
+			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width+1,TextoBanner.Location.Y);
+			posx = TextoBanner.Location.X;
+			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual();
+			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+			//posx = TextoBanner.Location.Y;
 			this.ConfigurarTimers();
             this.ObtenerPrimerCampania();
         }
 
 		private void timer_TextoDeslizable_Tick(object sender, EventArgs e)
 		{
-			if (contTextDeslz > TextoDeslizable.Length - 1)
+			posx -= 3;
+			if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			{
-				contTextDeslz = 0;
-				this.TextoBanner.Text = "";
+				TextoBanner.Location = new Point(
+				panel_Banner.Location.X + panel_Banner.Width,
+				TextoBanner.Location.Y);
+				posx = TextoBanner.Location.X;
 			}
-			this.TextoBanner.Text += this.TextoDeslizable.Substring(contTextDeslz, 1);
-			contTextDeslz++;
+			TextoBanner.Location = new Point(posx, TextoBanner.Location.Y);
 		}
 	}
 }
