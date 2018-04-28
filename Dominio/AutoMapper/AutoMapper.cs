@@ -22,6 +22,8 @@ namespace Dominio.AutoMapper
                 cfg.CreateMap<Dia, pers.Dia>().ReverseMap();
                 cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
 				cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
+				//cfg.CreateMap<ItemGenerico, pers.Item>().ReverseMap();
+				cfg.CreateMap<IItem, pers.Item>().ReverseMap();
 				cfg.CreateMap<TipoFuente, pers.TipoFuente>().ReverseMap();
 
 				//cfg.CreateMap<, pers.Domicilio>().ReverseMap();

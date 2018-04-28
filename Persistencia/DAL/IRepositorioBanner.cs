@@ -9,6 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioBanner:IRepositorio<Banner>
     {
-
+		List<Banner> BannersDelDia(DateTime pDia);
     }
 }
