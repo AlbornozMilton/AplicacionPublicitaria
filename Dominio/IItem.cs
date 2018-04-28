@@ -10,6 +10,6 @@ namespace Dominio
 	{
 		string Titulo { get; set; }
 		string Texto { get; set; }
-		DateTime? Fecha { get; set; }
+		DateTime Fecha { get; set; }
 	}
 }

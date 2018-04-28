@@ -8,6 +8,11 @@ namespace Dominio
 {
 	class TextoFijo : Fuente
 	{
+		public TextoFijo()
+		{
+
+		}
+
 		public TextoFijo(string pNombreFuente, List<IItem> pItems) :base(pNombreFuente,TipoFuente.TextoFijo)
 		{
 			base.Items = pItems;

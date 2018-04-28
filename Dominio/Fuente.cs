@@ -19,6 +19,11 @@ namespace Dominio
 		public string NombreFuente { get { return this.iNombreFuente; } set { this.iNombreFuente = value; } }
 		public TipoFuente TipoFuente { get { return this.iTipoFuente; } set { this.iTipoFuente = value; } }
 
+		public Fuente()
+		{
+
+		}
+
 		public Fuente(string pNombre, TipoFuente pTipo)
 		{
 			iNombreFuente = pNombre;

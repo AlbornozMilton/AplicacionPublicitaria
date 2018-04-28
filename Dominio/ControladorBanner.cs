@@ -47,7 +47,7 @@ namespace Dominio
 			RangoFecha rangoFecha = new RangoFecha(DateTime.Now.Date, DateTime.Now.Date.AddDays(1),
 				new List<Dia>() { new Dia("Lunes") }, new List<RangoHorario>() { horario});
 
-			IItem item = new ItemGenerico("Titulo Empresa",
+			ItemGenerico item = new ItemGenerico("Titulo Empresa",
 				"Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313"
 				, DateTime.Now);
 

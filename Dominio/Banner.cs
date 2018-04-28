@@ -24,6 +24,11 @@ namespace Dominio
 
 		// PROPIEDADES ---------------------------------------------------------------------------
 
+		public Banner()
+		{
+
+		}
+
 		public Banner(string pNombre, IFuente pFuente, RangoFecha pRFecha)
 		{
 			iNombre = pNombre;

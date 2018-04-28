@@ -10,7 +10,12 @@ namespace Dominio
 	{
 		private string iTitulo;
 		private string iTexto;
-		private DateTime? iFechaItem;
+		private DateTime iFechaItem;
+
+		public ItemGenerico()
+		{
+
+		}
 
 		public ItemGenerico(string pTitulo, string pTexto, DateTime pFecha)
 		{
@@ -21,6 +26,6 @@ namespace Dominio
 
 		public string Titulo { get { return iTitulo; } set { iTitulo = value; } }
 		public string Texto { get { return iTexto; } set { iTexto = value; } }
-		public DateTime? Fecha { get { return iFechaItem; } set { iFechaItem = value; } }
+		public DateTime Fecha { get { return iFechaItem; } set { iFechaItem = value; } }
 	}
 }
