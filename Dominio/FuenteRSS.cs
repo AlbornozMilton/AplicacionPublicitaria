@@ -7,7 +7,7 @@ using Dominio.RSS;
 
 namespace Dominio
 {
-    public class FuenteRSS: Fuente, IFuente
+    public class FuenteRSS: Fuente
     {
 		private IRssReader ReaderRss { get; }
 		//private string Uri;

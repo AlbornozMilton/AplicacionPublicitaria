@@ -2,7 +2,7 @@
 
 namespace Dominio.RSS
 {
-	public class RssItem:IItem
+	public class RssItem : IItem
 	{
 		/// <summary>
 		/// Título del ítem.
