@@ -60,6 +60,7 @@
     <Compile Include="DAL\EntityFramework\Mapping\FuenteMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\ItemMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoHorarioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\TextoFijoMap.cs" />
