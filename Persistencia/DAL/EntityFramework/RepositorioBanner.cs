@@ -14,6 +14,11 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
+		public void AgregarBanner(Banner pBanner)
+		{
+
+		}
+
 		public List<Banner> BannersDelDia(DateTime pFecha)
 		{
 			// control fecha

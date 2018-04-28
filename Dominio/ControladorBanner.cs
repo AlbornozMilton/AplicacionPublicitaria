@@ -43,7 +43,23 @@ namespace Dominio
 
 		public void AgregarBanner()
 		{
+			RangoHorario horario = new RangoHorario(new TimeSpan(4, 0, 0), new TimeSpan(4, 10, 0));
+			RangoFecha rangoFecha = new RangoFecha(DateTime.Now.Date, DateTime.Now.Date.AddDays(1),
+				new List<Dia>() { new Dia("Lunes") }, new List<RangoHorario>() { horario});
 
+			IItem item = new ItemGenerico("Titulo Empresa",
+				"Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313"
+				, DateTime.Now);
+
+			List<IItem> items = new List<IItem>() {item};
+
+			IFuente fuente = new TextoFijo("Taller Default",items);
+
+			Banner BannerLogic = new Banner("Empresa Taller de Prog",fuente,rangoFecha);
+
+			Persistencia.Dominio.Banner perBanner = Mapper.Map<Banner,Persistencia.Dominio.Banner>(BannerLogic);
+
+			iUOfW.RepositorioBanner.AgregarBanner(perBanner);
 		}
 	}
 }

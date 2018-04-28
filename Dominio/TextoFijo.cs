@@ -8,8 +8,9 @@ namespace Dominio
 {
 	class TextoFijo : Fuente
 	{
-		public TextoFijo(string pNombreFuente) :base(pNombreFuente,TipoFuente.TextoFijo)
+		public TextoFijo(string pNombreFuente, List<IItem> pItems) :base(pNombreFuente,TipoFuente.TextoFijo)
 		{
+			base.Items = pItems;
 		}
 
 		public void AgregarItem(string pTitulo,string pTexto, DateTime pFecha)
