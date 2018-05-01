@@ -8,20 +8,26 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.EntityFramework.Mapping
 {
-	class FuenteMap : EntityTypeConfiguration<Fuente>
+	class ItemMap : EntityTypeConfiguration<Item>
 	{
-		public FuenteMap()
+		/// <summary>
+		/// Configuraciones correspondientes a los atributos de Campania
+		/// </summary>
+		public ItemMap()
 		{
-			this.Property(pCamp => pCamp.FuenteId)
+			this.Property(i => i.ItemId)
 				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-			//this.Property(pCamp => pCamp.NombreFuente)
-			//	.IsRequired();
-
-			this.Property(pCamp => pCamp.TipoFuente)
+			this.Property(i => i.Titulo)
 				.IsRequired();
 
+			this.Property(i => i.Texto)
+				.IsRequired();
 
+			//Establece la relacio muchos a 1 con Fuente.
+			this.HasRequired(i => i.Fuente)
+				.WithMany(f => f.Items);
 		}
+
 	}
 }

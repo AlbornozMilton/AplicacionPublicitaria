@@ -12,11 +12,11 @@ namespace Persistencia.DAL.EntityFramework.Mapping
     {
 		public TextoFijoMap()
 		{
-			this.Property(pCamp => pCamp.Nombre)
-				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+			//this.Property(pCamp => pCamp.Nombre)
+			//	.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-			//this.Property(pCamp => pCamp.Texto)
-			//	.IsRequired();
+			this.Property(t => t.Nombre)
+				.IsRequired();
 		}
     }
 }

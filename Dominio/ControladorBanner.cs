@@ -10,8 +10,8 @@ namespace Dominio
     public class ControladorBanner
     {
 		private List<Banner> BannersDelDia = new List<Banner>();
-		private Banner BannerActual { get; }
-		private Banner BannerProximo { get; }
+		public Banner BannerActual { get; private set; }
+		public Banner BannerProximo { get; private set; }
 
 		
 		public void GenerarBannerDelDia()
@@ -31,9 +31,10 @@ namespace Dominio
 
 		// para cada fin de banner, actualizar bd con sus items
 
+		// formatear texto devolver
 		public string TextoDeFuenteActual()
 		{
-			return "Texto de pruebaa";
+			return "Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313";
 		}
 	}
 }
