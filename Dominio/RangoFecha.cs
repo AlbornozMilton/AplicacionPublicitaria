@@ -104,9 +104,8 @@ namespace Dominio
             this.Horarios = new List<RangoHorario>();
             this.Horarios.Add(pRangoH);
             return this;
-
-
         }
+        
 
         //public void AgregarDia(DateTime pDia)
         //{

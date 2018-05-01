@@ -73,10 +73,10 @@
             // 
             // btn_EliminarCampania
             // 
-            this.btn_EliminarCampania.Image = global::UI.Properties.Resources.btn_Cerrar;
+            this.btn_EliminarCampania.Image = global::UI.Properties.Resources.btn_Borrar;
             this.btn_EliminarCampania.Location = new System.Drawing.Point(237, 20);
             this.btn_EliminarCampania.Name = "btn_EliminarCampania";
-            this.btn_EliminarCampania.Size = new System.Drawing.Size(51, 50);
+            this.btn_EliminarCampania.Size = new System.Drawing.Size(50, 50);
             this.btn_EliminarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btn_EliminarCampania.TabIndex = 11;
             this.btn_EliminarCampania.TabStop = false;

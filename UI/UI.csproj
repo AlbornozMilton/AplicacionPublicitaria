@@ -221,5 +221,23 @@
   <ItemGroup>
     <None Include="Resources\Info.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Symbol-Check_49258.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PorDefecto.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Informacion.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
