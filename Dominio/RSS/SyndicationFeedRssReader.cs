@@ -36,10 +36,10 @@ namespace Dominio.RSS
 			{
 				mRssItems.Add(new RssItem
 				{
-					Title = bItem.Title.Text,
-					Description = bItem.Summary.Text,
+					Titulo = bItem.Title.Text,
+					Texto = bItem.Summary.Text,
 					Url = bItem.Links[0].Uri, // Siempre obtengo la primera URL, por más que haya más de una.
-					PublishingDate = bItem.PublishDate.DateTime
+					Fecha = bItem.PublishDate.DateTime
 				});
 			}
 
