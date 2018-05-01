@@ -13,5 +13,46 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
-    }
+
+		/// <summary>
+		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
+		/// </summary>
+		/// <param name="pBanner"></param>
+		public void AgregarBanner(Banner pBanner)
+		{
+			// tener fuente id
+
+
+			if (pBanner.RangoFechaId == 0) //rango fecha no existente
+			{
+
+			}
+
+
+		}
+
+		public List<Banner> BannersDelDia(DateTime pFecha)
+		{
+			// control fecha
+
+			//capturar las fuentes y armarlas segun su tipo
+
+			//devolver con fechas y horarios
+
+			var result = (from b in iDbContext.Banner
+						  join frss in iDbContext.FuenteRSS on b.FuenteId equals frss.FuenteId
+						  join ftx in iDbContext.TentoFijo on b.FuenteId equals ftx.FuenteId
+						  join r in iDbContext.RangoFecha on b.RangoFechaId equals r.RangoFechaId
+						  where (r.FechaInicio <= pFecha || r.FechaFin >= pFecha)
+						  select b
+					 ).ToList();
+
+			//foreach (var fuente in iDbContext.Banner)
+			//{
+			//	if
+			//}
+			return result;
+		}
+
+	}
 }

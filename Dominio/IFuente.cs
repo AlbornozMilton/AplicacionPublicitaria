@@ -10,5 +10,6 @@ namespace Dominio
 	{
 		string NombreFuente { get; set; }
 		TipoFuente TipoFuente { get; set; }
+		List<IItem> Items { get; set; }
     }
 }

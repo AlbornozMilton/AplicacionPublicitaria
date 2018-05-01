@@ -21,7 +21,8 @@ namespace Dominio
         private int iCodRangoFecha;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
-        private List<Dia> iListaDia;
+		//private List<Dia> iListaDia;
+		private string iDias;
         private List<RangoHorario> iRangoHorario;
         private List<Banner> iListaBanners;
         private List<Campania> iListaCampanias;
@@ -31,12 +32,13 @@ namespace Dominio
         {
 
         }
-        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, List<Dia>pListDias, List<RangoHorario>pHorarios)
+        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, string pDias, List<RangoHorario>pHorarios)
         { 
             //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
-            this.iListaDia = pListDias;
+			//this.iListaDia = pListDias;
+			this.iDias = pDias;
             this.iRangoHorario = pHorarios;
         }
         /// <summary>
@@ -47,7 +49,7 @@ namespace Dominio
         {
             this.iFechaInicio = DateTime.Today.Date;
             this.iFechaFin = DateTime.Today.Date;
-            this.iListaDia = null;
+            //this.iListaDia = null;
             this.iRangoHorario = new List<RangoHorario>();
             iRangoHorario.Add(pRangoH);
         }
@@ -71,13 +73,19 @@ namespace Dominio
             private set { this.iFechaFin = value; }
         }
 
-        public List<Dia> Dias
-        {
-            get { return this.iListaDia; }
-            private set { this.iListaDia = value; }
-        }
+		//public List<Dia> Dias
+		//{
+		//    get { return this.iListaDia; }
+		//    private set { this.iListaDia = value; }
+		//}
 
-        public List<RangoHorario> Horarios
+		public string Dias
+		{
+			get { return this.iDias; }
+			private set { this.iDias = value; }
+		}
+
+		public List<RangoHorario> Horarios
         {
             get { return this.iRangoHorario; }
             private set { this.iRangoHorario = value; }

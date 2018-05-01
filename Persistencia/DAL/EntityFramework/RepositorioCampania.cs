@@ -21,14 +21,15 @@ namespace Persistencia.DAL.EntityFramework
 
         public override IEnumerable<Campania> GetAll()
         {
-            return (iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Dias").Include("RangoFecha.Horarios")).ToList();
-        }
+            return (iDbContext.Campania.Include("Imagenes").Include("RangoFecha").Include("RangoFecha.Horarios")).ToList();/*.Dias*/
+
+		}
 
         public IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia)
         {
-            var campanias = from camp in (this.iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Horarios")).Include("RangoFecha.Dias")
-                            where (pDia >= camp.RangoFecha.FechaInicio && pDia <= camp.RangoFecha.FechaFin && 
-                                  (camp.RangoFecha.Dias.Where(d => d.Nombre == pDia.DayOfWeek.ToString())).Count() != 0)
+            var campanias = from camp in (this.iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Horarios")).Include("RangoFecha")/*.Dias*/
+							where (pDia >= camp.RangoFecha.FechaInicio && pDia <= camp.RangoFecha.FechaFin )
+							//&& (camp.RangoFecha.Dias.Where(d => d.Nombre == pDia.DayOfWeek.ToString())).Count() != 0)
                             select camp;
             return campanias.ToList();
         }

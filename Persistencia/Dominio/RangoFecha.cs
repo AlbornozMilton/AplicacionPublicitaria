@@ -14,7 +14,9 @@ namespace Persistencia.Dominio
 
         public DateTime FechaFin { get; set; }
 
-        public virtual  List<Dia> Dias { get; set; }
+		//public virtual  List<Dia> Dias { get; set; }
+
+		public virtual  string Dias { get; set; }
 
         public virtual List<Banner> Banners { get; set; }
 

@@ -20,10 +20,17 @@ namespace Dominio.AutoMapper
                 cfg.CreateMap<RangoFecha, pers.RangoFecha>().ReverseMap();
                 cfg.CreateMap<RangoHorario, pers.RangoHorario>().ReverseMap();
                 cfg.CreateMap<Dia, pers.Dia>().ReverseMap();
-                cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
-				cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
+                cfg.CreateMap<Banner, pers.Banner>().ReverseMap();
+
+				cfg.CreateMap<IItem, pers.Item>().ReverseMap();
+				//cfg.CreateMap<ItemGenerico, pers.Item>().ReverseMap();
+				//cfg.CreateMap<RSS.RssItem, pers.Item>().ReverseMap();
+
 				cfg.CreateMap<TipoFuente, pers.TipoFuente>().ReverseMap();
 
+				cfg.CreateMap<IFuente, pers.Fuente>().ReverseMap();
+				//cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
+				//cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
 				//cfg.CreateMap<, pers.Domicilio>().ReverseMap();
 
 				//cfg.CreateMap<Ciudad, pers.Ciudad>().ReverseMap();

@@ -8,8 +8,8 @@ namespace Dominio
 {
 	public interface IItem
 	{
-		string getTitulo { get; set; }
-		string getTexto { get; set; }
-		DateTime? getFecha { get; set; }
+		string Titulo { get; set; }
+		string Texto { get; set; }
+		DateTime Fecha { get; set; }
 	}
 }
