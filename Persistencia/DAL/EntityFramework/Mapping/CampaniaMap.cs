@@ -25,9 +25,9 @@ namespace Persistencia.DAL.EntityFramework.Mapping
                 .IsRequired();
 
             //Establece la relacio muchos a 1 con RangoFecha.
-            this.HasRequired(pCamp => pCamp.RangoFecha)
-                .WithMany(r => r.Campanias);
+            ////    this.HasRequired(pCamp => pCamp.RangoFecha)
+            ////        .WithMany(r => r.Campanias);
         }
-
+        
     }
 }
