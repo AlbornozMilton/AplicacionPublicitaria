@@ -10,10 +10,19 @@ namespace Dominio
     {
         private int iIdCampania;
         private string iNombre;
-        private float iIntervaloTiempo;
+        private int iIntervaloTiempo;
 
         private List<Imagen> iListaImagen;
+        private IEnumerator<Imagen> iEnumeradorListaImg;
         private RangoFecha iRangoFecha;
+
+        /// <summary>
+        /// Para el Mapper
+        /// </summary>
+        public Campania()
+        {
+
+        }
 
         public Campania(string pNombre, int pIntTiempo, RangoFecha pRangoFecha, List<Imagen> pImagenes)
         {
@@ -21,7 +30,8 @@ namespace Dominio
             iIntervaloTiempo = pIntTiempo;
             iRangoFecha = pRangoFecha;
             this.iListaImagen = new List<Imagen>();
-            iListaImagen = pImagenes;
+            this.iListaImagen = pImagenes;
+            this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
         }
 
         public int CampaniaId
@@ -34,7 +44,7 @@ namespace Dominio
             get { return this.iNombre; }
             private set { this.iNombre = value; }
         }
-        public float IntervaloTiempo
+        public int IntervaloTiempo
         {
             get { return this.iIntervaloTiempo; }
             private set { this.iIntervaloTiempo = value; }
@@ -49,7 +59,28 @@ namespace Dominio
         public List<Imagen> Imagenes
         {
             get { return this.iListaImagen; }
-            private set { this.iListaImagen = value; }
+            private set
+            {   this.iListaImagen = value;
+                this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
+            }
+        }
+
+        /// Devuelve la siguiente imagen a mostrar (de forma cíclica)
+        
+        public Imagen SiguienteImagen()
+        {
+            Imagen imagenSiguiente;
+            if (this.iEnumeradorListaImg.MoveNext())
+            {
+                imagenSiguiente = this.iEnumeradorListaImg.Current;
+            }
+            else
+            {
+                this.iEnumeradorListaImg.Reset();
+                this.iEnumeradorListaImg.MoveNext();
+                imagenSiguiente = this.iEnumeradorListaImg.Current;
+            }
+            return imagenSiguiente;
         }
     }
 }

@@ -6,32 +6,15 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class TextoFijo : IFuente
-    {
-        private string iTextoPred;
-        private string iNombreFuente;
-        private string iDetalles;
+	class TextoFijo : Fuente
+	{
+		public TextoFijo(string pNombreFuente) :base(pNombreFuente,TipoFuente.TextoFijo)
+		{
+		}
 
-        public TextoFijo(string pText, string pNombre, string pDetalle)
-        {
-            this.iTextoPred = pText;
-            this.iNombreFuente = pNombre;
-            this.iDetalles = pDetalle;
-        }
-
-        public string GetDetalles()
-        {
-            return this.iDetalles;
-        }
-
-        public string GetNombreFuente()
-        {
-            return this.iNombreFuente;
-        }
-
-        public string GetTexto()
-        {
-            return this.iTextoPred;
-        }
-    }
+		public void AgregarItem(string pTitulo,string pTexto, DateTime pFecha)
+		{
+			base.Items.Add(new ItemGenerico(pTitulo, pTexto, pFecha));
+		}
+	}
 }

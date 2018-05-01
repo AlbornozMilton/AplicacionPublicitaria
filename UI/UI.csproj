@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +57,27 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.ServiceLocation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgregarCampaña.cs">
@@ -65,6 +92,19 @@
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </Compile>
+    <Compile Include="IoCContainerLocator.cs" />
+    <Compile Include="ItemsFuentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemsFuentes.Designer.cs">
+      <DependentUpon>ItemsFuentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaOperativa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,11 +113,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VentanaEmergente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaEmergente.Designer.cs">
+      <DependentUpon>VentanaEmergente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AgregarBanner.resx">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCampaña.resx">
       <DependentUpon>AgregarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsFuentes.resx">
+      <DependentUpon>ItemsFuentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaOperativa.resx">
       <DependentUpon>PantallaOperativa.cs</DependentUpon>
@@ -92,6 +144,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VentanaEmergente.resx">
+      <DependentUpon>VentanaEmergente.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="log4net.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,18 +158,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Unity.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Adelante.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FondoVentanas.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{f503976a-7726-4687-9916-c940c48a0fb6}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\btn_Agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Adelante.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_AgregarImagen.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Atras.png" />
@@ -125,13 +195,13 @@
     <None Include="Resources\btn_Cerrar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Editar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_AgregarImagen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\btn_Configurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Confirmar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Editar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_Imagenes.png" />
@@ -143,17 +213,31 @@
     <None Include="Resources\btn_Reproducir.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btn_Confirmar.png" />
+    <None Include="Resources\Ok.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{f503976a-7726-4687-9916-c940c48a0fb6}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
-      <Project>{09EBC083-9DA4-4190-B90A-95B70CAD7F49}</Project>
-      <Name>Persistencia</Name>
-    </ProjectReference>
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Symbol-Check_49258.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PorDefecto.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Informacion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

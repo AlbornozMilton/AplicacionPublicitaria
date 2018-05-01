@@ -3,35 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio.RSS;
 
 namespace Dominio
 {
-    public class FuenteRSS: IFuente
+    public class FuenteRSS: Fuente, IFuente
     {
-        private string iNombreFuente;
-        private string iTexto;
-        private string iDetalles;
-        private string iURL;
-
-        //obtener pTexto desde el RSS
-        public FuenteRSS(string pTexto, string pNombreFuente)// : base(pTexto)
-        {
-            this.iNombreFuente = pNombreFuente;
+		private IRssReader ReaderRss { get; }
+		//private string Uri;
+		/// <summary>
+		/// pReader ya resuelto. Guarda Uri. Hacer try/catch
+		/// </summary>
+		public FuenteRSS(string pUri, IRssReader pReader) : base(pUri, TipoFuente.RSS)
+		{
+			ReaderRss = pReader;
+			//Uri = pUri;
+			ObtenerItems();
         }
 
-        public string GetTexto()
-        {
-            return this.iTexto;
-        }
-        public string GetNombreFuente()
-        {
-            return this.iNombreFuente;
-        }
+		public void ReLoadItems()
+		{
+			base.Items.Clear();
+			ObtenerItems();
+		}
 
-        public string GetDetalles()
-        {
-            return this.iDetalles;
-        }
-
-    }
+		private void ObtenerItems()
+		{
+			foreach (var item in ReaderRss.Read(base.NombreFuente))
+			{
+				base.Items.Add(item);
+			}
+		}
+	}
 }

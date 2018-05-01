@@ -21,19 +21,35 @@ namespace Dominio
         private int iCodRangoFecha;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
-        private List<string> iListaDia;
+        private List<Dia> iListaDia;
         private List<RangoHorario> iRangoHorario;
         private List<Banner> iListaBanners;
         private List<Campania> iListaCampanias;
 
         //CONSTRUCTOR
-        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, List<string>pListDias, List<RangoHorario>pHorarios)
+        public RangoFecha()
+        {
+
+        }
+        public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, List<Dia>pListDias, List<RangoHorario>pHorarios)
         { 
             //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
             this.iListaDia = pListDias;
             this.iRangoHorario = pHorarios;
+        }
+        /// <summary>
+        /// Metodo para devolver las campañas actual y siguiente con el unico horario necesario
+        /// </summary>
+        /// <param name="pRangoH"></param>
+        public RangoFecha(RangoHorario pRangoH)
+        {
+            this.iFechaInicio = DateTime.Today.Date;
+            this.iFechaFin = DateTime.Today.Date;
+            this.iListaDia = null;
+            this.iRangoHorario = new List<RangoHorario>();
+            iRangoHorario.Add(pRangoH);
         }
 
         //PROPIEDADES----------------------------------------------------------
@@ -55,7 +71,7 @@ namespace Dominio
             private set { this.iFechaFin = value; }
         }
 
-        public List<string> Dias
+        public List<Dia> Dias
         {
             get { return this.iListaDia; }
             private set { this.iListaDia = value; }
@@ -83,6 +99,13 @@ namespace Dominio
         {
             return String.Format("{0}/{1}/{2}",pFecha.Day,pFecha.Month,pFecha.Day);
         }
+        public RangoFecha AgregarHorario(RangoHorario pRangoH)
+        {
+            this.Horarios = new List<RangoHorario>();
+            this.Horarios.Add(pRangoH);
+            return this;
+        }
+        
 
         //public void AgregarDia(DateTime pDia)
         //{

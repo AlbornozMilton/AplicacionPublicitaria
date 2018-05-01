@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    interface IFuente
-    {
-        string GetTexto();
-        string GetNombreFuente();
-        string GetDetalles();
-
+	public interface IFuente
+	{
+		string NombreFuente { get; set; }
+		TipoFuente TipoFuente { get; set; }
     }
 }
