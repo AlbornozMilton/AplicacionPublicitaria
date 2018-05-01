@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using Dominio.RSS;
 
 namespace UI
 {
@@ -90,12 +91,24 @@ namespace UI
 			//obtener banner del dia
 			iControladorBanner.GenerarBannerDelDia();
 
-			//concatenacion de items fuente panel_ContendorBanner.Location.X 
+			//////---------------De prueba----------------
 			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width+1,TextoBanner.Location.Y);
 			posx = TextoBanner.Location.X;
 			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual();
+
+			IRssReader mRssReader = new RawXmlRssReader();
+			var items = mRssReader.Read("http://feeds.bbci.co.uk/mundo/rss.xml");
+
+			foreach (var itemReader in items)
+			{
+				TextoBanner.Text += itemReader.Texto + "//";
+			}
+
 			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
 			//posx = TextoBanner.Location.Y;
+			//////---------------De prueba----------------
+
+
 			this.ConfigurarTimers();
             this.ObtenerPrimerCampania();
         }

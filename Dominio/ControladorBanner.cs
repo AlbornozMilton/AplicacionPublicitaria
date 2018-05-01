@@ -9,15 +9,15 @@ using AutoMapper;
 
 namespace Dominio
 {
-    public class ControladorBanner
-    {
+	public class ControladorBanner
+	{
 		UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext());
 
 		private List<Banner> BannersDelDia = new List<Banner>();
 		public Banner BannerActual { get; private set; }
 		public Banner BannerProximo { get; private set; }
 
-		
+
 		public void GenerarBannerDelDia()
 		{
 			//obtner banner del dia desde BD
@@ -44,22 +44,37 @@ namespace Dominio
 		public void AgregarBanner()
 		{
 			RangoHorario horario = new RangoHorario(new TimeSpan(4, 0, 0), new TimeSpan(4, 10, 0));
+			////controladorFechas.evaluar(rangoHorario); //devuelte un RangoHorario o 0
+
 			RangoFecha rangoFecha = new RangoFecha(DateTime.Now.Date, DateTime.Now.Date.AddDays(1),
-				"lunes-martes-biernes" , new List<RangoHorario>() { horario });
+				"lunes-martes-biernes", new List<RangoHorario>() { horario });
+
+			//controladorFechas.evaluar(rangoFecha); //devuelte un RangoFechaId o 0
 
 			ItemGenerico item = new ItemGenerico("Titulo Empresa",
 				"Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313"
 				, DateTime.Now);
 
-			List<IItem> items = new List<IItem>() {item};
+			List<IItem> items = new List<IItem>() { item };
 
-			IFuente fuente = new TextoFijo("Taller Default",items);
+			//buscar en BD fuentes exitente e instanciar fuente con el id
+			IFuente fuente = new TextoFijo("Taller Default", items);
 
-			Banner BannerLogic = new Banner("Empresa Taller de Prog",fuente,rangoFecha);
+			Banner BannerLogic = new Banner("Empresa Taller de Prog", fuente, rangoFecha);
 
-			Persistencia.Dominio.Banner perBanner = Mapper.Map<Banner,Persistencia.Dominio.Banner>(BannerLogic);
+			Persistencia.Dominio.Banner perBanner = Mapper.Map<Banner, Persistencia.Dominio.Banner>(BannerLogic);
 
 			iUOfW.RepositorioBanner.AgregarBanner(perBanner);
+		}
+
+		public List<Fuente> ObtenerFuentes()
+		{
+			return null;
+		}
+
+		public void ObtenerItemsFuenteRSS()
+		{
+
 		}
 	}
 }

@@ -92,7 +92,6 @@
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </Compile>
-    <Compile Include="IoCContainerLocator.cs" />
     <Compile Include="ItemsFuentes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,7 +157,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Unity.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
