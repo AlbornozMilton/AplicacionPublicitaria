@@ -98,7 +98,7 @@ namespace Dominio
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Parque Ciudad con los pi\\20151003_165506.jpg");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\MEGA\\TALLER DE PROGRAMACION\\Proyecto\\Aplicacion CSharp\\AplicacionPublicitaria\\AplicacionPublicitaria\\UI\\Resources\\PorDefecto.gif");
             listaImagenes.Add(imagenPublicidad);
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
         }
@@ -128,6 +128,69 @@ namespace Dominio
                 campaniaSiguiente = GenerarCampaniaNula(pHoraFin);
             }
         return campaniaSiguiente;
+        }
+
+        public Boolean ControlColisionHorarios(List<RangoHorario> pHorarios, TimeSpan pHoraDesde, TimeSpan pHoraHasta)
+        {
+            foreach (var rangHor in pHorarios)
+            {
+                if ((pHoraDesde >= rangHor.HoraInicio && pHoraDesde <= rangHor.HoraFin) || (pHoraHasta <= rangHor.HoraFin && pHoraHasta > rangHor.HoraInicio))
+                {
+                    throw new Exception("El rango ingresado se superpone con otro ya cargado");
+                }
+            }
+            return true;
+        }
+
+        public List<string> DiasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            List<string> listaDias = new List<string>();
+            TimeSpan diferencia = pFechaHasta - pFechaDesde;
+            for (int i = 0; i <= (diferencia.Days); i++)
+            {
+                DateTime nuevaFecha = pFechaDesde.AddDays(i);
+                if (!listaDias.Contains(nuevaFecha.DayOfWeek.ToString()))
+                {
+                    listaDias.Add(nuevaFecha.DayOfWeek.ToString());
+                }
+            }
+            return listaDias;
+        }
+        public Boolean ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
+        {
+            if (pNombre == "")
+            {
+                throw new Exception("Se debe ingresar un Nombre para la campaña");
+            }
+            else
+            {
+                if (pDias == 0)
+                {
+                    throw new Exception("Debe seleccionar los dias");
+                }
+                else
+                {
+                    if (pHorarios == 0)
+                    {
+                        throw new Exception("Debe ingresar como mínimo un rango horario");
+                    }
+                    else
+                    {
+                        if (pImagenes == 0)
+                        {
+                            throw new Exception("Se deben insertar las imagenes a mostrar");
+                        }
+                        else
+                        {
+                            if (pIntTiempo == 0)
+                            {
+                                throw new Exception("Debe seleccionar un intervalo de tiempo");
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }   
 }
