@@ -102,6 +102,7 @@ namespace UI
 
 		private void timer_TextoDeslizable_Tick(object sender, EventArgs e)
 		{
+			//TODO: posx configurable segun cantidad de texto y tiempo
 			posx -= 3;
 			if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			{

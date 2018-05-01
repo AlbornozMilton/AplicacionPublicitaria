@@ -24,7 +24,7 @@ namespace Dominio
         /// <param name="pImagenes"></param>
         public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, List<Dia> pListDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
         {
-            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pListDias,pHorarios);
+            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, /*pListDias*/"lunes",pHorarios);
             var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pIntTiempo,pRangoFecha,pImagenes));
             iUOfW.RepositorioCampania.Add(MapCamp);
             iUOfW.Complete();
@@ -98,9 +98,9 @@ namespace Dominio
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\MEGA\\TALLER DE PROGRAMACION\\Proyecto\\Aplicacion CSharp\\AplicacionPublicitaria\\AplicacionPublicitaria\\UI\\Resources\\PorDefecto.gif");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Imagenes\\Espiritu del Bosque.jpg");
             listaImagenes.Add(imagenPublicidad);
-            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, listaDias , listaHorarios),listaImagenes);
+            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, /*listaDias*/"luenes" , listaHorarios),listaImagenes);
         }
 
         /// <summary>

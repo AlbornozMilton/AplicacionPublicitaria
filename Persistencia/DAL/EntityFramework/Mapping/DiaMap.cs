@@ -21,8 +21,8 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(d => d.Nombre)
                 .IsRequired();
 
-            this.HasMany(d => d.RangosFechas)
-                .WithMany(f => f.Dias);
+            //this.HasMany(d => d.RangosFechas)
+            //    .WithMany(f => f.Dias);
 
         }
     }
