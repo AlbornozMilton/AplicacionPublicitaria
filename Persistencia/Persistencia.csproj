@@ -61,6 +61,7 @@
     <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\ItemMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mapping\ItemRssMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoFechaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\RangoHorarioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\TextoFijoMap.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Dominio\FuenteRSS.cs" />
     <Compile Include="Dominio\Imagen.cs" />
     <Compile Include="Dominio\Item.cs" />
+    <Compile Include="Dominio\ItemRss.cs" />
     <Compile Include="Dominio\RangoFecha.cs" />
     <Compile Include="Dominio\RangoHorario.cs" />
     <Compile Include="Dominio\TextoFijo.cs" />

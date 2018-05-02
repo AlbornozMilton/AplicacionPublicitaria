@@ -94,21 +94,22 @@ namespace UI
 			//////---------------De prueba----------------
 			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width+1,TextoBanner.Location.Y);
 			posx = TextoBanner.Location.X;
-			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual();
+			//TextoBanner.Text = iControladorBanner.TextoDeFuenteActual();
 
 			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read("http://feeds.bbci.co.uk/mundo/rss.xml");
+			var items = mRssReader.Read("http://feeds.bbci.co.uk/mundo/rss.xml").ToList();
 
 			foreach (var itemReader in items)
 			{
 				TextoBanner.Text += itemReader.Texto + "//";
 			}
+			TextoBanner.Text = items[0].Fecha + " (" + (items[0].Url) + ") " + items[0].Titulo + ": " + items[0].Texto;
 
 			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
 			//posx = TextoBanner.Location.Y;
 			//////---------------De prueba----------------
 
-
+			//configurarTimersbanner(tiempo en pantalla, tiempo velocidad de texto)
 			this.ConfigurarTimers();
             this.ObtenerPrimerCampania();
         }

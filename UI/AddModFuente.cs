@@ -10,16 +10,26 @@ using System.Windows.Forms;
 
 namespace UI
 {
-	public partial class ItemsFuentes : Form
+	public partial class AddModFuente : Form
 	{
-		public ItemsFuentes()
+		public AddModFuente()
 		{
 			InitializeComponent();
 		}
 
-		public ItemsFuentes(string pTitulo)
+		private void AddModFuente_Load(object sender, EventArgs e)
 		{
-			InitializeComponent();
+
+		}
+
+		private void btnAceptar_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnCancelar_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

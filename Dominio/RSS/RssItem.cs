@@ -7,12 +7,12 @@ namespace Dominio.RSS
 		/// <summary>
 		/// Título del ítem.
 		/// </summary>
-		public String Title { get; set; }
+		public String Titulo { get; set; }
 
 		/// <summary>
 		/// Descripción acerca del ítem.
 		/// </summary>
-		public String Description { get; set; }
+		public String Texto { get; set; }
 
 		/// <summary>
 		/// URL del ítem.
@@ -22,10 +22,10 @@ namespace Dominio.RSS
 		/// <summary>
 		/// Fecha de publicación.
 		/// </summary>
-		public DateTime PublishingDate { get; set; }
+		public DateTime Fecha { get; set; }
 
-		public string Titulo { get { return Title; } set { Title = value; } }
-		public string Texto { get { return Description; } set { Description = value; } }
-		public DateTime Fecha { get { return PublishingDate; } set { PublishingDate = value; } }
+		//public string Titulo { get { return Title; } set { Title = value; } }
+		//public string Texto { get { return Description; } set { Description = value; } }
+		//public DateTime Fecha { get { return PublishingDate; } set { PublishingDate = value; } }
 	}
 }

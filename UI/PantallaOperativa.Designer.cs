@@ -38,6 +38,7 @@
 			this.TextoBanner = new System.Windows.Forms.Label();
 			this.timer_TextoDeslizable = new System.Windows.Forms.Timer(this.components);
 			this.timer_Banner = new System.Windows.Forms.Timer(this.components);
+			this.bwBannerControl = new System.ComponentModel.BackgroundWorker();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).BeginInit();
 			this.panel_ContendorBanner.SuspendLayout();
 			this.panel_Banner.SuspendLayout();
@@ -92,10 +93,10 @@
 			// 
 			this.TextoBanner.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.TextoBanner.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TextoBanner.Location = new System.Drawing.Point(188, 8);
+			this.TextoBanner.Location = new System.Drawing.Point(188, 2);
 			this.TextoBanner.Margin = new System.Windows.Forms.Padding(0);
 			this.TextoBanner.Name = "TextoBanner";
-			this.TextoBanner.Size = new System.Drawing.Size(10, 21);
+			this.TextoBanner.Size = new System.Drawing.Size(130, 27);
 			this.TextoBanner.TabIndex = 0;
 			this.TextoBanner.Text = "label1";
 			// 
@@ -140,5 +141,6 @@
 		private System.Windows.Forms.Label TextoBanner;
 		private System.Windows.Forms.Timer timer_TextoDeslizable;
 		private System.Windows.Forms.Timer timer_Banner;
+		private System.ComponentModel.BackgroundWorker bwBannerControl;
 	}
 }

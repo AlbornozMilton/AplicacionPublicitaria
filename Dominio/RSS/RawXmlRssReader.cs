@@ -55,10 +55,10 @@ namespace Dominio.RSS
 			{
 				mRssItems.Add(new RssItem
 				{
-					Title = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "title"),
-					Description = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "description"),
+					Titulo = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "title"),
+					Texto = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "description"),
 					Url = new Uri(RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "link")),
-					PublishingDate = RawXmlRssReader.GetXmlNodeValue<DateTime>(bRssXmlItem, "pubDate")
+					Fecha = RawXmlRssReader.GetXmlNodeValue<DateTime>(bRssXmlItem, "pubDate")
 				});
 			}
 

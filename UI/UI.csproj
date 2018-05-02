@@ -80,6 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddModFuente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddModFuente.Designer.cs">
+      <DependentUpon>AddModFuente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fuentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fuentes.Designer.cs">
+      <DependentUpon>Fuentes.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemsFuentes.cs">
       <SubType>Form</SubType>
@@ -118,11 +130,17 @@
     <Compile Include="VentanaEmergente.Designer.cs">
       <DependentUpon>VentanaEmergente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddModFuente.resx">
+      <DependentUpon>AddModFuente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarBanner.resx">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarCampaña.resx">
       <DependentUpon>AgregarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fuentes.resx">
+      <DependentUpon>Fuentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemsFuentes.resx">
       <DependentUpon>ItemsFuentes.cs</DependentUpon>
@@ -148,6 +166,7 @@
     </EmbeddedResource>
     <None Include="log4net.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dominio.IItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
