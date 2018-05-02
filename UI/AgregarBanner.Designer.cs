@@ -59,27 +59,19 @@
 			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
 			this.dGV_horarios = new System.Windows.Forms.DataGridView();
 			this.lbl_nuevaFuente = new System.Windows.Forms.Label();
-			this.btnNuevaFuente = new System.Windows.Forms.PictureBox();
 			this.cbx_FuenteRss = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.lbl_eliminarItem = new System.Windows.Forms.Label();
-			this.btn_eliminarItem = new System.Windows.Forms.PictureBox();
-			this.button3 = new System.Windows.Forms.Button();
-			this.lbl_modItem = new System.Windows.Forms.Label();
+			this.btnFuentes = new System.Windows.Forms.PictureBox();
 			this.groupBox1.SuspendLayout();
 			this.gpb_Horarios.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
 			this.groupBox_items.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -88,7 +80,7 @@
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(13, 9);
+			this.label1.Location = new System.Drawing.Point(13, 23);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(149, 18);
@@ -142,23 +134,27 @@
 			// 
 			// btnAceptar
 			// 
+			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(450, 530);
+			this.btnAceptar.Location = new System.Drawing.Point(451, 470);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 28;
 			this.btnAceptar.Text = "Aceptar";
 			this.btnAceptar.UseVisualStyleBackColor = true;
+			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
 			// 
 			// btnCancelar
 			// 
+			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCancelar.Location = new System.Drawing.Point(549, 530);
+			this.btnCancelar.Location = new System.Drawing.Point(549, 470);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
 			this.btnCancelar.TabIndex = 29;
 			this.btnCancelar.Text = "Cancelar";
 			this.btnCancelar.UseVisualStyleBackColor = true;
+			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
 			// 
 			// groupBox1
 			// 
@@ -354,6 +350,7 @@
 			this.btnAgregarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.btnAgregarHorario.TabIndex = 24;
 			this.btnAgregarHorario.TabStop = false;
+			this.btnAgregarHorario.Click += new System.EventHandler(this.btnAgregarHorario_Click);
 			// 
 			// label5
 			// 
@@ -387,6 +384,7 @@
 			this.btnBorrarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.btnBorrarHorario.TabIndex = 25;
 			this.btnBorrarHorario.TabStop = false;
+			this.btnBorrarHorario.Click += new System.EventHandler(this.btnBorrarHorario_Click);
 			// 
 			// label12
 			// 
@@ -434,27 +432,17 @@
 			// 
 			this.lbl_nuevaFuente.AutoSize = true;
 			this.lbl_nuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_nuevaFuente.Location = new System.Drawing.Point(564, 308);
+			this.lbl_nuevaFuente.Location = new System.Drawing.Point(577, 308);
 			this.lbl_nuevaFuente.Name = "lbl_nuevaFuente";
-			this.lbl_nuevaFuente.Size = new System.Drawing.Size(75, 13);
+			this.lbl_nuevaFuente.Size = new System.Drawing.Size(45, 13);
 			this.lbl_nuevaFuente.TabIndex = 28;
-			this.lbl_nuevaFuente.Text = "Nueva Fuente";
+			this.lbl_nuevaFuente.Text = "Fuentes";
 			this.lbl_nuevaFuente.Visible = false;
-			// 
-			// btnNuevaFuente
-			// 
-			this.btnNuevaFuente.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnNuevaFuente.Location = new System.Drawing.Point(580, 270);
-			this.btnNuevaFuente.Name = "btnNuevaFuente";
-			this.btnNuevaFuente.Size = new System.Drawing.Size(35, 35);
-			this.btnNuevaFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnNuevaFuente.TabIndex = 34;
-			this.btnNuevaFuente.TabStop = false;
 			// 
 			// cbx_FuenteRss
 			// 
 			this.cbx_FuenteRss.FormattingEnabled = true;
-			this.cbx_FuenteRss.Location = new System.Drawing.Point(297, 288);
+			this.cbx_FuenteRss.Location = new System.Drawing.Point(305, 286);
 			this.cbx_FuenteRss.Name = "cbx_FuenteRss";
 			this.cbx_FuenteRss.Size = new System.Drawing.Size(261, 21);
 			this.cbx_FuenteRss.TabIndex = 34;
@@ -465,7 +453,7 @@
 			this.label3.BackColor = System.Drawing.Color.Transparent;
 			this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.Color.White;
-			this.label3.Location = new System.Drawing.Point(231, 287);
+			this.label3.Location = new System.Drawing.Point(239, 287);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(59, 18);
@@ -476,8 +464,10 @@
 			// 
 			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dGV_itemsFuente.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
+			this.dGV_itemsFuente.RowHeadersVisible = false;
 			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
 			this.dGV_itemsFuente.TabIndex = 0;
 			// 
@@ -490,69 +480,18 @@
 			this.groupBox_items.Size = new System.Drawing.Size(614, 128);
 			this.groupBox_items.TabIndex = 36;
 			this.groupBox_items.TabStop = false;
-			this.groupBox_items.Text = "Items";
+			this.groupBox_items.Text = "Últimos Items";
 			// 
-			// label2
+			// btnFuentes
 			// 
-			this.label2.AutoSize = true;
-			this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.label2.Location = new System.Drawing.Point(16, 499);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(62, 13);
-			this.label2.TabIndex = 37;
-			this.label2.Text = "Nuevo Item";
-			this.label2.Visible = false;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.pictureBox1.Location = new System.Drawing.Point(32, 461);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 38;
-			this.pictureBox1.TabStop = false;
-			// 
-			// lbl_eliminarItem
-			// 
-			this.lbl_eliminarItem.AutoSize = true;
-			this.lbl_eliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_eliminarItem.Location = new System.Drawing.Point(195, 499);
-			this.lbl_eliminarItem.Name = "lbl_eliminarItem";
-			this.lbl_eliminarItem.Size = new System.Drawing.Size(66, 13);
-			this.lbl_eliminarItem.TabIndex = 40;
-			this.lbl_eliminarItem.Text = "Eliminar Item";
-			this.lbl_eliminarItem.Visible = false;
-			// 
-			// btn_eliminarItem
-			// 
-			this.btn_eliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btn_eliminarItem.Location = new System.Drawing.Point(210, 461);
-			this.btn_eliminarItem.Name = "btn_eliminarItem";
-			this.btn_eliminarItem.Size = new System.Drawing.Size(35, 35);
-			this.btn_eliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btn_eliminarItem.TabIndex = 39;
-			this.btn_eliminarItem.TabStop = false;
-			// 
-			// button3
-			// 
-			this.button3.Image = global::UI.Properties.Resources.btn_Editar;
-			this.button3.Location = new System.Drawing.Point(127, 461);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(35, 35);
-			this.button3.TabIndex = 41;
-			this.button3.UseVisualStyleBackColor = true;
-			// 
-			// lbl_modItem
-			// 
-			this.lbl_modItem.AutoSize = true;
-			this.lbl_modItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_modItem.Location = new System.Drawing.Point(106, 499);
-			this.lbl_modItem.Name = "lbl_modItem";
-			this.lbl_modItem.Size = new System.Drawing.Size(73, 13);
-			this.lbl_modItem.TabIndex = 42;
-			this.lbl_modItem.Text = "Modificar Item";
-			this.lbl_modItem.Visible = false;
+			this.btnFuentes.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnFuentes.Location = new System.Drawing.Point(580, 270);
+			this.btnFuentes.Name = "btnFuentes";
+			this.btnFuentes.Size = new System.Drawing.Size(35, 35);
+			this.btnFuentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnFuentes.TabIndex = 37;
+			this.btnFuentes.TabStop = false;
+			this.btnFuentes.Click += new System.EventHandler(this.btnFuentes_Click);
 			// 
 			// AgregarBanner
 			// 
@@ -560,17 +499,12 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Maroon;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
-			this.ClientSize = new System.Drawing.Size(651, 575);
-			this.Controls.Add(this.lbl_modItem);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.lbl_eliminarItem);
-			this.Controls.Add(this.btn_eliminarItem);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.pictureBox1);
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.ClientSize = new System.Drawing.Size(651, 528);
+			this.Controls.Add(this.btnFuentes);
 			this.Controls.Add(this.groupBox_items);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.lbl_nuevaFuente);
-			this.Controls.Add(this.btnNuevaFuente);
 			this.Controls.Add(this.cbx_FuenteRss);
 			this.Controls.Add(this.gpb_Horarios);
 			this.Controls.Add(this.groupBox1);
@@ -581,9 +515,12 @@
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label1);
+			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "AgregarBanner";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form2";
+			this.Load += new System.EventHandler(this.AgregarBanner_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.gpb_Horarios.ResumeLayout(false);
@@ -591,11 +528,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
 			this.groupBox_items.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -635,15 +570,9 @@
         private System.Windows.Forms.DataGridView dGV_horarios;
         private System.Windows.Forms.ComboBox cbx_FuenteRss;
         private System.Windows.Forms.Label lbl_nuevaFuente;
-        private System.Windows.Forms.PictureBox btnNuevaFuente;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.DataGridView dGV_itemsFuente;
 		private System.Windows.Forms.GroupBox groupBox_items;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.Label lbl_eliminarItem;
-		private System.Windows.Forms.PictureBox btn_eliminarItem;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Label lbl_modItem;
+		private System.Windows.Forms.PictureBox btnFuentes;
 	}
 }

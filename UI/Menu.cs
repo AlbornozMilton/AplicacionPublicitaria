@@ -37,5 +37,25 @@ namespace UI
         {
             new PantallaOperativa().ShowDialog();
         }
-    }
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+			new AgregarBanner().ShowDialog();
+		}
+
+		private void btnEditarBanner_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnEliminarBanner_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnFuentes_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
