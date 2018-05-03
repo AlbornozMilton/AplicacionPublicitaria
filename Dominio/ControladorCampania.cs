@@ -35,6 +35,7 @@ namespace Dominio
         {
             IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
             List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
+            iUOfW.Dispose();
             return listaCampanias;
         }
 
@@ -149,6 +150,13 @@ namespace Dominio
                 }
             }
             return true;
+        }
+
+        public void EliminarCampania(Campania pCampania)
+        {
+            var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(pCampania);
+            iUOfW.RepositorioCampania.Remove(MapCamp);
+            iUOfW.Complete();
         }
     }   
 }

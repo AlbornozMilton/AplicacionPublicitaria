@@ -11,5 +11,7 @@ namespace Persistencia.DAL
         void Complete();
 
         IRepositorioBanner RepositorioBanner { get; }
+        IRepositorioCampania RepositorioCampania { get; }
+
     }
 }

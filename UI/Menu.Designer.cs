@@ -80,6 +80,7 @@
             this.btn_EliminarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btn_EliminarCampania.TabIndex = 11;
             this.btn_EliminarCampania.TabStop = false;
+            this.btn_EliminarCampania.Click += new System.EventHandler(this.btn_EliminarCampania_Click);
             // 
             // btn_EditarCampania
             // 
