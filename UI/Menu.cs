@@ -57,5 +57,10 @@ namespace UI
 		{
 
 		}
-	}
+
+        private void btn_EliminarCampania_Click(object sender, EventArgs e)
+        {
+            new EliminarCampañia().ShowDialog();
+        }
+    }
 }

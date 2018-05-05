@@ -37,8 +37,17 @@ namespace Persistencia.DAL.EntityFramework
             {
                 throw new ArgumentNullException(nameof(pEntity));
             }
-
+            this.Attach(pEntity);
             this.iDbContext.Set<TEntity>().Remove(pEntity);
+        }
+
+
+        private void Attach(TEntity entity)
+        {
+            if ((this.iDbContext.Entry(entity).State) == (EntityState.Detached))
+            {
+                this.iDbContext.Set<TEntity>().Attach(entity);
+            }
         }
 
         public virtual TEntity Get(int pId)
