@@ -32,9 +32,9 @@
 			this.lblFuente = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
 			this.tbxNombreFuente = new System.Windows.Forms.TextBox();
-			this.tbxTipoFuente = new System.Windows.Forms.TextBox();
 			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnAceptar = new System.Windows.Forms.Button();
+			this.cbxTipoFuente = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// lbl_Title
@@ -56,12 +56,12 @@
 			this.lblFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lblFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblFuente.ForeColor = System.Drawing.Color.White;
-			this.lblFuente.Location = new System.Drawing.Point(47, 63);
+			this.lblFuente.Location = new System.Drawing.Point(15, 63);
 			this.lblFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblFuente.Name = "lblFuente";
-			this.lblFuente.Size = new System.Drawing.Size(76, 18);
+			this.lblFuente.Size = new System.Drawing.Size(123, 18);
 			this.lblFuente.TabIndex = 40;
-			this.lblFuente.Text = "lblFuente";
+			this.lblFuente.Text = "Nombre Fuente";
 			// 
 			// lbl_tipoFuente
 			// 
@@ -69,7 +69,7 @@
 			this.lbl_tipoFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_tipoFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_tipoFuente.ForeColor = System.Drawing.Color.White;
-			this.lbl_tipoFuente.Location = new System.Drawing.Point(27, 98);
+			this.lbl_tipoFuente.Location = new System.Drawing.Point(42, 98);
 			this.lbl_tipoFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbl_tipoFuente.Name = "lbl_tipoFuente";
 			this.lbl_tipoFuente.Size = new System.Drawing.Size(96, 18);
@@ -78,18 +78,10 @@
 			// 
 			// tbxNombreFuente
 			// 
-			this.tbxNombreFuente.Location = new System.Drawing.Point(130, 64);
+			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 64);
 			this.tbxNombreFuente.Name = "tbxNombreFuente";
-			this.tbxNombreFuente.Size = new System.Drawing.Size(482, 20);
+			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
 			this.tbxNombreFuente.TabIndex = 41;
-			// 
-			// tbxTipoFuente
-			// 
-			this.tbxTipoFuente.Location = new System.Drawing.Point(130, 99);
-			this.tbxTipoFuente.Name = "tbxTipoFuente";
-			this.tbxTipoFuente.ReadOnly = true;
-			this.tbxTipoFuente.Size = new System.Drawing.Size(100, 20);
-			this.tbxTipoFuente.TabIndex = 42;
 			// 
 			// btnCancelar
 			// 
@@ -115,6 +107,15 @@
 			this.btnAceptar.UseVisualStyleBackColor = true;
 			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
 			// 
+			// cbxTipoFuente
+			// 
+			this.cbxTipoFuente.FormattingEnabled = true;
+			this.cbxTipoFuente.Location = new System.Drawing.Point(145, 95);
+			this.cbxTipoFuente.Name = "cbxTipoFuente";
+			this.cbxTipoFuente.Size = new System.Drawing.Size(136, 21);
+			this.cbxTipoFuente.TabIndex = 45;
+			this.cbxTipoFuente.SelectedIndexChanged += new System.EventHandler(this.cbxTipoFuente_SelectedIndexChanged);
+			// 
 			// AddModFuente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,9 +123,9 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(624, 183);
+			this.Controls.Add(this.cbxTipoFuente);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnAceptar);
-			this.Controls.Add(this.tbxTipoFuente);
 			this.Controls.Add(this.tbxNombreFuente);
 			this.Controls.Add(this.lblFuente);
 			this.Controls.Add(this.lbl_tipoFuente);
@@ -132,6 +133,7 @@
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "AddModFuente";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "AddModFuente";
 			this.Load += new System.EventHandler(this.AddModFuente_Load);
 			this.ResumeLayout(false);
@@ -145,8 +147,8 @@
 		private System.Windows.Forms.Label lblFuente;
 		private System.Windows.Forms.Label lbl_tipoFuente;
 		private System.Windows.Forms.TextBox tbxNombreFuente;
-		private System.Windows.Forms.TextBox tbxTipoFuente;
 		private System.Windows.Forms.Button btnCancelar;
 		private System.Windows.Forms.Button btnAceptar;
+		private System.Windows.Forms.ComboBox cbxTipoFuente;
 	}
 }

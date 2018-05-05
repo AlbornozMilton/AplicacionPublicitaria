@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbl_Title = new System.Windows.Forms.Label();
 			this.lblFuente = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
@@ -111,7 +111,7 @@
 			// 
 			this.btnNuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNuevaFuente.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnNuevaFuente.Location = new System.Drawing.Point(427, 68);
+			this.btnNuevaFuente.Location = new System.Drawing.Point(591, 96);
 			this.btnNuevaFuente.Name = "btnNuevaFuente";
 			this.btnNuevaFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnNuevaFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -130,7 +130,7 @@
 			this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.groupBox_items.Location = new System.Drawing.Point(16, 148);
 			this.groupBox_items.Name = "groupBox_items";
-			this.groupBox_items.Size = new System.Drawing.Size(641, 181);
+			this.groupBox_items.Size = new System.Drawing.Size(808, 229);
 			this.groupBox_items.TabIndex = 39;
 			this.groupBox_items.TabStop = false;
 			this.groupBox_items.Text = "Últimos Items";
@@ -144,21 +144,21 @@
             this.fechaDataGridViewTextBoxColumn,
             this.textoDataGridViewTextBoxColumn});
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
 			this.dGV_itemsFuente.MultiSelect = false;
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
 			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dGV_itemsFuente.RowHeadersVisible = false;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(635, 162);
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(802, 210);
 			this.dGV_itemsFuente.TabIndex = 0;
 			// 
 			// tituloDataGridViewTextBoxColumn
@@ -201,7 +201,7 @@
 			this.lbl_modItem.AutoSize = true;
 			this.lbl_modItem.BackColor = System.Drawing.Color.Maroon;
 			this.lbl_modItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_modItem.Location = new System.Drawing.Point(111, 400);
+			this.lbl_modItem.Location = new System.Drawing.Point(102, 421);
 			this.lbl_modItem.Name = "lbl_modItem";
 			this.lbl_modItem.Size = new System.Drawing.Size(73, 13);
 			this.lbl_modItem.TabIndex = 48;
@@ -212,7 +212,7 @@
 			// 
 			this.ModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
-			this.ModificarItem.Location = new System.Drawing.Point(130, 362);
+			this.ModificarItem.Location = new System.Drawing.Point(121, 383);
 			this.ModificarItem.Name = "ModificarItem";
 			this.ModificarItem.Size = new System.Drawing.Size(35, 35);
 			this.ModificarItem.TabIndex = 47;
@@ -225,7 +225,7 @@
 			this.lbl_eliminarItem.AutoSize = true;
 			this.lbl_eliminarItem.BackColor = System.Drawing.Color.Maroon;
 			this.lbl_eliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_eliminarItem.Location = new System.Drawing.Point(201, 400);
+			this.lbl_eliminarItem.Location = new System.Drawing.Point(192, 421);
 			this.lbl_eliminarItem.Name = "lbl_eliminarItem";
 			this.lbl_eliminarItem.Size = new System.Drawing.Size(66, 13);
 			this.lbl_eliminarItem.TabIndex = 46;
@@ -236,7 +236,7 @@
 			// 
 			this.btn_eliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btn_eliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btn_eliminarItem.Location = new System.Drawing.Point(216, 362);
+			this.btn_eliminarItem.Location = new System.Drawing.Point(207, 383);
 			this.btn_eliminarItem.Name = "btn_eliminarItem";
 			this.btn_eliminarItem.Size = new System.Drawing.Size(35, 35);
 			this.btn_eliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -250,7 +250,7 @@
 			this.lblNuevoItem.AutoSize = true;
 			this.lblNuevoItem.BackColor = System.Drawing.Color.Maroon;
 			this.lblNuevoItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblNuevoItem.Location = new System.Drawing.Point(25, 401);
+			this.lblNuevoItem.Location = new System.Drawing.Point(16, 422);
 			this.lblNuevoItem.Name = "lblNuevoItem";
 			this.lblNuevoItem.Size = new System.Drawing.Size(62, 13);
 			this.lblNuevoItem.TabIndex = 43;
@@ -261,7 +261,7 @@
 			// 
 			this.btnAgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnAgregarItem.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnAgregarItem.Location = new System.Drawing.Point(38, 362);
+			this.btnAgregarItem.Location = new System.Drawing.Point(29, 383);
 			this.btnAgregarItem.Name = "btnAgregarItem";
 			this.btnAgregarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnAgregarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -273,7 +273,7 @@
 			// 
 			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(574, 400);
+			this.btnAceptar.Location = new System.Drawing.Point(740, 401);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 49;
@@ -287,7 +287,7 @@
 			this.lbl_nuevaFuente.AutoSize = true;
 			this.lbl_nuevaFuente.BackColor = System.Drawing.Color.Maroon;
 			this.lbl_nuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_nuevaFuente.Location = new System.Drawing.Point(405, 106);
+			this.lbl_nuevaFuente.Location = new System.Drawing.Point(569, 134);
 			this.lbl_nuevaFuente.Name = "lbl_nuevaFuente";
 			this.lbl_nuevaFuente.Size = new System.Drawing.Size(75, 13);
 			this.lbl_nuevaFuente.TabIndex = 42;
@@ -300,18 +300,18 @@
 			this.lblTodosItems.AutoSize = true;
 			this.lblTodosItems.BackColor = System.Drawing.Color.Maroon;
 			this.lblTodosItems.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblTodosItems.Location = new System.Drawing.Point(394, 400);
+			this.lblTodosItems.Location = new System.Drawing.Point(283, 422);
 			this.lblTodosItems.Name = "lblTodosItems";
-			this.lblTodosItems.Size = new System.Drawing.Size(114, 13);
+			this.lblTodosItems.Size = new System.Drawing.Size(75, 13);
 			this.lblTodosItems.TabIndex = 51;
-			this.lblTodosItems.Text = "Mostrar todos los items";
+			this.lblTodosItems.Text = "Mostrar Todos";
 			this.lblTodosItems.Visible = false;
 			// 
 			// btnTodosItems
 			// 
 			this.btnTodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnTodosItems.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnTodosItems.Location = new System.Drawing.Point(433, 362);
+			this.btnTodosItems.Location = new System.Drawing.Point(306, 383);
 			this.btnTodosItems.Name = "btnTodosItems";
 			this.btnTodosItems.Size = new System.Drawing.Size(35, 35);
 			this.btnTodosItems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -324,7 +324,7 @@
 			this.cbx_Fuente.FormattingEnabled = true;
 			this.cbx_Fuente.Location = new System.Drawing.Point(119, 46);
 			this.cbx_Fuente.Name = "cbx_Fuente";
-			this.cbx_Fuente.Size = new System.Drawing.Size(277, 21);
+			this.cbx_Fuente.Size = new System.Drawing.Size(466, 21);
 			this.cbx_Fuente.TabIndex = 52;
 			// 
 			// lblModificarFuente
@@ -333,7 +333,7 @@
 			this.lblModificarFuente.AutoSize = true;
 			this.lblModificarFuente.BackColor = System.Drawing.Color.Maroon;
 			this.lblModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblModificarFuente.Location = new System.Drawing.Point(486, 106);
+			this.lblModificarFuente.Location = new System.Drawing.Point(650, 134);
 			this.lblModificarFuente.Name = "lblModificarFuente";
 			this.lblModificarFuente.Size = new System.Drawing.Size(86, 13);
 			this.lblModificarFuente.TabIndex = 56;
@@ -344,7 +344,7 @@
 			// 
 			this.btnModFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnModFuente.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModFuente.Location = new System.Drawing.Point(509, 68);
+			this.btnModFuente.Location = new System.Drawing.Point(677, 96);
 			this.btnModFuente.Name = "btnModFuente";
 			this.btnModFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnModFuente.TabIndex = 55;
@@ -357,7 +357,7 @@
 			this.lblElimFuente.AutoSize = true;
 			this.lblElimFuente.BackColor = System.Drawing.Color.Maroon;
 			this.lblElimFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblElimFuente.Location = new System.Drawing.Point(578, 106);
+			this.lblElimFuente.Location = new System.Drawing.Point(742, 134);
 			this.lblElimFuente.Name = "lblElimFuente";
 			this.lblElimFuente.Size = new System.Drawing.Size(79, 13);
 			this.lblElimFuente.TabIndex = 54;
@@ -368,7 +368,7 @@
 			// 
 			this.btnEliminarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEliminarFuente.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnEliminarFuente.Location = new System.Drawing.Point(599, 68);
+			this.btnEliminarFuente.Location = new System.Drawing.Point(763, 96);
 			this.btnEliminarFuente.Name = "btnEliminarFuente";
 			this.btnEliminarFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnEliminarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -383,7 +383,7 @@
 			this.lblX.BackColor = System.Drawing.Color.Transparent;
 			this.lblX.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblX.ForeColor = System.Drawing.Color.Transparent;
-			this.lblX.Location = new System.Drawing.Point(627, 14);
+			this.lblX.Location = new System.Drawing.Point(794, 14);
 			this.lblX.Name = "lblX";
 			this.lblX.Size = new System.Drawing.Size(30, 29);
 			this.lblX.TabIndex = 58;
@@ -397,7 +397,7 @@
 			this.lbl_.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_.ForeColor = System.Drawing.Color.Transparent;
-			this.lbl_.Location = new System.Drawing.Point(589, -2);
+			this.lbl_.Location = new System.Drawing.Point(756, -2);
 			this.lbl_.Name = "lbl_";
 			this.lbl_.Size = new System.Drawing.Size(36, 39);
 			this.lbl_.TabIndex = 57;
@@ -410,7 +410,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(669, 454);
+			this.ClientSize = new System.Drawing.Size(836, 454);
 			this.Controls.Add(this.lblX);
 			this.Controls.Add(this.lbl_);
 			this.Controls.Add(this.lblModificarFuente);

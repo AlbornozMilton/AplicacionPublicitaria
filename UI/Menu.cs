@@ -55,7 +55,7 @@ namespace UI
 
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
-
+			new Fuentes().ShowDialog();
 		}
 
         private void btn_EliminarCampania_Click(object sender, EventArgs e)

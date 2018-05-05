@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.titulo = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
@@ -54,10 +53,18 @@
 			this.horaDesde = new System.Windows.Forms.DateTimePicker();
 			this.horaHasta = new System.Windows.Forms.DateTimePicker();
 			this.dGV_horarios = new System.Windows.Forms.DataGridView();
+			this.clmHoraDdesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clmHoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Fuentes = new System.Windows.Forms.Label();
-			this.cbx_FuenteRss = new System.Windows.Forms.ComboBox();
+			this.cbx_Fuente = new System.Windows.Forms.ComboBox();
 			this.lblFuentes = new System.Windows.Forms.Label();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
+			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.iItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.btnFuentes = new System.Windows.Forms.PictureBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -65,23 +72,17 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.txbTipoFuente = new System.Windows.Forms.TextBox();
-			this.clmHoraDdesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmHoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
-			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbxDias.SuspendLayout();
 			this.gbxHorarios.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).BeginInit();
 			this.groupBox_items.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// titulo
@@ -402,6 +403,20 @@
 			this.dGV_horarios.Size = new System.Drawing.Size(319, 122);
 			this.dGV_horarios.TabIndex = 21;
 			// 
+			// clmHoraDdesde
+			// 
+			this.clmHoraDdesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraDdesde.HeaderText = "Hora Desde";
+			this.clmHoraDdesde.Name = "clmHoraDdesde";
+			this.clmHoraDdesde.ReadOnly = true;
+			// 
+			// clmHoraHasta
+			// 
+			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraHasta.HeaderText = "Hora Hasta";
+			this.clmHoraHasta.Name = "clmHoraHasta";
+			this.clmHoraHasta.ReadOnly = true;
+			// 
 			// Fuentes
 			// 
 			this.Fuentes.AutoSize = true;
@@ -413,15 +428,15 @@
 			this.Fuentes.Text = "Fuentes";
 			this.Fuentes.Visible = false;
 			// 
-			// cbx_FuenteRss
+			// cbx_Fuente
 			// 
-			this.cbx_FuenteRss.Enabled = false;
-			this.cbx_FuenteRss.FormattingEnabled = true;
-			this.cbx_FuenteRss.Location = new System.Drawing.Point(88, 284);
-			this.cbx_FuenteRss.Name = "cbx_FuenteRss";
-			this.cbx_FuenteRss.Size = new System.Drawing.Size(261, 21);
-			this.cbx_FuenteRss.TabIndex = 3;
-			this.cbx_FuenteRss.SelectedIndexChanged += new System.EventHandler(this.cbx_FuenteRss_SelectedIndexChanged);
+			this.cbx_Fuente.Enabled = false;
+			this.cbx_Fuente.FormattingEnabled = true;
+			this.cbx_Fuente.Location = new System.Drawing.Point(88, 284);
+			this.cbx_Fuente.Name = "cbx_Fuente";
+			this.cbx_Fuente.Size = new System.Drawing.Size(261, 21);
+			this.cbx_Fuente.TabIndex = 3;
+			this.cbx_Fuente.SelectedIndexChanged += new System.EventHandler(this.cbx_FuenteRss_SelectedIndexChanged);
 			// 
 			// lblFuentes
 			// 
@@ -446,6 +461,43 @@
 			this.groupBox_items.TabIndex = 36;
 			this.groupBox_items.TabStop = false;
 			this.groupBox_items.Text = "Últimos Items";
+			// 
+			// dGV_itemsFuente
+			// 
+			this.dGV_itemsFuente.AutoGenerateColumns = false;
+			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dGV_itemsFuente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+			this.dGV_itemsFuente.DataSource = this.iItemBindingSource1;
+			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
+			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
+			this.dGV_itemsFuente.TabIndex = 0;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.DataPropertyName = "Titulo";
+			this.dataGridViewTextBoxColumn1.HeaderText = "Titulo";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this.dataGridViewTextBoxColumn2.DataPropertyName = "Texto";
+			this.dataGridViewTextBoxColumn2.HeaderText = "Texto";
+			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
+			this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
+			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			// 
+			// iItemBindingSource1
+			// 
+			this.iItemBindingSource1.DataSource = typeof(Dominio.IItem);
 			// 
 			// btnFuentes
 			// 
@@ -528,73 +580,6 @@
 			this.txbTipoFuente.Size = new System.Drawing.Size(107, 20);
 			this.txbTipoFuente.TabIndex = 39;
 			// 
-			// clmHoraDdesde
-			// 
-			this.clmHoraDdesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clmHoraDdesde.HeaderText = "Hora Desde";
-			this.clmHoraDdesde.Name = "clmHoraDdesde";
-			this.clmHoraDdesde.ReadOnly = true;
-			// 
-			// clmHoraHasta
-			// 
-			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clmHoraHasta.HeaderText = "Hora Hasta";
-			this.clmHoraHasta.Name = "clmHoraHasta";
-			this.clmHoraHasta.ReadOnly = true;
-			// 
-			// iItemBindingSource
-			// 
-			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
-			// 
-			// dGV_itemsFuente
-			// 
-			this.dGV_itemsFuente.AutoGenerateColumns = false;
-			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dGV_itemsFuente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tituloDataGridViewTextBoxColumn,
-            this.fechaDataGridViewTextBoxColumn,
-            this.textoDataGridViewTextBoxColumn});
-			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
-			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
-			this.dGV_itemsFuente.MultiSelect = false;
-			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
-			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.dGV_itemsFuente.RowHeadersVisible = false;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
-			this.dGV_itemsFuente.TabIndex = 1;
-			// 
-			// tituloDataGridViewTextBoxColumn
-			// 
-			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
-			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
-			// 
-			// fechaDataGridViewTextBoxColumn
-			// 
-			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
-			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-			// 
-			// textoDataGridViewTextBoxColumn
-			// 
-			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
-			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
-			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
-			// 
 			// AgregarBanner
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,7 +594,7 @@
 			this.Controls.Add(this.groupBox_items);
 			this.Controls.Add(this.lblFuentes);
 			this.Controls.Add(this.Fuentes);
-			this.Controls.Add(this.cbx_FuenteRss);
+			this.Controls.Add(this.cbx_Fuente);
 			this.Controls.Add(this.gbxHorarios);
 			this.Controls.Add(this.gbxDias);
 			this.Controls.Add(this.btnCancelar);
@@ -632,11 +617,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).EndInit();
 			this.groupBox_items.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -668,7 +654,7 @@
         private System.Windows.Forms.DateTimePicker horaDesde;
         private System.Windows.Forms.DateTimePicker horaHasta;
         private System.Windows.Forms.DataGridView dGV_horarios;
-        private System.Windows.Forms.ComboBox cbx_FuenteRss;
+        private System.Windows.Forms.ComboBox cbx_Fuente;
         private System.Windows.Forms.Label Fuentes;
 		private System.Windows.Forms.Label lblFuentes;
 		private System.Windows.Forms.GroupBox groupBox_items;
@@ -682,9 +668,13 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraDdesde;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraHasta;
 		private System.Windows.Forms.BindingSource iItemBindingSource;
-		private System.Windows.Forms.DataGridView dGV_itemsFuente;
 		private System.Windows.Forms.DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn textoDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridView dGV_itemsFuente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+		private System.Windows.Forms.BindingSource iItemBindingSource1;
 	}
 }

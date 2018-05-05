@@ -13,8 +13,9 @@ namespace UI
 {
 	public partial class AgregarBanner : Form
 	{
-		private List<Banner> iBanners;
-		private List<IFuente> iFuentes; //llenarlas con el contrador 
+		//private List<Banner> iBannersEnRan;
+		private ControladorExtra iControlExtra = new ControladorExtra();
+		private List<IFuente> iFuentes = new List<IFuente>(); 
 		private string iDias;
 		private List<DayOfWeek> iDias2 = new List<DayOfWeek>();
 
@@ -25,7 +26,11 @@ namespace UI
 
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
-			//llebar el combox de fuentes
+			iFuentes = new ControladorBanner().ObtenerFuentes();
+			foreach (IFuente fuente in iFuentes)
+			{
+				cbx_Fuente.Items.Add(fuente.NombreFuente);
+			}
 		}
 
 		private void btnAgregarHorario_Click(object sender, EventArgs e)
@@ -40,6 +45,11 @@ namespace UI
 				//lista de horarios eliminar donde el current row sea igual
 				dGV_itemsFuente.Rows.Remove(dGV_itemsFuente.CurrentRow);
 			}
+
+			if (dGV_horarios.Rows.Count == 0)
+				cbx_Fuente.Enabled = false;
+			else
+				cbx_Fuente.Enabled = true;
 		}
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
@@ -72,22 +82,27 @@ namespace UI
 
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
-			new Fuentes("NombreFuenteSeleccionada").ShowDialog();
+			new Fuentes(cbx_Fuente.SelectedItem.ToString(), iFuentes).ShowDialog();
 		}
 
 		private void ControlFecha(object sender, EventArgs e)
 		{
-			if (fechaHasta.Value.Date > fechaDesde.Value.Date)
+			try
 			{
+				if (fechaHasta.Value.Date <= fechaDesde.Value.Date)
+				{
+					gbxDias.Enabled = false;
+					gbxHorarios.Enabled = false;
+					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
+				}
+
+				iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value, fechaHasta.Value);
 				gbxDias.Enabled = true;
 				gbxHorarios.Enabled = true;
-				// rellenar los banners desde de la bd con las fechas indicadas
 			}
-			else
+			catch (Exception E)
 			{
-				//cartel -fecha hasta debe ser mayor a fecha desde - y deshabilitar botones 
-				gbxDias.Enabled = false;
-				gbxHorarios.Enabled = false;
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
 
@@ -97,30 +112,25 @@ namespace UI
 			{
 				if (horaDesde.Value >= horaHasta.Value) //no permitido
 				{
-					//avisar de horario no permitido
-					cbx_FuenteRss.Enabled = false;
+					cbx_Fuente.Enabled = false;
+					throw new Exception("La Hora Desde tiene que ser menor que la Hora Hasta");
 				}
-				else
+
+				//Control de que no exista en la grilla
+				var x = dGV_horarios.Rows[1];
+				foreach (DataGridViewRow row in dGV_horarios.Rows)
 				{
-					//cotrol de que el horario no exita o no halla interseccion en propia grilla
-					//control de horario en la lista banner
-					var x = dGV_horarios.Rows[1];
-					foreach (DataGridViewRow row in dGV_horarios.Rows)
-					{
-						//if (hay interseccion de horarios)
-							cbx_FuenteRss.Enabled = false;
-							//throw new exception
-					}
-
-					//agregar horario a la lista de horario o al controlador
-					dGV_horarios.Rows.Add(horaDesde.Value.ToString(), horaHasta.Value.ToString());
-					cbx_FuenteRss.Enabled = true;
+					//if (hay interseccion de horarios)
+					cbx_Fuente.Enabled = false;
+					throw new Exception("El Horario elegido ya se encutran en la grilla");
 				}
 
-				if (dGV_horarios.Rows.Count == 0)
-					cbx_FuenteRss.Enabled = false;
-				else
-					cbx_FuenteRss.Enabled = true;
+				//cotrol de que no halla interseccion en los banners de bd
+				iControlExtra.ComprobarHorarioBanner(horaDesde.Value, horaHasta.Value, iDias);
+
+				//agregar horario a la lista de horario o al controlador
+				dGV_horarios.Rows.Add(horaDesde.Value.ToString(), horaHasta.Value.ToString());
+				cbx_Fuente.Enabled = true;
 			}
 			catch (Exception E)
 			{
@@ -132,11 +142,9 @@ namespace UI
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_luenes.Checked)
-				//iDias += "lunes-";
-				iDias2.Add(DayOfWeek.Monday);
+				iDias += "lunes-";
 			else
-				iDias2.Remove(DayOfWeek.Monday);
-				//iDias.Replace("lunes-", "");
+				iDias.Replace("lunes-", "");
 			ControlDias();
 		}
 
@@ -215,9 +223,9 @@ namespace UI
 
 		private void cbx_FuenteRss_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//previamente debe llenarse el conbox en el load con las fuentes
-			//completar el textbox TipoFuente
-			//llenar data grid view con los ites de la fuente - DataSource
+			IFuente fuente = iFuentes.Find(f => f.NombreFuente == cbx_Fuente.SelectedItem.ToString());
+			txbTipoFuente.Text = fuente.TipoFuente.ToString();
+			dGV_itemsFuente.DataSource = fuente.Items;
 		}
 	}
 }
