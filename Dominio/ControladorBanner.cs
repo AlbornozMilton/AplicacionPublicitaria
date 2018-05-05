@@ -67,10 +67,36 @@ namespace Dominio
 			iUOfW.RepositorioBanner.AgregarBanner(perBanner);
 		}
 
-		public void AgregarFuente(IFuente pFuente)
+		public enum Operacion
+		{
+			Agregar,
+			Modificar,
+			Eliminar
+		}
+
+		public void ABMFuente(Operacion pOperacion, IFuente pFuente)
 		{
 
+			//switch (pOperacion)
+			//{
+			//	case Operacion.Agregar:
+			//		{
+
+			//		}
+			//		break;
+			//	case Operacion.Modificar:
+			//		{
+
+			//		}
+			//		break;
+			//	case Operacion.Eliminar:
+			//		{
+
+			//		}
+			//		break;
+			//}
 		}
+
 
 		public List<IFuente> ObtenerFuentes()
 		{
