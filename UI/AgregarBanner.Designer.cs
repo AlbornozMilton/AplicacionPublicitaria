@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.label1 = new System.Windows.Forms.Label();
+			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			this.titulo = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
-			this.comboBox_TipoFuente = new System.Windows.Forms.ComboBox();
 			this.btnAceptar = new System.Windows.Forms.Button();
 			this.btnCancelar = new System.Windows.Forms.Button();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.gbxDias = new System.Windows.Forms.GroupBox();
 			this.ckb_miercoles = new System.Windows.Forms.CheckBox();
 			this.ckb_viernes = new System.Windows.Forms.CheckBox();
 			this.ckb_sabado = new System.Windows.Forms.CheckBox();
@@ -43,49 +44,58 @@
 			this.ckb_jueves = new System.Windows.Forms.CheckBox();
 			this.ckb_martes = new System.Windows.Forms.CheckBox();
 			this.ckb_luenes = new System.Windows.Forms.CheckBox();
-			this.fechaHasta = new System.Windows.Forms.DateTimePicker();
-			this.fechaDesde = new System.Windows.Forms.DateTimePicker();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.gpb_Horarios = new System.Windows.Forms.GroupBox();
-			this.label11 = new System.Windows.Forms.Label();
+			this.gbxHorarios = new System.Windows.Forms.GroupBox();
+			this.BorrarHorario = new System.Windows.Forms.Label();
 			this.btnAgregarHorario = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
+			this.AgregarHorario = new System.Windows.Forms.Label();
 			this.btnBorrarHorario = new System.Windows.Forms.PictureBox();
 			this.label12 = new System.Windows.Forms.Label();
-			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+			this.horaDesde = new System.Windows.Forms.DateTimePicker();
+			this.horaHasta = new System.Windows.Forms.DateTimePicker();
 			this.dGV_horarios = new System.Windows.Forms.DataGridView();
-			this.lbl_nuevaFuente = new System.Windows.Forms.Label();
+			this.Fuentes = new System.Windows.Forms.Label();
 			this.cbx_FuenteRss = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.lblFuentes = new System.Windows.Forms.Label();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
 			this.btnFuentes = new System.Windows.Forms.PictureBox();
-			this.groupBox1.SuspendLayout();
-			this.gpb_Horarios.SuspendLayout();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.fechaHasta = new System.Windows.Forms.DateTimePicker();
+			this.fechaDesde = new System.Windows.Forms.DateTimePicker();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.txbTipoFuente = new System.Windows.Forms.TextBox();
+			this.clmHoraDdesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clmHoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.gbxDias.SuspendLayout();
+			this.gbxHorarios.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
 			this.groupBox_items.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).BeginInit();
+			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// label1
+			// titulo
 			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(13, 23);
-			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(149, 18);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Agregar Banner";
+			this.titulo.AutoSize = true;
+			this.titulo.BackColor = System.Drawing.Color.Transparent;
+			this.titulo.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.titulo.ForeColor = System.Drawing.Color.White;
+			this.titulo.Location = new System.Drawing.Point(13, 16);
+			this.titulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.titulo.Name = "titulo";
+			this.titulo.Size = new System.Drawing.Size(149, 18);
+			this.titulo.TabIndex = 3;
+			this.titulo.Text = "Agregar Banner";
 			// 
 			// label8
 			// 
@@ -117,20 +127,12 @@
 			this.lbl_tipoFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_tipoFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_tipoFuente.ForeColor = System.Drawing.Color.White;
-			this.lbl_tipoFuente.Location = new System.Drawing.Point(13, 287);
+			this.lbl_tipoFuente.Location = new System.Drawing.Point(356, 285);
 			this.lbl_tipoFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbl_tipoFuente.Name = "lbl_tipoFuente";
 			this.lbl_tipoFuente.Size = new System.Drawing.Size(96, 18);
 			this.lbl_tipoFuente.TabIndex = 26;
 			this.lbl_tipoFuente.Text = "Tipo Fuente";
-			// 
-			// comboBox_TipoFuente
-			// 
-			this.comboBox_TipoFuente.FormattingEnabled = true;
-			this.comboBox_TipoFuente.Location = new System.Drawing.Point(116, 288);
-			this.comboBox_TipoFuente.Name = "comboBox_TipoFuente";
-			this.comboBox_TipoFuente.Size = new System.Drawing.Size(102, 21);
-			this.comboBox_TipoFuente.TabIndex = 27;
 			// 
 			// btnAceptar
 			// 
@@ -139,7 +141,7 @@
 			this.btnAceptar.Location = new System.Drawing.Point(451, 470);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
-			this.btnAceptar.TabIndex = 28;
+			this.btnAceptar.TabIndex = 5;
 			this.btnAceptar.Text = "Aceptar";
 			this.btnAceptar.UseVisualStyleBackColor = true;
 			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -151,195 +153,158 @@
 			this.btnCancelar.Location = new System.Drawing.Point(549, 470);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
-			this.btnCancelar.TabIndex = 29;
+			this.btnCancelar.TabIndex = 6;
 			this.btnCancelar.Text = "Cancelar";
 			this.btnCancelar.UseVisualStyleBackColor = true;
 			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
 			// 
-			// groupBox1
+			// gbxDias
 			// 
-			this.groupBox1.Controls.Add(this.ckb_miercoles);
-			this.groupBox1.Controls.Add(this.ckb_viernes);
-			this.groupBox1.Controls.Add(this.ckb_sabado);
-			this.groupBox1.Controls.Add(this.ckb_domingo);
-			this.groupBox1.Controls.Add(this.ckb_jueves);
-			this.groupBox1.Controls.Add(this.ckb_martes);
-			this.groupBox1.Controls.Add(this.ckb_luenes);
-			this.groupBox1.Controls.Add(this.fechaHasta);
-			this.groupBox1.Controls.Add(this.fechaDesde);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.ForeColor = System.Drawing.Color.White;
-			this.groupBox1.Location = new System.Drawing.Point(14, 44);
-			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.groupBox1.Size = new System.Drawing.Size(284, 216);
-			this.groupBox1.TabIndex = 30;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Duración del banner";
+			this.gbxDias.Controls.Add(this.ckb_miercoles);
+			this.gbxDias.Controls.Add(this.ckb_viernes);
+			this.gbxDias.Controls.Add(this.ckb_sabado);
+			this.gbxDias.Controls.Add(this.ckb_domingo);
+			this.gbxDias.Controls.Add(this.ckb_jueves);
+			this.gbxDias.Controls.Add(this.ckb_martes);
+			this.gbxDias.Controls.Add(this.ckb_luenes);
+			this.gbxDias.Enabled = false;
+			this.gbxDias.ForeColor = System.Drawing.Color.White;
+			this.gbxDias.Location = new System.Drawing.Point(14, 135);
+			this.gbxDias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.gbxDias.Name = "gbxDias";
+			this.gbxDias.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.gbxDias.Size = new System.Drawing.Size(284, 125);
+			this.gbxDias.TabIndex = 30;
+			this.gbxDias.TabStop = false;
+			this.gbxDias.Text = "Días del Banner";
 			// 
 			// ckb_miercoles
 			// 
+			this.ckb_miercoles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_miercoles.AutoSize = true;
 			this.ckb_miercoles.ForeColor = System.Drawing.Color.White;
-			this.ckb_miercoles.Location = new System.Drawing.Point(74, 161);
+			this.ckb_miercoles.Location = new System.Drawing.Point(74, 70);
 			this.ckb_miercoles.Name = "ckb_miercoles";
 			this.ckb_miercoles.Size = new System.Drawing.Size(71, 17);
-			this.ckb_miercoles.TabIndex = 17;
+			this.ckb_miercoles.TabIndex = 2;
 			this.ckb_miercoles.Text = "Miércoles";
 			this.ckb_miercoles.UseVisualStyleBackColor = true;
+			this.ckb_miercoles.CheckedChanged += new System.EventHandler(this.ckb_miercoles_CheckedChanged);
 			// 
 			// ckb_viernes
 			// 
+			this.ckb_viernes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_viernes.AutoSize = true;
 			this.ckb_viernes.ForeColor = System.Drawing.Color.White;
-			this.ckb_viernes.Location = new System.Drawing.Point(158, 113);
+			this.ckb_viernes.Location = new System.Drawing.Point(158, 22);
 			this.ckb_viernes.Name = "ckb_viernes";
 			this.ckb_viernes.Size = new System.Drawing.Size(61, 17);
-			this.ckb_viernes.TabIndex = 16;
+			this.ckb_viernes.TabIndex = 4;
 			this.ckb_viernes.Text = "Viernes";
 			this.ckb_viernes.UseVisualStyleBackColor = true;
+			this.ckb_viernes.CheckedChanged += new System.EventHandler(this.ckb_viernes_CheckedChanged);
 			// 
 			// ckb_sabado
 			// 
+			this.ckb_sabado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_sabado.AutoSize = true;
 			this.ckb_sabado.ForeColor = System.Drawing.Color.White;
-			this.ckb_sabado.Location = new System.Drawing.Point(158, 137);
+			this.ckb_sabado.Location = new System.Drawing.Point(158, 46);
 			this.ckb_sabado.Name = "ckb_sabado";
 			this.ckb_sabado.Size = new System.Drawing.Size(68, 17);
-			this.ckb_sabado.TabIndex = 15;
+			this.ckb_sabado.TabIndex = 5;
 			this.ckb_sabado.Text = "Sábados";
 			this.ckb_sabado.UseVisualStyleBackColor = true;
+			this.ckb_sabado.CheckedChanged += new System.EventHandler(this.ckb_sabado_CheckedChanged);
 			// 
 			// ckb_domingo
 			// 
+			this.ckb_domingo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_domingo.AutoSize = true;
 			this.ckb_domingo.ForeColor = System.Drawing.Color.White;
-			this.ckb_domingo.Location = new System.Drawing.Point(158, 161);
+			this.ckb_domingo.Location = new System.Drawing.Point(158, 70);
 			this.ckb_domingo.Name = "ckb_domingo";
 			this.ckb_domingo.Size = new System.Drawing.Size(73, 17);
-			this.ckb_domingo.TabIndex = 14;
+			this.ckb_domingo.TabIndex = 6;
 			this.ckb_domingo.Text = "Domingos";
 			this.ckb_domingo.UseVisualStyleBackColor = true;
+			this.ckb_domingo.CheckedChanged += new System.EventHandler(this.ckb_domingo_CheckedChanged);
 			// 
 			// ckb_jueves
 			// 
+			this.ckb_jueves.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_jueves.AutoSize = true;
 			this.ckb_jueves.ForeColor = System.Drawing.Color.White;
-			this.ckb_jueves.Location = new System.Drawing.Point(74, 185);
+			this.ckb_jueves.Location = new System.Drawing.Point(74, 94);
 			this.ckb_jueves.Name = "ckb_jueves";
 			this.ckb_jueves.Size = new System.Drawing.Size(60, 17);
-			this.ckb_jueves.TabIndex = 13;
+			this.ckb_jueves.TabIndex = 3;
 			this.ckb_jueves.Text = "Jueves";
 			this.ckb_jueves.UseVisualStyleBackColor = true;
+			this.ckb_jueves.CheckedChanged += new System.EventHandler(this.ckb_jueves_CheckedChanged);
 			// 
 			// ckb_martes
 			// 
+			this.ckb_martes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_martes.AutoSize = true;
 			this.ckb_martes.ForeColor = System.Drawing.Color.White;
-			this.ckb_martes.Location = new System.Drawing.Point(74, 137);
+			this.ckb_martes.Location = new System.Drawing.Point(74, 46);
 			this.ckb_martes.Name = "ckb_martes";
 			this.ckb_martes.Size = new System.Drawing.Size(58, 17);
-			this.ckb_martes.TabIndex = 11;
+			this.ckb_martes.TabIndex = 1;
 			this.ckb_martes.Text = "Martes";
 			this.ckb_martes.UseVisualStyleBackColor = true;
+			this.ckb_martes.CheckedChanged += new System.EventHandler(this.ckb_martes_CheckedChanged);
 			// 
 			// ckb_luenes
 			// 
+			this.ckb_luenes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_luenes.AutoSize = true;
 			this.ckb_luenes.ForeColor = System.Drawing.Color.White;
-			this.ckb_luenes.Location = new System.Drawing.Point(74, 113);
+			this.ckb_luenes.Location = new System.Drawing.Point(74, 22);
 			this.ckb_luenes.Name = "ckb_luenes";
 			this.ckb_luenes.Size = new System.Drawing.Size(55, 17);
-			this.ckb_luenes.TabIndex = 12;
+			this.ckb_luenes.TabIndex = 0;
 			this.ckb_luenes.Text = "Lunes";
 			this.ckb_luenes.UseVisualStyleBackColor = true;
+			this.ckb_luenes.CheckedChanged += new System.EventHandler(this.ckb_luenes_CheckedChanged);
 			// 
-			// fechaHasta
+			// gbxHorarios
 			// 
-			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.fechaHasta.Location = new System.Drawing.Point(74, 66);
-			this.fechaHasta.Name = "fechaHasta";
-			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
-			this.fechaHasta.TabIndex = 11;
+			this.gbxHorarios.Controls.Add(this.BorrarHorario);
+			this.gbxHorarios.Controls.Add(this.btnAgregarHorario);
+			this.gbxHorarios.Controls.Add(this.label5);
+			this.gbxHorarios.Controls.Add(this.AgregarHorario);
+			this.gbxHorarios.Controls.Add(this.btnBorrarHorario);
+			this.gbxHorarios.Controls.Add(this.label12);
+			this.gbxHorarios.Controls.Add(this.horaDesde);
+			this.gbxHorarios.Controls.Add(this.horaHasta);
+			this.gbxHorarios.Controls.Add(this.dGV_horarios);
+			this.gbxHorarios.Enabled = false;
+			this.gbxHorarios.ForeColor = System.Drawing.Color.White;
+			this.gbxHorarios.Location = new System.Drawing.Point(305, 44);
+			this.gbxHorarios.Name = "gbxHorarios";
+			this.gbxHorarios.Size = new System.Drawing.Size(325, 216);
+			this.gbxHorarios.TabIndex = 1;
+			this.gbxHorarios.TabStop = false;
+			this.gbxHorarios.Text = "Horarios del banner";
 			// 
-			// fechaDesde
+			// BorrarHorario
 			// 
-			this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.fechaDesde.Location = new System.Drawing.Point(74, 26);
-			this.fechaDesde.Name = "fechaDesde";
-			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
-			this.fechaDesde.TabIndex = 10;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.BackColor = System.Drawing.Color.Transparent;
-			this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(13, 29);
-			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(54, 18);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "Desde";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.BackColor = System.Drawing.Color.Transparent;
-			this.label6.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.ForeColor = System.Drawing.Color.White;
-			this.label6.Location = new System.Drawing.Point(13, 111);
-			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(40, 18);
-			this.label6.TabIndex = 9;
-			this.label6.Text = "Días";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.BackColor = System.Drawing.Color.Transparent;
-			this.label7.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(13, 69);
-			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(51, 18);
-			this.label7.TabIndex = 9;
-			this.label7.Text = "Hasta";
-			// 
-			// gpb_Horarios
-			// 
-			this.gpb_Horarios.Controls.Add(this.label11);
-			this.gpb_Horarios.Controls.Add(this.btnAgregarHorario);
-			this.gpb_Horarios.Controls.Add(this.label5);
-			this.gpb_Horarios.Controls.Add(this.label10);
-			this.gpb_Horarios.Controls.Add(this.btnBorrarHorario);
-			this.gpb_Horarios.Controls.Add(this.label12);
-			this.gpb_Horarios.Controls.Add(this.dateTimePicker4);
-			this.gpb_Horarios.Controls.Add(this.dateTimePicker3);
-			this.gpb_Horarios.Controls.Add(this.dGV_horarios);
-			this.gpb_Horarios.ForeColor = System.Drawing.Color.White;
-			this.gpb_Horarios.Location = new System.Drawing.Point(305, 44);
-			this.gpb_Horarios.Name = "gpb_Horarios";
-			this.gpb_Horarios.Size = new System.Drawing.Size(325, 216);
-			this.gpb_Horarios.TabIndex = 31;
-			this.gpb_Horarios.TabStop = false;
-			this.gpb_Horarios.Text = "Horarios del banner";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(275, 67);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(35, 13);
-			this.label11.TabIndex = 27;
-			this.label11.Text = "Borrar";
-			this.label11.Visible = false;
+			this.BorrarHorario.AutoSize = true;
+			this.BorrarHorario.Location = new System.Drawing.Point(275, 67);
+			this.BorrarHorario.Name = "BorrarHorario";
+			this.BorrarHorario.Size = new System.Drawing.Size(35, 13);
+			this.BorrarHorario.TabIndex = 27;
+			this.BorrarHorario.Text = "Borrar";
+			this.BorrarHorario.Visible = false;
 			// 
 			// btnAgregarHorario
 			// 
@@ -351,6 +316,8 @@
 			this.btnAgregarHorario.TabIndex = 24;
 			this.btnAgregarHorario.TabStop = false;
 			this.btnAgregarHorario.Click += new System.EventHandler(this.btnAgregarHorario_Click);
+			this.btnAgregarHorario.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnAgregarHorario.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// label5
 			// 
@@ -365,15 +332,15 @@
 			this.label5.TabIndex = 18;
 			this.label5.Text = "Desde";
 			// 
-			// label10
+			// AgregarHorario
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(231, 67);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(44, 13);
-			this.label10.TabIndex = 26;
-			this.label10.Text = "Agregar";
-			this.label10.Visible = false;
+			this.AgregarHorario.AutoSize = true;
+			this.AgregarHorario.Location = new System.Drawing.Point(231, 67);
+			this.AgregarHorario.Name = "AgregarHorario";
+			this.AgregarHorario.Size = new System.Drawing.Size(44, 13);
+			this.AgregarHorario.TabIndex = 26;
+			this.AgregarHorario.Text = "Agregar";
+			this.AgregarHorario.Visible = false;
 			// 
 			// btnBorrarHorario
 			// 
@@ -385,6 +352,8 @@
 			this.btnBorrarHorario.TabIndex = 25;
 			this.btnBorrarHorario.TabStop = false;
 			this.btnBorrarHorario.Click += new System.EventHandler(this.btnBorrarHorario_Click);
+			this.btnBorrarHorario.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnBorrarHorario.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// label12
 			// 
@@ -399,77 +368,73 @@
 			this.label12.TabIndex = 19;
 			this.label12.Text = "Hasta";
 			// 
-			// dateTimePicker4
+			// horaDesde
 			// 
-			this.dateTimePicker4.CustomFormat = "HH:mm";
-			this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker4.Location = new System.Drawing.Point(82, 26);
-			this.dateTimePicker4.Name = "dateTimePicker4";
-			this.dateTimePicker4.ShowUpDown = true;
-			this.dateTimePicker4.Size = new System.Drawing.Size(95, 20);
-			this.dateTimePicker4.TabIndex = 23;
+			this.horaDesde.CustomFormat = "HH:mm";
+			this.horaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.horaDesde.Location = new System.Drawing.Point(82, 26);
+			this.horaDesde.Name = "horaDesde";
+			this.horaDesde.ShowUpDown = true;
+			this.horaDesde.Size = new System.Drawing.Size(95, 20);
+			this.horaDesde.TabIndex = 0;
 			// 
-			// dateTimePicker3
+			// horaHasta
 			// 
-			this.dateTimePicker3.CustomFormat = "HH:mm";
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker3.Location = new System.Drawing.Point(82, 60);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.ShowUpDown = true;
-			this.dateTimePicker3.Size = new System.Drawing.Size(95, 20);
-			this.dateTimePicker3.TabIndex = 0;
+			this.horaHasta.CustomFormat = "HH:mm";
+			this.horaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.horaHasta.Location = new System.Drawing.Point(82, 60);
+			this.horaHasta.Name = "horaHasta";
+			this.horaHasta.ShowUpDown = true;
+			this.horaHasta.Size = new System.Drawing.Size(95, 20);
+			this.horaHasta.TabIndex = 1;
 			// 
 			// dGV_horarios
 			// 
 			this.dGV_horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dGV_horarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmHoraDdesde,
+            this.clmHoraHasta});
 			this.dGV_horarios.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.dGV_horarios.Location = new System.Drawing.Point(3, 91);
 			this.dGV_horarios.Name = "dGV_horarios";
+			this.dGV_horarios.ReadOnly = true;
+			this.dGV_horarios.RowHeadersVisible = false;
 			this.dGV_horarios.Size = new System.Drawing.Size(319, 122);
 			this.dGV_horarios.TabIndex = 21;
 			// 
-			// lbl_nuevaFuente
+			// Fuentes
 			// 
-			this.lbl_nuevaFuente.AutoSize = true;
-			this.lbl_nuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_nuevaFuente.Location = new System.Drawing.Point(577, 308);
-			this.lbl_nuevaFuente.Name = "lbl_nuevaFuente";
-			this.lbl_nuevaFuente.Size = new System.Drawing.Size(45, 13);
-			this.lbl_nuevaFuente.TabIndex = 28;
-			this.lbl_nuevaFuente.Text = "Fuentes";
-			this.lbl_nuevaFuente.Visible = false;
+			this.Fuentes.AutoSize = true;
+			this.Fuentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Fuentes.Location = new System.Drawing.Point(577, 308);
+			this.Fuentes.Name = "Fuentes";
+			this.Fuentes.Size = new System.Drawing.Size(45, 13);
+			this.Fuentes.TabIndex = 4;
+			this.Fuentes.Text = "Fuentes";
+			this.Fuentes.Visible = false;
 			// 
 			// cbx_FuenteRss
 			// 
+			this.cbx_FuenteRss.Enabled = false;
 			this.cbx_FuenteRss.FormattingEnabled = true;
-			this.cbx_FuenteRss.Location = new System.Drawing.Point(305, 286);
+			this.cbx_FuenteRss.Location = new System.Drawing.Point(88, 284);
 			this.cbx_FuenteRss.Name = "cbx_FuenteRss";
 			this.cbx_FuenteRss.Size = new System.Drawing.Size(261, 21);
-			this.cbx_FuenteRss.TabIndex = 34;
+			this.cbx_FuenteRss.TabIndex = 3;
+			this.cbx_FuenteRss.SelectedIndexChanged += new System.EventHandler(this.cbx_FuenteRss_SelectedIndexChanged);
 			// 
-			// label3
+			// lblFuentes
 			// 
-			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.ForeColor = System.Drawing.Color.White;
-			this.label3.Location = new System.Drawing.Point(239, 287);
-			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(59, 18);
-			this.label3.TabIndex = 35;
-			this.label3.Text = "Fuente";
-			// 
-			// dGV_itemsFuente
-			// 
-			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_itemsFuente.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
-			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
-			this.dGV_itemsFuente.RowHeadersVisible = false;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
-			this.dGV_itemsFuente.TabIndex = 0;
+			this.lblFuentes.AutoSize = true;
+			this.lblFuentes.BackColor = System.Drawing.Color.Transparent;
+			this.lblFuentes.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblFuentes.ForeColor = System.Drawing.Color.White;
+			this.lblFuentes.Location = new System.Drawing.Point(22, 285);
+			this.lblFuentes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblFuentes.Name = "lblFuentes";
+			this.lblFuentes.Size = new System.Drawing.Size(59, 18);
+			this.lblFuentes.TabIndex = 35;
+			this.lblFuentes.Text = "Fuente";
 			// 
 			// groupBox_items
 			// 
@@ -492,6 +457,143 @@
 			this.btnFuentes.TabIndex = 37;
 			this.btnFuentes.TabStop = false;
 			this.btnFuentes.Click += new System.EventHandler(this.btnFuentes_Click);
+			this.btnFuentes.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnFuentes.MouseHover += new System.EventHandler(this.HoverLabel);
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.fechaHasta);
+			this.groupBox2.Controls.Add(this.fechaDesde);
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Controls.Add(this.label13);
+			this.groupBox2.ForeColor = System.Drawing.Color.White;
+			this.groupBox2.Location = new System.Drawing.Point(17, 44);
+			this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.groupBox2.Size = new System.Drawing.Size(284, 85);
+			this.groupBox2.TabIndex = 38;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Duración del banner";
+			// 
+			// fechaHasta
+			// 
+			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.fechaHasta.Location = new System.Drawing.Point(74, 52);
+			this.fechaHasta.Name = "fechaHasta";
+			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
+			this.fechaHasta.TabIndex = 1;
+			this.fechaHasta.ValueChanged += new System.EventHandler(this.ControlFecha);
+			// 
+			// fechaDesde
+			// 
+			this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.fechaDesde.Location = new System.Drawing.Point(74, 26);
+			this.fechaDesde.Name = "fechaDesde";
+			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
+			this.fechaDesde.TabIndex = 0;
+			this.fechaDesde.ValueChanged += new System.EventHandler(this.ControlFecha);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(13, 29);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(54, 18);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "Desde";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.BackColor = System.Drawing.Color.Transparent;
+			this.label13.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label13.ForeColor = System.Drawing.Color.White;
+			this.label13.Location = new System.Drawing.Point(13, 55);
+			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(51, 18);
+			this.label13.TabIndex = 9;
+			this.label13.Text = "Hasta";
+			// 
+			// txbTipoFuente
+			// 
+			this.txbTipoFuente.Location = new System.Drawing.Point(459, 284);
+			this.txbTipoFuente.Name = "txbTipoFuente";
+			this.txbTipoFuente.ReadOnly = true;
+			this.txbTipoFuente.Size = new System.Drawing.Size(107, 20);
+			this.txbTipoFuente.TabIndex = 39;
+			// 
+			// clmHoraDdesde
+			// 
+			this.clmHoraDdesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraDdesde.HeaderText = "Hora Desde";
+			this.clmHoraDdesde.Name = "clmHoraDdesde";
+			this.clmHoraDdesde.ReadOnly = true;
+			// 
+			// clmHoraHasta
+			// 
+			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraHasta.HeaderText = "Hora Hasta";
+			this.clmHoraHasta.Name = "clmHoraHasta";
+			this.clmHoraHasta.ReadOnly = true;
+			// 
+			// iItemBindingSource
+			// 
+			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
+			// 
+			// dGV_itemsFuente
+			// 
+			this.dGV_itemsFuente.AutoGenerateColumns = false;
+			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dGV_itemsFuente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tituloDataGridViewTextBoxColumn,
+            this.fechaDataGridViewTextBoxColumn,
+            this.textoDataGridViewTextBoxColumn});
+			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
+			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
+			this.dGV_itemsFuente.MultiSelect = false;
+			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
+			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.dGV_itemsFuente.RowHeadersVisible = false;
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(608, 109);
+			this.dGV_itemsFuente.TabIndex = 1;
+			// 
+			// tituloDataGridViewTextBoxColumn
+			// 
+			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
+			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
+			// 
+			// fechaDataGridViewTextBoxColumn
+			// 
+			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
+			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+			// 
+			// textoDataGridViewTextBoxColumn
+			// 
+			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
+			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
+			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
 			// 
 			// AgregarBanner
 			// 
@@ -501,36 +603,40 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(651, 528);
+			this.Controls.Add(this.txbTipoFuente);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnFuentes);
 			this.Controls.Add(this.groupBox_items);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.lbl_nuevaFuente);
+			this.Controls.Add(this.lblFuentes);
+			this.Controls.Add(this.Fuentes);
 			this.Controls.Add(this.cbx_FuenteRss);
-			this.Controls.Add(this.gpb_Horarios);
-			this.Controls.Add(this.groupBox1);
+			this.Controls.Add(this.gbxHorarios);
+			this.Controls.Add(this.gbxDias);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnAceptar);
-			this.Controls.Add(this.comboBox_TipoFuente);
 			this.Controls.Add(this.lbl_tipoFuente);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.label8);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.titulo);
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "AgregarBanner";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form2";
 			this.Load += new System.EventHandler(this.AgregarBanner_Load);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.gpb_Horarios.ResumeLayout(false);
-			this.gpb_Horarios.PerformLayout();
+			this.gbxDias.ResumeLayout(false);
+			this.gbxDias.PerformLayout();
+			this.gbxHorarios.ResumeLayout(false);
+			this.gbxHorarios.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnBorrarHorario)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_horarios)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
 			this.groupBox_items.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).EndInit();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -538,14 +644,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label titulo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbl_tipoFuente;
-        private System.Windows.Forms.ComboBox comboBox_TipoFuente;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbxDias;
         private System.Windows.Forms.CheckBox ckb_miercoles;
         private System.Windows.Forms.CheckBox ckb_viernes;
         private System.Windows.Forms.CheckBox ckb_sabado;
@@ -553,26 +658,33 @@
         private System.Windows.Forms.CheckBox ckb_jueves;
         private System.Windows.Forms.CheckBox ckb_martes;
         private System.Windows.Forms.CheckBox ckb_luenes;
-        private System.Windows.Forms.DateTimePicker fechaHasta;
-        private System.Windows.Forms.DateTimePicker fechaDesde;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox gpb_Horarios;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox gbxHorarios;
+        private System.Windows.Forms.Label BorrarHorario;
         private System.Windows.Forms.PictureBox btnAgregarHorario;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label AgregarHorario;
         private System.Windows.Forms.PictureBox btnBorrarHorario;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker horaDesde;
+        private System.Windows.Forms.DateTimePicker horaHasta;
         private System.Windows.Forms.DataGridView dGV_horarios;
         private System.Windows.Forms.ComboBox cbx_FuenteRss;
-        private System.Windows.Forms.Label lbl_nuevaFuente;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.DataGridView dGV_itemsFuente;
+        private System.Windows.Forms.Label Fuentes;
+		private System.Windows.Forms.Label lblFuentes;
 		private System.Windows.Forms.GroupBox groupBox_items;
 		private System.Windows.Forms.PictureBox btnFuentes;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.DateTimePicker fechaHasta;
+		private System.Windows.Forms.DateTimePicker fechaDesde;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.TextBox txbTipoFuente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraDdesde;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraHasta;
+		private System.Windows.Forms.BindingSource iItemBindingSource;
+		private System.Windows.Forms.DataGridView dGV_itemsFuente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn textoDataGridViewTextBoxColumn;
 	}
 }

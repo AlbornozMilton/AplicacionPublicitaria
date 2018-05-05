@@ -56,9 +56,9 @@ namespace UI
             label11.Visible = false;
         }
 
-        private void pictureBox7_MouseHover(object sender, EventArgs e)
-        {
-            label13.Visible = true;
+		private void pictureBox7_MouseHover(object sender, EventArgs e)
+		{
+			label13.Visible = true;
         }
 
         private void pictureBox7_MouseLeave(object sender, EventArgs e)
