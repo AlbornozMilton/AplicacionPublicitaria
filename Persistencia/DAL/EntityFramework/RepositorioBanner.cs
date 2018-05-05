@@ -54,5 +54,9 @@ namespace Persistencia.DAL.EntityFramework
 			return result;
 		}
 
+		public List<Fuente> TodasLasFuentes()
+		{
+			return iDbContext.Fuentes.ToList();
+		}
 	}
 }

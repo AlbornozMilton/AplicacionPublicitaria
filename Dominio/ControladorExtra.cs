@@ -13,19 +13,28 @@ namespace Dominio
 		private List<Banner> iBannersEnRangoFecha = new List<Banner>();
 		private List<Campania> iCampaniasEnRangoFecha = new List<Campania>();
 
+		/// <summary>
+		/// Acutaliza los Banners que tienen intersección con el rango de fechas elegido para usar como control.
+		/// </summary>
 		public void ActualizarBannersEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
 			//automapear
 			//iBannersEnRangoFecha = iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechas); con pFechaDesde.Date
 		}
 
+		/// <summary>
+		/// Acutaliza las Campanias que tienen intersección con el rango de fechas elegido para usar como control.
+		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
 			//automapear
 			//iCampaniasEnRangoFecha = iUOfW.RepositorioCampanias.CampaniasEnRangoFecha(pFechas); con pFechaDesde.Date
 		}
 
-		public void ComprobarHorarioBanner(DateTime pHoraInicio, DateTime pHoraFin, List<DayOfWeek> pDias)
+		/// <summary>
+		/// Si hay intersección con el Horario y Días, lanza excepción
+		/// </summary>
+		public void ComprobarHorarioBanner(DateTime pHoraInicio, DateTime pHoraFin, string pDias)
 		{
 			foreach (Banner mBanner in iBannersEnRangoFecha)
 			{
@@ -34,7 +43,10 @@ namespace Dominio
 			}
 		}
 
-		public void ComprobarHorarioCampania(DateTime pHoraInicio, DateTime pHoraFin, List<DayOfWeek> pDias)
+		/// <summary>
+		/// Si hay intersección con el Horario y Días, lanza excepción
+		/// </summary>
+		public void ComprobarHorarioCampania(DateTime pHoraInicio, DateTime pHoraFin, string pDias)
 		{
 			foreach (Campania mCampania in iCampaniasEnRangoFecha)
 			{
@@ -43,19 +55,21 @@ namespace Dominio
 			}
 		}
 
-		private void ComprobarHorario(RangoFecha pRangoFecha, DateTime pHoraInicio, DateTime pHoraFin, List<DayOfWeek> pDias)
+		private void ComprobarHorario(RangoFecha pRangoFecha, DateTime pHoraInicio, DateTime pHoraFin, string pDias)
 		{
-			while (pRangoFecha.FechaInicio <= pRangoFecha.FechaFin)
+			IList<string> mdias = pRangoFecha.Dias.Split('-');
+
+			foreach (string dia in mdias)
 			{
-				if (pDias.Contains(pRangoFecha.FechaInicio.DayOfWeek)) // si hay interseccion de dias
+				if (pDias.Contains(dia))
 				{
+					//utilizar TimeSpan
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-						// if hay interserccion de horarios entre auxRango.Horarios. y los de entrada
-						throw new Exception("El Horario elegido no se ecuentra disponible");
+						// if hay interserccion de horarios entre auxRango.Horarios y los de entrada
+						throw new Exception("El Horario elegido no se ecuentra disponible"); //corta ejecucion
 					}
 				}
-				pRangoFecha.FechaInicio.AddDays(1);
 			}
 		}
 	}

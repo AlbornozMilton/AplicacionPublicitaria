@@ -7,20 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
 	public partial class Fuentes : Form
 	{
+		private List<IFuente> iFuentes;
+
 		public Fuentes()
 		{
 			InitializeComponent();
 		}
 
-		public Fuentes(string pNombreFuente)
+		public Fuentes(string pNombreFuente, List<IFuente> pFuentes )
 		{
 			InitializeComponent();
-			//lanzar evento al cambiar nombre fuente y rellenar ultimos items
+			iFuentes = pFuentes;
+
+			foreach (IFuente fuente in pFuentes)
+			{
+				cbx_Fuente.Items.Add(fuente.NombreFuente);
+			}
+			cbx_Fuente.SelectedItem = pNombreFuente;
 		}
 
 		private void Fuentes_Load(object sender, EventArgs e)

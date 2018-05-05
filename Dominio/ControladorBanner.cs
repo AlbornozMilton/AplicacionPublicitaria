@@ -67,14 +67,25 @@ namespace Dominio
 			iUOfW.RepositorioBanner.AgregarBanner(perBanner);
 		}
 
-		public List<Fuente> ObtenerFuentes()
-		{
-			return null;
-		}
-
-		public void ObtenerItemsFuenteRSS()
+		public void AgregarFuente(IFuente pFuente)
 		{
 
 		}
+
+		public List<IFuente> ObtenerFuentes()
+		{
+			List<IFuente> resultado = new List<IFuente>();
+			foreach (var fuente in iUOfW.RepositorioBanner.TodasLasFuentes())
+			{
+				var f = Mapper.Map<Persistencia.Dominio.Fuente, IFuente>(fuente);
+				resultado.Add(f);
+			}
+			return resultado;
+		}
+
+		//public List<IItem> ObtenerItemsFuenteRSS()
+		//{
+			
+		//}
 	}
 }
