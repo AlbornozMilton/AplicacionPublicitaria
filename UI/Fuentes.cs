@@ -39,7 +39,7 @@ namespace UI
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
 		{
-
+			new AddModFuente().ShowDialog();
 		}
 
 		private void btnModFuente_Click(object sender, EventArgs e)
