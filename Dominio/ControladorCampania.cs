@@ -30,6 +30,13 @@ namespace Dominio
             iUOfW.Complete();
         }
 
+        public void EliminarCampania(Campania pCampania)
+        {
+            var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(pCampania);
+            iUOfW.RepositorioCampania.Remove(MapCamp);
+            iUOfW.Complete();
+        }
+
         /// <summary>
         /// Devuelve una campaña a partir de un ID ingresado
         /// </summary>
@@ -98,7 +105,7 @@ namespace Dominio
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
-            Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Imagenes\\Espiritu del Bosque.jpg");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Pictures\\Imagenes mias\\PorDefecto.gif");
             listaImagenes.Add(imagenPublicidad);
             return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, /*listaDias*/"luenes" , listaHorarios),listaImagenes);
         }
@@ -155,6 +162,14 @@ namespace Dominio
                 }
             }
             return listaDias;
+        }
+
+        public List<Campania> ObtenerTodasCampanias() //CUAL ES EL FIN DE ESTE METODO?
+        {
+            IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
+            List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
+            iUOfW.Dispose();
+            return listaCampanias;
         }
         public Boolean ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
         {
