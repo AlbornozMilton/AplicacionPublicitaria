@@ -9,6 +9,6 @@ namespace Persistencia.DAL
 		void AgregarBanner(Banner pBanner);
 		List<Banner> BannersDelDia(DateTime pDia);
 		List<Fuente> TodasLasFuentes();
-		void ABMFuente(Fuente a);
+		void ABMFuente(IFuente pFuente, Operacion pOperacion);
     }
 }

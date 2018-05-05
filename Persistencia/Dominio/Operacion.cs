@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Dominio
 {
-    public class TextoFijo: Fuente, IFuente
-    {
-		public string NombreFuente { get; set; }
-    }
+	public enum Operacion
+	{
+		Agregar,
+		Modificar,
+		Eliminar
+	}
 }

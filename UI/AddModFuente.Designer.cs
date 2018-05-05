@@ -81,7 +81,8 @@
 			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 64);
 			this.tbxNombreFuente.Name = "tbxNombreFuente";
 			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
-			this.tbxNombreFuente.TabIndex = 41;
+			this.tbxNombreFuente.TabIndex = 0;
+			this.tbxNombreFuente.TextChanged += new System.EventHandler(this.tbxNombreFuente_TextChanged);
 			// 
 			// btnCancelar
 			// 
@@ -90,7 +91,7 @@
 			this.btnCancelar.Location = new System.Drawing.Point(531, 138);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
-			this.btnCancelar.TabIndex = 44;
+			this.btnCancelar.TabIndex = 3;
 			this.btnCancelar.Text = "Cancelar";
 			this.btnCancelar.UseVisualStyleBackColor = true;
 			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -102,7 +103,7 @@
 			this.btnAceptar.Location = new System.Drawing.Point(433, 138);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
-			this.btnAceptar.TabIndex = 43;
+			this.btnAceptar.TabIndex = 2;
 			this.btnAceptar.Text = "Aceptar";
 			this.btnAceptar.UseVisualStyleBackColor = true;
 			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -113,7 +114,7 @@
 			this.cbxTipoFuente.Location = new System.Drawing.Point(145, 95);
 			this.cbxTipoFuente.Name = "cbxTipoFuente";
 			this.cbxTipoFuente.Size = new System.Drawing.Size(136, 21);
-			this.cbxTipoFuente.TabIndex = 45;
+			this.cbxTipoFuente.TabIndex = 1;
 			this.cbxTipoFuente.SelectedIndexChanged += new System.EventHandler(this.cbxTipoFuente_SelectedIndexChanged);
 			// 
 			// AddModFuente

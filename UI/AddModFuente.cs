@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -46,13 +42,22 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (iFuente != null) // modificando
+			if (lblFuente.Text != "")
 			{
+				var controlador = new ControladorBanner();
+				if (iFuente != null) // modificando
+				{
+					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, iFuente);
+				}
+				else //nueva fuente
+				{
+					if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
+						iFuente = new FuenteRSS(tbxNombreFuente.Text);
+					else if (cbxTipoFuente.SelectedItem.ToString() == "TextoFijo")
+						iFuente = new TextoFijo(tbxNombreFuente.Text);
 
-			}
-			else //nueva fuente
-			{
-
+					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, iFuente);
+				} 
 			}
 		}
 
@@ -67,6 +72,18 @@ namespace UI
 				lblFuente.Text = "URL de Fuente";
 			else
 				lblFuente.Text = "Nombre Fuente";
+		}
+
+		private void tbxNombreFuente_TextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				//if (no pasa control de URL para RSS) -> excepcion
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			}
 		}
 	}
 }

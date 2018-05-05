@@ -7,12 +7,12 @@ using Persistencia.Dominio;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    public class RepositorioBanner:Repositorio<Banner,PublicidadContext>, IRepositorioBanner
-    {
-        public RepositorioBanner(PublicidadContext pContext):base(pContext)
-        {
+	public class RepositorioBanner : Repositorio<Banner, PublicidadContext>, IRepositorioBanner
+	{
+		public RepositorioBanner(PublicidadContext pContext) : base(pContext)
+		{
 
-        }
+		}
 
 		/// <summary>
 		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
@@ -57,6 +57,48 @@ namespace Persistencia.DAL.EntityFramework
 		public List<Fuente> TodasLasFuentes()
 		{
 			return iDbContext.Fuentes.ToList();
+		}
+
+		public void ABMFuente(IFuente pFuente, Operacion pOperacion)
+		{
+			switch (pOperacion)
+			{
+				case Operacion.Agregar:
+					{
+						//iDbContext.IFuentes.Add((pFuente));
+
+						//switch (pFuente.TipoFuente)
+						//{
+						//	case TipoFuente.RSS:
+						//		{
+						//			iDbContext.IFuentes.Add((pFuente));
+						//		}
+						//		break;
+						//	case TipoFuente.TextoFijo:
+						//		{
+						//			iDbContext.TentoFijo.Add((TextoFijo)pFuente);
+						//		}
+						//		break;
+						//	default:
+						//		throw new Exception("Error en Agregar de ABMFuentes");
+						//}
+					}
+					break;
+				case Operacion.Modificar:
+					{
+
+					}
+					break;
+				case Operacion.Eliminar:
+					{
+
+					}
+					break;
+				default:
+					throw new Exception("Error de Tipo Fuente en ABMFuentes");
+			}
+
+			iDbContext.SaveChanges();
 		}
 	}
 }

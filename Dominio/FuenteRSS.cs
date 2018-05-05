@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dominio.RSS;
+﻿using Dominio.RSS;
 
 namespace Dominio
 {
@@ -20,6 +15,17 @@ namespace Dominio
 
 		}
 
+		/// <summary>
+		/// Utilizado para AFM Fuentes
+		/// </summary>
+		public FuenteRSS(string pUri) : base(pUri, TipoFuente.RSS)
+		{
+			//ObtenerItems();
+		}
+
+		/// <summary>
+		/// Utilizado para Capturar Items en Pant. Operativa
+		/// </summary>
 		public FuenteRSS(string pUri, IRssReader pReader) : base(pUri, TipoFuente.RSS)
 		{
 			ReaderRss = pReader;
