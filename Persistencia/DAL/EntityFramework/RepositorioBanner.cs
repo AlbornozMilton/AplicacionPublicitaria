@@ -61,6 +61,8 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ABMFuente(IFuente pFuente, Operacion pOperacion)
 		{
+			var a = (FuenteRSS)pFuente;
+
 			switch (pOperacion)
 			{
 				case Operacion.Agregar:

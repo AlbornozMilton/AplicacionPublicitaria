@@ -49,6 +49,7 @@ namespace UI
 					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, iFuente);
 					Cursor = Cursors.Default;
 
+
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
@@ -57,6 +58,8 @@ namespace UI
 						iFuente = new FuenteRSS(tbxNombreFuente.Text);
 					else if (cbxTipoFuente.SelectedItem.ToString() == "TextoFijo")
 						iFuente = new TextoFijo(tbxNombreFuente.Text);
+
+					var x = (TextoFijo)iFuente;
 
 					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, iFuente);
 					Cursor = Cursors.Default;

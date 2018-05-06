@@ -76,6 +76,8 @@ namespace Dominio
 
 		public void ABMFuente(Operacion pOperacion, IFuente pFuente)
 		{
+			var x = pFuente.GetType();
+
 			iUOfW.RepositorioBanner.ABMFuente
 				(
 					Mapper.Map<IFuente, Persistencia.Dominio.IFuente>(pFuente),
