@@ -18,6 +18,7 @@ namespace UI
 		public Fuentes()
 		{
 			InitializeComponent();
+			iFuentes = new ControladorBanner().ObtenerFuentes();
 		}
 
 		public Fuentes(string pNombreFuente, List<IFuente> pFuentes )
@@ -25,16 +26,19 @@ namespace UI
 			InitializeComponent();
 			iFuentes = pFuentes;
 
-			foreach (IFuente fuente in pFuentes)
-			{
-				cbx_Fuente.Items.Add(fuente.NombreFuente);
-			}
-			cbx_Fuente.SelectedItem = pNombreFuente;
+			//foreach (IFuente fuente in pFuentes)
+			//{
+			//	cbx_Fuente.Items.Add(fuente.NombreFuente);
+			//}
+			//cbx_Fuente.SelectedItem = pNombreFuente;
 		}
 
 		private void Fuentes_Load(object sender, EventArgs e)
 		{
-
+			foreach (var item in iFuentes)
+			{
+				cbx_Fuente.Items.Add(item.NombreFuente);
+			}
 		}
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
