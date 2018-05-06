@@ -25,10 +25,10 @@ namespace UI
 		{
 			if (iFuente != null)
 			{
-				cbxTipoFuente.SelectedText = iFuente.TipoFuente.ToString();
-				tbxNombreFuente.Text = iFuente.NombreFuente;
-				if (iFuente.TipoFuente == TipoFuente.RSS)
-					lblFuente.Text = "URL de Fuente";
+				//cbxTipoFuente.SelectedText = iFuente.TipoFuente.ToString();
+				//tbxNombreFuente.Text = iFuente.NombreFuente;
+				//if (iFuente.TipoFuente == TipoFuente.RSS)
+				//	lblFuente.Text = "URL de Fuente";
 			}
 			else
 			{

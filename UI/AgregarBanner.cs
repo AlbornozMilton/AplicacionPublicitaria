@@ -29,7 +29,7 @@ namespace UI
 			iFuentes = new ControladorBanner().ObtenerFuentes();
 			foreach (IFuente fuente in iFuentes)
 			{
-				cbx_Fuente.Items.Add(fuente.NombreFuente);
+				//cbx_Fuente.Items.Add(fuente.NombreFuente);
 			}
 		}
 
@@ -223,9 +223,9 @@ namespace UI
 
 		private void cbx_FuenteRss_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			IFuente fuente = iFuentes.Find(f => f.NombreFuente == cbx_Fuente.SelectedItem.ToString());
-			txbTipoFuente.Text = fuente.TipoFuente.ToString();
-			dGV_itemsFuente.DataSource = fuente.Items;
+			//IFuente fuente = iFuentes.Find(f => f.NombreFuente == cbx_Fuente.SelectedItem.ToString());
+			//txbTipoFuente.Text = fuente.TipoFuente.ToString();
+			//dGV_itemsFuente.DataSource = fuente.Items;
 		}
 	}
 }

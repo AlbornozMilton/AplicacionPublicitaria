@@ -54,14 +54,27 @@ namespace Persistencia.DAL.EntityFramework
 			return result;
 		}
 
-		public List<Fuente> TodasLasFuentes()
-		{
-			return iDbContext.Fuentes.ToList();
-		}
+		//public IQueryable TodasLasFuentes()
+		//{
+		//	//return iDbContext.FuenteRSS;
+		//	var x = from rss in iDbContext.FuenteRSS select rss;
+		//	var z = from rss in iDbContext.TentoFijo select rss;
+		//	var y = from rss in iDbContext.Fuentes select rss;
+
+		//	var m = 
+		//		( from rss in id
+
+		//		)
+		//}
 
 		public List<FuenteRSS> FuentesRSS()
 		{
 			return iDbContext.FuenteRSS.ToList();
+		}
+
+		public List<TextoFijo> FuentesTextoFijo()
+		{
+			return iDbContext.TentoFijo.ToList();
 		}
 
 		public void AgregarFuente(FuenteRSS pFuente)

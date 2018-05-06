@@ -2,49 +2,23 @@
 
 namespace Dominio
 {
-    public class FuenteRSS: Fuente
+    public class FuenteRSS: Fuente, IFuente
     {
 		private IRssReader ReaderRss { get; }
-		//private string Uri;
-		/// <summary>
-		/// pReader ya resuelto. Guarda Uri. Hacer try/catch
-		/// </summary>
+		private string iUrl;
 
 		public FuenteRSS()
 		{
 
 		}
 
-		/// <summary>
-		/// Utilizado para AFM Fuentes
-		/// </summary>
-		public FuenteRSS(string pUri) : base(pUri, TipoFuente.RSS)
+		public FuenteRSS(string pUri)
 		{
-			//ObtenerItems();
+			iUrl = pUri;
 		}
 
-		/// <summary>
-		/// Utilizado para Capturar Items en Pant. Operativa
-		/// </summary>
-		public FuenteRSS(string pUri, IRssReader pReader) : base(pUri, TipoFuente.RSS)
-		{
-			ReaderRss = pReader;
-			//Uri = pUri;
-			ObtenerItems();
-        }
+		public string URL { get { return this.iUrl; } private set { this.iUrl = value; } }
 
-		public void ReLoadItems()
-		{
-			base.Items.Clear();
-			ObtenerItems();
-		}
-
-		private void ObtenerItems()
-		{
-			foreach (var item in ReaderRss.Read(base.NombreFuente))
-			{
-				base.Items.Add(item);
-			}
-		}
+		public string NombreFuente { get { return this.iUrl; } private set { this.iUrl = value; } }
 	}
 }

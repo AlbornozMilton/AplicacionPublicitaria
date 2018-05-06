@@ -6,32 +6,22 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-	public class TextoFijo : Fuente
+	public class TextoFijo : Fuente, IFuente
 	{
+		private string iNombreFuente;
+
 		public TextoFijo()
 		{
 
 		}
-
 		/// <summary>
 		/// Utilizado para AFM Fuentes
 		/// </summary>
-		public TextoFijo(string pNombreFuente) : base(pNombreFuente, TipoFuente.TextoFijo)
+		public TextoFijo(string pNombreFuente)
 		{
-
+			iNombreFuente = pNombreFuente;
 		}
 
-		/// <summary>
-		/// Utilizado para Capturar Items en Pant. Operativa
-		/// </summary>
-		public TextoFijo(string pNombreFuente, List<IItem> pItems) :base(pNombreFuente,TipoFuente.TextoFijo)
-		{
-			base.Items = pItems;
-		}
-
-		public void AgregarItem(string pTitulo,string pTexto, DateTime pFecha)
-		{
-			base.Items.Add(new ItemGenerico(pTitulo, pTexto, pFecha));
-		}
+		public string NombreFuente { get { return this.iNombreFuente; } private set { this.iNombreFuente = value; } }
 	}
 }
