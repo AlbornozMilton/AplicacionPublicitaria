@@ -25,10 +25,11 @@ namespace UI
 		{
 			if (iFuente != null)
 			{
-				//cbxTipoFuente.SelectedText = iFuente.TipoFuente.ToString();
-				//tbxNombreFuente.Text = iFuente.NombreFuente;
-				//if (iFuente.TipoFuente == TipoFuente.RSS)
-				//	lblFuente.Text = "URL de Fuente";
+				cbxTipoFuente.Items.Add(iFuente.GetType().Name);
+				cbxTipoFuente.SelectedIndex = 0;
+				tbxNombreFuente.Text = iFuente.NombreFuente;
+				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
+					lblFuente.Text = "URL de Fuente";
 			}
 			else
 			{
@@ -37,6 +38,8 @@ namespace UI
 					cbxTipoFuente.Items.Add(tipoFuente);
 				}
 			}
+
+			tbxNombreFuente_Leave(this, e);
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
@@ -73,17 +76,16 @@ namespace UI
 			if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
 				lblFuente.Text = "URL de Fuente";
 			else
-			{
 				lblFuente.Text = "Nombre Fuente";
-				btnAceptar.Enabled = true;
-			}
+
+			tbxNombreFuente.Text = "";
 		}
 
 		private void tbxNombreFuente_Leave(object sender, EventArgs e)
 		{
 			try
 			{
-				if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
+				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
 				{
 					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
 					{

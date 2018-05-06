@@ -81,7 +81,7 @@
 			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 93);
 			this.tbxNombreFuente.Name = "tbxNombreFuente";
 			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
-			this.tbxNombreFuente.TabIndex = 1;
+			this.tbxNombreFuente.TabIndex = 0;
 			this.tbxNombreFuente.Leave += new System.EventHandler(this.tbxNombreFuente_Leave);
 			// 
 			// btnCancelar

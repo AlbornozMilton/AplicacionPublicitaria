@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -42,12 +37,32 @@ namespace UI
 
 		private void btnModFuente_Click(object sender, EventArgs e)
 		{
-
+			if (cbx_Fuente.SelectedItem != null)
+			{
+				new AddModFuente(iFuentes.ElementAt(cbx_Fuente.SelectedIndex)).ShowDialog(); 
+			}
 		}
 
 		private void btnEliminarFuente_Click(object sender, EventArgs e)
 		{
+			if (cbx_Fuente.SelectedItem != null)
+			{
+				try
+				{
+					var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 
+					new ControladorBanner().ABMFuente(
+						ControladorBanner.Operacion.Eliminar,
+						tbxTipoFuente.Text,
+						fuente.FuenteId,
+						fuente.NombreFuente);
+					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				}
+				catch (Exception E)
+				{
+					new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+				}
+			}
 		}
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)

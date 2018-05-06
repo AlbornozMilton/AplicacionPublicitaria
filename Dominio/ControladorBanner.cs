@@ -98,7 +98,7 @@ namespace Dominio
 				resultado.Add(Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(fuente));
 			}
 
-			return resultado;
+			return resultado.OrderBy(f => f.NombreFuente).ToList();
 		}
 	}
 }
