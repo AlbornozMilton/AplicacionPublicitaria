@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 
@@ -42,12 +40,16 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (lblFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
+			if (tbxNombreFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
 			{
+				Cursor = Cursors.WaitCursor;
 				var controlador = new ControladorBanner();
 				if (iFuente != null) 
 				{
 					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, iFuente);
+					Cursor = Cursors.Default;
+
+					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
@@ -57,7 +59,10 @@ namespace UI
 						iFuente = new TextoFijo(tbxNombreFuente.Text);
 
 					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, iFuente);
-				} 
+					Cursor = Cursors.Default;
+					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				}
+				Close();
 			}
 			else
 				new VentanaEmergente("Debe rellenar todos los campos", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
@@ -76,11 +81,31 @@ namespace UI
 				lblFuente.Text = "Nombre Fuente";
 		}
 
-		private void tbxNombreFuente_TextChanged(object sender, EventArgs e)
+		private void tbxNombreFuente_Leave(object sender, EventArgs e)
 		{
 			try
 			{
-				//if (no pasa control de URL para RSS) -> excepcion
+				if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
+				{
+					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
+					{
+						//cLogger.Info("No se ingresó URL");
+						throw new Exception("Debe ingresar una URL");
+					}
+
+					Uri mUrl;
+
+					if (!Uri.TryCreate(this.tbxNombreFuente.Text.Trim(), UriKind.Absolute, out mUrl))
+					{
+						//cLogger.Info("URL inválida");
+						btnAceptar.Enabled = false;
+						throw new Exception("La URL absoluta ingresada no es válida.");
+					}
+
+					btnAceptar.Enabled = true;
+				}
+				else
+					btnAceptar.Enabled = true;
 			}
 			catch (Exception E)
 			{
