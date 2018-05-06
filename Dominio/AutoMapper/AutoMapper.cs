@@ -22,15 +22,15 @@ namespace Dominio.AutoMapper
 				cfg.CreateMap<Dia, pers.Dia>().ReverseMap();
 				cfg.CreateMap<Banner, pers.Banner>().ReverseMap();
 
-				//cfg.CreateMap < TextoFijo, pers.TextoFijo >().ReverseMap();
+				//cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
 				//cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
 				cfg.CreateMap<IFuente, pers.FuenteRSS>().ReverseMap();
 				cfg.CreateMap<IFuente, pers.TextoFijo>().ReverseMap();
-				cfg.CreateMap<IFuente, pers.IFuente>().ReverseMap();
+				cfg.CreateMap<pers.Fuente, IFuente>().ReverseMap();
 				//cfg.CreateMap<IFuente, pers.Fuente>().ReverseMap();
-				//cfg.CreateMap<IFuente, pers.TextoFijo>().ReverseMap();
-				//cfg.CreateMap<IFuente, pers.FuenteRSS>().ReverseMap();
-				//cfg.CreateMap<TipoFuente, pers.TipoFuente>().ReverseMap();
+				//cfg.CreateMap<IFuente, pers.IFuente>().ReverseMap();
+				//cfg.CreateMap<Fuente, pers.TextoFijo>().ReverseMap();
+				//cfg.CreateMap<Fuente, pers.FuenteRSS>().ReverseMap();
 
 				cfg.CreateMap<ControladorBanner.Operacion, pers.Operacion>().ReverseMap();
 				cfg.CreateMap<IItem, pers.Item>().ReverseMap();

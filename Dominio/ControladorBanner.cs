@@ -110,8 +110,10 @@ namespace Dominio
 			List<IFuente> resultado = new List<IFuente>();
 			foreach (var fuente in iUOfW.RepositorioBanner.TodasLasFuentes())
 			{
-				var f = Mapper.Map<Persistencia.Dominio.Fuente, IFuente>(fuente);
-				resultado.Add(f);
+				resultado.Add(Mapper.Map<Persistencia.Dominio.Fuente, IFuente>(fuente));
+				//resultado.Add(Mapper.Map<Persistencia.Dominio.Fuente, FuenteRSS>(fuente));
+				//resultado.Add(Mapper.Map<Persistencia.Dominio.Fuente, TextoFijo>(fuente));
+				//resultado.Add(Mapper.Map<Persistencia.Dominio.Fuente, TextoFijo>(fuente));
 			}
 			return resultado;
 		}

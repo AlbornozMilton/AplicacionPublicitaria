@@ -59,6 +59,11 @@ namespace Persistencia.DAL.EntityFramework
 			return iDbContext.Fuentes.ToList();
 		}
 
+		public List<FuenteRSS> FuentesRSS()
+		{
+			return iDbContext.FuenteRSS.ToList();
+		}
+
 		public void AgregarFuente(FuenteRSS pFuente)
 		{
 			iDbContext.FuenteRSS.Add(pFuente);
