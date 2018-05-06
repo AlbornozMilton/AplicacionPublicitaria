@@ -112,5 +112,20 @@ namespace Persistencia.DAL.EntityFramework
 
 			iDbContext.SaveChanges();
 		}
+
+		public void AgregarItem(int pFuenteId, Item pItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void ModificarItem(Item pItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void EliminarItem(int pItemId)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

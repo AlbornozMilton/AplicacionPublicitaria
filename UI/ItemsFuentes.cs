@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
 	public partial class ItemsFuentes : Form
 	{
-		public ItemsFuentes()
+		private IItem _Item;
+
+		public ItemsFuentes(IItem pItem)
 		{
 			InitializeComponent();
+			_Item = pItem;
 		}
 
-		public ItemsFuentes(string pTitulo)
+		private void ItemsFuentes_Load(object sender, EventArgs e)
 		{
-			InitializeComponent();
+			fechaDateTimePicker.MinDate = DateTime.Now;
+			fechaDateTimePicker.Value = DateTime.Now;
 		}
 	}
 }

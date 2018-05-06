@@ -67,12 +67,12 @@ namespace UI
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes().ShowDialog();
+			new ItemsFuentes(new ItemGenerico() { ItemId = 0}).ShowDialog();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes("TituloItem").ShowDialog();
+			new ItemsFuentes((ItemGenerico)iItemBindingSource.Current).ShowDialog();
 		}
 
 		private void btn_eliminarItem_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-
+			Close();
 		}
 
 		private void lblX_Click(object sender, EventArgs e)
@@ -102,7 +102,20 @@ namespace UI
 
 		private void cbx_Fuente_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			tbxTipoFuente.Text = iFuentes.ElementAt(cbx_Fuente.SelectedIndex).GetType().Name;
+			var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+			tbxTipoFuente.Text = fuente.GetType().Name;
+			iItemBindingSource.DataSource = fuente.Items;
+
+			if (tbxTipoFuente.Text != "FuenteRSS")
+			{
+				btnAgregarItem.Visible = true;
+				btnModificarItem.Visible = true;
+			}
+			else
+			{
+				btnAgregarItem.Visible = false;
+				btnModificarItem.Visible = false;
+			}
 		}
 	}
 }

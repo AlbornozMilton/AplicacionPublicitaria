@@ -100,5 +100,32 @@ namespace Dominio
 
 			return resultado.OrderBy(f => f.NombreFuente).ToList();
 		}
+
+		public List<IItem> ObtenerItemsDeFuente(int pFuenteId)
+		{
+			return null;
+		}
+
+		public void ABMItems(Operacion pOP, int pFuenteId, IItem pItem)
+		{
+			switch (pOP)
+			{
+				case Operacion.Agregar:
+					{
+
+					}
+					break;
+				case Operacion.Modificar:
+					{
+
+					}
+					break;
+				case Operacion.Eliminar:
+					{
+
+					}
+					break;
+			}
+		}
 	}
 }
