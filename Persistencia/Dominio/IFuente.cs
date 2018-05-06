@@ -6,9 +6,9 @@ namespace Persistencia.Dominio
 	{
 		int FuenteId { get; set; }
 
-		string NombreFuente { get; set; }
+		//string NombreFuente { get; set; }
 
-		TipoFuente TipoFuente { get; set; }
+		//TipoFuente TipoFuente { get; set; }
 
 		List<Item> Items { get; set; }
 	}

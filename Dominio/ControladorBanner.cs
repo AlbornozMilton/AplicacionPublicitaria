@@ -76,13 +76,18 @@ namespace Dominio
 
 		public void ABMFuente(Operacion pOperacion, IFuente pFuente)
 		{
-			var x = pFuente.GetType();
-
-			iUOfW.RepositorioBanner.ABMFuente
-				(
-					Mapper.Map<IFuente, Persistencia.Dominio.IFuente>(pFuente),
-					Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
-				);
+			if (pFuente.GetType().Name == "FuenteRSS")
+				iUOfW.RepositorioBanner.ABMFuente
+					(
+						Mapper.Map<IFuente, Persistencia.Dominio.FuenteRSS>((FuenteRSS)pFuente),
+						Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
+					);
+			else
+				iUOfW.RepositorioBanner.ABMFuente
+					(
+						Mapper.Map<IFuente, Persistencia.Dominio.TextoFijo>((TextoFijo)pFuente),
+						Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
+					);
 
 			//if (pFuente.TipoFuente == TipoFuente.RSS)
 			//{

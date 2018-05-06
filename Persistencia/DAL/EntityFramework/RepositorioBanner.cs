@@ -61,36 +61,38 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ABMFuente(IFuente pFuente, Operacion pOperacion)
 		{
-			var a = (FuenteRSS)pFuente;
+
 
 			switch (pOperacion)
 			{
 				case Operacion.Agregar:
 					{
-						if (pFuente.TipoFuente == TipoFuente.RSS)
-							iDbContext.FuenteRSS.Add(new FuenteRSS() { URL = pFuente.NombreFuente, TipoFuente = pFuente.TipoFuente});
+						var fuente = pFuente.GetType();
+
+						if (fuente.Name == "FuenteRSS")
+							iDbContext.FuenteRSS.Add((FuenteRSS)pFuente);
 						else
-							iDbContext.TentoFijo.Add(new TextoFijo() { NombreFuente = pFuente.NombreFuente, TipoFuente = pFuente.TipoFuente });
+							iDbContext.TentoFijo.Add((TextoFijo)pFuente);
 					}
 					break;
-				case Operacion.Modificar:
-					{
-						if (pFuente.TipoFuente == TipoFuente.RSS)
-							iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().URL = pFuente.NombreFuente;
-						else
-							iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().NombreFuente = pFuente.NombreFuente;
-					}
-					break;
-				case Operacion.Eliminar:
-					{
-						if (pFuente.TipoFuente == TipoFuente.RSS)
-							iDbContext.FuenteRSS.Remove(
-								iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
-						else
-							iDbContext.TentoFijo.Remove(
-								iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
-					}
-					break;
+				//case Operacion.Modificar:
+				//	{
+				//		if (pFuente.TipoFuente == TipoFuente.RSS)
+				//			iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().URL = pFuente.NombreFuente;
+				//		else
+				//			iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().NombreFuente = pFuente.NombreFuente;
+				//	}
+				//	break;
+				//case Operacion.Eliminar:
+				//	{
+				//		if (pFuente.TipoFuente == TipoFuente.RSS)
+				//			iDbContext.FuenteRSS.Remove(
+				//				iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
+				//		else
+				//			iDbContext.TentoFijo.Remove(
+				//				iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
+				//	}
+				//	break;
 				default:
 					throw new Exception("Error de Tipo Fuente en ABMFuentes");
 			}
