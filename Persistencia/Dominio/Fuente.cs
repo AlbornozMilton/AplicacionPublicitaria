@@ -10,10 +10,4 @@ namespace Persistencia.Dominio
 
 		public List<Item> Items { get; set; }
     }
-
-	//public enum TipoFuente
-	//{
-	//	RSS,
-	//	TextoFijo
-	//}
 }

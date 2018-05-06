@@ -4,6 +4,7 @@ namespace Dominio.RSS
 {
 	public class RssItem : IItem
 	{
+		public int ItemId { get; set; }
 		/// <summary>
 		/// Título del ítem.
 		/// </summary>
