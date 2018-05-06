@@ -1,6 +1,6 @@
 ﻿namespace Persistencia.Dominio
 {
-    public class FuenteRSS: Fuente, IFuente
+    public class FuenteRSS: Fuente
 	{
         public string URL { get; set; }
 

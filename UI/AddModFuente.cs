@@ -26,6 +26,7 @@ namespace UI
 			if (iFuente != null)
 			{
 				cbxTipoFuente.SelectedText = iFuente.TipoFuente.ToString();
+				tbxNombreFuente.Text = iFuente.NombreFuente;
 				if (iFuente.TipoFuente == TipoFuente.RSS)
 					lblFuente.Text = "URL de Fuente";
 			}
@@ -46,22 +47,13 @@ namespace UI
 				var controlador = new ControladorBanner();
 				if (iFuente != null) 
 				{
-					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, iFuente);
+					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text);
 					Cursor = Cursors.Default;
-
-
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
-					if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
-						iFuente = new FuenteRSS(tbxNombreFuente.Text);
-					else if (cbxTipoFuente.SelectedItem.ToString() == "TextoFijo")
-						iFuente = new TextoFijo(tbxNombreFuente.Text);
-
-					var x = (TextoFijo)iFuente;
-
-					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, iFuente);
+					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
@@ -81,7 +73,10 @@ namespace UI
 			if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
 				lblFuente.Text = "URL de Fuente";
 			else
+			{
 				lblFuente.Text = "Nombre Fuente";
+				btnAceptar.Enabled = true;
+			}
 		}
 
 		private void tbxNombreFuente_Leave(object sender, EventArgs e)
@@ -93,6 +88,7 @@ namespace UI
 					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
 					{
 						//cLogger.Info("No se ingresó URL");
+						btnAceptar.Enabled = false;
 						throw new Exception("Debe ingresar una URL");
 					}
 
@@ -104,11 +100,10 @@ namespace UI
 						btnAceptar.Enabled = false;
 						throw new Exception("La URL absoluta ingresada no es válida.");
 					}
-
 					btnAceptar.Enabled = true;
 				}
-				else
-					btnAceptar.Enabled = true;
+				//else
+					//btnAceptar.Enabled = true;
 			}
 			catch (Exception E)
 			{

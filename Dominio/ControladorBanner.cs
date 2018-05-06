@@ -74,35 +74,36 @@ namespace Dominio
 			Eliminar
 		}
 
-		public void ABMFuente(Operacion pOperacion, IFuente pFuente)
+		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pNombreFuente)
 		{
-			if (pFuente.GetType().Name == "FuenteRSS")
-				iUOfW.RepositorioBanner.ABMFuente
-					(
-						Mapper.Map<IFuente, Persistencia.Dominio.FuenteRSS>((FuenteRSS)pFuente),
-						Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
-					);
-			else
-				iUOfW.RepositorioBanner.ABMFuente
-					(
-						Mapper.Map<IFuente, Persistencia.Dominio.TextoFijo>((TextoFijo)pFuente),
-						Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
-					);
-
-			//if (pFuente.TipoFuente == TipoFuente.RSS)
-			//{
-			//	iUOfW.RepositorioBanner.ABMFuente
-			//	(
-			//		Mapper.Map<IFuente, Persistencia.Dominio.IFuente>((FuenteRSS)pFuente),
-			//		Mapper.Map<Operacion, Persistencia.Dominio.Operacion>(pOperacion)
-			//	);
-			//}
-			//else
-			//{
-
-			//}
+			switch (pOperacion)
+			{
+				case Operacion.Agregar:
+					{
+						if (pTipo == "RSS")
+							iUOfW.RepositorioBanner.AgregarFuente
+								(
+								 new Persistencia.Dominio.FuenteRSS { URL= pNombreFuente}
+								);
+						else
+							iUOfW.RepositorioBanner.AgregarFuente
+								(
+								 new Persistencia.Dominio.TextoFijo { NombreFuente = pNombreFuente }
+								);
+					}
+					break;
+				case Operacion.Modificar:
+					{
+						iUOfW.RepositorioBanner.ModificarFuente(pFuenteId, pNombreFuente);
+					}
+					break;
+				case Operacion.Eliminar:
+					{
+						iUOfW.RepositorioBanner.EliminarFuente(pFuenteId);
+					}
+					break;
+			}
 		}
-
 
 		public List<IFuente> ObtenerFuentes()
 		{
@@ -114,10 +115,5 @@ namespace Dominio
 			}
 			return resultado;
 		}
-
-		//public List<IItem> ObtenerItemsFuenteRSS()
-		//{
-			
-		//}
 	}
 }

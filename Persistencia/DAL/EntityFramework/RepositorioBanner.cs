@@ -59,43 +59,38 @@ namespace Persistencia.DAL.EntityFramework
 			return iDbContext.Fuentes.ToList();
 		}
 
-		public void ABMFuente(IFuente pFuente, Operacion pOperacion)
+		public void AgregarFuente(FuenteRSS pFuente)
 		{
+			iDbContext.FuenteRSS.Add(pFuente);
+			iDbContext.SaveChanges();
+		}
 
+		public void AgregarFuente(TextoFijo pFuente)
+		{
+			iDbContext.TentoFijo.Add(pFuente);
+			iDbContext.SaveChanges();
+		}
 
-			switch (pOperacion)
-			{
-				case Operacion.Agregar:
-					{
-						var fuente = pFuente.GetType();
+		public void ModificarFuente(int pIdFuente, string pNombreFuente)
+		{
+			var fuente = iDbContext.Fuentes.Find(pIdFuente);
 
-						if (fuente.Name == "FuenteRSS")
-							iDbContext.FuenteRSS.Add((FuenteRSS)pFuente);
-						else
-							iDbContext.TentoFijo.Add((TextoFijo)pFuente);
-					}
-					break;
-				//case Operacion.Modificar:
-				//	{
-				//		if (pFuente.TipoFuente == TipoFuente.RSS)
-				//			iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().URL = pFuente.NombreFuente;
-				//		else
-				//			iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().NombreFuente = pFuente.NombreFuente;
-				//	}
-				//	break;
-				//case Operacion.Eliminar:
-				//	{
-				//		if (pFuente.TipoFuente == TipoFuente.RSS)
-				//			iDbContext.FuenteRSS.Remove(
-				//				iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
-				//		else
-				//			iDbContext.TentoFijo.Remove(
-				//				iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
-				//	}
-				//	break;
-				default:
-					throw new Exception("Error de Tipo Fuente en ABMFuentes");
-			}
+			if (fuente.GetType().Name == "FuenteRSS")
+				((FuenteRSS)fuente).URL = pNombreFuente;
+			else
+				((TextoFijo)fuente).NombreFuente = pNombreFuente;
+
+			iDbContext.SaveChanges();
+		}
+
+		public void EliminarFuente(int pIdFuente)
+		{
+			var fuente = iDbContext.Fuentes.Find(pIdFuente);
+
+			if (fuente.GetType().Name == "FuenteRSS")
+				iDbContext.FuenteRSS.Remove(((FuenteRSS)fuente));
+			else
+				iDbContext.TentoFijo.Remove(((TextoFijo)fuente));
 
 			iDbContext.SaveChanges();
 		}

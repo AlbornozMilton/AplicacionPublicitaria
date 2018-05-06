@@ -9,6 +9,9 @@ namespace Persistencia.DAL
 		void AgregarBanner(Banner pBanner);
 		List<Banner> BannersDelDia(DateTime pDia);
 		List<Fuente> TodasLasFuentes();
-		void ABMFuente(IFuente pFuente, Operacion pOperacion);
-    }
+		void AgregarFuente(FuenteRSS pFuente);
+		void AgregarFuente(TextoFijo pFuente);
+		void ModificarFuente(int pIdFuente, string pNombreFuente);
+		void EliminarFuente(int pIdFuente);
+	}
 }
