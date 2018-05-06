@@ -65,33 +65,28 @@ namespace Persistencia.DAL.EntityFramework
 			{
 				case Operacion.Agregar:
 					{
-						//iDbContext.IFuentes.Add((pFuente));
-
-						//switch (pFuente.TipoFuente)
-						//{
-						//	case TipoFuente.RSS:
-						//		{
-						//			iDbContext.IFuentes.Add((pFuente));
-						//		}
-						//		break;
-						//	case TipoFuente.TextoFijo:
-						//		{
-						//			iDbContext.TentoFijo.Add((TextoFijo)pFuente);
-						//		}
-						//		break;
-						//	default:
-						//		throw new Exception("Error en Agregar de ABMFuentes");
-						//}
+						if (pFuente.TipoFuente == TipoFuente.RSS)
+							iDbContext.FuenteRSS.Add(new FuenteRSS() { URL = pFuente.NombreFuente, TipoFuente = pFuente.TipoFuente});
+						else
+							iDbContext.TentoFijo.Add(new TextoFijo() { NombreFuente = pFuente.NombreFuente, TipoFuente = pFuente.TipoFuente });
 					}
 					break;
 				case Operacion.Modificar:
 					{
-
+						if (pFuente.TipoFuente == TipoFuente.RSS)
+							iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().URL = pFuente.NombreFuente;
+						else
+							iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault().NombreFuente = pFuente.NombreFuente;
 					}
 					break;
 				case Operacion.Eliminar:
 					{
-
+						if (pFuente.TipoFuente == TipoFuente.RSS)
+							iDbContext.FuenteRSS.Remove(
+								iDbContext.FuenteRSS.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
+						else
+							iDbContext.TentoFijo.Remove(
+								iDbContext.TentoFijo.Where(f => f.FuenteId == pFuente.FuenteId).SingleOrDefault());
 					}
 					break;
 				default:

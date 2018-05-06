@@ -42,14 +42,14 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (lblFuente.Text != "")
+			if (lblFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
 			{
 				var controlador = new ControladorBanner();
-				if (iFuente != null) // modificando
+				if (iFuente != null) 
 				{
 					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, iFuente);
 				}
-				else //nueva fuente
+				else
 				{
 					if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
 						iFuente = new FuenteRSS(tbxNombreFuente.Text);
@@ -59,6 +59,8 @@ namespace UI
 					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, iFuente);
 				} 
 			}
+			else
+				new VentanaEmergente("Debe rellenar todos los campos", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 		}
 
 		private void btnCancelar_Click(object sender, EventArgs e)
