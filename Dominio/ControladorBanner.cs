@@ -112,7 +112,7 @@ namespace Dominio
 			{
 				case Operacion.Agregar:
 					{
-
+						iUOfW.RepositorioBanner.AgregarItem(pFuenteId, Mapper.Map<IItem, Persistencia.Dominio.Item>(pItem));
 					}
 					break;
 				case Operacion.Modificar:

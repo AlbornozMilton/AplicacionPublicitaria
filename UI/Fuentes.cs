@@ -9,6 +9,7 @@ namespace UI
 	public partial class Fuentes : Form
 	{
 		private List<IFuente> iFuentes;
+		private IFuente _Fuente;
 
 		public Fuentes()
 		{
@@ -39,7 +40,7 @@ namespace UI
 		{
 			if (cbx_Fuente.SelectedItem != null)
 			{
-				new AddModFuente(iFuentes.ElementAt(cbx_Fuente.SelectedIndex)).ShowDialog(); 
+				new AddModFuente(_Fuente).ShowDialog(); 
 			}
 		}
 
@@ -49,13 +50,13 @@ namespace UI
 			{
 				try
 				{
-					var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+					//var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 
 					new ControladorBanner().ABMFuente(
 						ControladorBanner.Operacion.Eliminar,
 						tbxTipoFuente.Text,
-						fuente.FuenteId,
-						fuente.NombreFuente);
+						_Fuente.FuenteId,
+						_Fuente.NombreFuente);
 					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				catch (Exception E)
@@ -67,12 +68,12 @@ namespace UI
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes(new ItemGenerico() { ItemId = 0}).ShowDialog();
+			new ItemsFuentes(new ItemGenerico() { ItemId = 0}, _Fuente.FuenteId).ShowDialog();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes((ItemGenerico)iItemBindingSource.Current).ShowDialog();
+			new ItemsFuentes((ItemGenerico)iItemBindingSource.Current, _Fuente.FuenteId).ShowDialog();
 		}
 
 		private void btn_eliminarItem_Click(object sender, EventArgs e)
@@ -102,9 +103,9 @@ namespace UI
 
 		private void cbx_Fuente_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
-			tbxTipoFuente.Text = fuente.GetType().Name;
-			iItemBindingSource.DataSource = fuente.Items;
+			_Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+			tbxTipoFuente.Text = _Fuente.GetType().Name;
+			iItemBindingSource.DataSource = _Fuente.Items;
 
 			if (tbxTipoFuente.Text != "FuenteRSS")
 			{

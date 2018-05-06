@@ -7,7 +7,6 @@ namespace UI
 {
 	public partial class AddModFuente : Form
 	{
-		private List<TipoFuente> iTiposFuente = new List<TipoFuente>() { TipoFuente.RSS, TipoFuente.TextoFijo }; 
 		private IFuente iFuente;
 
 		public AddModFuente()
@@ -28,15 +27,13 @@ namespace UI
 				cbxTipoFuente.Items.Add(iFuente.GetType().Name);
 				cbxTipoFuente.SelectedIndex = 0;
 				tbxNombreFuente.Text = iFuente.NombreFuente;
-				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
+				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
 					lblFuente.Text = "URL de Fuente";
 			}
 			else
 			{
-				foreach (TipoFuente tipoFuente in iTiposFuente)
-				{
-					cbxTipoFuente.Items.Add(tipoFuente);
-				}
+				string[] fuentes = { "FuenteRss", "TextoFijo" };
+				cbxTipoFuente.Items.AddRange(fuentes);
 			}
 
 			tbxNombreFuente_Leave(this, e);
@@ -73,19 +70,19 @@ namespace UI
 
 		private void cbxTipoFuente_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbxTipoFuente.SelectedItem.ToString() == "RSS")
+			if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
 				lblFuente.Text = "URL de Fuente";
 			else
 				lblFuente.Text = "Nombre Fuente";
 
-			tbxNombreFuente.Text = "";
+			tbxNombreFuente_Leave(sender, e);
 		}
 
 		private void tbxNombreFuente_Leave(object sender, EventArgs e)
 		{
 			try
 			{
-				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
+				if (cbxTipoFuente.SelectedItem != null && cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
 				{
 					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
 					{
@@ -104,8 +101,8 @@ namespace UI
 					}
 					btnAceptar.Enabled = true;
 				}
-				//else
-					//btnAceptar.Enabled = true;
+				else
+					btnAceptar.Enabled = true;
 			}
 			catch (Exception E)
 			{

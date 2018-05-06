@@ -33,17 +33,44 @@
 			System.Windows.Forms.Label fechaLabel;
 			System.Windows.Forms.Label textoLabel;
 			this.lbl_Title = new System.Windows.Forms.Label();
-			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tituloTextBox = new System.Windows.Forms.TextBox();
 			this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.textoTextBox = new System.Windows.Forms.TextBox();
 			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnAceptar = new System.Windows.Forms.Button();
+			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			tituloLabel = new System.Windows.Forms.Label();
 			fechaLabel = new System.Windows.Forms.Label();
 			textoLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// tituloLabel
+			// 
+			tituloLabel.AutoSize = true;
+			tituloLabel.Location = new System.Drawing.Point(41, 90);
+			tituloLabel.Name = "tituloLabel";
+			tituloLabel.Size = new System.Drawing.Size(46, 14);
+			tituloLabel.TabIndex = 4;
+			tituloLabel.Text = "Título:";
+			// 
+			// fechaLabel
+			// 
+			fechaLabel.AutoSize = true;
+			fechaLabel.Location = new System.Drawing.Point(38, 63);
+			fechaLabel.Name = "fechaLabel";
+			fechaLabel.Size = new System.Drawing.Size(49, 14);
+			fechaLabel.TabIndex = 5;
+			fechaLabel.Text = "Fecha:";
+			// 
+			// textoLabel
+			// 
+			textoLabel.AutoSize = true;
+			textoLabel.Location = new System.Drawing.Point(41, 118);
+			textoLabel.Name = "textoLabel";
+			textoLabel.Size = new System.Drawing.Size(46, 14);
+			textoLabel.TabIndex = 6;
+			textoLabel.Text = "Texto:";
 			// 
 			// lbl_Title
 			// 
@@ -58,19 +85,6 @@
 			this.lbl_Title.TabIndex = 3;
 			this.lbl_Title.Text = "Agregar/Modificar Item";
 			// 
-			// iItemBindingSource
-			// 
-			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
-			// 
-			// tituloLabel
-			// 
-			tituloLabel.AutoSize = true;
-			tituloLabel.Location = new System.Drawing.Point(41, 90);
-			tituloLabel.Name = "tituloLabel";
-			tituloLabel.Size = new System.Drawing.Size(46, 14);
-			tituloLabel.TabIndex = 4;
-			tituloLabel.Text = "Título:";
-			// 
 			// tituloTextBox
 			// 
 			this.tituloTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iItemBindingSource, "Titulo", true));
@@ -79,15 +93,6 @@
 			this.tituloTextBox.Size = new System.Drawing.Size(437, 22);
 			this.tituloTextBox.TabIndex = 5;
 			// 
-			// fechaLabel
-			// 
-			fechaLabel.AutoSize = true;
-			fechaLabel.Location = new System.Drawing.Point(38, 63);
-			fechaLabel.Name = "fechaLabel";
-			fechaLabel.Size = new System.Drawing.Size(49, 14);
-			fechaLabel.TabIndex = 5;
-			fechaLabel.Text = "Fecha:";
-			// 
 			// fechaDateTimePicker
 			// 
 			this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.iItemBindingSource, "Fecha", true));
@@ -95,15 +100,6 @@
 			this.fechaDateTimePicker.Name = "fechaDateTimePicker";
 			this.fechaDateTimePicker.Size = new System.Drawing.Size(200, 22);
 			this.fechaDateTimePicker.TabIndex = 6;
-			// 
-			// textoLabel
-			// 
-			textoLabel.AutoSize = true;
-			textoLabel.Location = new System.Drawing.Point(41, 118);
-			textoLabel.Name = "textoLabel";
-			textoLabel.Size = new System.Drawing.Size(46, 14);
-			textoLabel.TabIndex = 6;
-			textoLabel.Text = "Texto:";
 			// 
 			// textoTextBox
 			// 
@@ -125,6 +121,7 @@
 			this.btnCancelar.TabIndex = 9;
 			this.btnCancelar.Text = "Cancelar";
 			this.btnCancelar.UseVisualStyleBackColor = true;
+			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
 			// 
 			// btnAceptar
 			// 
@@ -137,6 +134,11 @@
 			this.btnAceptar.TabIndex = 8;
 			this.btnAceptar.Text = "Aceptar";
 			this.btnAceptar.UseVisualStyleBackColor = true;
+			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+			// 
+			// iItemBindingSource
+			// 
+			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
 			// 
 			// ItemsFuentes
 			// 
@@ -161,6 +163,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.Name = "ItemsFuentes";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Agregar/Modificar Item";
 			this.Load += new System.EventHandler(this.ItemsFuentes_Load);
 			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();

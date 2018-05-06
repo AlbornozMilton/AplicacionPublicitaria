@@ -19,6 +19,7 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 			this.Property(i => i.Texto)
 				.IsRequired();
 
+			this.Property(i => i.Fecha).HasColumnType("datetime2").IsRequired();
 			//Establece la relacio muchos a 1 con Fuente.
 			this.HasRequired(i => i.Fuente)
 				.WithMany(f => f.Items);

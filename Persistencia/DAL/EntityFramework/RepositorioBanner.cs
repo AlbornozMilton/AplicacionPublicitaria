@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia.Dominio;
+using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -115,17 +116,37 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void AgregarItem(int pFuenteId, Item pItem)
 		{
-			throw new NotImplementedException();
+			iDbContext.Items.Attach(pItem);
+			pItem.FuenteId = pFuenteId;
+			iDbContext.Items.Add(pItem);
+			iDbContext.SaveChanges();
+		}
+
+		public void AgregarItem(Item pItem)
+		{
+			//pItem.FuenteId = pFuenteId;
+			iDbContext.Items.Attach(pItem);
+			iDbContext.Entry(pItem).State = EntityState.Added;
+			iDbContext.SaveChanges();
 		}
 
 		public void ModificarItem(Item pItem)
 		{
-			throw new NotImplementedException();
+			iDbContext.Items.Attach(pItem);
+			iDbContext.Entry(pItem).State = EntityState.Modified;
+			iDbContext.SaveChanges();
 		}
 
 		public void EliminarItem(int pItemId)
 		{
 			throw new NotImplementedException();
+		}
+
+		public void EliminarItem(Item pItem)
+		{
+			iDbContext.Items.Attach(pItem);
+			iDbContext.Entry(pItem).State = EntityState.Deleted;
+			iDbContext.SaveChanges();
 		}
 	}
 }
