@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -31,8 +25,10 @@ namespace UI
 		{
 			if (iFuente != null)
 			{
-				cbxTipoFuente.SelectedText = iFuente.TipoFuente.ToString();
-				if (iFuente.TipoFuente == TipoFuente.RSS)
+				cbxTipoFuente.Items.Add(iFuente.GetType().Name);
+				cbxTipoFuente.SelectedIndex = 0;
+				tbxNombreFuente.Text = iFuente.NombreFuente;
+				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
 					lblFuente.Text = "URL de Fuente";
 			}
 			else
@@ -42,18 +38,32 @@ namespace UI
 					cbxTipoFuente.Items.Add(tipoFuente);
 				}
 			}
+
+			tbxNombreFuente_Leave(this, e);
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (iFuente != null) // modificando
+			if (tbxNombreFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
 			{
-
+				Cursor = Cursors.WaitCursor;
+				var controlador = new ControladorBanner();
+				if (iFuente != null) 
+				{
+					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text);
+					Cursor = Cursors.Default;
+					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				}
+				else
+				{
+					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text);
+					Cursor = Cursors.Default;
+					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				}
+				Close();
 			}
-			else //nueva fuente
-			{
-
-			}
+			else
+				new VentanaEmergente("Debe rellenar todos los campos", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 		}
 
 		private void btnCancelar_Click(object sender, EventArgs e)
@@ -67,6 +77,40 @@ namespace UI
 				lblFuente.Text = "URL de Fuente";
 			else
 				lblFuente.Text = "Nombre Fuente";
+
+			tbxNombreFuente.Text = "";
+		}
+
+		private void tbxNombreFuente_Leave(object sender, EventArgs e)
+		{
+			try
+			{
+				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
+				{
+					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
+					{
+						//cLogger.Info("No se ingresó URL");
+						btnAceptar.Enabled = false;
+						throw new Exception("Debe ingresar una URL");
+					}
+
+					Uri mUrl;
+
+					if (!Uri.TryCreate(this.tbxNombreFuente.Text.Trim(), UriKind.Absolute, out mUrl))
+					{
+						//cLogger.Info("URL inválida");
+						btnAceptar.Enabled = false;
+						throw new Exception("La URL absoluta ingresada no es válida.");
+					}
+					btnAceptar.Enabled = true;
+				}
+				//else
+					//btnAceptar.Enabled = true;
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			}
 		}
 	}
 }

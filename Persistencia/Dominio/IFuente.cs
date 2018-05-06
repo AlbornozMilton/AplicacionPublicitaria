@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Persistencia.Dominio
 {
-    public interface IFuente
-    {
+	public interface IFuente
+	{
+		int FuenteId { get; set; }
 
-    }
+		//string NombreFuente { get; set; }
+
+		//TipoFuente TipoFuente { get; set; }
+
+		List<Item> Items { get; set; }
+	}
 }

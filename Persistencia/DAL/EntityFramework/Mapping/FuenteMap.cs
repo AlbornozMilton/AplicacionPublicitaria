@@ -18,10 +18,8 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 			//this.Property(pCamp => pCamp.NombreFuente)
 			//	.IsRequired();
 
-			this.Property(pCamp => pCamp.TipoFuente)
-				.IsRequired();
-
-
+			//this.Property(pCamp => pCamp.TipoFuente)
+			//	.IsRequired();
 		}
 	}
 }

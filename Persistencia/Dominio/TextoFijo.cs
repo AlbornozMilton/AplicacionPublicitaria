@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Persistencia.Dominio
+﻿namespace Persistencia.Dominio
 {
-    public class TextoFijo: Fuente
+    public class TextoFijo: Fuente, IFuente
     {
-		public string Nombre { get; set; }
+		public string NombreFuente { get; set; }
     }
 }

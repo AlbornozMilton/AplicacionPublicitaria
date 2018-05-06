@@ -4,6 +4,7 @@ namespace Dominio
 {
 	public class ItemGenerico:IItem
 	{
+		private int iItemId;
 		private string iTitulo;
 		private string iTexto;
 		private DateTime iFechaItem;
@@ -20,6 +21,7 @@ namespace Dominio
 			iFechaItem = pFecha;
 		}
 
+		public int ItemId { get { return iItemId; } set { iItemId = value; } }
 		public string Titulo { get { return iTitulo; } set { iTitulo = value; } }
 		public string Texto { get { return iTexto; } set { iTexto = value; } }
 		public DateTime Fecha { get { return iFechaItem; } set { iFechaItem = value; } }

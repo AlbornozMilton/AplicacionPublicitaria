@@ -41,20 +41,20 @@
 			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tbxTipoFuente = new System.Windows.Forms.TextBox();
-			this.lbl_modItem = new System.Windows.Forms.Label();
-			this.ModificarItem = new System.Windows.Forms.Button();
-			this.lbl_eliminarItem = new System.Windows.Forms.Label();
-			this.btn_eliminarItem = new System.Windows.Forms.PictureBox();
-			this.lblNuevoItem = new System.Windows.Forms.Label();
+			this.ModificarItem = new System.Windows.Forms.Label();
+			this.btnModificarItem = new System.Windows.Forms.Button();
+			this.EliminarItem = new System.Windows.Forms.Label();
+			this.btnEliminarItem = new System.Windows.Forms.PictureBox();
+			this.AgregarItem = new System.Windows.Forms.Label();
 			this.btnAgregarItem = new System.Windows.Forms.PictureBox();
 			this.btnAceptar = new System.Windows.Forms.Button();
-			this.lbl_nuevaFuente = new System.Windows.Forms.Label();
-			this.lblTodosItems = new System.Windows.Forms.Label();
+			this.NuevaFuente = new System.Windows.Forms.Label();
+			this.TodosItems = new System.Windows.Forms.Label();
 			this.btnTodosItems = new System.Windows.Forms.PictureBox();
 			this.cbx_Fuente = new System.Windows.Forms.ComboBox();
-			this.lblModificarFuente = new System.Windows.Forms.Label();
-			this.btnModFuente = new System.Windows.Forms.Button();
-			this.lblElimFuente = new System.Windows.Forms.Label();
+			this.ModificarFuente = new System.Windows.Forms.Label();
+			this.btnModificarFuente = new System.Windows.Forms.Button();
+			this.EliminarFuente = new System.Windows.Forms.Label();
 			this.btnEliminarFuente = new System.Windows.Forms.PictureBox();
 			this.lblX = new System.Windows.Forms.Label();
 			this.lbl_ = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
 			this.groupBox_items.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).BeginInit();
@@ -192,70 +192,72 @@
 			// 
 			this.tbxTipoFuente.Location = new System.Drawing.Point(119, 86);
 			this.tbxTipoFuente.Name = "tbxTipoFuente";
+			this.tbxTipoFuente.ReadOnly = true;
 			this.tbxTipoFuente.Size = new System.Drawing.Size(120, 20);
 			this.tbxTipoFuente.TabIndex = 41;
-			// 
-			// lbl_modItem
-			// 
-			this.lbl_modItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_modItem.AutoSize = true;
-			this.lbl_modItem.BackColor = System.Drawing.Color.Maroon;
-			this.lbl_modItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_modItem.Location = new System.Drawing.Point(102, 421);
-			this.lbl_modItem.Name = "lbl_modItem";
-			this.lbl_modItem.Size = new System.Drawing.Size(73, 13);
-			this.lbl_modItem.TabIndex = 48;
-			this.lbl_modItem.Text = "Modificar Item";
-			this.lbl_modItem.Visible = false;
 			// 
 			// ModificarItem
 			// 
 			this.ModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.ModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
-			this.ModificarItem.Location = new System.Drawing.Point(121, 383);
+			this.ModificarItem.AutoSize = true;
+			this.ModificarItem.BackColor = System.Drawing.Color.Maroon;
+			this.ModificarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.ModificarItem.Location = new System.Drawing.Point(102, 421);
 			this.ModificarItem.Name = "ModificarItem";
-			this.ModificarItem.Size = new System.Drawing.Size(35, 35);
-			this.ModificarItem.TabIndex = 47;
-			this.ModificarItem.UseVisualStyleBackColor = true;
-			this.ModificarItem.Click += new System.EventHandler(this.ModificarItem_Click);
+			this.ModificarItem.Size = new System.Drawing.Size(73, 13);
+			this.ModificarItem.TabIndex = 48;
+			this.ModificarItem.Text = "Modificar Item";
+			this.ModificarItem.Visible = false;
 			// 
-			// lbl_eliminarItem
+			// btnModificarItem
 			// 
-			this.lbl_eliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_eliminarItem.AutoSize = true;
-			this.lbl_eliminarItem.BackColor = System.Drawing.Color.Maroon;
-			this.lbl_eliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_eliminarItem.Location = new System.Drawing.Point(192, 421);
-			this.lbl_eliminarItem.Name = "lbl_eliminarItem";
-			this.lbl_eliminarItem.Size = new System.Drawing.Size(66, 13);
-			this.lbl_eliminarItem.TabIndex = 46;
-			this.lbl_eliminarItem.Text = "Eliminar Item";
-			this.lbl_eliminarItem.Visible = false;
+			this.btnModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnModificarItem.Location = new System.Drawing.Point(121, 383);
+			this.btnModificarItem.Name = "btnModificarItem";
+			this.btnModificarItem.Size = new System.Drawing.Size(35, 35);
+			this.btnModificarItem.TabIndex = 47;
+			this.btnModificarItem.UseVisualStyleBackColor = true;
+			this.btnModificarItem.Visible = false;
+			this.btnModificarItem.Click += new System.EventHandler(this.ModificarItem_Click);
 			// 
-			// btn_eliminarItem
+			// EliminarItem
 			// 
-			this.btn_eliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btn_eliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btn_eliminarItem.Location = new System.Drawing.Point(207, 383);
-			this.btn_eliminarItem.Name = "btn_eliminarItem";
-			this.btn_eliminarItem.Size = new System.Drawing.Size(35, 35);
-			this.btn_eliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btn_eliminarItem.TabIndex = 45;
-			this.btn_eliminarItem.TabStop = false;
-			this.btn_eliminarItem.Click += new System.EventHandler(this.btn_eliminarItem_Click);
+			this.EliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.EliminarItem.AutoSize = true;
+			this.EliminarItem.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EliminarItem.Location = new System.Drawing.Point(192, 421);
+			this.EliminarItem.Name = "EliminarItem";
+			this.EliminarItem.Size = new System.Drawing.Size(66, 13);
+			this.EliminarItem.TabIndex = 46;
+			this.EliminarItem.Text = "Eliminar Item";
+			this.EliminarItem.Visible = false;
 			// 
-			// lblNuevoItem
+			// btnEliminarItem
 			// 
-			this.lblNuevoItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lblNuevoItem.AutoSize = true;
-			this.lblNuevoItem.BackColor = System.Drawing.Color.Maroon;
-			this.lblNuevoItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblNuevoItem.Location = new System.Drawing.Point(16, 422);
-			this.lblNuevoItem.Name = "lblNuevoItem";
-			this.lblNuevoItem.Size = new System.Drawing.Size(62, 13);
-			this.lblNuevoItem.TabIndex = 43;
-			this.lblNuevoItem.Text = "Nuevo Item";
-			this.lblNuevoItem.Visible = false;
+			this.btnEliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnEliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
+			this.btnEliminarItem.Location = new System.Drawing.Point(207, 383);
+			this.btnEliminarItem.Name = "btnEliminarItem";
+			this.btnEliminarItem.Size = new System.Drawing.Size(35, 35);
+			this.btnEliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnEliminarItem.TabIndex = 45;
+			this.btnEliminarItem.TabStop = false;
+			this.btnEliminarItem.Click += new System.EventHandler(this.btn_eliminarItem_Click);
+			// 
+			// AgregarItem
+			// 
+			this.AgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.AgregarItem.AutoSize = true;
+			this.AgregarItem.BackColor = System.Drawing.Color.Maroon;
+			this.AgregarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.AgregarItem.Location = new System.Drawing.Point(16, 422);
+			this.AgregarItem.Name = "AgregarItem";
+			this.AgregarItem.Size = new System.Drawing.Size(62, 13);
+			this.AgregarItem.TabIndex = 43;
+			this.AgregarItem.Text = "Nuevo Item";
+			this.AgregarItem.Visible = false;
 			// 
 			// btnAgregarItem
 			// 
@@ -267,6 +269,7 @@
 			this.btnAgregarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.btnAgregarItem.TabIndex = 44;
 			this.btnAgregarItem.TabStop = false;
+			this.btnAgregarItem.Visible = false;
 			this.btnAgregarItem.Click += new System.EventHandler(this.btnAgregarItem_Click);
 			// 
 			// btnAceptar
@@ -281,36 +284,36 @@
 			this.btnAceptar.UseVisualStyleBackColor = true;
 			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
 			// 
-			// lbl_nuevaFuente
+			// NuevaFuente
 			// 
-			this.lbl_nuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.lbl_nuevaFuente.AutoSize = true;
-			this.lbl_nuevaFuente.BackColor = System.Drawing.Color.Maroon;
-			this.lbl_nuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lbl_nuevaFuente.Location = new System.Drawing.Point(569, 134);
-			this.lbl_nuevaFuente.Name = "lbl_nuevaFuente";
-			this.lbl_nuevaFuente.Size = new System.Drawing.Size(75, 13);
-			this.lbl_nuevaFuente.TabIndex = 42;
-			this.lbl_nuevaFuente.Text = "Nueva Fuente";
-			this.lbl_nuevaFuente.Visible = false;
+			this.NuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.NuevaFuente.AutoSize = true;
+			this.NuevaFuente.BackColor = System.Drawing.Color.Maroon;
+			this.NuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.NuevaFuente.Location = new System.Drawing.Point(569, 134);
+			this.NuevaFuente.Name = "NuevaFuente";
+			this.NuevaFuente.Size = new System.Drawing.Size(75, 13);
+			this.NuevaFuente.TabIndex = 42;
+			this.NuevaFuente.Text = "Nueva Fuente";
+			this.NuevaFuente.Visible = false;
 			// 
-			// lblTodosItems
+			// TodosItems
 			// 
-			this.lblTodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lblTodosItems.AutoSize = true;
-			this.lblTodosItems.BackColor = System.Drawing.Color.Maroon;
-			this.lblTodosItems.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblTodosItems.Location = new System.Drawing.Point(283, 422);
-			this.lblTodosItems.Name = "lblTodosItems";
-			this.lblTodosItems.Size = new System.Drawing.Size(75, 13);
-			this.lblTodosItems.TabIndex = 51;
-			this.lblTodosItems.Text = "Mostrar Todos";
-			this.lblTodosItems.Visible = false;
+			this.TodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.TodosItems.AutoSize = true;
+			this.TodosItems.BackColor = System.Drawing.Color.Maroon;
+			this.TodosItems.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.TodosItems.Location = new System.Drawing.Point(283, 422);
+			this.TodosItems.Name = "TodosItems";
+			this.TodosItems.Size = new System.Drawing.Size(75, 13);
+			this.TodosItems.TabIndex = 51;
+			this.TodosItems.Text = "Mostrar Todos";
+			this.TodosItems.Visible = false;
 			// 
 			// btnTodosItems
 			// 
 			this.btnTodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnTodosItems.Image = global::UI.Properties.Resources.btn_Cerrar;
+			this.btnTodosItems.Image = global::UI.Properties.Resources.btn_Listar;
 			this.btnTodosItems.Location = new System.Drawing.Point(306, 383);
 			this.btnTodosItems.Name = "btnTodosItems";
 			this.btnTodosItems.Size = new System.Drawing.Size(35, 35);
@@ -321,48 +324,50 @@
 			// 
 			// cbx_Fuente
 			// 
+			this.cbx_Fuente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbx_Fuente.FormattingEnabled = true;
 			this.cbx_Fuente.Location = new System.Drawing.Point(119, 46);
 			this.cbx_Fuente.Name = "cbx_Fuente";
 			this.cbx_Fuente.Size = new System.Drawing.Size(466, 21);
 			this.cbx_Fuente.TabIndex = 52;
+			this.cbx_Fuente.SelectedIndexChanged += new System.EventHandler(this.cbx_Fuente_SelectedIndexChanged);
 			// 
-			// lblModificarFuente
+			// ModificarFuente
 			// 
-			this.lblModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblModificarFuente.AutoSize = true;
-			this.lblModificarFuente.BackColor = System.Drawing.Color.Maroon;
-			this.lblModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblModificarFuente.Location = new System.Drawing.Point(650, 134);
-			this.lblModificarFuente.Name = "lblModificarFuente";
-			this.lblModificarFuente.Size = new System.Drawing.Size(86, 13);
-			this.lblModificarFuente.TabIndex = 56;
-			this.lblModificarFuente.Text = "Modificar Fuente";
-			this.lblModificarFuente.Visible = false;
+			this.ModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.ModificarFuente.AutoSize = true;
+			this.ModificarFuente.BackColor = System.Drawing.Color.Maroon;
+			this.ModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.ModificarFuente.Location = new System.Drawing.Point(650, 134);
+			this.ModificarFuente.Name = "ModificarFuente";
+			this.ModificarFuente.Size = new System.Drawing.Size(86, 13);
+			this.ModificarFuente.TabIndex = 56;
+			this.ModificarFuente.Text = "Modificar Fuente";
+			this.ModificarFuente.Visible = false;
 			// 
-			// btnModFuente
+			// btnModificarFuente
 			// 
-			this.btnModFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnModFuente.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModFuente.Location = new System.Drawing.Point(677, 96);
-			this.btnModFuente.Name = "btnModFuente";
-			this.btnModFuente.Size = new System.Drawing.Size(35, 35);
-			this.btnModFuente.TabIndex = 55;
-			this.btnModFuente.UseVisualStyleBackColor = true;
-			this.btnModFuente.Click += new System.EventHandler(this.btnModFuente_Click);
+			this.btnModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnModificarFuente.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnModificarFuente.Location = new System.Drawing.Point(677, 96);
+			this.btnModificarFuente.Name = "btnModificarFuente";
+			this.btnModificarFuente.Size = new System.Drawing.Size(35, 35);
+			this.btnModificarFuente.TabIndex = 55;
+			this.btnModificarFuente.UseVisualStyleBackColor = true;
+			this.btnModificarFuente.Click += new System.EventHandler(this.btnModFuente_Click);
 			// 
-			// lblElimFuente
+			// EliminarFuente
 			// 
-			this.lblElimFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblElimFuente.AutoSize = true;
-			this.lblElimFuente.BackColor = System.Drawing.Color.Maroon;
-			this.lblElimFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.lblElimFuente.Location = new System.Drawing.Point(742, 134);
-			this.lblElimFuente.Name = "lblElimFuente";
-			this.lblElimFuente.Size = new System.Drawing.Size(79, 13);
-			this.lblElimFuente.TabIndex = 54;
-			this.lblElimFuente.Text = "Eliminar Fuente";
-			this.lblElimFuente.Visible = false;
+			this.EliminarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EliminarFuente.AutoSize = true;
+			this.EliminarFuente.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EliminarFuente.Location = new System.Drawing.Point(742, 134);
+			this.EliminarFuente.Name = "EliminarFuente";
+			this.EliminarFuente.Size = new System.Drawing.Size(79, 13);
+			this.EliminarFuente.TabIndex = 54;
+			this.EliminarFuente.Text = "Eliminar Fuente";
+			this.EliminarFuente.Visible = false;
 			// 
 			// btnEliminarFuente
 			// 
@@ -413,21 +418,21 @@
 			this.ClientSize = new System.Drawing.Size(836, 454);
 			this.Controls.Add(this.lblX);
 			this.Controls.Add(this.lbl_);
-			this.Controls.Add(this.lblModificarFuente);
-			this.Controls.Add(this.btnModFuente);
-			this.Controls.Add(this.lblElimFuente);
+			this.Controls.Add(this.ModificarFuente);
+			this.Controls.Add(this.btnModificarFuente);
+			this.Controls.Add(this.EliminarFuente);
 			this.Controls.Add(this.btnEliminarFuente);
 			this.Controls.Add(this.cbx_Fuente);
-			this.Controls.Add(this.lblTodosItems);
+			this.Controls.Add(this.TodosItems);
 			this.Controls.Add(this.btnTodosItems);
 			this.Controls.Add(this.btnAceptar);
-			this.Controls.Add(this.lbl_modItem);
 			this.Controls.Add(this.ModificarItem);
-			this.Controls.Add(this.lbl_eliminarItem);
-			this.Controls.Add(this.btn_eliminarItem);
-			this.Controls.Add(this.lblNuevoItem);
+			this.Controls.Add(this.btnModificarItem);
+			this.Controls.Add(this.EliminarItem);
+			this.Controls.Add(this.btnEliminarItem);
+			this.Controls.Add(this.AgregarItem);
 			this.Controls.Add(this.btnAgregarItem);
-			this.Controls.Add(this.lbl_nuevaFuente);
+			this.Controls.Add(this.NuevaFuente);
 			this.Controls.Add(this.tbxTipoFuente);
 			this.Controls.Add(this.groupBox_items);
 			this.Controls.Add(this.lblFuente);
@@ -446,7 +451,7 @@
 			this.groupBox_items.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_eliminarItem)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).EndInit();
@@ -464,20 +469,20 @@
 		private System.Windows.Forms.GroupBox groupBox_items;
 		private System.Windows.Forms.DataGridView dGV_itemsFuente;
 		private System.Windows.Forms.TextBox tbxTipoFuente;
-		private System.Windows.Forms.Label lbl_modItem;
-		private System.Windows.Forms.Button ModificarItem;
-		private System.Windows.Forms.Label lbl_eliminarItem;
-		private System.Windows.Forms.PictureBox btn_eliminarItem;
-		private System.Windows.Forms.Label lblNuevoItem;
+		private System.Windows.Forms.Label ModificarItem;
+		private System.Windows.Forms.Button btnModificarItem;
+		private System.Windows.Forms.Label EliminarItem;
+		private System.Windows.Forms.PictureBox btnEliminarItem;
+		private System.Windows.Forms.Label AgregarItem;
 		private System.Windows.Forms.PictureBox btnAgregarItem;
 		private System.Windows.Forms.Button btnAceptar;
-		private System.Windows.Forms.Label lbl_nuevaFuente;
-		private System.Windows.Forms.Label lblTodosItems;
+		private System.Windows.Forms.Label NuevaFuente;
+		private System.Windows.Forms.Label TodosItems;
 		private System.Windows.Forms.PictureBox btnTodosItems;
 		private System.Windows.Forms.ComboBox cbx_Fuente;
-		private System.Windows.Forms.Label lblModificarFuente;
-		private System.Windows.Forms.Button btnModFuente;
-		private System.Windows.Forms.Label lblElimFuente;
+		private System.Windows.Forms.Label ModificarFuente;
+		private System.Windows.Forms.Button btnModificarFuente;
+		private System.Windows.Forms.Label EliminarFuente;
 		private System.Windows.Forms.PictureBox btnEliminarFuente;
 		private System.Windows.Forms.DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;

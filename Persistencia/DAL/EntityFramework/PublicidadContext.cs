@@ -25,7 +25,6 @@ namespace Persistencia.DAL.EntityFramework
 		public virtual DbSet<FuenteRSS> FuenteRSS { get; set; }
 		public virtual DbSet<TextoFijo> TentoFijo { get; set; }
 		public virtual DbSet<Item> Items { get; set; }
-		public virtual DbSet<ItemRss> ItemsRss { get; set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder mBuilder)
@@ -43,7 +42,6 @@ namespace Persistencia.DAL.EntityFramework
 			mBuilder.Configurations.Add(new TextoFijoMap());
 			mBuilder.Configurations.Add(new FuenteRSSMap());
 			mBuilder.Configurations.Add(new ItemMap());
-			mBuilder.Configurations.Add(new ItemRssMap());
 
 			base.OnModelCreating(mBuilder);
         }

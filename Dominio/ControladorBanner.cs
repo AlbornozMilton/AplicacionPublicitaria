@@ -43,49 +43,89 @@ namespace Dominio
 
 		public void AgregarBanner()
 		{
-			RangoHorario horario = new RangoHorario(new TimeSpan(4, 0, 0), new TimeSpan(4, 10, 0));
-			////controladorFechas.evaluar(rangoHorario); //devuelte un RangoHorario o 0
 
-			RangoFecha rangoFecha = new RangoFecha(DateTime.Now.Date, DateTime.Now.Date.AddDays(1),
-				"lunes-martes-biernes", new List<RangoHorario>() { horario });
-
-			//controladorFechas.evaluar(rangoFecha); //devuelte un RangoFechaId o 0
-
-			ItemGenerico item = new ItemGenerico("Titulo Empresa",
-				"Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313"
-				, DateTime.Now);
-
-			List<IItem> items = new List<IItem>() { item };
-
-			//buscar en BD fuentes exitente e instanciar fuente con el id
-			IFuente fuente = new TextoFijo("Taller Default", items);
-
-			Banner BannerLogic = new Banner("Empresa Taller de Prog", fuente, rangoFecha);
-
-			Persistencia.Dominio.Banner perBanner = Mapper.Map<Banner, Persistencia.Dominio.Banner>(BannerLogic);
-
-			iUOfW.RepositorioBanner.AgregarBanner(perBanner);
 		}
 
-		public void AgregarFuente(IFuente pFuente)
+		public enum Operacion
 		{
+			Agregar,
+			Modificar,
+			Eliminar
+		}
 
+		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pNombreFuente)
+		{
+			switch (pOperacion)
+			{
+				case Operacion.Agregar:
+					{
+						if (pTipo == "RSS")
+							iUOfW.RepositorioBanner.AgregarFuente
+								(
+								 new Persistencia.Dominio.FuenteRSS { URL= pNombreFuente}
+								);
+						else
+							iUOfW.RepositorioBanner.AgregarFuente
+								(
+								 new Persistencia.Dominio.TextoFijo { NombreFuente = pNombreFuente }
+								);
+					}
+					break;
+				case Operacion.Modificar:
+					{
+						iUOfW.RepositorioBanner.ModificarFuente(pFuenteId, pNombreFuente);
+					}
+					break;
+				case Operacion.Eliminar:
+					{
+						iUOfW.RepositorioBanner.EliminarFuente(pFuenteId);
+					}
+					break;
+			}
 		}
 
 		public List<IFuente> ObtenerFuentes()
 		{
 			List<IFuente> resultado = new List<IFuente>();
-			foreach (var fuente in iUOfW.RepositorioBanner.TodasLasFuentes())
+
+			foreach (var fuente in iUOfW.RepositorioBanner.FuentesRSS())
 			{
-				var f = Mapper.Map<Persistencia.Dominio.Fuente, IFuente>(fuente);
-				resultado.Add(f);
+				resultado.Add(Mapper.Map<Persistencia.Dominio.FuenteRSS, FuenteRSS>(fuente));
 			}
-			return resultado;
+
+			foreach (var fuente in iUOfW.RepositorioBanner.FuentesTextoFijo())
+			{
+				resultado.Add(Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(fuente));
+			}
+
+			return resultado.OrderBy(f => f.NombreFuente).ToList();
 		}
 
-		//public List<IItem> ObtenerItemsFuenteRSS()
-		//{
-			
-		//}
+		public List<IItem> ObtenerItemsDeFuente(int pFuenteId)
+		{
+			return null;
+		}
+
+		public void ABMItems(Operacion pOP, int pFuenteId, IItem pItem)
+		{
+			switch (pOP)
+			{
+				case Operacion.Agregar:
+					{
+
+					}
+					break;
+				case Operacion.Modificar:
+					{
+
+					}
+					break;
+				case Operacion.Eliminar:
+					{
+
+					}
+					break;
+			}
+		}
 	}
 }

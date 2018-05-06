@@ -13,27 +13,22 @@ namespace Dominio.AutoMapper
         public static void Mapear()
         {
             Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Campania, pers.Campania>().ReverseMap();
-                //.ForMember(dest => dest.Imagenes, opt => opt.MapFrom(src => src.Imagenes)).ReverseMap();
-                cfg.CreateMap<Imagen, pers.Imagen>().ReverseMap();
-                cfg.CreateMap<RangoFecha, pers.RangoFecha>().ReverseMap();
-                cfg.CreateMap<RangoHorario, pers.RangoHorario>().ReverseMap();
-                cfg.CreateMap<Dia, pers.Dia>().ReverseMap();
-                cfg.CreateMap<Banner, pers.Banner>().ReverseMap();
+			{
+				cfg.CreateMap<Campania, pers.Campania>().ReverseMap();
+				//.ForMember(dest => dest.Imagenes, opt => opt.MapFrom(src => src.Imagenes)).ReverseMap();
+				cfg.CreateMap<Imagen, pers.Imagen>().ReverseMap();
+				cfg.CreateMap<RangoFecha, pers.RangoFecha>().ReverseMap();
+				cfg.CreateMap<RangoHorario, pers.RangoHorario>().ReverseMap();
+				cfg.CreateMap<Dia, pers.Dia>().ReverseMap();
+				cfg.CreateMap<Banner, pers.Banner>().ReverseMap();
 
+				cfg.CreateMap<IFuente, pers.FuenteRSS>().ReverseMap();
+				cfg.CreateMap<IFuente, pers.TextoFijo>().ReverseMap();
+				cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
+				cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
+
+				cfg.CreateMap<ControladorBanner.Operacion, pers.Operacion>().ReverseMap();
 				cfg.CreateMap<IItem, pers.Item>().ReverseMap();
-				//cfg.CreateMap<ItemGenerico, pers.Item>().ReverseMap();
-				//cfg.CreateMap<RSS.RssItem, pers.Item>().ReverseMap();
-
-				cfg.CreateMap<TipoFuente, pers.TipoFuente>().ReverseMap();
-
-				cfg.CreateMap<IFuente, pers.Fuente>().ReverseMap();
-				//cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
-				//cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
-				//cfg.CreateMap<, pers.Domicilio>().ReverseMap();
-
-				//cfg.CreateMap<Ciudad, pers.Ciudad>().ReverseMap();
 			});
         }
     }

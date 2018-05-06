@@ -8,8 +8,8 @@ namespace Dominio
 {
 	public interface IFuente
 	{
-		string NombreFuente { get; set; }
-		TipoFuente TipoFuente { get; set; }
+		int FuenteId { get; set; }
+		string NombreFuente { get; }
 		List<IItem> Items { get; set; }
     }
 }

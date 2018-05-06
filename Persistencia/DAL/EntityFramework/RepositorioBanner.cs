@@ -7,12 +7,12 @@ using Persistencia.Dominio;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    public class RepositorioBanner:Repositorio<Banner,PublicidadContext>, IRepositorioBanner
-    {
-        public RepositorioBanner(PublicidadContext pContext):base(pContext)
-        {
+	public class RepositorioBanner : Repositorio<Banner, PublicidadContext>, IRepositorioBanner
+	{
+		public RepositorioBanner(PublicidadContext pContext) : base(pContext)
+		{
 
-        }
+		}
 
 		/// <summary>
 		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
@@ -54,9 +54,78 @@ namespace Persistencia.DAL.EntityFramework
 			return result;
 		}
 
-		public List<Fuente> TodasLasFuentes()
+		//public IQueryable TodasLasFuentes()
+		//{
+		//	//return iDbContext.FuenteRSS;
+		//	var x = from rss in iDbContext.FuenteRSS select rss;
+		//	var z = from rss in iDbContext.TentoFijo select rss;
+		//	var y = from rss in iDbContext.Fuentes select rss;
+
+		//	var m = 
+		//		( from rss in id
+
+		//		)
+		//}
+
+		public List<FuenteRSS> FuentesRSS()
 		{
-			return iDbContext.Fuentes.ToList();
+			return iDbContext.FuenteRSS.Include("Items").ToList();
+		}
+
+		public List<TextoFijo> FuentesTextoFijo()
+		{
+			return iDbContext.TentoFijo.Include("Items").ToList();
+		}
+
+		public void AgregarFuente(FuenteRSS pFuente)
+		{
+			iDbContext.FuenteRSS.Add(pFuente);
+			iDbContext.SaveChanges();
+		}
+
+		public void AgregarFuente(TextoFijo pFuente)
+		{
+			iDbContext.TentoFijo.Add(pFuente);
+			iDbContext.SaveChanges();
+		}
+
+		public void ModificarFuente(int pIdFuente, string pNombreFuente)
+		{
+			var fuente = iDbContext.Fuentes.Find(pIdFuente);
+
+			if (fuente.GetType().Name == "FuenteRSS")
+				((FuenteRSS)fuente).URL = pNombreFuente;
+			else
+				((TextoFijo)fuente).NombreFuente = pNombreFuente;
+
+			iDbContext.SaveChanges();
+		}
+
+		public void EliminarFuente(int pIdFuente)
+		{
+			var fuente = iDbContext.Fuentes.Find(pIdFuente);
+
+			if (fuente.GetType().Name == "FuenteRSS")
+				iDbContext.FuenteRSS.Remove(((FuenteRSS)fuente));
+			else
+				iDbContext.TentoFijo.Remove(((TextoFijo)fuente));
+
+			iDbContext.SaveChanges();
+		}
+
+		public void AgregarItem(int pFuenteId, Item pItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void ModificarItem(Item pItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void EliminarItem(int pItemId)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

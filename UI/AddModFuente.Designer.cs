@@ -56,7 +56,7 @@
 			this.lblFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lblFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblFuente.ForeColor = System.Drawing.Color.White;
-			this.lblFuente.Location = new System.Drawing.Point(15, 63);
+			this.lblFuente.Location = new System.Drawing.Point(15, 92);
 			this.lblFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblFuente.Name = "lblFuente";
 			this.lblFuente.Size = new System.Drawing.Size(123, 18);
@@ -69,7 +69,7 @@
 			this.lbl_tipoFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_tipoFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_tipoFuente.ForeColor = System.Drawing.Color.White;
-			this.lbl_tipoFuente.Location = new System.Drawing.Point(42, 98);
+			this.lbl_tipoFuente.Location = new System.Drawing.Point(42, 56);
 			this.lbl_tipoFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbl_tipoFuente.Name = "lbl_tipoFuente";
 			this.lbl_tipoFuente.Size = new System.Drawing.Size(96, 18);
@@ -78,10 +78,11 @@
 			// 
 			// tbxNombreFuente
 			// 
-			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 64);
+			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 93);
 			this.tbxNombreFuente.Name = "tbxNombreFuente";
 			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
-			this.tbxNombreFuente.TabIndex = 41;
+			this.tbxNombreFuente.TabIndex = 0;
+			this.tbxNombreFuente.Leave += new System.EventHandler(this.tbxNombreFuente_Leave);
 			// 
 			// btnCancelar
 			// 
@@ -90,7 +91,7 @@
 			this.btnCancelar.Location = new System.Drawing.Point(531, 138);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
-			this.btnCancelar.TabIndex = 44;
+			this.btnCancelar.TabIndex = 3;
 			this.btnCancelar.Text = "Cancelar";
 			this.btnCancelar.UseVisualStyleBackColor = true;
 			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -102,18 +103,19 @@
 			this.btnAceptar.Location = new System.Drawing.Point(433, 138);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
-			this.btnAceptar.TabIndex = 43;
+			this.btnAceptar.TabIndex = 2;
 			this.btnAceptar.Text = "Aceptar";
 			this.btnAceptar.UseVisualStyleBackColor = true;
 			this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
 			// 
 			// cbxTipoFuente
 			// 
+			this.cbxTipoFuente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxTipoFuente.FormattingEnabled = true;
-			this.cbxTipoFuente.Location = new System.Drawing.Point(145, 95);
+			this.cbxTipoFuente.Location = new System.Drawing.Point(145, 53);
 			this.cbxTipoFuente.Name = "cbxTipoFuente";
 			this.cbxTipoFuente.Size = new System.Drawing.Size(136, 21);
-			this.cbxTipoFuente.TabIndex = 45;
+			this.cbxTipoFuente.TabIndex = 0;
 			this.cbxTipoFuente.SelectedIndexChanged += new System.EventHandler(this.cbxTipoFuente_SelectedIndexChanged);
 			// 
 			// AddModFuente
