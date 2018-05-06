@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbl_Title = new System.Windows.Forms.Label();
 			this.lblFuente = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
@@ -144,14 +144,14 @@
             this.fechaDataGridViewTextBoxColumn,
             this.textoDataGridViewTextBoxColumn});
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
 			this.dGV_itemsFuente.MultiSelect = false;
@@ -192,6 +192,7 @@
 			// 
 			this.tbxTipoFuente.Location = new System.Drawing.Point(119, 86);
 			this.tbxTipoFuente.Name = "tbxTipoFuente";
+			this.tbxTipoFuente.ReadOnly = true;
 			this.tbxTipoFuente.Size = new System.Drawing.Size(120, 20);
 			this.tbxTipoFuente.TabIndex = 41;
 			// 
@@ -327,6 +328,7 @@
 			this.cbx_Fuente.Name = "cbx_Fuente";
 			this.cbx_Fuente.Size = new System.Drawing.Size(466, 21);
 			this.cbx_Fuente.TabIndex = 52;
+			this.cbx_Fuente.SelectedIndexChanged += new System.EventHandler(this.cbx_Fuente_SelectedIndexChanged);
 			// 
 			// lblModificarFuente
 			// 

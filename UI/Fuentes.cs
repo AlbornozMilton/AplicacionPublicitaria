@@ -25,12 +25,6 @@ namespace UI
 		{
 			InitializeComponent();
 			iFuentes = pFuentes;
-
-			//foreach (IFuente fuente in pFuentes)
-			//{
-			//	cbx_Fuente.Items.Add(fuente.NombreFuente);
-			//}
-			//cbx_Fuente.SelectedItem = pNombreFuente;
 		}
 
 		private void Fuentes_Load(object sender, EventArgs e)
@@ -89,6 +83,11 @@ namespace UI
 		private void lbl__Click(object sender, EventArgs e)
 		{
             this.WindowState = FormWindowState.Minimized;
+		}
+
+		private void cbx_Fuente_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			tbxTipoFuente.Text = iFuentes.ElementAt(cbx_Fuente.SelectedIndex).GetType().Name;
 		}
 	}
 }
