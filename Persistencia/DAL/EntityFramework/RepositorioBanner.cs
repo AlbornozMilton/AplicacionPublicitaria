@@ -70,12 +70,12 @@ namespace Persistencia.DAL.EntityFramework
 
 		public List<FuenteRSS> FuentesRSS()
 		{
-			return iDbContext.FuenteRSS.Include("Items").ToList();
+			return iDbContext.FuenteRSS.ToList();
 		}
 
 		public List<TextoFijo> FuentesTextoFijo()
 		{
-			return iDbContext.TentoFijo.Include("Items").ToList();
+			return iDbContext.TentoFijo.ToList();
 		}
 
 		public void AgregarFuente(FuenteRSS pFuente)
@@ -122,14 +122,6 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public void AgregarItem(Item pItem)
-		{
-			//pItem.FuenteId = pFuenteId;
-			iDbContext.Items.Attach(pItem);
-			iDbContext.Entry(pItem).State = EntityState.Added;
-			iDbContext.SaveChanges();
-		}
-
 		public void ModificarItem(Item pItem)
 		{
 			iDbContext.Items.Attach(pItem);
@@ -139,7 +131,10 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void EliminarItem(int pItemId)
 		{
-			throw new NotImplementedException();
+			var item = iDbContext.Items.Where(i => i.ItemId == pItemId).SingleOrDefault();
+			iDbContext.Items.Attach(item);
+			iDbContext.Entry(item).State = EntityState.Deleted;
+			iDbContext.SaveChanges();
 		}
 
 		public void EliminarItem(Item pItem)
@@ -147,6 +142,15 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.Items.Attach(pItem);
 			iDbContext.Entry(pItem).State = EntityState.Deleted;
 			iDbContext.SaveChanges();
+		}
+
+		public List<Item> ObtenerItemsDeFuente(int pFuente)
+		{
+			return (
+				from i in iDbContext.Items
+				join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
+				where f.FuenteId == pFuente
+				select i).ToList();
 		}
 	}
 }

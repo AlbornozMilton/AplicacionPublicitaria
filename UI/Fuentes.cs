@@ -105,7 +105,7 @@ namespace UI
 		{
 			_Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 			tbxTipoFuente.Text = _Fuente.GetType().Name;
-			iItemBindingSource.DataSource = _Fuente.Items;
+			iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
 
 			if (tbxTipoFuente.Text != "FuenteRSS")
 			{

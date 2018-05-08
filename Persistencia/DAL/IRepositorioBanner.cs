@@ -15,11 +15,9 @@ namespace Persistencia.DAL
 		void AgregarFuente(TextoFijo pFuente);
 		void ModificarFuente(int pIdFuente, string pNombreFuente);
 		void EliminarFuente(int pIdFuente);
-
 		void AgregarItem(int pFuenteId, Item pItem);
-		void AgregarItem(Item pItem);
 		void ModificarItem(Item pItem);
 		void EliminarItem(int pItemId);
-		void EliminarItem(Item pItem);
+		List<Item> ObtenerItemsDeFuente(int pFuente);
 	}
 }

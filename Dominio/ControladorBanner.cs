@@ -62,7 +62,7 @@ namespace Dominio
 						if (pTipo == "RSS")
 							iUOfW.RepositorioBanner.AgregarFuente
 								(
-								 new Persistencia.Dominio.FuenteRSS { URL= pNombreFuente}
+								 new Persistencia.Dominio.FuenteRSS { URL = pNombreFuente }
 								);
 						else
 							iUOfW.RepositorioBanner.AgregarFuente
@@ -101,11 +101,6 @@ namespace Dominio
 			return resultado.OrderBy(f => f.NombreFuente).ToList();
 		}
 
-		public List<IItem> ObtenerItemsDeFuente(int pFuenteId)
-		{
-			return null;
-		}
-
 		public void ABMItems(Operacion pOP, int pFuenteId, IItem pItem)
 		{
 			switch (pOP)
@@ -126,6 +121,26 @@ namespace Dominio
 					}
 					break;
 			}
+		}
+
+		public List<ItemGenerico> ItemsFuenteTexto(int pFuente)
+		{
+			List<ItemGenerico> lista = new List<ItemGenerico>();
+			foreach (var item in iUOfW.RepositorioBanner.ObtenerItemsDeFuente(pFuente))
+			{
+				lista.Add(Mapper.Map<Persistencia.Dominio.Item, ItemGenerico>(item));
+			}
+			return lista;
+		}
+
+		public List<RSS.RssItem> ItemsFuenteRss(int pFuenteId)
+		{
+			List<RSS.RssItem> lista = new List<RSS.RssItem>();
+			foreach (var item in iUOfW.RepositorioBanner.ObtenerItemsDeFuente(pFuenteId))
+			{
+				lista.Add(Mapper.Map<Persistencia.Dominio.Item, RSS.RssItem>(item));
+			}
+			return lista;
 		}
 	}
 }

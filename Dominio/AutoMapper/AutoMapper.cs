@@ -28,7 +28,12 @@ namespace Dominio.AutoMapper
 				cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
 
 				cfg.CreateMap<ControladorBanner.Operacion, pers.Operacion>().ReverseMap();
+
 				cfg.CreateMap<IItem, pers.Item>().ReverseMap();
+				cfg.CreateMap <pers.Item, ItemGenerico> ().ReverseMap();
+				//cfg.CreateMap<pers.Item, RSS.RssItem>().RevekrseMap();
+				cfg.CreateMap<pers.Item, RSS.RssItem>().ReverseMap();
+				//ForMember(x => x.fi, x => x.MapFrom(y => y.Pais.Nombre));
 			});
         }
     }
