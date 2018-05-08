@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbl_Title = new System.Windows.Forms.Label();
 			this.lblFuente = new System.Windows.Forms.Label();
@@ -36,13 +37,8 @@
 			this.btnNuevaFuente = new System.Windows.Forms.PictureBox();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
 			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
-			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tbxTipoFuente = new System.Windows.Forms.TextBox();
 			this.ModificarItem = new System.Windows.Forms.Label();
-			this.btnModificarItem = new System.Windows.Forms.Button();
 			this.EliminarItem = new System.Windows.Forms.Label();
 			this.btnEliminarItem = new System.Windows.Forms.PictureBox();
 			this.AgregarItem = new System.Windows.Forms.Label();
@@ -53,19 +49,26 @@
 			this.btnTodosItems = new System.Windows.Forms.PictureBox();
 			this.cbx_Fuente = new System.Windows.Forms.ComboBox();
 			this.ModificarFuente = new System.Windows.Forms.Label();
-			this.btnModificarFuente = new System.Windows.Forms.Button();
 			this.EliminarFuente = new System.Windows.Forms.Label();
 			this.btnEliminarFuente = new System.Windows.Forms.PictureBox();
 			this.lblX = new System.Windows.Forms.Label();
 			this.lbl_ = new System.Windows.Forms.Label();
+			this.btnModificarFuente = new System.Windows.Forms.PictureBox();
+			this.btnModificarItem = new System.Windows.Forms.PictureBox();
+			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).BeginInit();
 			this.groupBox_items.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnModificarFuente)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnModificarItem)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lbl_Title
@@ -118,6 +121,8 @@
 			this.btnNuevaFuente.TabIndex = 37;
 			this.btnNuevaFuente.TabStop = false;
 			this.btnNuevaFuente.Click += new System.EventHandler(this.btnNuevaFuente_Click);
+			this.btnNuevaFuente.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnNuevaFuente.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// groupBox_items
 			// 
@@ -137,6 +142,9 @@
 			// 
 			// dGV_itemsFuente
 			// 
+			this.dGV_itemsFuente.AllowUserToAddRows = false;
+			this.dGV_itemsFuente.AllowUserToDeleteRows = false;
+			this.dGV_itemsFuente.AllowUserToResizeRows = false;
 			this.dGV_itemsFuente.AutoGenerateColumns = false;
 			this.dGV_itemsFuente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_itemsFuente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,49 +152,27 @@
             this.fechaDataGridViewTextBoxColumn,
             this.textoDataGridViewTextBoxColumn});
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
 			this.dGV_itemsFuente.MultiSelect = false;
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
+			this.dGV_itemsFuente.ReadOnly = true;
 			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dGV_itemsFuente.RowHeadersVisible = false;
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle2;
+			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_itemsFuente.Size = new System.Drawing.Size(802, 210);
 			this.dGV_itemsFuente.TabIndex = 0;
-			// 
-			// tituloDataGridViewTextBoxColumn
-			// 
-			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
-			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
-			// 
-			// fechaDataGridViewTextBoxColumn
-			// 
-			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
-			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-			// 
-			// textoDataGridViewTextBoxColumn
-			// 
-			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
-			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
-			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
-			// 
-			// iItemBindingSource
-			// 
-			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
+			this.dGV_itemsFuente.DoubleClick += new System.EventHandler(this.ModificarItem_Click);
 			// 
 			// tbxTipoFuente
 			// 
@@ -209,25 +195,13 @@
 			this.ModificarItem.Text = "Modificar Item";
 			this.ModificarItem.Visible = false;
 			// 
-			// btnModificarItem
-			// 
-			this.btnModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarItem.Location = new System.Drawing.Point(121, 383);
-			this.btnModificarItem.Name = "btnModificarItem";
-			this.btnModificarItem.Size = new System.Drawing.Size(35, 35);
-			this.btnModificarItem.TabIndex = 47;
-			this.btnModificarItem.UseVisualStyleBackColor = true;
-			this.btnModificarItem.Visible = false;
-			this.btnModificarItem.Click += new System.EventHandler(this.ModificarItem_Click);
-			// 
 			// EliminarItem
 			// 
 			this.EliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.EliminarItem.AutoSize = true;
 			this.EliminarItem.BackColor = System.Drawing.Color.Maroon;
 			this.EliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.EliminarItem.Location = new System.Drawing.Point(192, 421);
+			this.EliminarItem.Location = new System.Drawing.Point(196, 421);
 			this.EliminarItem.Name = "EliminarItem";
 			this.EliminarItem.Size = new System.Drawing.Size(66, 13);
 			this.EliminarItem.TabIndex = 46;
@@ -238,13 +212,15 @@
 			// 
 			this.btnEliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnEliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnEliminarItem.Location = new System.Drawing.Point(207, 383);
+			this.btnEliminarItem.Location = new System.Drawing.Point(212, 383);
 			this.btnEliminarItem.Name = "btnEliminarItem";
 			this.btnEliminarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnEliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.btnEliminarItem.TabIndex = 45;
 			this.btnEliminarItem.TabStop = false;
 			this.btnEliminarItem.Click += new System.EventHandler(this.btn_eliminarItem_Click);
+			this.btnEliminarItem.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEliminarItem.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// AgregarItem
 			// 
@@ -271,6 +247,8 @@
 			this.btnAgregarItem.TabStop = false;
 			this.btnAgregarItem.Visible = false;
 			this.btnAgregarItem.Click += new System.EventHandler(this.btnAgregarItem_Click);
+			this.btnAgregarItem.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnAgregarItem.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// btnAceptar
 			// 
@@ -303,7 +281,7 @@
 			this.TodosItems.AutoSize = true;
 			this.TodosItems.BackColor = System.Drawing.Color.Maroon;
 			this.TodosItems.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.TodosItems.Location = new System.Drawing.Point(283, 422);
+			this.TodosItems.Location = new System.Drawing.Point(285, 422);
 			this.TodosItems.Name = "TodosItems";
 			this.TodosItems.Size = new System.Drawing.Size(75, 13);
 			this.TodosItems.TabIndex = 51;
@@ -321,6 +299,8 @@
 			this.btnTodosItems.TabIndex = 50;
 			this.btnTodosItems.TabStop = false;
 			this.btnTodosItems.Click += new System.EventHandler(this.btnTodosItems_Click);
+			this.btnTodosItems.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnTodosItems.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// cbx_Fuente
 			// 
@@ -338,23 +318,12 @@
 			this.ModificarFuente.AutoSize = true;
 			this.ModificarFuente.BackColor = System.Drawing.Color.Maroon;
 			this.ModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.ModificarFuente.Location = new System.Drawing.Point(650, 134);
+			this.ModificarFuente.Location = new System.Drawing.Point(652, 134);
 			this.ModificarFuente.Name = "ModificarFuente";
 			this.ModificarFuente.Size = new System.Drawing.Size(86, 13);
 			this.ModificarFuente.TabIndex = 56;
 			this.ModificarFuente.Text = "Modificar Fuente";
 			this.ModificarFuente.Visible = false;
-			// 
-			// btnModificarFuente
-			// 
-			this.btnModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnModificarFuente.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarFuente.Location = new System.Drawing.Point(677, 96);
-			this.btnModificarFuente.Name = "btnModificarFuente";
-			this.btnModificarFuente.Size = new System.Drawing.Size(35, 35);
-			this.btnModificarFuente.TabIndex = 55;
-			this.btnModificarFuente.UseVisualStyleBackColor = true;
-			this.btnModificarFuente.Click += new System.EventHandler(this.btnModFuente_Click);
 			// 
 			// EliminarFuente
 			// 
@@ -380,6 +349,8 @@
 			this.btnEliminarFuente.TabIndex = 53;
 			this.btnEliminarFuente.TabStop = false;
 			this.btnEliminarFuente.Click += new System.EventHandler(this.btnEliminarFuente_Click);
+			this.btnEliminarFuente.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEliminarFuente.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// lblX
 			// 
@@ -409,6 +380,64 @@
 			this.lbl_.Text = "_";
 			this.lbl_.Click += new System.EventHandler(this.lbl__Click);
 			// 
+			// btnModificarFuente
+			// 
+			this.btnModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnModificarFuente.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnModificarFuente.Location = new System.Drawing.Point(678, 96);
+			this.btnModificarFuente.Name = "btnModificarFuente";
+			this.btnModificarFuente.Size = new System.Drawing.Size(35, 35);
+			this.btnModificarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnModificarFuente.TabIndex = 59;
+			this.btnModificarFuente.TabStop = false;
+			this.btnModificarFuente.Click += new System.EventHandler(this.btnModFuente_Click);
+			this.btnModificarFuente.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnModificarFuente.MouseHover += new System.EventHandler(this.HoverLabel);
+			// 
+			// btnModificarItem
+			// 
+			this.btnModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnModificarItem.Location = new System.Drawing.Point(119, 380);
+			this.btnModificarItem.Name = "btnModificarItem";
+			this.btnModificarItem.Size = new System.Drawing.Size(35, 35);
+			this.btnModificarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnModificarItem.TabIndex = 60;
+			this.btnModificarItem.TabStop = false;
+			this.btnModificarItem.Click += new System.EventHandler(this.ModificarItem_Click);
+			this.btnModificarItem.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnModificarItem.MouseHover += new System.EventHandler(this.HoverLabel);
+			// 
+			// tituloDataGridViewTextBoxColumn
+			// 
+			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
+			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
+			this.tituloDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// fechaDataGridViewTextBoxColumn
+			// 
+			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
+			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+			this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// textoDataGridViewTextBoxColumn
+			// 
+			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
+			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
+			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
+			this.textoDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// iItemBindingSource
+			// 
+			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
+			// 
 			// Fuentes
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,10 +445,11 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(836, 454);
+			this.Controls.Add(this.btnModificarItem);
+			this.Controls.Add(this.btnModificarFuente);
 			this.Controls.Add(this.lblX);
 			this.Controls.Add(this.lbl_);
 			this.Controls.Add(this.ModificarFuente);
-			this.Controls.Add(this.btnModificarFuente);
 			this.Controls.Add(this.EliminarFuente);
 			this.Controls.Add(this.btnEliminarFuente);
 			this.Controls.Add(this.cbx_Fuente);
@@ -427,7 +457,6 @@
 			this.Controls.Add(this.btnTodosItems);
 			this.Controls.Add(this.btnAceptar);
 			this.Controls.Add(this.ModificarItem);
-			this.Controls.Add(this.btnModificarItem);
 			this.Controls.Add(this.EliminarItem);
 			this.Controls.Add(this.btnEliminarItem);
 			this.Controls.Add(this.AgregarItem);
@@ -450,11 +479,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).EndInit();
 			this.groupBox_items.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnModificarFuente)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnModificarItem)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -470,7 +501,6 @@
 		private System.Windows.Forms.DataGridView dGV_itemsFuente;
 		private System.Windows.Forms.TextBox tbxTipoFuente;
 		private System.Windows.Forms.Label ModificarItem;
-		private System.Windows.Forms.Button btnModificarItem;
 		private System.Windows.Forms.Label EliminarItem;
 		private System.Windows.Forms.PictureBox btnEliminarItem;
 		private System.Windows.Forms.Label AgregarItem;
@@ -481,7 +511,6 @@
 		private System.Windows.Forms.PictureBox btnTodosItems;
 		private System.Windows.Forms.ComboBox cbx_Fuente;
 		private System.Windows.Forms.Label ModificarFuente;
-		private System.Windows.Forms.Button btnModificarFuente;
 		private System.Windows.Forms.Label EliminarFuente;
 		private System.Windows.Forms.PictureBox btnEliminarFuente;
 		private System.Windows.Forms.DataGridViewTextBoxColumn tituloDataGridViewTextBoxColumn;
@@ -490,5 +519,7 @@
 		private System.Windows.Forms.BindingSource iItemBindingSource;
 		private System.Windows.Forms.Label lblX;
 		private System.Windows.Forms.Label lbl_;
+		private System.Windows.Forms.PictureBox btnModificarFuente;
+		private System.Windows.Forms.PictureBox btnModificarItem;
 	}
 }
