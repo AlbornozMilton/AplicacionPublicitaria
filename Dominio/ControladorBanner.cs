@@ -112,12 +112,13 @@ namespace Dominio
 					break;
 				case Operacion.Modificar:
 					{
+						iUOfW.RepositorioBanner.ModificarItem(Mapper.Map<IItem, Persistencia.Dominio.Item>(pItem));
 
 					}
 					break;
 				case Operacion.Eliminar:
 					{
-
+						iUOfW.RepositorioBanner.EliminarItem(pItem.ItemId);
 					}
 					break;
 			}

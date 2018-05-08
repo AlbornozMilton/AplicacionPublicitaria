@@ -124,8 +124,10 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ModificarItem(Item pItem)
 		{
-			iDbContext.Items.Attach(pItem);
-			iDbContext.Entry(pItem).State = EntityState.Modified;
+			var item = iDbContext.Items.Where(i => i.ItemId == pItem.ItemId).SingleOrDefault();
+			item.Titulo = pItem.Texto;
+			item.Texto = pItem.Texto;
+			item.Fecha = pItem.Fecha;
 			iDbContext.SaveChanges();
 		}
 

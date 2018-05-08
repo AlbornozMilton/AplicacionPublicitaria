@@ -23,7 +23,6 @@ namespace UI
 			iItemBindingSource.DataSource = _Item;
 			fechaDateTimePicker.MinDate = DateTime.Now;
 			fechaDateTimePicker.Value = DateTime.Now;
-			fechaDateTimePicker.Format = DateTimePickerFormat.Short;
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)

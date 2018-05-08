@@ -50,8 +50,6 @@ namespace UI
 			{
 				try
 				{
-					//var fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
-
 					new ControladorBanner().ABMFuente(
 						ControladorBanner.Operacion.Eliminar,
 						tbxTipoFuente.Text,
@@ -68,17 +66,35 @@ namespace UI
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes(new ItemGenerico() { ItemId = 0}, _Fuente.FuenteId).ShowDialog();
+			new ItemsFuentes(new ItemGenerico() { ItemId = 0 }, _Fuente.FuenteId).ShowDialog();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes((ItemGenerico)iItemBindingSource.Current, _Fuente.FuenteId).ShowDialog();
+			if ((IItem)iItemBindingSource.Current != null)
+			{
+				new ItemsFuentes((IItem)iItemBindingSource.Current, _Fuente.FuenteId).ShowDialog(); 
+			}
 		}
 
 		private void btn_eliminarItem_Click(object sender, EventArgs e)
 		{
-
+			//cartel si desea elimiar
+			try
+			{
+				if (iItemBindingSource.Current != null)
+				{
+					new ControladorBanner().ABMItems(
+								ControladorBanner.Operacion.Eliminar,
+								_Fuente.FuenteId,
+								(IItem)iItemBindingSource.Current);
+					new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog(); 
+				}
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			}
 		}
 
 		private void btnTodosItems_Click(object sender, EventArgs e)
@@ -105,18 +121,29 @@ namespace UI
 		{
 			_Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 			tbxTipoFuente.Text = _Fuente.GetType().Name;
-			iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
 
 			if (tbxTipoFuente.Text != "FuenteRSS")
 			{
 				btnAgregarItem.Visible = true;
-				btnModificarItem.Visible = true;
+				btnModificarFuente.Visible = true;
+				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
 			}
 			else
 			{
 				btnAgregarItem.Visible = false;
-				btnModificarItem.Visible = false;
+				btnModificarFuente.Visible = false;
+				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
 			}
+		}
+
+		private void HoverLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true)[0].Visible = true;
+		}
+
+		private void LeaveLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true).First().Visible = false;
 		}
 	}
 }
