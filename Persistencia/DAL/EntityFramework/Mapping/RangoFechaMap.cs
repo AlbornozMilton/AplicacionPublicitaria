@@ -27,6 +27,10 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 			this.Property(r => r.FechaFin)
                  .IsRequired();
 
+            this.HasMany<RangoHorario>(RF => RF.Horarios)
+                .WithRequired(RH => RH.RangoFecha)
+                .Map(map => map.MapKey("RangoFechaId"))
+                .WillCascadeOnDelete();
         }
     }
 }

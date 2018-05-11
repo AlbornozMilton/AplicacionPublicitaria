@@ -24,10 +24,15 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(pCamp => pCamp.IntervaloTiempo)
                 .IsRequired();
 
+            this.HasMany<Imagen>(C => C.Imagenes)
+                .WithRequired(I => I.Campania)
+                .Map(pMapping => pMapping.MapKey("CampaniaId"))
+                .WillCascadeOnDelete();
+
             //Establece la relacio muchos a 1 con RangoFecha.
-            ////    this.HasRequired(pCamp => pCamp.RangoFecha)
-            ////        .WithMany(r => r.Campanias);
+            this.HasRequired(pCamp => pCamp.RangoFecha)
+                .WithMany(r => r.Campanias);
         }
-        
+
     }
 }

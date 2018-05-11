@@ -24,8 +24,8 @@ namespace Persistencia.DAL.EntityFramework.Mapping
             this.Property(r => r.HoraFin)
                 .IsRequired();
 
-            this.HasRequired(h => h.RangoFecha)
-                .WithMany(f => f.Horarios);
+            //this.HasRequired(h => h.RangoFecha)
+            //    .WithMany(f => f.Horarios);
         }
 
     }

@@ -14,8 +14,6 @@ namespace Persistencia.Dominio
 
         public TimeSpan HoraFin { get; set; }
 
-        public int RangoFechaId { get; set; }
-
         public RangoFecha RangoFecha { get; set; }
     }
 }

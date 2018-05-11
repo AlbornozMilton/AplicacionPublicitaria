@@ -16,8 +16,6 @@ namespace Persistencia.Dominio
 
         public string Ruta { get; set; }
 
-        public int CampaniaId { get; set; }
-
         public Campania Campania { get; set; }
     }
 }
