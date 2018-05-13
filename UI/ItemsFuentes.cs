@@ -20,9 +20,9 @@ namespace UI
 
 		private void ItemsFuentes_Load(object sender, EventArgs e)
 		{
+			_Item.Fecha.GetDateTimeFormats('g');
 			iItemBindingSource.DataSource = _Item;
-			fechaDateTimePicker.MinDate = DateTime.Now;
-			fechaDateTimePicker.Value = DateTime.Now;
+			//fechaTextBox.Text =  ;
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)

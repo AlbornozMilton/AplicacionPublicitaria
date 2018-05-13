@@ -10,6 +10,7 @@ namespace UI
 	{
 		private List<IFuente> iFuentes;
 		private IFuente _Fuente;
+		string iFuenteSeleccionada;
 
 		public Fuentes()
 		{
@@ -21,14 +22,24 @@ namespace UI
 		{
 			InitializeComponent();
 			iFuentes = pFuentes;
+			iFuenteSeleccionada = pNombreFuente;
 		}
 
 		private void Fuentes_Load(object sender, EventArgs e)
 		{
-			foreach (var item in iFuentes)
+			int index = 0;
+			for (int i = 0; i < iFuentes.Count; i++)
 			{
-				cbx_Fuente.Items.Add(item.NombreFuente);
+				cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
+				if (cbx_Fuente.Items[i].ToString() == iFuenteSeleccionada)
+					index = i;
 			}
+			cbx_Fuente.SelectedIndex = index;
+
+			//foreach (var item in iFuentes)
+			//{
+			//	cbx_Fuente.Items.Add(item.NombreFuente);
+			//}
 		}
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
@@ -66,7 +77,7 @@ namespace UI
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes(new ItemGenerico() { ItemId = 0 }, _Fuente.FuenteId).ShowDialog();
+			new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId).ShowDialog();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)

@@ -84,6 +84,10 @@ namespace Dominio
 			}
 		}
 
+		/// <summary>
+		/// Fuentes con sus Items
+		/// </summary>
+		/// <returns></returns>
 		public List<IFuente> ObtenerFuentes()
 		{
 			List<IFuente> resultado = new List<IFuente>();

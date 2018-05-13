@@ -17,7 +17,6 @@ namespace UI
 		private ControladorExtra iControlExtra = new ControladorExtra();
 		private List<IFuente> iFuentes = new List<IFuente>(); 
 		private string iDias;
-		private List<DayOfWeek> iDias2 = new List<DayOfWeek>();
 
 		public AgregarBanner()
 		{
@@ -26,10 +25,10 @@ namespace UI
 
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
-			iFuentes = new ControladorBanner().ObtenerFuentes();
+			iFuentes = new ControladorBanner().ObtenerFuentes();// solo nombres de fuente
 			foreach (IFuente fuente in iFuentes)
 			{
-				//cbx_Fuente.Items.Add(fuente.NombreFuente);
+				cbx_Fuente.Items.Add(fuente.NombreFuente);
 			}
 		}
 
@@ -52,11 +51,6 @@ namespace UI
 				cbx_Fuente.Enabled = true;
 		}
 
-		private void btnNuevaFuente_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
 			try
@@ -65,7 +59,7 @@ namespace UI
 					throw new Exception("Debe elegir al menos un Item a mostrar");
 
 				//quitar el ultimo guion para que el Split no genere un elemento vacio demás
-				iDias = iDias.Substring(0, iDias.Length - 1);
+				//iDias = iDias.Split('-',StringSplitOptions.RemoveEmptyEntries);
 				//generar lista de horarios a partir de la datagrid
 			}
 			catch (Exception E)
@@ -82,7 +76,10 @@ namespace UI
 
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
-			new Fuentes(cbx_Fuente.SelectedItem.ToString(), iFuentes).ShowDialog();
+			if (cbx_Fuente.SelectedItem != null)
+				new Fuentes(cbx_Fuente.SelectedItem.ToString(), iFuentes).ShowDialog(); 
+			else
+				new Fuentes("",iFuentes).ShowDialog();
 		}
 
 		private void ControlFecha(object sender, EventArgs e)
@@ -136,7 +133,6 @@ namespace UI
 			{
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
-
 		}
 
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
@@ -154,7 +150,6 @@ namespace UI
 				iDias += "martes-";
 			else
 				iDias.Replace("martes-", "");
-			var x = iDias.Split('-');
 			ControlDias();
 		}
 
@@ -223,9 +218,21 @@ namespace UI
 
 		private void cbx_FuenteRss_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//IFuente fuente = iFuentes.Find(f => f.NombreFuente == cbx_Fuente.SelectedItem.ToString());
-			//txbTipoFuente.Text = fuente.TipoFuente.ToString();
-			//dGV_itemsFuente.DataSource = fuente.Items;
+			IFuente _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+			txbTipoFuente.Text = _Fuente.GetType().Name;
+
+			if (txbTipoFuente.Text != "FuenteRSS")
+			{
+				//btnAgregarItem.Visible = true;
+				//btnModificarFuente.Visible = true;
+				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
+			}
+			else
+			{
+				//btnAgregarItem.Visible = false;
+				//btnModificarFuente.Visible = false;
+				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
+			}
 		}
 	}
 }
