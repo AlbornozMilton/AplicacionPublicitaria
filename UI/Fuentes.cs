@@ -145,6 +145,7 @@ namespace UI
 				btnModificarFuente.Visible = false;
 				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
 			}
+			iItemBindingSource.ResetBindings(false);
 		}
 
 		private void HoverLabel(object sender, EventArgs e)

@@ -152,7 +152,7 @@ namespace Persistencia.DAL.EntityFramework
 				from i in iDbContext.Items
 				join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
 				where f.FuenteId == pFuente
-				select i).ToList();
+				select i).Take(20).ToList();
 		}
 	}
 }
