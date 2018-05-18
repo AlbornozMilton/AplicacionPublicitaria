@@ -11,5 +11,7 @@ namespace Persistencia.DAL
     {
         IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia);
 
+        IEnumerable<Campania> GetFiltradas(Dictionary<Type, object> pFiltros);
+
     }
 }

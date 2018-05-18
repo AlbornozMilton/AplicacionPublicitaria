@@ -177,7 +177,7 @@ namespace UI
             {
                 if ((DateTime.Compare(dtp_FechaDesde.Value.Date,dtp_FechaHasta.Value.Date)) > 0)
                 {
-                    throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de incio");
+                    throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de inicio");
                 }
                 List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
                 List<CheckBox> checksDias = new List<CheckBox>() {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
