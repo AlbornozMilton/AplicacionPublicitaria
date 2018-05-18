@@ -103,7 +103,7 @@ namespace Dominio
             List<Dia> listaDias = new List<Dia>();
             listaDias.Add(new Dia(DateTime.Today.DayOfWeek.ToString()));
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
-            listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
+            //listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
             Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Imagenes\\Fanart- San.jpg");
             listaImagenes.Add(imagenPublicidad);

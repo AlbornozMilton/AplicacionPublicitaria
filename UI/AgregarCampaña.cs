@@ -139,7 +139,7 @@ namespace UI
                 {
                     if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
                     {
-                        horarios.Add(new RangoHorario(horaDesde, horaHasta));
+                        //horarios.Add(new RangoHorario(horaDesde, horaHasta));
                         dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
                     } 
                 }
