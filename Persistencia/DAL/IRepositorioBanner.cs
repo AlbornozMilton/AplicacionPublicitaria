@@ -8,6 +8,7 @@ namespace Persistencia.DAL
     {
 		void AgregarBanner(Banner pBanner);
 		List<Banner> BannersDelDia(DateTime pDia);
+		List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin);
 
 		List<FuenteRSS> FuentesRSS();
 		List<TextoFijo> FuentesTextoFijo();

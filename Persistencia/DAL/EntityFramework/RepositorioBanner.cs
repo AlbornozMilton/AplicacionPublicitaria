@@ -154,5 +154,12 @@ namespace Persistencia.DAL.EntityFramework
 				where f.FuenteId == pFuente
 				select i).Take(20).ToList();
 		}
+
+		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
+		{
+			return (
+				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
+				.Where(b => b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)).ToList();
+		}
 	}
 }

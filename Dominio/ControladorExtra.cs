@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
+using AutoMapper;
 
 namespace Dominio
 {
@@ -18,8 +19,10 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarBannersEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
-			//automapear
-			//iBannersEnRangoFecha = iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechas); con pFechaDesde.Date
+			foreach (var banner in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
+			{
+				iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
+			}
 		}
 
 		/// <summary>
@@ -27,14 +30,14 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
+			//iCampaniasEnRangoFecha = iUOfW.RepositorioCampanias.CampaniasEnRangoFecha(pFechaInicio, pFechaFin); 
 			//automapear
-			//iCampaniasEnRangoFecha = iUOfW.RepositorioCampanias.CampaniasEnRangoFecha(pFechas); con pFechaDesde.Date
 		}
 
 		/// <summary>
 		/// Si hay intersección con el Horario y Días, lanza excepción
 		/// </summary>
-		public void ComprobarHorarioBanner(DateTime pHoraInicio, DateTime pHoraFin, string pDias)
+		public void ComprobarHorarioBanner(TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
 		{
 			foreach (Banner mBanner in iBannersEnRangoFecha)
 			{
@@ -46,7 +49,7 @@ namespace Dominio
 		/// <summary>
 		/// Si hay intersección con el Horario y Días, lanza excepción
 		/// </summary>
-		public void ComprobarHorarioCampania(DateTime pHoraInicio, DateTime pHoraFin, string pDias)
+		public void ComprobarHorarioCampania(TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
 		{
 			foreach (Campania mCampania in iCampaniasEnRangoFecha)
 			{
@@ -55,7 +58,7 @@ namespace Dominio
 			}
 		}
 
-		private void ComprobarHorario(RangoFecha pRangoFecha, DateTime pHoraInicio, DateTime pHoraFin, string pDias)
+		private void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
 		{
 			IList<string> mdias = pRangoFecha.Dias.Split('-');
 
@@ -63,11 +66,13 @@ namespace Dominio
 			{
 				if (pDias.Contains(dia))
 				{
-					//utilizar TimeSpan
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-						// if hay interserccion de horarios entre auxRango.Horarios y los de entrada
-						throw new Exception("El Horario elegido no se ecuentra disponible"); //corta ejecucion
+
+						if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
+						||
+						(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
+							throw new Exception("El Horario elegido no se ecuentra disponible");
 					}
 				}
 			}

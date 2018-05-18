@@ -117,24 +117,25 @@ namespace UI
 		{
 			try
 			{
-				string desde, hasta;
-				desde = horaDesde.Value.ToString("HH:mm");
-				hasta = horaHasta.Value.ToString("HH:mm");
+				TimeSpan desde, hasta;
+				desde = new TimeSpan(horaDesde.Value.Hour, horaDesde.Value.Minute, 0);
+				hasta = new TimeSpan(horaHasta.Value.Hour, horaHasta.Value.Minute, 0);
+
 				if (desde.CompareTo(hasta) >= 0)
 				{
 					throw new Exception("La Hora Desde tiene que ser menor que la Hora Hasta");
 				}
 
-				//Control de que no exista en la grilla
-				//foreach (DataGridViewRow row in dGV_horarios.Rows)
-				//{
-				//	//if (hay interseccion de horarios)
-				//	cbx_Fuente.Enabled = false;
-				//	throw new Exception("El Horario elegido ya se encutran en la grilla");
-				//}
+				foreach (DataGridViewRow row in dGV_horarios.Rows)
+				{
+					if ((((TimeSpan)row.Cells[0].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0)
+						||
+						(((TimeSpan)row.Cells[1].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0))
+					throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+				}
 
 				////cotrol de que no halla interseccion en los banners de bd
-				//iControlExtra.ComprobarHorarioBanner(horaDesde.Value, horaHasta.Value, iDias);
+				iControlExtra.ComprobarHorarioBanner(desde, hasta, iDias);
 
 				//agregar horario a la lista de horario o al controlador
 				dGV_horarios.Rows.Add(desde, hasta);
