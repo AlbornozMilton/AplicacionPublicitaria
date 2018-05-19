@@ -41,9 +41,13 @@ namespace Dominio
 			return "Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313";
 		}
 
-		public void AgregarBanner()
+		public void AgregarBanner(string pNombre, int pIdFuente,DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
 		{
-
+			RangoFecha rf = new RangoFecha(pRFDesde, pRFHasta, pDias, pRHorarios);
+			var rfMapped = Mapper.Map <RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
+			iUOfW.RepositorioBanner.AgregarBanner(pNombre, pIdFuente, rfMapped);
+			//mapear horarios fechas,
+			//pasar a repositorio y se cre ahi -no crear banner aca-
 		}
 
 		public enum Operacion

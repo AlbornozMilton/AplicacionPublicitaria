@@ -55,24 +55,33 @@ namespace UI
 		{
 			try
 			{
-				if (lblNomBanner.Text == "")
+				if (tbxNombreBanner.Text == "")
 					throw new Exception("Debe rellenar el campo Nombre");
 
 				if (iDias == null)
-					throw new Exception("Debe elegir por lo menos un Día");
+					throw new Exception("Debe elegir al menos un Día");
 
 				if (dGV_horarios.Rows.Count == 0)
 					throw new Exception("Debe elegir al menos un Horario");
 
 				if (dGV_itemsFuente.Rows.Count == 0)
-					throw new Exception("Debe elegir una Fuente que conten al menos un Item");
+					throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
 
-				// borra ultimo guin para futuro Split('-')
+				// borra ultimo guion para futuro Split('-')
 				iDias = iDias.Remove(iDias.Length - 1);
-				/*
-				generar lista de horarios a partir de la datagrid
-				 etc
-				*/
+
+				List<RangoHorario> ListaRangoH = new List<RangoHorario>();
+				foreach (DataGridViewRow item in dGV_horarios.Rows)
+				{
+					var desde = (TimeSpan)item.Cells[0].Value;
+					var hasta = (TimeSpan)item.Cells[1].Value;
+					ListaRangoH.Add(new RangoHorario(new TimeSpan(desde.Hours, desde.Minutes, 0), new TimeSpan(hasta.Hours, hasta.Minutes, 0)));
+				}
+
+				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, ListaRangoH, iDias);
+
+				new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				Close();
 			}
 			catch (Exception E)
 			{
@@ -156,7 +165,7 @@ namespace UI
 			if (ckb_luenes.Checked)
 				iDias += "lunes-";
 			else
-				iDias.Replace("lunes-", "");
+				iDias = iDias.Replace("lunes-", "");
 		}
 
 		private void ckb_martes_CheckedChanged(object sender, EventArgs e)
@@ -164,7 +173,7 @@ namespace UI
 			if (ckb_martes.Checked)
 				iDias += "martes-";
 			else
-				iDias.Replace("martes-", "");
+				iDias = iDias.Replace("martes-", "");
 		}
 
 		private void ckb_miercoles_CheckedChanged(object sender, EventArgs e)
@@ -172,7 +181,7 @@ namespace UI
 			if (ckb_miercoles.Checked)
 				iDias += "miercoles-";
 			else
-				iDias.Replace("miercoles-", "");
+				iDias = iDias.Replace("miercoles-", "");
 		}
 
 		private void ckb_jueves_CheckedChanged(object sender, EventArgs e)
@@ -180,15 +189,15 @@ namespace UI
 			if (ckb_jueves.Checked)
 				iDias += "jueves-";
 			else
-				iDias.Replace("jueves-", "");
+				iDias = iDias.Replace("jueves-", "");
 		}
 
 		private void ckb_viernes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_viernes.Checked)
-				iDias += "viernes-";
+				iDias = iDias += "viernes-";
 			else
-				iDias.Replace("viernes-", "");
+				iDias = iDias.Replace("viernes-", "");
 		}
 
 		private void ckb_sabado_CheckedChanged(object sender, EventArgs e)
@@ -196,7 +205,7 @@ namespace UI
 			if (ckb_sabado.Checked)
 				iDias += "sabado-";
 			else
-				iDias.Replace("sabado-", "");
+				iDias = iDias.Replace("sabado-", "");
 		}
 
 		private void ckb_domingo_CheckedChanged(object sender, EventArgs e)
@@ -204,7 +213,7 @@ namespace UI
 			if (ckb_domingo.Checked)
 				iDias += "domingo-";
 			else
-				iDias.Replace("domingo-", "");
+				iDias = iDias.Replace("domingo-", "");
 		}
 
 		private void HoverLabel(object sender, EventArgs e)
