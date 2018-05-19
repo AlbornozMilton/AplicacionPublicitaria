@@ -80,15 +80,19 @@ namespace UI
         {
             Close();
         }
-
-        private List<Dia>DevolverDias(List<CheckBox> pDiasSeleccionados)
+        /// <summary>
+        /// Devuelve una lista de dias en forma de string cuyo caracter delimitador es -
+        /// </summary>
+        /// <param name="pDiasSeleccionados"></param>
+        /// <returns></returns>
+        private string DevolverDias(List<CheckBox> pDiasSeleccionados)
         {
-            List<Dia> dias = new List<Dia>();
+            string dias = "";
             foreach (var dia in pDiasSeleccionados)
             {
                 if (dia.Checked)
                 {
-                    dias.Add(new Dia(dia.Name));
+                    dias = dias+(dia.Name)+"-";
                 }
             }
             return dias;
@@ -97,8 +101,8 @@ namespace UI
         {
             try
             {
-                List<Dia> dias = DevolverDias(new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday });
-                if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Count, dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
+                string dias = DevolverDias(new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday });
+                if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
                 {
                     iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
                     new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
@@ -139,7 +143,7 @@ namespace UI
                 {
                     if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
                     {
-                        //horarios.Add(new RangoHorario(horaDesde, horaHasta));
+                        horarios.Add(new RangoHorario(horaDesde,horaHasta));
                         dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
                     } 
                 }

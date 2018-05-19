@@ -21,7 +21,6 @@ namespace Dominio
         private int iCodRangoFecha;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
-		//private List<Dia> iListaDia;
 		private string iDias;
         private List<RangoHorario> iRangoHorario;
         private List<Banner> iListaBanners;
@@ -37,7 +36,6 @@ namespace Dominio
             //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
-			//this.iListaDia = pListDias;
 			this.iDias = pDias;
             this.iRangoHorario = pHorarios;
         }

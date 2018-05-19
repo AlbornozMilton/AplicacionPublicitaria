@@ -22,9 +22,9 @@ namespace Dominio
         /// <param name="pListDias"></param>
         /// <param name="pHorarios"></param>
         /// <param name="pImagenes"></param>
-        public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, List<Dia> pListDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
+        public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, string pDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
         {
-            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, /*pListDias*/"lunes",pHorarios);
+            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pDias,pHorarios);
             var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pIntTiempo,pRangoFecha,pImagenes));
             iUOfW.RepositorioCampania.Add(MapCamp);
             iUOfW.Complete();
@@ -107,7 +107,7 @@ namespace Dominio
             List<Imagen> listaImagenes = new List<Imagen>();
             Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Imagenes\\Fanart- San.jpg");
             listaImagenes.Add(imagenPublicidad);
-            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, /*listaDias*/"luenes" , listaHorarios),listaImagenes);
+            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios),listaImagenes);
         }
 
         /// <summary>

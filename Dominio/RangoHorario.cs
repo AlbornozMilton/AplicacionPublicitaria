@@ -24,10 +24,12 @@ namespace Dominio
 		/// <summary>
 		/// Constructor desde la grilla UI Banner. Pasar el 'Value' de cada celda.
 		/// </summary>
-        public RangoHorario(DateTime pHoraInicio , DateTime pHoraFin)
+        public RangoHorario(TimeSpan pHoraInicio , TimeSpan pHoraFin)
         {
-            this.iHoraInicio = new TimeSpan(pHoraInicio.Hour,pHoraInicio.Minute,0);
-            this.iHoraFin = new TimeSpan(pHoraFin.Hour, pHoraFin.Minute,0);
+            this.iHoraInicio = pHoraInicio;
+            this.iHoraFin = pHoraFin;
+            //this.iHoraInicio = new TimeSpan(pHoraInicio.Hour,pHoraInicio.Minute,0);
+            //this.iHoraFin = new TimeSpan(pHoraFin.Hour, pHoraFin.Minute,0);
 		}
 
         //PROPIEDADES--------------------------------------------------------------
