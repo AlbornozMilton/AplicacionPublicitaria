@@ -46,8 +46,6 @@ namespace Dominio
 			RangoFecha rf = new RangoFecha(pRFDesde, pRFHasta, pDias, pRHorarios);
 			var rfMapped = Mapper.Map <RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
 			iUOfW.RepositorioBanner.AgregarBanner(pNombre, pIdFuente, rfMapped);
-			//mapear horarios fechas,
-			//pasar a repositorio y se cre ahi -no crear banner aca-
 		}
 
 		public enum Operacion

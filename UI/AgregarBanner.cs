@@ -67,7 +67,7 @@ namespace UI
 				if (dGV_itemsFuente.Rows.Count == 0)
 					throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
 
-				// borra ultimo guion para futuro Split('-')
+				// borra ultimo guion para que futuro Split('-') no genere un item string vacio
 				iDias = iDias.Remove(iDias.Length - 1);
 
 				List<RangoHorario> ListaRangoH = new List<RangoHorario>();
