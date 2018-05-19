@@ -44,9 +44,9 @@
             this.label_Hasta = new System.Windows.Forms.Label();
             this.label_Desde = new System.Windows.Forms.Label();
             this.dtp_FechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.RangoFecha = new System.Windows.Forms.CheckBox();
-            this.Nombre = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CB_RangoFecha = new System.Windows.Forms.CheckBox();
+            this.CB_Nombre = new System.Windows.Forms.CheckBox();
+            this.TB_Nombre = new System.Windows.Forms.TextBox();
             this.btn_Filtrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Campanias)).BeginInit();
             this.gB_Filtrar.SuspendLayout();
@@ -66,6 +66,7 @@
             this.Column2,
             this.Column3});
             this.dGV_Campanias.Location = new System.Drawing.Point(372, 45);
+            this.dGV_Campanias.MultiSelect = false;
             this.dGV_Campanias.Name = "dGV_Campanias";
             this.dGV_Campanias.ReadOnly = true;
             this.dGV_Campanias.RowHeadersVisible = false;
@@ -167,9 +168,9 @@
             this.gB_Filtrar.Controls.Add(this.label_Hasta);
             this.gB_Filtrar.Controls.Add(this.label_Desde);
             this.gB_Filtrar.Controls.Add(this.dtp_FechaHasta);
-            this.gB_Filtrar.Controls.Add(this.RangoFecha);
-            this.gB_Filtrar.Controls.Add(this.Nombre);
-            this.gB_Filtrar.Controls.Add(this.textBox1);
+            this.gB_Filtrar.Controls.Add(this.CB_RangoFecha);
+            this.gB_Filtrar.Controls.Add(this.CB_Nombre);
+            this.gB_Filtrar.Controls.Add(this.TB_Nombre);
             this.gB_Filtrar.Controls.Add(this.btn_Filtrar);
             this.gB_Filtrar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gB_Filtrar.ForeColor = System.Drawing.Color.White;
@@ -182,6 +183,7 @@
             // 
             // dtp_FechaDesde
             // 
+            this.dtp_FechaDesde.Enabled = false;
             this.dtp_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_FechaDesde.Location = new System.Drawing.Point(106, 138);
             this.dtp_FechaDesde.Name = "dtp_FechaDesde";
@@ -216,40 +218,45 @@
             // 
             // dtp_FechaHasta
             // 
+            this.dtp_FechaHasta.Enabled = false;
             this.dtp_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_FechaHasta.Location = new System.Drawing.Point(106, 180);
             this.dtp_FechaHasta.Name = "dtp_FechaHasta";
             this.dtp_FechaHasta.Size = new System.Drawing.Size(113, 22);
             this.dtp_FechaHasta.TabIndex = 35;
+            this.dtp_FechaHasta.ValueChanged += new System.EventHandler(this.dtp_FechaHasta_ValueChanged);
             // 
-            // RangoFecha
+            // CB_RangoFecha
             // 
-            this.RangoFecha.AutoSize = true;
-            this.RangoFecha.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RangoFecha.Location = new System.Drawing.Point(14, 90);
-            this.RangoFecha.Name = "RangoFecha";
-            this.RangoFecha.Size = new System.Drawing.Size(122, 22);
-            this.RangoFecha.TabIndex = 31;
-            this.RangoFecha.Text = "Rango Fecha";
-            this.RangoFecha.UseVisualStyleBackColor = true;
+            this.CB_RangoFecha.AutoSize = true;
+            this.CB_RangoFecha.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_RangoFecha.Location = new System.Drawing.Point(14, 90);
+            this.CB_RangoFecha.Name = "CB_RangoFecha";
+            this.CB_RangoFecha.Size = new System.Drawing.Size(122, 22);
+            this.CB_RangoFecha.TabIndex = 31;
+            this.CB_RangoFecha.Text = "Rango Fecha";
+            this.CB_RangoFecha.UseVisualStyleBackColor = true;
+            this.CB_RangoFecha.CheckedChanged += new System.EventHandler(this.CB_RangoFecha_CheckedChanged);
             // 
-            // Nombre
+            // CB_Nombre
             // 
-            this.Nombre.AutoSize = true;
-            this.Nombre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nombre.Location = new System.Drawing.Point(14, 39);
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(86, 22);
-            this.Nombre.TabIndex = 30;
-            this.Nombre.Text = "Nombre";
-            this.Nombre.UseVisualStyleBackColor = true;
+            this.CB_Nombre.AutoSize = true;
+            this.CB_Nombre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_Nombre.Location = new System.Drawing.Point(14, 39);
+            this.CB_Nombre.Name = "CB_Nombre";
+            this.CB_Nombre.Size = new System.Drawing.Size(86, 22);
+            this.CB_Nombre.TabIndex = 30;
+            this.CB_Nombre.Text = "Nombre";
+            this.CB_Nombre.UseVisualStyleBackColor = true;
+            this.CB_Nombre.CheckedChanged += new System.EventHandler(this.CB_Nombre_CheckedChanged);
             // 
-            // textBox1
+            // TB_Nombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(124, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 22);
-            this.textBox1.TabIndex = 28;
+            this.TB_Nombre.Enabled = false;
+            this.TB_Nombre.Location = new System.Drawing.Point(124, 39);
+            this.TB_Nombre.Name = "TB_Nombre";
+            this.TB_Nombre.Size = new System.Drawing.Size(176, 22);
+            this.TB_Nombre.TabIndex = 28;
             // 
             // btn_Filtrar
             // 
@@ -260,6 +267,7 @@
             this.btn_Filtrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_Filtrar.TabIndex = 26;
             this.btn_Filtrar.TabStop = false;
+            this.btn_Filtrar.Click += new System.EventHandler(this.btn_Filtrar_Click);
             // 
             // EliminarCampañia
             // 
@@ -279,6 +287,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EliminarCampañia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EliminarCampañia";
             this.Load += new System.EventHandler(this.EliminarCampañia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Campanias)).EndInit();
@@ -299,9 +308,9 @@
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.GroupBox gB_Filtrar;
-        private System.Windows.Forms.CheckBox RangoFecha;
-        private System.Windows.Forms.CheckBox Nombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox CB_RangoFecha;
+        private System.Windows.Forms.CheckBox CB_Nombre;
+        private System.Windows.Forms.TextBox TB_Nombre;
         private System.Windows.Forms.PictureBox btn_Filtrar;
         private System.Windows.Forms.DateTimePicker dtp_FechaHasta;
         private System.Windows.Forms.Label label_Hasta;

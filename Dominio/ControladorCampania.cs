@@ -31,7 +31,7 @@ namespace Dominio
         }
 
         public void EliminarCampania(Campania pCampania)
-        {
+        { 
             var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(pCampania);
             iUOfW.RepositorioCampania.Remove(MapCamp);
             iUOfW.Complete();
@@ -164,13 +164,21 @@ namespace Dominio
             return listaDias;
         }
 
-        public List<Campania> ObtenerTodasCampanias() //CUAL ES EL FIN DE ESTE METODO?
+        public List<Campania> ObtenerTodasCampanias() //CUAL ES EL FIN DE ESTE METODO, quizas puede juntarse con el que sigue
         {
             IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
             List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
             iUOfW.Dispose();
             return listaCampanias;
         }
+
+        public List<Campania> ObtenerCampaniasFiltradas(Dictionary<Type, object> pFiltros)
+        {
+            IEnumerable<Persistencia.Dominio.Campania> listaCampFiltradas = iUOfW.RepositorioCampania.GetFiltradas(pFiltros);
+            List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaCampFiltradas);
+            return listaCampanias;
+        }
+
         public Boolean ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
         {
             if (pNombre == "")
