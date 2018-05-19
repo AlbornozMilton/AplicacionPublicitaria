@@ -25,13 +25,18 @@ namespace UI
 
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
-			iFuentes = new ControladorBanner().ObtenerFuentes();// solo nombres de fuente
+			RellenarFuentes();
+		}
+
+		private void RellenarFuentes()
+		{
+			cbx_Fuente.Items.Clear();
+			iFuentes = new ControladorBanner().ObtenerFuentes();
 			foreach (IFuente fuente in iFuentes)
 			{
 				cbx_Fuente.Items.Add(fuente.NombreFuente);
 			}
 		}
-
 		private void btnAgregarHorario_Click(object sender, EventArgs e)
 		{
 			ControlHorarios();
@@ -39,16 +44,10 @@ namespace UI
 
 		private void btnBorrarHorario_Click(object sender, EventArgs e)
 		{
-			if (dGV_itemsFuente.CurrentRow != null)
+			if (dGV_horarios.CurrentRow != null)
 			{
-				//lista de horarios eliminar donde el current row sea igual
-				dGV_itemsFuente.Rows.Remove(dGV_itemsFuente.CurrentRow);
+				dGV_horarios.Rows.Remove(dGV_itemsFuente.CurrentRow);
 			}
-
-			//if (dGV_horarios.Rows.Count == 0)
-			//	cbx_Fuente.Enabled = false;
-			//else
-			//	cbx_Fuente.Enabled = true;
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
@@ -97,24 +96,20 @@ namespace UI
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
 			new Fuentes(cbx_Fuente.SelectedText, iFuentes).ShowDialog();
+			RellenarFuentes();
 		}
 
 		private void ControlFecha(object sender, EventArgs e)
 		{
 			try
 			{
-				//gbxFuentes.Enabled = false;
 				if (fechaHasta.Value.Date <= fechaDesde.Value.Date)
 				{
-					//gbxDias.Enabled = false;
-					//gbxHorarios.Enabled = false;
 					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
 				}
 
 				dGV_horarios.Rows.Clear();
 				iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value, fechaHasta.Value);
-				//gbxDias.Enabled = true;
-				//gbxHorarios.Enabled = true;
 			}
 			catch (Exception E)
 			{
@@ -148,11 +143,6 @@ namespace UI
 
 				//agregar horario a la lista de horario o al controlador
 				dGV_horarios.Rows.Add(desde, hasta);
-
-				//if (dGV_horarios.Rows.Count == 0)
-				//	gbxFuentes.Enabled = false;
-				//else
-				//	gbxFuentes.Enabled = true;
 			}
 			catch (Exception E)
 			{
@@ -233,14 +223,10 @@ namespace UI
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				//btnAgregarItem.Visible = true;
-				//btnModificarFuente.Visible = true;
 				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
 			}
 			else
 			{
-				//btnAgregarItem.Visible = false;
-				//btnModificarFuente.Visible = false;
 				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
 			}
 		}

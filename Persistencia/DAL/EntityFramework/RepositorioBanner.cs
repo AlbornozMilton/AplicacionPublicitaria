@@ -25,8 +25,15 @@ namespace Persistencia.DAL.EntityFramework
 			{
 				Nombre = pNombre,
 				FuenteId = pFuenteId,
-				RangoFecha = pRFecha
 			};
+
+			RangoFecha aux = iDbContext.RangoFecha.Where(h => h.FechaInicio == pRFecha.FechaInicio && h.FechaFin == pRFecha.FechaFin).SingleOrDefault();
+
+			if (aux != null)
+				b.RangoFechaId = aux.RangoFechaId;
+			else
+				b.RangoFecha = pRFecha;
+
 			iDbContext.Banner.Add(b);
 			iDbContext.SaveChanges();
 		}

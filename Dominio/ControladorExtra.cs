@@ -17,6 +17,7 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarBannersEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
+			iBannersEnRangoFecha.Clear();
 			foreach (var banner in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
 			{
 				iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
@@ -66,10 +67,11 @@ namespace Dominio
 				{
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-
 						if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
 						||
-						(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
+						(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraInicio.CompareTo(pHoraFin) <= 0)
+						||
+						(horario.HoraFin.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
 							throw new Exception("El Horario elegido no se ecuentra disponible");
 					}
 				}
