@@ -90,7 +90,6 @@ namespace UI
                 RangoFecha pRangoFecha = new RangoFecha(this.dtp_FechaDesde.Value.Date, this.dtp_FechaHasta.Value.Date, "", lista);
                 filtros.Add(pRangoFecha.GetType(), pRangoFecha);  
             }
-            ControladorCampania iControladorCampania = new ControladorCampania();
             iListaCampanias = iControladorCampania.ObtenerCampaniasFiltradas(filtros);
             dGV_Campanias.Rows.Clear(); //no anda
             Cargar_dGV();
