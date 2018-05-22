@@ -29,8 +29,7 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
-			//iCampaniasEnRangoFecha = iUOfW.RepositorioCampanias.CampaniasEnRangoFecha(pFechaInicio, pFechaFin); 
-			//automapear
+			//idem a ActualizarBannersEnRangoFecha
 		}
 
 		/// <summary>
@@ -60,7 +59,7 @@ namespace Dominio
 			}
 		}
 
-		private void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
+		public void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
 		{
 			IList<string> mdias = pRangoFecha.Dias.Split('-');
 
@@ -73,14 +72,7 @@ namespace Dominio
 						if (!(horario.HoraInicio.CompareTo(pHoraInicio) > 0 && horario.HoraInicio.CompareTo(pHoraFin) > 0)
 						&&
 						(!(horario.HoraFin.CompareTo(pHoraInicio) < 0 && horario.HoraFin.CompareTo(pHoraFin) < 0)))
-							throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
-
-						//if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
-						//||
-						//(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraInicio.CompareTo(pHoraFin) <= 0)
-						//||
-						//(horario.HoraFin.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
-						//	throw new Exception("El Horario y Días elegidos no se ecuentra disponible");
+							throw new ApplicationException("Los Horarios y Días elegidos no se encuentran disponibles");
 					}
 				}
 			}
