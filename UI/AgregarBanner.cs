@@ -14,6 +14,7 @@ namespace UI
 	public partial class AgregarBanner : Form
 	{
 		//private List<Banner> iBannersEnRan;
+		List<RangoHorario> iHorarios = new List<RangoHorario>();
 		private ControladorExtra iControlExtra = new ControladorExtra();
 		private List<IFuente> iFuentes = new List<IFuente>();
 		private string iDias;
@@ -47,6 +48,12 @@ namespace UI
 			if (dGV_horarios.CurrentRow != null)
 			{
 				dGV_horarios.Rows.Remove(dGV_itemsFuente.CurrentRow);
+
+				iHorarios.RemoveAt(dGV_itemsFuente.CurrentRow.Index);
+
+				//iHorarios.Remove(iHorarios.Find
+				//		(h => h.HoraInicio == ((TimeSpan)dGV_itemsFuente.CurrentRow.Cells[0].Value)
+				//		&& h.HoraFin == ((TimeSpan)dGV_itemsFuente.CurrentRow.Cells[1].Value)));
 			}
 		}
 
@@ -69,15 +76,15 @@ namespace UI
 				// borra ultimo guion para que futuro Split('-') no genere un item string vacio
 				iDias = iDias.Remove(iDias.Length - 1);
 
-				List<RangoHorario> ListaRangoH = new List<RangoHorario>();
-				foreach (DataGridViewRow item in dGV_horarios.Rows)
-				{
-					var desde = (TimeSpan)item.Cells[0].Value;
-					var hasta = (TimeSpan)item.Cells[1].Value;
-					ListaRangoH.Add(new RangoHorario(new TimeSpan(desde.Hours, desde.Minutes, 0), new TimeSpan(hasta.Hours, hasta.Minutes, 0)));
-				}
+				//List<RangoHorario> ListaRangoH = new List<RangoHorario>();
+				//foreach (DataGridViewRow item in dGV_horarios.Rows)
+				//{
+				//	var desde = (TimeSpan)item.Cells[0].Value;
+				//	var hasta = (TimeSpan)item.Cells[1].Value;
+				//	ListaRangoH.Add(new RangoHorario(new TimeSpan(desde.Hours, desde.Minutes, 0), new TimeSpan(hasta.Hours, hasta.Minutes, 0)));
+				//}
 
-				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, ListaRangoH, iDias);
+				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
 
 				new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				Close();
@@ -109,6 +116,7 @@ namespace UI
 				}
 
 				dGV_horarios.Rows.Clear();
+				iHorarios.Clear();
 				iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value, fechaHasta.Value);
 			}
 			catch (Exception E)
@@ -126,23 +134,20 @@ namespace UI
 				hasta = new TimeSpan(horaHasta.Value.Hour, horaHasta.Value.Minute, 0);
 
 				if (desde.CompareTo(hasta) >= 0)
-				{
 					throw new Exception("La Hora Desde tiene que ser menor que la Hora Hasta");
-				}
 
-				foreach (DataGridViewRow row in dGV_horarios.Rows)
+				foreach (RangoHorario item in iHorarios)
 				{
-					if ((((TimeSpan)row.Cells[0].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0)
-						||
-						(((TimeSpan)row.Cells[1].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0))
-					throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) > 0)
+						&&
+						(!(item.HoraFin.CompareTo(desde) < 0 && item.HoraFin.CompareTo(hasta) < 0)))
+						throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
 				}
 
-				////cotrol de que no halla interseccion en los banners de bd
-				iControlExtra.ComprobarHorarioBanner(desde, hasta, iDias);
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 
-				//agregar horario a la lista de horario o al controlador
 				dGV_horarios.Rows.Add(desde, hasta);
+				iHorarios.Add(new RangoHorario(desde, hasta));
 			}
 			catch (Exception E)
 			{
@@ -152,8 +157,12 @@ namespace UI
 
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
 		{
+
 			if (ckb_luenes.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				iDias += "lunes-";
+			}
 			else
 				iDias = iDias.Replace("lunes-", "");
 		}
@@ -161,7 +170,10 @@ namespace UI
 		private void ckb_martes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_martes.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				iDias += "martes-";
+			}
 			else
 				iDias = iDias.Replace("martes-", "");
 		}
@@ -169,7 +181,11 @@ namespace UI
 		private void ckb_miercoles_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_miercoles.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+
 				iDias += "miercoles-";
+			}
 			else
 				iDias = iDias.Replace("miercoles-", "");
 		}
@@ -177,7 +193,10 @@ namespace UI
 		private void ckb_jueves_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_jueves.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				iDias += "jueves-";
+			}
 			else
 				iDias = iDias.Replace("jueves-", "");
 		}
@@ -185,7 +204,10 @@ namespace UI
 		private void ckb_viernes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_viernes.Checked)
-				iDias = iDias += "viernes-";
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+				iDias += "viernes-";
+			}
 			else
 				iDias = iDias.Replace("viernes-", "");
 		}
@@ -193,7 +215,10 @@ namespace UI
 		private void ckb_sabado_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_sabado.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				iDias += "sabado-";
+			}
 			else
 				iDias = iDias.Replace("sabado-", "");
 		}
@@ -201,7 +226,10 @@ namespace UI
 		private void ckb_domingo_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_domingo.Checked)
+			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				iDias += "domingo-";
+			}
 			else
 				iDias = iDias.Replace("domingo-", "");
 		}

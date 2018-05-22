@@ -36,12 +36,15 @@ namespace Dominio
 		/// <summary>
 		/// Si hay intersección con el Horario y Días, lanza excepción
 		/// </summary>
-		public void ComprobarHorarioBanner(TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
+		public void ComprobarHorarioBanner(List<RangoHorario> pHorarios, string pDias)
 		{
 			foreach (Banner mBanner in iBannersEnRangoFecha)
 			{
 				RangoFecha auxRFecha = mBanner.RangoFecha;
-				ComprobarHorario(auxRFecha, pHoraInicio, pHoraFin, pDias);
+				foreach (RangoHorario item in pHorarios)
+				{
+					ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias); 
+				}
 			}
 		}
 
@@ -67,12 +70,17 @@ namespace Dominio
 				{
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-						if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
-						||
-						(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraInicio.CompareTo(pHoraFin) <= 0)
-						||
-						(horario.HoraFin.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
-							throw new Exception("El Horario elegido no se ecuentra disponible");
+						if (!(horario.HoraInicio.CompareTo(pHoraInicio) > 0 && horario.HoraInicio.CompareTo(pHoraFin) > 0)
+						&&
+						(!(horario.HoraFin.CompareTo(pHoraInicio) < 0 && horario.HoraFin.CompareTo(pHoraFin) < 0)))
+							throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+
+						//if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
+						//||
+						//(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraInicio.CompareTo(pHoraFin) <= 0)
+						//||
+						//(horario.HoraFin.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
+						//	throw new Exception("El Horario y Días elegidos no se ecuentra disponible");
 					}
 				}
 			}
