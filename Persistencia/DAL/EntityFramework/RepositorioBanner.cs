@@ -19,17 +19,23 @@ namespace Persistencia.DAL.EntityFramework
 		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
 		/// </summary>
 		/// <param name="pBanner"></param>
-		public void AgregarBanner(Banner pBanner)
+		public void AgregarBanner(string pNombre, int pFuenteId, RangoFecha pRFecha)
 		{
-			// tener fuente id
-
-
-			if (pBanner.RangoFechaId == 0) //rango fecha no existente
+			Banner b = new Banner()
 			{
+				Nombre = pNombre,
+				FuenteId = pFuenteId,
+			};
 
-			}
+			RangoFecha aux = iDbContext.RangoFecha.Where(h => h.FechaInicio == pRFecha.FechaInicio && h.FechaFin == pRFecha.FechaFin).SingleOrDefault();
 
+			if (aux != null)
+				b.RangoFechaId = aux.RangoFechaId;
+			else
+				b.RangoFecha = pRFecha;
 
+			iDbContext.Banner.Add(b);
+			iDbContext.SaveChanges();
 		}
 
 		public List<Banner> BannersDelDia(DateTime pFecha)

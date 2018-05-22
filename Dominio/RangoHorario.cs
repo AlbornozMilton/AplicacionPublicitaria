@@ -28,8 +28,6 @@ namespace Dominio
         {
             this.iHoraInicio = pHoraInicio;
             this.iHoraFin = pHoraFin;
-            //this.iHoraInicio = new TimeSpan(pHoraInicio.Hour,pHoraInicio.Minute,0);
-            //this.iHoraFin = new TimeSpan(pHoraFin.Hour, pHoraFin.Minute,0);
 		}
 
         //PROPIEDADES--------------------------------------------------------------

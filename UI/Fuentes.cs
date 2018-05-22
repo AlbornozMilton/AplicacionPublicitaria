@@ -27,14 +27,17 @@ namespace UI
 
 		private void Fuentes_Load(object sender, EventArgs e)
 		{
-			int index = 0;
-			for (int i = 0; i < iFuentes.Count; i++)
+			if (iFuentes.Count > 0)
 			{
-				cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
-				if (cbx_Fuente.Items[i].ToString() == iFuenteSeleccionada)
-					index = i;
+				int index = 0;
+				for (int i = 0; i < iFuentes.Count; i++)
+				{
+					cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
+					if (cbx_Fuente.Items[i].ToString() == iFuenteSeleccionada)
+						index = i;
+				}
+				cbx_Fuente.SelectedIndex = index; 
 			}
-			cbx_Fuente.SelectedIndex = index;
 
 			//foreach (var item in iFuentes)
 			//{

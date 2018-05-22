@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -13,10 +8,10 @@ namespace UI
 {
 	public partial class AgregarBanner : Form
 	{
-		//private List<Banner> iBannersEnRan;
-		private ControladorExtra iControlExtra = new ControladorExtra();
-		private List<IFuente> iFuentes = new List<IFuente>();
-		private string iDias;
+		List<RangoHorario> iHorarios = new List<RangoHorario>();
+		ControladorExtra iControlExtra = new ControladorExtra();
+		List<IFuente> iFuentes = new List<IFuente>();
+		string iDias;
 
 		public AgregarBanner()
 		{
@@ -25,7 +20,17 @@ namespace UI
 
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
-			iFuentes = new ControladorBanner().ObtenerFuentes();// solo nombres de fuente
+			RellenarFuentes();
+			iDias = "";
+			fechaHasta.Value = DateTime.Now.AddMonths(1);
+			//fechaDesde.Value = DateTime.Now;
+			//iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value,fechaHasta.Value);
+		}
+
+		private void RellenarFuentes()
+		{
+			cbx_Fuente.Items.Clear();
+			iFuentes = new ControladorBanner().ObtenerFuentes();
 			foreach (IFuente fuente in iFuentes)
 			{
 				cbx_Fuente.Items.Add(fuente.NombreFuente);
@@ -39,40 +44,36 @@ namespace UI
 
 		private void btnBorrarHorario_Click(object sender, EventArgs e)
 		{
-			if (dGV_itemsFuente.CurrentRow != null)
+			if (dGV_horarios.CurrentRow != null)
 			{
-				//lista de horarios eliminar donde el current row sea igual
-				dGV_itemsFuente.Rows.Remove(dGV_itemsFuente.CurrentRow);
+				iHorarios.RemoveAt(dGV_horarios.CurrentRow.Index);
+				dGV_horarios.Rows.Remove(dGV_horarios.CurrentRow);
 			}
-
-			//if (dGV_horarios.Rows.Count == 0)
-			//	cbx_Fuente.Enabled = false;
-			//else
-			//	cbx_Fuente.Enabled = true;
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				if (lblNomBanner.Text == "")
+				if (tbxNombreBanner.Text == "")
 					throw new Exception("Debe rellenar el campo Nombre");
 
 				if (iDias == null)
-					throw new Exception("Debe elegir por lo menos un Día");
+					throw new Exception("Debe elegir al menos un Día");
 
 				if (dGV_horarios.Rows.Count == 0)
 					throw new Exception("Debe elegir al menos un Horario");
 
 				if (dGV_itemsFuente.Rows.Count == 0)
-					throw new Exception("Debe elegir una Fuente que conten al menos un Item");
+					throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
 
-				// borra ultimo guin para futuro Split('-')
+				// borra ultimo guion para que futuro Split('-') no genere un item string vacio
 				iDias = iDias.Remove(iDias.Length - 1);
-				/*
-				generar lista de horarios a partir de la datagrid
-				 etc
-				*/
+
+				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+
+				new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+				Close();
 			}
 			catch (Exception E)
 			{
@@ -88,24 +89,21 @@ namespace UI
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
 			new Fuentes(cbx_Fuente.SelectedText, iFuentes).ShowDialog();
+			RellenarFuentes();
 		}
 
 		private void ControlFecha(object sender, EventArgs e)
 		{
 			try
 			{
-				//gbxFuentes.Enabled = false;
 				if (fechaHasta.Value.Date <= fechaDesde.Value.Date)
 				{
-					//gbxDias.Enabled = false;
-					//gbxHorarios.Enabled = false;
 					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
 				}
 
 				dGV_horarios.Rows.Clear();
+				iHorarios.Clear();
 				iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value, fechaHasta.Value);
-				//gbxDias.Enabled = true;
-				//gbxHorarios.Enabled = true;
 			}
 			catch (Exception E)
 			{
@@ -122,28 +120,25 @@ namespace UI
 				hasta = new TimeSpan(horaHasta.Value.Hour, horaHasta.Value.Minute, 0);
 
 				if (desde.CompareTo(hasta) >= 0)
-				{
 					throw new Exception("La Hora Desde tiene que ser menor que la Hora Hasta");
-				}
 
-				foreach (DataGridViewRow row in dGV_horarios.Rows)
+				foreach (RangoHorario item in iHorarios)
 				{
-					if ((((TimeSpan)row.Cells[0].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0)
-						||
-						(((TimeSpan)row.Cells[1].Value).CompareTo(desde) >= 0 && ((TimeSpan)row.Cells[0].Value).CompareTo(hasta) <= 0))
-					throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) > 0)
+						&&
+						(!(item.HoraFin.CompareTo(desde) < 0 && item.HoraFin.CompareTo(hasta) < 0)))
+						throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
 				}
 
-				////cotrol de que no halla interseccion en los banners de bd
-				iControlExtra.ComprobarHorarioBanner(desde, hasta, iDias);
-
-				//agregar horario a la lista de horario o al controlador
+				iHorarios.Add(new RangoHorario(desde, hasta));
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 				dGV_horarios.Rows.Add(desde, hasta);
 
-				//if (dGV_horarios.Rows.Count == 0)
-				//	gbxFuentes.Enabled = false;
-				//else
-				//	gbxFuentes.Enabled = true;
+			}
+			catch(ApplicationException E)
+			{
+				iHorarios.RemoveAt(iHorarios.Count-1);
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{
@@ -151,60 +146,75 @@ namespace UI
 			}
 		}
 
+		private void ControlCheckedDia(string pDia, CheckBox sender)
+		{
+			try
+			{
+				iDias += pDia;
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+			}
+			catch (ApplicationException E)
+			{
+				iDias = iDias.Replace(pDia, "");
+				sender.Checked = false;
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			}
+		}
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
 		{
+
 			if (ckb_luenes.Checked)
-				iDias += "lunes-";
+				ControlCheckedDia("lunes-", (CheckBox)sender);
 			else
-				iDias.Replace("lunes-", "");
+				iDias = iDias.Replace("lunes-", "");
 		}
 
 		private void ckb_martes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_martes.Checked)
-				iDias += "martes-";
+				ControlCheckedDia("martes-", (CheckBox)sender);
 			else
-				iDias.Replace("martes-", "");
+				iDias = iDias.Replace("martes-", "");
 		}
 
 		private void ckb_miercoles_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_miercoles.Checked)
-				iDias += "miercoles-";
+				ControlCheckedDia("miercoles-", (CheckBox)sender);
 			else
-				iDias.Replace("miercoles-", "");
+				iDias = iDias.Replace("miercoles-", "");
 		}
 
 		private void ckb_jueves_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_jueves.Checked)
-				iDias += "jueves-";
+				ControlCheckedDia("jueves-", (CheckBox)sender);
 			else
-				iDias.Replace("jueves-", "");
+				iDias = iDias.Replace("jueves-", "");
 		}
 
 		private void ckb_viernes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_viernes.Checked)
-				iDias += "viernes-";
+				ControlCheckedDia("viernes-",(CheckBox)sender);
 			else
-				iDias.Replace("viernes-", "");
+				iDias = iDias.Replace("viernes-", "");
 		}
 
 		private void ckb_sabado_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_sabado.Checked)
-				iDias += "sabado-";
+				ControlCheckedDia("sabado-", (CheckBox)sender);
 			else
-				iDias.Replace("sabado-", "");
+				iDias = iDias.Replace("sabado-", "");
 		}
 
 		private void ckb_domingo_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_domingo.Checked)
-				iDias += "domingo-";
+				ControlCheckedDia("domingo-", (CheckBox)sender);
 			else
-				iDias.Replace("domingo-", "");
+				iDias = iDias.Replace("domingo-", "");
 		}
 
 		private void HoverLabel(object sender, EventArgs e)
@@ -224,14 +234,10 @@ namespace UI
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				//btnAgregarItem.Visible = true;
-				//btnModificarFuente.Visible = true;
 				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
 			}
 			else
 			{
-				//btnAgregarItem.Visible = false;
-				//btnModificarFuente.Visible = false;
 				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
 			}
 		}

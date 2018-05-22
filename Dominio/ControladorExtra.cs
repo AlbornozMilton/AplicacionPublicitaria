@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
 using AutoMapper;
 
@@ -19,6 +17,7 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarBannersEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
+			iBannersEnRangoFecha.Clear();
 			foreach (var banner in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
 			{
 				iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
@@ -30,19 +29,21 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
-			//iCampaniasEnRangoFecha = iUOfW.RepositorioCampanias.CampaniasEnRangoFecha(pFechaInicio, pFechaFin); 
-			//automapear
+			//idem a ActualizarBannersEnRangoFecha
 		}
 
 		/// <summary>
 		/// Si hay intersección con el Horario y Días, lanza excepción
 		/// </summary>
-		public void ComprobarHorarioBanner(TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
+		public void ComprobarHorarioBanner(List<RangoHorario> pHorarios, string pDias)
 		{
 			foreach (Banner mBanner in iBannersEnRangoFecha)
 			{
 				RangoFecha auxRFecha = mBanner.RangoFecha;
-				ComprobarHorario(auxRFecha, pHoraInicio, pHoraFin, pDias);
+				foreach (RangoHorario item in pHorarios)
+				{
+					ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias); 
+				}
 			}
 		}
 
@@ -58,7 +59,7 @@ namespace Dominio
 			}
 		}
 
-		private void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
+		public void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
 		{
 			IList<string> mdias = pRangoFecha.Dias.Split('-');
 
@@ -68,11 +69,10 @@ namespace Dominio
 				{
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-
-						if ((horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0)
-						||
-						(horario.HoraInicio.CompareTo(pHoraInicio) >= 0 && horario.HoraFin.CompareTo(pHoraFin) <= 0))
-							throw new Exception("El Horario elegido no se ecuentra disponible");
+						if (!(horario.HoraInicio.CompareTo(pHoraInicio) > 0 && horario.HoraInicio.CompareTo(pHoraFin) > 0)
+						&&
+						(!(horario.HoraFin.CompareTo(pHoraInicio) < 0 && horario.HoraFin.CompareTo(pHoraFin) < 0)))
+							throw new ApplicationException("Los Horarios y Días elegidos no se encuentran disponibles");
 					}
 				}
 			}
