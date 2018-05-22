@@ -86,12 +86,11 @@ namespace UI
             filtros.Add(nombre.GetType(), nombre);
             if (this.CB_RangoFecha.Checked)
             {
-                List<RangoHorario> lista = new List<RangoHorario>(); //no deberia
-                RangoFecha pRangoFecha = new RangoFecha(this.dtp_FechaDesde.Value.Date, this.dtp_FechaHasta.Value.Date, "", lista);
-                filtros.Add(pRangoFecha.GetType(), pRangoFecha);  
+                RangoFecha pRangoFecha = new RangoFecha(this.dtp_FechaDesde.Value, this.dtp_FechaHasta.Value, "", null);
+                filtros.Add(pRangoFecha.GetType(), pRangoFecha);
             }
             iListaCampanias = iControladorCampania.ObtenerCampaniasFiltradas(filtros);
-            dGV_Campanias.Rows.Clear(); //no anda
+            dGV_Campanias.Rows.Clear();
             Cargar_dGV();
         }
 

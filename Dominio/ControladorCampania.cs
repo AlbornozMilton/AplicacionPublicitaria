@@ -22,16 +22,16 @@ namespace Dominio
         /// <param name="pListDias"></param>
         /// <param name="pHorarios"></param>
         /// <param name="pImagenes"></param>
-        public void AgregarCampania (string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, string pDias, List<RangoHorario>pHorarios, List<Imagen> pImagenes)
+        public void AgregarCampania(string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, string pDias, List<RangoHorario> pHorarios, List<Imagen> pImagenes)
         {
-            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pDias,pHorarios);
-            var MapCamp = Mapper.Map < Campania, Persistencia.Dominio.Campania>(new Campania(pNombre,pIntTiempo,pRangoFecha,pImagenes));
+            RangoFecha pRangoFecha = new RangoFecha(pFechaDesde, pFechaHasta, pDias, pHorarios);
+            var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(new Campania(pNombre, pIntTiempo, pRangoFecha, pImagenes));
             iUOfW.RepositorioCampania.Add(MapCamp);
             iUOfW.Complete();
         }
 
         public void EliminarCampania(Campania pCampania)
-        { 
+        {
             var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(pCampania);
             iUOfW.RepositorioCampania.Remove(MapCamp);
             iUOfW.Complete();
@@ -45,7 +45,7 @@ namespace Dominio
         public Campania ObtenerCampania(int pId)
         {
             Persistencia.Dominio.Campania campaniaPers = iUOfW.RepositorioCampania.Get(pId);
-            Campania campania = Mapper.Map<Persistencia.Dominio.Campania, Campania> (campaniaPers);
+            Campania campania = Mapper.Map<Persistencia.Dominio.Campania, Campania>(campaniaPers);
             return campania;
         }
 
@@ -73,7 +73,7 @@ namespace Dominio
         public Campania ObtenerCampaniaActual(List<Campania> pLista)
         {
             Campania campaniaActual = null;
-            int i= 0;
+            int i = 0;
             while (campaniaActual == null && i < pLista.Count)
             {
                 foreach (var rangHor in pLista[i].RangoFecha.Horarios)
@@ -106,7 +106,7 @@ namespace Dominio
             List<Imagen> listaImagenes = new List<Imagen>();
             Imagen imagenPublicidad = new Imagen("ImgDefault", "D:\\Documentos\\ImagenesFotos\\Imagenes\\Fanart- San.jpg");
             listaImagenes.Add(imagenPublicidad);
-            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios),listaImagenes);
+            return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios), listaImagenes);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Dominio
         {
             Campania campaniaSiguiente = null;
             int i = 0;
-            while (campaniaSiguiente == null &&  i < pLista.Count)
+            while (campaniaSiguiente == null && i < pLista.Count)
             {
                 foreach (var rangHor in pLista[i].RangoFecha.Horarios)
                 {
@@ -133,7 +133,7 @@ namespace Dominio
             {
                 campaniaSiguiente = GenerarCampaniaNula(pHoraFin);
             }
-        return campaniaSiguiente;
+            return campaniaSiguiente;
         }
 
         public Boolean ControlColisionHorarios(List<RangoHorario> pHorarios, TimeSpan pHoraDesde, TimeSpan pHoraHasta)
@@ -167,12 +167,18 @@ namespace Dominio
         {
             IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
             List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
-            iUOfW.Dispose();
             return listaCampanias;
         }
 
         public List<Campania> ObtenerCampaniasFiltradas(Dictionary<Type, object> pFiltros)
         {
+                if (pFiltros.ContainsKey(typeof(RangoFecha)))
+                {
+                    pFiltros.Add(typeof(Persistencia.Dominio.RangoFecha),
+                                Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>
+                                 ((RangoFecha)pFiltros[typeof(RangoFecha)]));
+                    pFiltros.Remove(typeof(RangoFecha));
+                }
             IEnumerable<Persistencia.Dominio.Campania> listaCampFiltradas = iUOfW.RepositorioCampania.GetFiltradas(pFiltros);
             List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaCampFiltradas);
             return listaCampanias;
