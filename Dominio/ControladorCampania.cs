@@ -100,8 +100,7 @@ namespace Dominio
         /// <returns></returns>
         public Campania GenerarCampaniaNula(TimeSpan pHoraInicio)
         {
-            List<Dia> listaDias = new List<Dia>();
-            listaDias.Add(new Dia(DateTime.Today.DayOfWeek.ToString()));
+            string listaDias = DateTime.Today.DayOfWeek.ToString();
             List<RangoHorario> listaHorarios = new List<RangoHorario>();
             //listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
             List<Imagen> listaImagenes = new List<Imagen>();
