@@ -98,11 +98,17 @@
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </Compile>
-    <Compile Include="EliminarCampañia.cs">
+    <Compile Include="BuscarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EliminarCampañia.Designer.cs">
-      <DependentUpon>EliminarCampañia.cs</DependentUpon>
+    <Compile Include="BuscarCampaña.Designer.cs">
+      <DependentUpon>BuscarCampaña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarCampaña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarCampaña.Designer.cs">
+      <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </Compile>
     <Compile Include="Fuentes.cs">
       <SubType>Form</SubType>
@@ -151,8 +157,11 @@
     <EmbeddedResource Include="AgregarCampaña.resx">
       <DependentUpon>AgregarCampaña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EliminarCampañia.resx">
-      <DependentUpon>EliminarCampañia.cs</DependentUpon>
+    <EmbeddedResource Include="BuscarCampaña.resx">
+      <DependentUpon>BuscarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCampaña.resx">
+      <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fuentes.resx">
       <DependentUpon>Fuentes.cs</DependentUpon>

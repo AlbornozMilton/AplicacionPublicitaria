@@ -11,12 +11,13 @@ using Dominio;
 
 namespace UI
 {
-    public partial class EliminarCampañia : Form
+    public partial class BuscarCampaña : Form
     {
         private ControladorCampania iControladorCampania = new ControladorCampania();
         private List<Campania> iListaCampanias = new List<Campania>();
+        public Campania iCampaniaSeleccionada;
 
-        public EliminarCampañia()
+        public BuscarCampaña()
         {
             InitializeComponent();
         }
@@ -57,14 +58,12 @@ namespace UI
             {
                 if (dGV_Campanias.CurrentRow == null)
                 {
-                    throw new Exception("Se debe selecionar una Campaña a eliminar");
+                    throw new Exception("Se debe selecionar una Campaña");
                 }
                 else
                 {
-                    ControladorCampania iControladorCampania = new ControladorCampania();
                     int i = dGV_Campanias.CurrentRow.Index;
-                    iControladorCampania.EliminarCampania(iListaCampanias[i]);
-                    new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    this.iCampaniaSeleccionada = iListaCampanias[i];
                     Close();
                 }
             }

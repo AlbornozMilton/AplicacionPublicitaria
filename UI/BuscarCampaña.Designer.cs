@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class EliminarCampañia
+    partial class BuscarCampaña
     {
         /// <summary>
         /// Required designer variable.
@@ -71,7 +71,7 @@
             this.dGV_Campanias.ReadOnly = true;
             this.dGV_Campanias.RowHeadersVisible = false;
             this.dGV_Campanias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Campanias.Size = new System.Drawing.Size(482, 143);
+            this.dGV_Campanias.Size = new System.Drawing.Size(482, 261);
             this.dGV_Campanias.TabIndex = 0;
             // 
             // Column1
@@ -110,9 +110,9 @@
             this.label1.Location = new System.Drawing.Point(16, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 18);
+            this.label1.Size = new System.Drawing.Size(156, 18);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Eliminar Campaña";
+            this.label1.Text = "Buscar Campaña";
             // 
             // label9
             // 
@@ -269,7 +269,7 @@
             this.btn_Filtrar.TabStop = false;
             this.btn_Filtrar.Click += new System.EventHandler(this.btn_Filtrar_Click);
             // 
-            // EliminarCampañia
+            // BuscarCampaña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -286,7 +286,7 @@
             this.Controls.Add(this.dGV_Campanias);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "EliminarCampañia";
+            this.Name = "BuscarCampaña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EliminarCampañia";
             this.Load += new System.EventHandler(this.EliminarCampañia_Load);
