@@ -47,9 +47,8 @@ namespace UI
 
         private void EliminarCampañia_Load(object sender, EventArgs e)
         {
-            iListaCampanias = iControladorCampania.ObtenerTodasCampanias();
             dGV_Campanias.AutoGenerateColumns = false;
-            Cargar_dGV();
+            btn_Filtrar_Click(null, null);
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
