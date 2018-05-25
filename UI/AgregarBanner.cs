@@ -234,11 +234,11 @@ namespace UI
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId);
+				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId, 5);
 			}
 			else
 			{
-				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId);
+				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId, 5);
 			}
 		}
 	}

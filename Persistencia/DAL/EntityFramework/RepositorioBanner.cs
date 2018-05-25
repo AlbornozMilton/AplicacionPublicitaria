@@ -152,13 +152,14 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public List<Item> ObtenerItemsDeFuente(int pFuente)
+		public List<Item> ObtenerItemsDeFuente(int pFuente, DateTime pDesde, DateTime pHasta)
 		{
-			return (
-				from i in iDbContext.Items
-				join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
-				where f.FuenteId == pFuente
-				select i).Take(20).ToList();
+				return (
+						from i in iDbContext.Items
+						join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
+						where f.FuenteId == pFuente
+						&& (i.Fecha >= pDesde && i.Fecha <= pHasta)
+						select i).DefaultIfEmpty().ToList(); 
 		}
 
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
