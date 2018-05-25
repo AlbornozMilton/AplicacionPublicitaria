@@ -29,24 +29,27 @@ namespace UI
 		{
 			fechaDesde.Value = new DateTime(DateTime.Now.Year,DateTime.Now.Month,1);
 			fechaHasta.Value = fechaDesde.Value.AddMonths(1);
-			CargarFuentes();
+			CargarFuentes(-1);
 		}
 
-		private void CargarFuentes()
+		private void CargarFuentes(int pIndex)
 		{
 			iFuentes = new ControladorBanner().ObtenerFuentes();
 
 			if (iFuentes.Count > 0)
 			{
 				cbx_Fuente.Items.Clear();
-				int index = 0;
+				
 				for (int i = 0; i < iFuentes.Count; i++)
 				{
 					cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
-					if (cbx_Fuente.Items[i].ToString() == iFuenteSeleccionada)
-						index = i;
 				}
-				cbx_Fuente.SelectedIndex = index;
+				if (pIndex > 0)
+					cbx_Fuente.SelectedIndex = pIndex;
+				else if (pIndex == 0)
+					cbx_Fuente.SelectedIndex = iFuentes.Count - 1;
+				else
+					cbx_Fuente.SelectedIndex = 0;
 			}
 		}
 
@@ -73,7 +76,7 @@ namespace UI
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
 		{
 			new AddModFuente().ShowDialog();
-			CargarFuentes();
+			CargarFuentes(0);
 		}
 
 		private void btnModFuente_Click(object sender, EventArgs e)
@@ -81,7 +84,7 @@ namespace UI
 			if (cbx_Fuente.SelectedItem != null)
 			{
 				new AddModFuente(_Fuente).ShowDialog();
-				CargarFuentes();
+				CargarFuentes(cbx_Fuente.SelectedIndex);
 			}
 		}
 
@@ -97,7 +100,7 @@ namespace UI
 						_Fuente.FuenteId,
 						_Fuente.NombreFuente);
 					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					CargarFuentes();
+					CargarFuentes(-1);
 
 				}
 				catch (Exception E)

@@ -15,6 +15,7 @@ namespace UI
 		{
 			InitializeComponent();
 			_Item = pItem;
+			_Item.Fecha = DateTime.Now;
 			_FuenteId = pFuenteId;
 		}
 
