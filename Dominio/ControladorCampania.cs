@@ -163,22 +163,15 @@ namespace Dominio
             return listaDias;
         }
 
-        public List<Campania> ObtenerTodasCampanias() //CUAL ES EL FIN DE ESTE METODO, quizas puede juntarse con el que sigue
-        {
-            IEnumerable<Persistencia.Dominio.Campania> listaTodasCamp = iUOfW.RepositorioCampania.GetAll();
-            List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaTodasCamp);
-            return listaCampanias;
-        }
-
         public List<Campania> ObtenerCampaniasFiltradas(Dictionary<Type, object> pFiltros)
         {
-                if (pFiltros.ContainsKey(typeof(RangoFecha)))
-                {
-                    pFiltros.Add(typeof(Persistencia.Dominio.RangoFecha),
-                                Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>
-                                 ((RangoFecha)pFiltros[typeof(RangoFecha)]));
-                    pFiltros.Remove(typeof(RangoFecha));
-                }
+            if (pFiltros.ContainsKey(typeof(RangoFecha)))
+            {
+                pFiltros.Add(typeof(Persistencia.Dominio.RangoFecha),
+                             Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>
+                             ((RangoFecha)pFiltros[typeof(RangoFecha)]));
+                pFiltros.Remove(typeof(RangoFecha));
+            }
             IEnumerable<Persistencia.Dominio.Campania> listaCampFiltradas = iUOfW.RepositorioCampania.GetFiltradas(pFiltros);
             List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaCampFiltradas);
             return listaCampanias;
