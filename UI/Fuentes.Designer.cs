@@ -37,6 +37,10 @@
 			this.btnNuevaFuente = new System.Windows.Forms.PictureBox();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
 			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tbxTipoFuente = new System.Windows.Forms.TextBox();
 			this.ModificarItem = new System.Windows.Forms.Label();
 			this.EliminarItem = new System.Windows.Forms.Label();
@@ -45,8 +49,6 @@
 			this.btnAgregarItem = new System.Windows.Forms.PictureBox();
 			this.btnAceptar = new System.Windows.Forms.Button();
 			this.NuevaFuente = new System.Windows.Forms.Label();
-			this.TodosItems = new System.Windows.Forms.Label();
-			this.btnTodosItems = new System.Windows.Forms.PictureBox();
 			this.cbx_Fuente = new System.Windows.Forms.ComboBox();
 			this.ModificarFuente = new System.Windows.Forms.Label();
 			this.EliminarFuente = new System.Windows.Forms.Label();
@@ -55,20 +57,21 @@
 			this.lbl_ = new System.Windows.Forms.Label();
 			this.btnModificarFuente = new System.Windows.Forms.PictureBox();
 			this.btnModificarItem = new System.Windows.Forms.PictureBox();
-			this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.textoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.fechaHasta = new System.Windows.Forms.DateTimePicker();
+			this.fechaDesde = new System.Windows.Forms.DateTimePicker();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.btnBuscar = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).BeginInit();
 			this.groupBox_items.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnModificarFuente)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnModificarItem)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lbl_Title
@@ -114,7 +117,7 @@
 			// 
 			this.btnNuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNuevaFuente.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnNuevaFuente.Location = new System.Drawing.Point(591, 96);
+			this.btnNuevaFuente.Location = new System.Drawing.Point(623, 32);
 			this.btnNuevaFuente.Name = "btnNuevaFuente";
 			this.btnNuevaFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnNuevaFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -133,12 +136,12 @@
 			this.groupBox_items.BackColor = System.Drawing.Color.Maroon;
 			this.groupBox_items.Controls.Add(this.dGV_itemsFuente);
 			this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.groupBox_items.Location = new System.Drawing.Point(16, 148);
+			this.groupBox_items.Location = new System.Drawing.Point(16, 167);
 			this.groupBox_items.Name = "groupBox_items";
-			this.groupBox_items.Size = new System.Drawing.Size(808, 229);
+			this.groupBox_items.Size = new System.Drawing.Size(957, 210);
 			this.groupBox_items.TabIndex = 39;
 			this.groupBox_items.TabStop = false;
-			this.groupBox_items.Text = "Últimos Items";
+			this.groupBox_items.Text = "tems";
 			// 
 			// dGV_itemsFuente
 			// 
@@ -170,9 +173,39 @@
 			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
 			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(802, 210);
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(951, 191);
 			this.dGV_itemsFuente.TabIndex = 0;
 			this.dGV_itemsFuente.DoubleClick += new System.EventHandler(this.ModificarItem_Click);
+			// 
+			// tituloDataGridViewTextBoxColumn
+			// 
+			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
+			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
+			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
+			this.tituloDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// fechaDataGridViewTextBoxColumn
+			// 
+			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
+			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+			this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// textoDataGridViewTextBoxColumn
+			// 
+			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
+			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
+			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
+			this.textoDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// iItemBindingSource
+			// 
+			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
 			// 
 			// tbxTipoFuente
 			// 
@@ -254,7 +287,7 @@
 			// 
 			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(740, 401);
+			this.btnAceptar.Location = new System.Drawing.Point(889, 402);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 49;
@@ -268,39 +301,12 @@
 			this.NuevaFuente.AutoSize = true;
 			this.NuevaFuente.BackColor = System.Drawing.Color.Maroon;
 			this.NuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.NuevaFuente.Location = new System.Drawing.Point(569, 134);
+			this.NuevaFuente.Location = new System.Drawing.Point(601, 70);
 			this.NuevaFuente.Name = "NuevaFuente";
 			this.NuevaFuente.Size = new System.Drawing.Size(75, 13);
 			this.NuevaFuente.TabIndex = 42;
 			this.NuevaFuente.Text = "Nueva Fuente";
 			this.NuevaFuente.Visible = false;
-			// 
-			// TodosItems
-			// 
-			this.TodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.TodosItems.AutoSize = true;
-			this.TodosItems.BackColor = System.Drawing.Color.Maroon;
-			this.TodosItems.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.TodosItems.Location = new System.Drawing.Point(285, 422);
-			this.TodosItems.Name = "TodosItems";
-			this.TodosItems.Size = new System.Drawing.Size(75, 13);
-			this.TodosItems.TabIndex = 51;
-			this.TodosItems.Text = "Mostrar Todos";
-			this.TodosItems.Visible = false;
-			// 
-			// btnTodosItems
-			// 
-			this.btnTodosItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnTodosItems.Image = global::UI.Properties.Resources.btn_Listar;
-			this.btnTodosItems.Location = new System.Drawing.Point(306, 383);
-			this.btnTodosItems.Name = "btnTodosItems";
-			this.btnTodosItems.Size = new System.Drawing.Size(35, 35);
-			this.btnTodosItems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnTodosItems.TabIndex = 50;
-			this.btnTodosItems.TabStop = false;
-			this.btnTodosItems.Click += new System.EventHandler(this.btnTodosItems_Click);
-			this.btnTodosItems.MouseLeave += new System.EventHandler(this.LeaveLabel);
-			this.btnTodosItems.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// cbx_Fuente
 			// 
@@ -318,7 +324,7 @@
 			this.ModificarFuente.AutoSize = true;
 			this.ModificarFuente.BackColor = System.Drawing.Color.Maroon;
 			this.ModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.ModificarFuente.Location = new System.Drawing.Point(652, 134);
+			this.ModificarFuente.Location = new System.Drawing.Point(684, 70);
 			this.ModificarFuente.Name = "ModificarFuente";
 			this.ModificarFuente.Size = new System.Drawing.Size(86, 13);
 			this.ModificarFuente.TabIndex = 56;
@@ -331,7 +337,7 @@
 			this.EliminarFuente.AutoSize = true;
 			this.EliminarFuente.BackColor = System.Drawing.Color.Maroon;
 			this.EliminarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.EliminarFuente.Location = new System.Drawing.Point(742, 134);
+			this.EliminarFuente.Location = new System.Drawing.Point(774, 70);
 			this.EliminarFuente.Name = "EliminarFuente";
 			this.EliminarFuente.Size = new System.Drawing.Size(79, 13);
 			this.EliminarFuente.TabIndex = 54;
@@ -342,7 +348,7 @@
 			// 
 			this.btnEliminarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEliminarFuente.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnEliminarFuente.Location = new System.Drawing.Point(763, 96);
+			this.btnEliminarFuente.Location = new System.Drawing.Point(795, 32);
 			this.btnEliminarFuente.Name = "btnEliminarFuente";
 			this.btnEliminarFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnEliminarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -359,7 +365,7 @@
 			this.lblX.BackColor = System.Drawing.Color.Transparent;
 			this.lblX.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblX.ForeColor = System.Drawing.Color.Transparent;
-			this.lblX.Location = new System.Drawing.Point(794, 14);
+			this.lblX.Location = new System.Drawing.Point(943, 14);
 			this.lblX.Name = "lblX";
 			this.lblX.Size = new System.Drawing.Size(30, 29);
 			this.lblX.TabIndex = 58;
@@ -373,7 +379,7 @@
 			this.lbl_.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_.ForeColor = System.Drawing.Color.Transparent;
-			this.lbl_.Location = new System.Drawing.Point(756, -2);
+			this.lbl_.Location = new System.Drawing.Point(905, -2);
 			this.lbl_.Name = "lbl_";
 			this.lbl_.Size = new System.Drawing.Size(36, 39);
 			this.lbl_.TabIndex = 57;
@@ -384,7 +390,7 @@
 			// 
 			this.btnModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnModificarFuente.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarFuente.Location = new System.Drawing.Point(678, 96);
+			this.btnModificarFuente.Location = new System.Drawing.Point(710, 32);
 			this.btnModificarFuente.Name = "btnModificarFuente";
 			this.btnModificarFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnModificarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -398,7 +404,7 @@
 			// 
 			this.btnModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarItem.Location = new System.Drawing.Point(119, 380);
+			this.btnModificarItem.Location = new System.Drawing.Point(119, 383);
 			this.btnModificarItem.Name = "btnModificarItem";
 			this.btnModificarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnModificarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -408,35 +414,58 @@
 			this.btnModificarItem.MouseLeave += new System.EventHandler(this.LeaveLabel);
 			this.btnModificarItem.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
-			// tituloDataGridViewTextBoxColumn
+			// fechaHasta
 			// 
-			this.tituloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.tituloDataGridViewTextBoxColumn.DataPropertyName = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.FillWeight = 60F;
-			this.tituloDataGridViewTextBoxColumn.HeaderText = "Titulo";
-			this.tituloDataGridViewTextBoxColumn.Name = "tituloDataGridViewTextBoxColumn";
-			this.tituloDataGridViewTextBoxColumn.ReadOnly = true;
+			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.fechaHasta.Location = new System.Drawing.Point(338, 135);
+			this.fechaHasta.Name = "fechaHasta";
+			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
+			this.fechaHasta.TabIndex = 62;
 			// 
-			// fechaDataGridViewTextBoxColumn
+			// fechaDesde
 			// 
-			this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.FillWeight = 40F;
-			this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-			this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-			this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+			this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.fechaDesde.Location = new System.Drawing.Point(82, 134);
+			this.fechaDesde.Name = "fechaDesde";
+			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
+			this.fechaDesde.TabIndex = 61;
 			// 
-			// textoDataGridViewTextBoxColumn
+			// label1
 			// 
-			this.textoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.textoDataGridViewTextBoxColumn.DataPropertyName = "Texto";
-			this.textoDataGridViewTextBoxColumn.HeaderText = "Texto";
-			this.textoDataGridViewTextBoxColumn.Name = "textoDataGridViewTextBoxColumn";
-			this.textoDataGridViewTextBoxColumn.ReadOnly = true;
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.Transparent;
+			this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(21, 134);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(54, 18);
+			this.label1.TabIndex = 63;
+			this.label1.Text = "Desde";
 			// 
-			// iItemBindingSource
+			// label13
 			// 
-			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
+			this.label13.AutoSize = true;
+			this.label13.BackColor = System.Drawing.Color.Transparent;
+			this.label13.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label13.ForeColor = System.Drawing.Color.White;
+			this.label13.Location = new System.Drawing.Point(280, 134);
+			this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(51, 18);
+			this.label13.TabIndex = 64;
+			this.label13.Text = "Hasta";
+			// 
+			// btnBuscar
+			// 
+			this.btnBuscar.Image = global::UI.Properties.Resources.btn_Buscar;
+			this.btnBuscar.Location = new System.Drawing.Point(534, 122);
+			this.btnBuscar.Name = "btnBuscar";
+			this.btnBuscar.Size = new System.Drawing.Size(35, 35);
+			this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnBuscar.TabIndex = 65;
+			this.btnBuscar.TabStop = false;
+			this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
 			// 
 			// Fuentes
 			// 
@@ -444,7 +473,12 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(836, 454);
+			this.ClientSize = new System.Drawing.Size(985, 454);
+			this.Controls.Add(this.btnBuscar);
+			this.Controls.Add(this.fechaHasta);
+			this.Controls.Add(this.fechaDesde);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.label13);
 			this.Controls.Add(this.btnModificarItem);
 			this.Controls.Add(this.btnModificarFuente);
 			this.Controls.Add(this.lblX);
@@ -453,8 +487,6 @@
 			this.Controls.Add(this.EliminarFuente);
 			this.Controls.Add(this.btnEliminarFuente);
 			this.Controls.Add(this.cbx_Fuente);
-			this.Controls.Add(this.TodosItems);
-			this.Controls.Add(this.btnTodosItems);
 			this.Controls.Add(this.btnAceptar);
 			this.Controls.Add(this.ModificarItem);
 			this.Controls.Add(this.EliminarItem);
@@ -479,13 +511,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.btnNuevaFuente)).EndInit();
 			this.groupBox_items.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_itemsFuente)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarItem)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarItem)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnTodosItems)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarFuente)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnModificarFuente)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnModificarItem)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -507,8 +539,6 @@
 		private System.Windows.Forms.PictureBox btnAgregarItem;
 		private System.Windows.Forms.Button btnAceptar;
 		private System.Windows.Forms.Label NuevaFuente;
-		private System.Windows.Forms.Label TodosItems;
-		private System.Windows.Forms.PictureBox btnTodosItems;
 		private System.Windows.Forms.ComboBox cbx_Fuente;
 		private System.Windows.Forms.Label ModificarFuente;
 		private System.Windows.Forms.Label EliminarFuente;
@@ -521,5 +551,10 @@
 		private System.Windows.Forms.Label lbl_;
 		private System.Windows.Forms.PictureBox btnModificarFuente;
 		private System.Windows.Forms.PictureBox btnModificarItem;
+		private System.Windows.Forms.DateTimePicker fechaHasta;
+		private System.Windows.Forms.DateTimePicker fechaDesde;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.PictureBox btnBuscar;
 	}
 }

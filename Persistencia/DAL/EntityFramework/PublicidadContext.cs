@@ -12,7 +12,7 @@ namespace Persistencia.DAL.EntityFramework
         public PublicidadContext() : base("PublicidadDB")
         {
             Database.SetInitializer<PublicidadContext>(new DatabaseInitializationStrategy());
-        }
+			}
 
         //ATRIBUTOS       
         public virtual DbSet<Banner> Banner { get; set; }
