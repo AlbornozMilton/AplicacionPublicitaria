@@ -23,8 +23,8 @@ namespace UI
 		{
 			RellenarFuentes();
 			iDias = "";
-			fechaHasta.Value = DateTime.Now.AddMonths(1);
 			horaHasta.Value = DateTime.Now.AddHours(1);
+			fechaHasta.Value = DateTime.Now.AddMonths(1);
 		}
 
 		private void RellenarFuentes()
@@ -65,9 +65,8 @@ namespace UI
 					throw new Exception("Debe elegir al menos un Horario");
 
 				if (dGV_itemsFuente.Rows.Count == 0)
-				//throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
 				{
-					VentanaEmergente f = new VentanaEmergente("Para este bannar se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					VentanaEmergente f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 					if (f.DialogResult == DialogResult.OK)
 					{
@@ -101,7 +100,7 @@ namespace UI
 		{
 			try
 			{
-				if (fechaHasta.Value.Date <= fechaDesde.Value.Date)
+				if (fechaHasta.Value.Date < fechaDesde.Value.Date)
 				{
 					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
 				}
@@ -151,17 +150,17 @@ namespace UI
 			}
 		}
 
-		private void ControlCheckedDia(string pDia, CheckBox sender)
+		private void ControlCheckedDia(string pDia, object sender)
 		{
 			try
 			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias += pDia);
 				iDias += pDia;
-				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 			}
 			catch (ApplicationException E)
 			{
-				iDias = iDias.Replace(pDia, "");
-				sender.Checked = false;
+				//iDias = iDias.Replace(pDia, "");
+				((CheckBox)sender).Checked = false;
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -169,7 +168,7 @@ namespace UI
 		{
 
 			if (ckb_luenes.Checked)
-				ControlCheckedDia("lunes-", (CheckBox)sender);
+				ControlCheckedDia("lunes-", sender);
 			else
 				iDias = iDias.Replace("lunes-", "");
 		}
@@ -177,7 +176,7 @@ namespace UI
 		private void ckb_martes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_martes.Checked)
-				ControlCheckedDia("martes-", (CheckBox)sender);
+				ControlCheckedDia("martes-", sender);
 			else
 				iDias = iDias.Replace("martes-", "");
 		}
@@ -185,7 +184,7 @@ namespace UI
 		private void ckb_miercoles_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_miercoles.Checked)
-				ControlCheckedDia("miercoles-", (CheckBox)sender);
+				ControlCheckedDia("miercoles-", sender);
 			else
 				iDias = iDias.Replace("miercoles-", "");
 		}
@@ -193,7 +192,7 @@ namespace UI
 		private void ckb_jueves_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_jueves.Checked)
-				ControlCheckedDia("jueves-", (CheckBox)sender);
+				ControlCheckedDia("jueves-", sender);
 			else
 				iDias = iDias.Replace("jueves-", "");
 		}
@@ -201,7 +200,7 @@ namespace UI
 		private void ckb_viernes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_viernes.Checked)
-				ControlCheckedDia("viernes-",(CheckBox)sender);
+				ControlCheckedDia("viernes-", sender);
 			else
 				iDias = iDias.Replace("viernes-", "");
 		}
@@ -209,7 +208,7 @@ namespace UI
 		private void ckb_sabado_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_sabado.Checked)
-				ControlCheckedDia("sabado-", (CheckBox)sender);
+				ControlCheckedDia("sabado-", sender);
 			else
 				iDias = iDias.Replace("sabado-", "");
 		}
@@ -217,7 +216,7 @@ namespace UI
 		private void ckb_domingo_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_domingo.Checked)
-				ControlCheckedDia("domingo-", (CheckBox)sender);
+				ControlCheckedDia("domingo-", sender);
 			else
 				iDias = iDias.Replace("domingo-", "");
 		}
