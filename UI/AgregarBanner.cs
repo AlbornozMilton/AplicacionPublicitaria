@@ -64,19 +64,21 @@ namespace UI
 				if (dGV_horarios.Rows.Count == 0)
 					throw new Exception("Debe elegir al menos un Horario");
 
+				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					VentanaEmergente f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
-					if (f.DialogResult == DialogResult.OK)
-					{
-						// borra ultimo guion para que futuro Split('-') no genere un item string vacio
-						iDias = iDias.Remove(iDias.Length - 1);
+				}
 
-						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
-						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						Close();
-					}
+				if (dGV_itemsFuente.Rows.Count > 0 || f.DialogResult == DialogResult.OK)
+				{
+					// borra ultimo guion para que futuro Split('-') no genere un item string vacio
+					iDias = iDias.Remove(iDias.Length - 1);
+
+					new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+					new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					Close();
 				}
 			}
 			catch (Exception E)
@@ -155,11 +157,10 @@ namespace UI
 			try
 			{
 				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias += pDia);
-				iDias += pDia;
 			}
 			catch (ApplicationException E)
 			{
-				//iDias = iDias.Replace(pDia, "");
+				iDias = iDias.Replace(pDia, "");
 				((CheckBox)sender).Checked = false;
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
