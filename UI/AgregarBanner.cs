@@ -30,7 +30,7 @@ namespace UI
 		private void RellenarFuentes()
 		{
 			cbx_Fuente.Items.Clear();
-			iFuentes = new ControladorBanner().ObtenerFuentes();
+			iFuentes = new ControladorFuentes().ObtenerFuentes();
 			foreach (IFuente fuente in iFuentes)
 			{
 				cbx_Fuente.Items.Add(fuente.NombreFuente);

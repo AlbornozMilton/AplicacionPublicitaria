@@ -68,6 +68,7 @@
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioBanner.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioCampania.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioFuentes.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioBanner.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Dominio\RangoFecha.cs" />
     <Compile Include="Dominio\RangoHorario.cs" />
     <Compile Include="Dominio\TextoFijo.cs" />
+    <Compile Include="DAL\IRepositorioFuentes.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

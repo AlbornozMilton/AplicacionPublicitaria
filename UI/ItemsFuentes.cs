@@ -32,12 +32,12 @@ namespace UI
 			{
 				if (_Item.ItemId == 0)
 				{
-					new ControladorBanner().ABMItems(ControladorBanner.Operacion.Agregar, _FuenteId, _Item);
+					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Agregar, _FuenteId, _Item);
 					new VentanaEmergente("Item Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
-					new ControladorBanner().ABMItems(ControladorBanner.Operacion.Modificar, _FuenteId, _Item);
+					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Modificar, _FuenteId, _Item);
 					new VentanaEmergente("Item Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				Close();

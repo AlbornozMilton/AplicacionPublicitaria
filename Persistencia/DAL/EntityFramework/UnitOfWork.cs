@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -24,6 +20,8 @@ namespace Persistencia.DAL.EntityFramework
             this.RepositorioCampania = new RepositorioCampania(this.iDbContext);
 
 			this.RepositorioBanner = new RepositorioBanner(this.iDbContext);
+
+			this.RepositorioFuentes = new RepositorioFuentes(this.iDbContext);
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
@@ -31,6 +29,8 @@ namespace Persistencia.DAL.EntityFramework
         public IRepositorioCampania RepositorioCampania { get; private set; }
 
         public IRepositorioBanner RepositorioBanner { get; private set; }
+
+        public IRepositorioFuentes RepositorioFuentes { get; private set; }
 
         //---implementacion de IUnitOfWork 
 

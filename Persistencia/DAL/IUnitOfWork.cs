@@ -12,6 +12,7 @@ namespace Persistencia.DAL
 
         IRepositorioBanner RepositorioBanner { get; }
         IRepositorioCampania RepositorioCampania { get; }
+        IRepositorioFuentes RepositorioFuentes { get; }
 
-    }
+	}
 }

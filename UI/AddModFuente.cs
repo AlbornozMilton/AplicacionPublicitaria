@@ -44,16 +44,16 @@ namespace UI
 			if (tbxNombreFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
 			{
 				Cursor = Cursors.WaitCursor;
-				var controlador = new ControladorBanner();
+				var controlador = new ControladorFuentes();
 				if (iFuente != null) 
 				{
-					controlador.ABMFuente(ControladorBanner.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
-					controlador.ABMFuente(ControladorBanner.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}

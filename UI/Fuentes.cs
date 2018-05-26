@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Dominio;
+using Dominio.RSS;
 
 namespace UI
 {
@@ -15,10 +16,10 @@ namespace UI
 		public Fuentes()
 		{
 			InitializeComponent();
-			iFuentes = new ControladorBanner().ObtenerFuentes();
+			iFuentes = new ControladorFuentes().ObtenerFuentes();
 		}
 
-		public Fuentes(string pNombreFuente, List<IFuente> pFuentes )
+		public Fuentes(string pNombreFuente, List<IFuente> pFuentes)
 		{
 			InitializeComponent();
 			iFuentes = pFuentes;
@@ -27,19 +28,19 @@ namespace UI
 
 		private void Fuentes_Load(object sender, EventArgs e)
 		{
-			fechaDesde.Value = new DateTime(DateTime.Now.Year,DateTime.Now.Month,1);
+			fechaDesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 			fechaHasta.Value = fechaDesde.Value.AddMonths(1);
 			CargarFuentes(-1);
 		}
 
 		private void CargarFuentes(int pIndex)
 		{
-			iFuentes = new ControladorBanner().ObtenerFuentes();
+			iFuentes = new ControladorFuentes().ObtenerFuentes();
 
 			if (iFuentes.Count > 0)
 			{
 				cbx_Fuente.Items.Clear();
-				
+
 				for (int i = 0; i < iFuentes.Count; i++)
 				{
 					cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
@@ -61,14 +62,28 @@ namespace UI
 			if (tbxTipoFuente.Text != "FuenteRSS")
 			{
 				btnAgregarItem.Visible = true;
-				btnModificarFuente.Visible = true;
-				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				btnModificarItem.Visible = true;
+				btnEliminarItem.Enabled = true;
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 			}
 			else
 			{
 				btnAgregarItem.Visible = false;
-				btnModificarFuente.Visible = false;
-				iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				btnModificarItem.Visible = false;
+				btnEliminarItem.Enabled = false;
+
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
+				if (items.Count > 0)
+				{
+					new VentanaEmergente("Solucitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					iItemBindingSource.DataSource = items.ToList();
+				}
+				else
+				{
+					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
+					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				}
 			}
 			iItemBindingSource.ResetBindings(false);
 		}
@@ -94,8 +109,8 @@ namespace UI
 			{
 				try
 				{
-					new ControladorBanner().ABMFuente(
-						ControladorBanner.Operacion.Eliminar,
+					new ControladorFuentes().ABMFuente(
+						ControladorFuentes.Operacion.Eliminar,
 						tbxTipoFuente.Text,
 						_Fuente.FuenteId,
 						_Fuente.NombreFuente);
@@ -122,7 +137,7 @@ namespace UI
 			{
 				new ItemsFuentes((IItem)iItemBindingSource.Current, _Fuente.FuenteId).ShowDialog();
 				CargarItems();
-			}    
+			}
 		}
 
 		private void btn_eliminarItem_Click(object sender, EventArgs e)
@@ -132,8 +147,8 @@ namespace UI
 			{
 				if (iItemBindingSource.Current != null)
 				{
-					new ControladorBanner().ABMItems(
-								ControladorBanner.Operacion.Eliminar,
+					new ControladorFuentes().ABMItems(
+								ControladorFuentes.Operacion.Eliminar,
 								_Fuente.FuenteId,
 								(IItem)iItemBindingSource.Current);
 					new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
@@ -163,7 +178,7 @@ namespace UI
 
 		private void lbl__Click(object sender, EventArgs e)
 		{
-            this.WindowState = FormWindowState.Minimized;
+			this.WindowState = FormWindowState.Minimized;
 		}
 
 		private void cbx_Fuente_SelectedIndexChanged(object sender, EventArgs e)
