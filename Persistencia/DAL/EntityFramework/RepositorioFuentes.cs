@@ -86,13 +86,6 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public void EliminarItem(Item pItem)
-		{
-			iDbContext.Items.Attach(pItem);
-			iDbContext.Entry(pItem).State = EntityState.Deleted;
-			iDbContext.SaveChanges();
-		}
-
 		public List<Item> ObtenerItemsDeFuente(int pFuente, DateTime pDesde, DateTime pHasta)
 		{
 			return (
@@ -100,7 +93,7 @@ namespace Persistencia.DAL.EntityFramework
 					join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
 					where f.FuenteId == pFuente
 					&& (i.Fecha >= pDesde && i.Fecha <= pHasta)
-					select i).DefaultIfEmpty().ToList();
+					select i).ToList();
 		}
 
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
@@ -110,9 +103,34 @@ namespace Persistencia.DAL.EntityFramework
 				.Where(b => b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)).ToList();
 		}
 
-		public void ActualizarItemsRss(List<Item> pItems)
+		public void ActualizarItemsRss(List<Item> pItems, int pFuenteId)
 		{
-			throw new NotImplementedException();
+			var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
+
+			if (itemsDB.Count > 0)
+			{
+				for (int i = 0; i < pItems.Count; i++)
+				{
+					if (itemsDB[i].Fecha != pItems[i].Fecha)
+					{
+						var itemCurrent = pItems[i];
+						iDbContext.Items.Attach(itemCurrent);
+						itemCurrent.FuenteId = pFuenteId;
+						iDbContext.Entry(itemCurrent).State = EntityState.Added;
+					}
+				}
+			}
+			else
+			{
+				foreach (var itemExt in pItems)
+				{
+					iDbContext.Items.Attach(itemExt);
+					itemExt.FuenteId = pFuenteId;
+					iDbContext.Entry(itemExt).State = EntityState.Added;
+				}
+			}
+
+			iDbContext.SaveChanges();
 		}
 	}
 }

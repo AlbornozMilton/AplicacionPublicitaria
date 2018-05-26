@@ -16,6 +16,6 @@ namespace Persistencia.DAL
 		void ModificarItem(Item pItem);
 		void EliminarItem(int pItemId);
 		List<Item> ObtenerItemsDeFuente(int pFuente, DateTime pDesde, DateTime pHasta);
-		void ActualizarItemsRss(List<Item> pItems);
+		void ActualizarItemsRss(List<Item> pItems, int pFuenteId);
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Dominio;
+using Dominio.RSS;
 
 namespace UI
 {
@@ -22,9 +23,8 @@ namespace UI
 		{
 			RellenarFuentes();
 			iDias = "";
+			horaHasta.Value = DateTime.Now.AddHours(1);
 			fechaHasta.Value = DateTime.Now.AddMonths(1);
-			//fechaDesde.Value = DateTime.Now;
-			//iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value,fechaHasta.Value);
 		}
 
 		private void RellenarFuentes()
@@ -65,15 +65,19 @@ namespace UI
 					throw new Exception("Debe elegir al menos un Horario");
 
 				if (dGV_itemsFuente.Rows.Count == 0)
-					throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
+				{
+					VentanaEmergente f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					f.ShowDialog();
+					if (f.DialogResult == DialogResult.OK)
+					{
+						// borra ultimo guion para que futuro Split('-') no genere un item string vacio
+						iDias = iDias.Remove(iDias.Length - 1);
 
-				// borra ultimo guion para que futuro Split('-') no genere un item string vacio
-				iDias = iDias.Remove(iDias.Length - 1);
-
-				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
-
-				new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-				Close();
+						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						Close();
+					}
+				}
 			}
 			catch (Exception E)
 			{
@@ -96,7 +100,7 @@ namespace UI
 		{
 			try
 			{
-				if (fechaHasta.Value.Date <= fechaDesde.Value.Date)
+				if (fechaHasta.Value.Date < fechaDesde.Value.Date)
 				{
 					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
 				}
@@ -146,17 +150,17 @@ namespace UI
 			}
 		}
 
-		private void ControlCheckedDia(string pDia, CheckBox sender)
+		private void ControlCheckedDia(string pDia, object sender)
 		{
 			try
 			{
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias += pDia);
 				iDias += pDia;
-				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 			}
 			catch (ApplicationException E)
 			{
-				iDias = iDias.Replace(pDia, "");
-				sender.Checked = false;
+				//iDias = iDias.Replace(pDia, "");
+				((CheckBox)sender).Checked = false;
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -164,7 +168,7 @@ namespace UI
 		{
 
 			if (ckb_luenes.Checked)
-				ControlCheckedDia("lunes-", (CheckBox)sender);
+				ControlCheckedDia("lunes-", sender);
 			else
 				iDias = iDias.Replace("lunes-", "");
 		}
@@ -172,7 +176,7 @@ namespace UI
 		private void ckb_martes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_martes.Checked)
-				ControlCheckedDia("martes-", (CheckBox)sender);
+				ControlCheckedDia("martes-", sender);
 			else
 				iDias = iDias.Replace("martes-", "");
 		}
@@ -180,7 +184,7 @@ namespace UI
 		private void ckb_miercoles_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_miercoles.Checked)
-				ControlCheckedDia("miercoles-", (CheckBox)sender);
+				ControlCheckedDia("miercoles-", sender);
 			else
 				iDias = iDias.Replace("miercoles-", "");
 		}
@@ -188,7 +192,7 @@ namespace UI
 		private void ckb_jueves_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_jueves.Checked)
-				ControlCheckedDia("jueves-", (CheckBox)sender);
+				ControlCheckedDia("jueves-", sender);
 			else
 				iDias = iDias.Replace("jueves-", "");
 		}
@@ -196,7 +200,7 @@ namespace UI
 		private void ckb_viernes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_viernes.Checked)
-				ControlCheckedDia("viernes-",(CheckBox)sender);
+				ControlCheckedDia("viernes-", sender);
 			else
 				iDias = iDias.Replace("viernes-", "");
 		}
@@ -204,7 +208,7 @@ namespace UI
 		private void ckb_sabado_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_sabado.Checked)
-				ControlCheckedDia("sabado-", (CheckBox)sender);
+				ControlCheckedDia("sabado-", sender);
 			else
 				iDias = iDias.Replace("sabado-", "");
 		}
@@ -212,7 +216,7 @@ namespace UI
 		private void ckb_domingo_CheckedChanged(object sender, EventArgs e)
 		{
 			if (ckb_domingo.Checked)
-				ControlCheckedDia("domingo-", (CheckBox)sender);
+				ControlCheckedDia("domingo-", sender);
 			else
 				iDias = iDias.Replace("domingo-", "");
 		}
@@ -229,17 +233,34 @@ namespace UI
 
 		private void cbx_FuenteRss_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			CargarItems();
+		}
+		private void CargarItems()
+		{
 			IFuente _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 			txbTipoFuente.Text = _Fuente.GetType().Name;
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId, 5);
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 			}
 			else
 			{
-				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId, 5);
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
+				if (items.Count > 0)
+				{
+					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+				}
+				else
+				{
+					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
+					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				}
 			}
+			iItemBindingSource.ResetBindings(false);
 		}
 	}
 }

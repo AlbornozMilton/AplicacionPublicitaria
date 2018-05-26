@@ -63,24 +63,31 @@ namespace UI
 			{
 				btnAgregarItem.Visible = true;
 				btnModificarItem.Visible = true;
-				btnEliminarItem.Enabled = true;
+				btnEliminarItem.Visible = true;
+				fechaDesde.Enabled = true;
+				fechaHasta.Enabled = true;
 				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 			}
 			else
 			{
 				btnAgregarItem.Visible = false;
 				btnModificarItem.Visible = false;
-				btnEliminarItem.Enabled = false;
+				btnEliminarItem.Visible = false;
 
 				IRssReader mRssReader = new RawXmlRssReader();
 				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solucitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
 					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+					fechaDesde.Enabled = false;
+					fechaHasta.Enabled = false;
 				}
 				else
 				{
+					fechaDesde.Enabled = true;
+					fechaHasta.Enabled = true;
 					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
 					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 				}
@@ -90,16 +97,20 @@ namespace UI
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
 		{
-			new AddModFuente().ShowDialog();
-			CargarFuentes(0);
+			AddModFuente f = new AddModFuente();
+			f.ShowDialog();
+			if (f.DialogResult == DialogResult.OK)
+				CargarFuentes(0);
 		}
 
 		private void btnModFuente_Click(object sender, EventArgs e)
 		{
 			if (cbx_Fuente.SelectedItem != null)
 			{
-				new AddModFuente(_Fuente).ShowDialog();
-				CargarFuentes(cbx_Fuente.SelectedIndex);
+				AddModFuente f = new AddModFuente(_Fuente);
+				f.ShowDialog();
+				if (f.DialogResult == DialogResult.OK)
+					CargarFuentes(cbx_Fuente.SelectedIndex);
 			}
 		}
 
@@ -127,16 +138,20 @@ namespace UI
 
 		private void btnAgregarItem_Click(object sender, EventArgs e)
 		{
-			new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId).ShowDialog();
-			CargarItems();
+			ItemsFuentes f = new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId);
+			f.ShowDialog();
+			if (f.DialogResult == DialogResult.OK)
+				CargarItems(); 
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
 		{
 			if ((IItem)iItemBindingSource.Current != null)
 			{
-				new ItemsFuentes((IItem)iItemBindingSource.Current, _Fuente.FuenteId).ShowDialog();
-				CargarItems();
+				ItemsFuentes f = new ItemsFuentes((IItem)iItemBindingSource.Current, _Fuente.FuenteId);
+				f.ShowDialog();
+				if (f.DialogResult == DialogResult.OK)
+					CargarItems();
 			}
 		}
 
