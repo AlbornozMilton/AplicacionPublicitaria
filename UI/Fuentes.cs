@@ -63,14 +63,14 @@ namespace UI
 			{
 				btnAgregarItem.Visible = true;
 				btnModificarItem.Visible = true;
-				btnEliminarItem.Enabled = true;
+				btnEliminarItem.Visible = true;
 				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 			}
 			else
 			{
 				btnAgregarItem.Visible = false;
 				btnModificarItem.Visible = false;
-				btnEliminarItem.Enabled = false;
+				btnEliminarItem.Visible = false;
 
 				IRssReader mRssReader = new RawXmlRssReader();
 				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
@@ -78,6 +78,7 @@ namespace UI
 				{
 					new VentanaEmergente("Solucitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
 					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 				}
 				else
 				{

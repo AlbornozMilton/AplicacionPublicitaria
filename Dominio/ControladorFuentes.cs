@@ -112,14 +112,14 @@ namespace Dominio
 			return lista;
 		}
 
-		public void ActualizarItemsRss(List<IItem> pItems)
+		public void ActualizarItemsRss(List<RSS.RssItem> pItems, int pFuenteId)
 		{
 			List<Persistencia.Dominio.Item> lista = new List<Persistencia.Dominio.Item>();
 			foreach (var item in pItems)
 			{
-				lista.Add(Mapper.Map<RSS.RssItem, Persistencia.Dominio.Item>((RSS.RssItem)item));
+				lista.Add(Mapper.Map<RSS.RssItem, Persistencia.Dominio.Item>(item));
 			}
-			iUOfW.RepositorioFuentes.ActualizarItemsRss(lista);
+			iUOfW.RepositorioFuentes.ActualizarItemsRss(lista.OrderBy(i => i.Fecha).ToList(), pFuenteId);
 		}
 
 	}
