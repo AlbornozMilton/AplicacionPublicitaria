@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         public override IEnumerable<Campania> GetAll()
         {
             return (iDbContext.Campania.Include("Imagenes").Include("RangoFecha").Include("RangoFecha.Horarios")).ToList();/*.Dias*/
-
+    
 		}
 
         public IEnumerable<Campania> GetFiltradas(Dictionary<Type, object> pFiltros)
@@ -32,16 +32,16 @@ namespace Persistencia.DAL.EntityFramework
                             where camp.Nombre.Contains(pNombre)
                             select camp;
             if (pFiltros.ContainsKey(typeof(RangoFecha)))
-            {
+            { 
                 List<Campania> resultado = new List<Campania>();
                 RangoFecha pRangoFecha = (RangoFecha)pFiltros[typeof(RangoFecha)];
                 DateTime fechaInicio = pRangoFecha.FechaInicio.Date;
                 DateTime fechaFin = pRangoFecha.FechaFin.Date;
                 foreach (var camp in campanias)
                 {
-                    if (! ((camp.RangoFecha.FechaInicio.CompareTo(fechaInicio) >= 0 && camp.RangoFecha.FechaInicio.CompareTo(fechaFin) <= 0) ||
-                        (camp.RangoFecha.FechaFin.CompareTo(fechaInicio) >= 0 && camp.RangoFecha.FechaFin.CompareTo(fechaFin) <= 0) ||
-                        (camp.RangoFecha.FechaInicio.CompareTo(fechaInicio) < 0 && camp.RangoFecha.FechaFin.CompareTo(fechaFin) > 0)))
+                    if ((camp.RangoFecha.FechaInicio.CompareTo(fechaInicio) <= 0 && camp.RangoFecha.FechaFin.CompareTo(fechaInicio) >= 0) ||
+                        (camp.RangoFecha.FechaInicio.CompareTo(fechaFin) <= 0 && camp.RangoFecha.FechaFin.CompareTo(fechaFin) >= 0) ||
+                        (camp.RangoFecha.FechaInicio.CompareTo(fechaInicio) >= 0 && camp.RangoFecha.FechaFin.CompareTo(fechaFin) <= 0))
                     {
                         resultado.Add(camp);
                     }

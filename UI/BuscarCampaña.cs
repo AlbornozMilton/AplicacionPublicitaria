@@ -11,12 +11,13 @@ using Dominio;
 
 namespace UI
 {
-    public partial class EliminarCampañia : Form
+    public partial class BuscarCampaña : Form
     {
         private ControladorCampania iControladorCampania = new ControladorCampania();
         private List<Campania> iListaCampanias = new List<Campania>();
+        public Campania iCampaniaSeleccionada;
 
-        public EliminarCampañia()
+        public BuscarCampaña()
         {
             InitializeComponent();
         }
@@ -47,9 +48,8 @@ namespace UI
 
         private void EliminarCampañia_Load(object sender, EventArgs e)
         {
-            iListaCampanias = iControladorCampania.ObtenerTodasCampanias();
             dGV_Campanias.AutoGenerateColumns = false;
-            Cargar_dGV();
+            btn_Filtrar_Click(null, null);
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -58,14 +58,12 @@ namespace UI
             {
                 if (dGV_Campanias.CurrentRow == null)
                 {
-                    throw new Exception("Se debe selecionar una Campaña a eliminar");
+                    throw new Exception("Se debe selecionar una Campaña");
                 }
                 else
                 {
-                    ControladorCampania iControladorCampania = new ControladorCampania();
                     int i = dGV_Campanias.CurrentRow.Index;
-                    iControladorCampania.EliminarCampania(iListaCampanias[i]);
-                    new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    this.iCampaniaSeleccionada = iListaCampanias[i];
                     Close();
                 }
             }
@@ -86,13 +84,11 @@ namespace UI
             filtros.Add(nombre.GetType(), nombre);
             if (this.CB_RangoFecha.Checked)
             {
-                List<RangoHorario> lista = new List<RangoHorario>(); //no deberia
-                RangoFecha pRangoFecha = new RangoFecha(this.dtp_FechaDesde.Value.Date, this.dtp_FechaHasta.Value.Date, "", lista);
-                filtros.Add(pRangoFecha.GetType(), pRangoFecha);  
+                RangoFecha pRangoFecha = new RangoFecha(this.dtp_FechaDesde.Value, this.dtp_FechaHasta.Value, "", null);
+                filtros.Add(pRangoFecha.GetType(), pRangoFecha);
             }
-            ControladorCampania iControladorCampania = new ControladorCampania();
             iListaCampanias = iControladorCampania.ObtenerCampaniasFiltradas(filtros);
-            dGV_Campanias.Rows.Clear(); //no anda
+            dGV_Campanias.Rows.Clear();
             Cargar_dGV();
         }
 
