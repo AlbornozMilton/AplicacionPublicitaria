@@ -68,8 +68,6 @@
     <Compile Include="ControladorCampania.cs" />
     <Compile Include="ControladorExtra.cs" />
     <Compile Include="ControladorFuentes.cs" />
-    <Compile Include="Dia.cs" />
-    <Compile Include="DiaSemana.cs" />
     <Compile Include="Fuente.cs" />
     <Compile Include="FuenteRSS.cs" />
     <Compile Include="IFuente.cs" />
