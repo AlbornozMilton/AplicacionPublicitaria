@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Dominio;
+using Dominio.RSS;
 
 namespace UI
 {
@@ -23,8 +24,7 @@ namespace UI
 			RellenarFuentes();
 			iDias = "";
 			fechaHasta.Value = DateTime.Now.AddMonths(1);
-			//fechaDesde.Value = DateTime.Now;
-			//iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value,fechaHasta.Value);
+			horaHasta.Value = DateTime.Now.AddHours(1);
 		}
 
 		private void RellenarFuentes()
@@ -65,15 +65,20 @@ namespace UI
 					throw new Exception("Debe elegir al menos un Horario");
 
 				if (dGV_itemsFuente.Rows.Count == 0)
-					throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
+				//throw new Exception("Debe elegir una Fuente que contenga al menos un Item");
+				{
+					VentanaEmergente f = new VentanaEmergente("Para este bannar se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					f.ShowDialog();
+					if (f.DialogResult == DialogResult.OK)
+					{
+						// borra ultimo guion para que futuro Split('-') no genere un item string vacio
+						iDias = iDias.Remove(iDias.Length - 1);
 
-				// borra ultimo guion para que futuro Split('-') no genere un item string vacio
-				iDias = iDias.Remove(iDias.Length - 1);
-
-				new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
-
-				new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-				Close();
+						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						Close();
+					}
+				}
 			}
 			catch (Exception E)
 			{
@@ -229,17 +234,34 @@ namespace UI
 
 		private void cbx_FuenteRss_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			CargarItems();
+		}
+		private void CargarItems()
+		{
 			IFuente _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 			txbTipoFuente.Text = _Fuente.GetType().Name;
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteTexto(_Fuente.FuenteId, 5);
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 			}
 			else
 			{
-				//iItemBindingSource.DataSource = new ControladorBanner().ItemsFuenteRss(_Fuente.FuenteId, 5);
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
+				if (items.Count > 0)
+				{
+					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+				}
+				else
+				{
+					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
+					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				}
 			}
+			iItemBindingSource.ResetBindings(false);
 		}
 	}
 }

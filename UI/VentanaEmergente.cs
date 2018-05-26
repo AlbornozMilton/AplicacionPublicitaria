@@ -41,11 +41,23 @@ namespace UI
                     break;
                 case TipoMensaje.Informacion:
                     {
-                        lbl_Titulo.Text = "Informacion";
+                        lbl_Titulo.Text = "Información";
                         pbox_Icono.Image = Properties.Resources.Informacion;
                     }
                     break;
-                default:
+				case TipoMensaje.SiNo:
+					{
+						lbl_Titulo.Text = "Atención";
+						pbox_Icono.Image = Properties.Resources.Informacion;
+						lblMensaje2.Text = "¿Desea Continuar?";
+						lblMensaje2.Visible = true;
+						btnCancelar.Visible = true;
+						btn_Aceptar.Text = "Si";
+						btn_Aceptar.Location = new Point(262, 178);
+						Size = new Size(422, 240);
+					}
+					break;
+				default:
                     break;
             }
         }
@@ -55,11 +67,18 @@ namespace UI
             Exito,
             Alerta,
             Informacion,
+			SiNo
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            Close();
+			DialogResult = DialogResult.OK;
+			Close();
         }
-    }
+
+		private void btnCancelar_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+		}
+	}
 }

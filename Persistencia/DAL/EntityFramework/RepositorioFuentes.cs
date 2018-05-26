@@ -93,7 +93,7 @@ namespace Persistencia.DAL.EntityFramework
 					join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
 					where f.FuenteId == pFuente
 					&& (i.Fecha >= pDesde && i.Fecha <= pHasta)
-					select i).DefaultIfEmpty().ToList();
+					select i).ToList();
 		}
 
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)

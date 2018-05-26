@@ -56,11 +56,16 @@
 			this.horaDesde = new System.Windows.Forms.DateTimePicker();
 			this.horaHasta = new System.Windows.Forms.DateTimePicker();
 			this.dGV_horarios = new System.Windows.Forms.DataGridView();
+			this.clmHoraDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clmHoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Fuentes = new System.Windows.Forms.Label();
 			this.cbx_Fuente = new System.Windows.Forms.ComboBox();
 			this.lblFuentes = new System.Windows.Forms.Label();
 			this.groupBox_items = new System.Windows.Forms.GroupBox();
 			this.dGV_itemsFuente = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.btnFuentes = new System.Windows.Forms.PictureBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -72,11 +77,6 @@
 			this.gbxFuentes = new System.Windows.Forms.GroupBox();
 			this.tbxNombreBanner = new System.Windows.Forms.TextBox();
 			this.lblNomBanner = new System.Windows.Forms.Label();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmHoraDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clmHoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbxDias.SuspendLayout();
 			this.gbxHorarios.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
@@ -416,6 +416,20 @@
 			this.dGV_horarios.Size = new System.Drawing.Size(421, 122);
 			this.dGV_horarios.TabIndex = 21;
 			// 
+			// clmHoraDesde
+			// 
+			this.clmHoraDesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraDesde.HeaderText = "Hora Desde";
+			this.clmHoraDesde.Name = "clmHoraDesde";
+			this.clmHoraDesde.ReadOnly = true;
+			// 
+			// clmHoraHasta
+			// 
+			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmHoraHasta.HeaderText = "Hora Hasta";
+			this.clmHoraHasta.Name = "clmHoraHasta";
+			this.clmHoraHasta.ReadOnly = true;
+			// 
 			// Fuentes
 			// 
 			this.Fuentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -495,6 +509,32 @@
 			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_itemsFuente.Size = new System.Drawing.Size(758, 159);
 			this.dGV_itemsFuente.TabIndex = 1;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn1.DataPropertyName = "Titulo";
+			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+			this.dataGridViewTextBoxColumn1.HeaderText = "Titulo";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn2.DataPropertyName = "Texto";
+			this.dataGridViewTextBoxColumn2.FillWeight = 60F;
+			this.dataGridViewTextBoxColumn2.HeaderText = "Texto";
+			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			this.dataGridViewTextBoxColumn2.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
+			this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
+			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			this.dataGridViewTextBoxColumn3.ReadOnly = true;
 			// 
 			// iItemBindingSource
 			// 
@@ -619,46 +659,6 @@
 			this.lblNomBanner.Size = new System.Drawing.Size(67, 18);
 			this.lblNomBanner.TabIndex = 41;
 			this.lblNomBanner.Text = "Nombre";
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "Titulo";
-			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "Titulo";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn2.DataPropertyName = "Texto";
-			this.dataGridViewTextBoxColumn2.FillWeight = 60F;
-			this.dataGridViewTextBoxColumn2.HeaderText = "Texto";
-			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-			this.dataGridViewTextBoxColumn2.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
-			this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
-			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-			this.dataGridViewTextBoxColumn3.ReadOnly = true;
-			// 
-			// clmHoraDesde
-			// 
-			this.clmHoraDesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clmHoraDesde.HeaderText = "Hora Desde";
-			this.clmHoraDesde.Name = "clmHoraDesde";
-			this.clmHoraDesde.ReadOnly = true;
-			// 
-			// clmHoraHasta
-			// 
-			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clmHoraHasta.HeaderText = "Hora Hasta";
-			this.clmHoraHasta.Name = "clmHoraHasta";
-			this.clmHoraHasta.ReadOnly = true;
 			// 
 			// AgregarBanner
 			// 

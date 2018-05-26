@@ -97,7 +97,7 @@ namespace UI
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
 		{
-			AddModFuente f = new AddModFuente(_Fuente);
+			AddModFuente f = new AddModFuente();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
 				CargarFuentes(0);
