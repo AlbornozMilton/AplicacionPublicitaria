@@ -15,12 +15,13 @@ namespace Dominio
 		/// <summary>
 		/// Acutaliza los Banners que tienen intersección con el rango de fechas elegido para usar como control.
 		/// </summary>
-		public void ActualizarBannersEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
+		public void ActualizarBannersEnRangoFecha(int pBannerExcluido, DateTime pFechaDesde, DateTime pFechaHasta)
 		{
 			iBannersEnRangoFecha.Clear();
 			foreach (var banner in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
 			{
-				iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
+				if (banner.BannerId != pBannerExcluido)
+					iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
 			}
 		}
 

@@ -69,6 +69,7 @@ namespace UI
 
 		private void lbl_X_Click(object sender, EventArgs e)
 		{
+			DialogResult = DialogResult.Cancel;
 			Close();
 		}
 

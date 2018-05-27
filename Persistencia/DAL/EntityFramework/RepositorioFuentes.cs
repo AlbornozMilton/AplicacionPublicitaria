@@ -108,26 +108,13 @@ namespace Persistencia.DAL.EntityFramework
 			var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
 
 			if (itemsDB.Count > 0)
+				iDbContext.Items.RemoveRange(itemsDB);
+
+			foreach (var itemExt in pItems)
 			{
-				for (int i = 0; i < pItems.Count; i++)
-				{
-					if (itemsDB[i].Fecha != pItems[i].Fecha)
-					{
-						var itemCurrent = pItems[i];
-						iDbContext.Items.Attach(itemCurrent);
-						itemCurrent.FuenteId = pFuenteId;
-						iDbContext.Entry(itemCurrent).State = EntityState.Added;
-					}
-				}
-			}
-			else
-			{
-				foreach (var itemExt in pItems)
-				{
-					iDbContext.Items.Attach(itemExt);
-					itemExt.FuenteId = pFuenteId;
-					iDbContext.Entry(itemExt).State = EntityState.Added;
-				}
+				iDbContext.Items.Attach(itemExt);
+				itemExt.FuenteId = pFuenteId;
+				iDbContext.Entry(itemExt).State = EntityState.Added;
 			}
 
 			iDbContext.SaveChanges();

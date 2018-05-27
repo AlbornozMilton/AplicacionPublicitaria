@@ -69,6 +69,8 @@
 			this.iItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.btnFuentes = new System.Windows.Forms.PictureBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.Actualizar = new System.Windows.Forms.Label();
+			this.btnActualizar = new System.Windows.Forms.PictureBox();
 			this.fechaHasta = new System.Windows.Forms.DateTimePicker();
 			this.fechaDesde = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
@@ -87,6 +89,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.iItemBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).BeginInit();
 			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.btnActualizar)).BeginInit();
 			this.gbxFuentes.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -475,7 +478,7 @@
 			this.groupBox_items.Size = new System.Drawing.Size(764, 178);
 			this.groupBox_items.TabIndex = 36;
 			this.groupBox_items.TabStop = false;
-			this.groupBox_items.Text = "Últimos Items";
+			this.groupBox_items.Text = "Items";
 			// 
 			// dGV_itemsFuente
 			// 
@@ -556,6 +559,8 @@
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.Actualizar);
+			this.groupBox2.Controls.Add(this.btnActualizar);
 			this.groupBox2.Controls.Add(this.fechaHasta);
 			this.groupBox2.Controls.Add(this.fechaDesde);
 			this.groupBox2.Controls.Add(this.label1);
@@ -570,6 +575,31 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Duración del banner";
 			// 
+			// Actualizar
+			// 
+			this.Actualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.Actualizar.AutoSize = true;
+			this.Actualizar.Location = new System.Drawing.Point(271, 64);
+			this.Actualizar.Name = "Actualizar";
+			this.Actualizar.Size = new System.Drawing.Size(53, 13);
+			this.Actualizar.TabIndex = 28;
+			this.Actualizar.Text = "Actualizar";
+			this.Actualizar.Visible = false;
+			// 
+			// btnActualizar
+			// 
+			this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnActualizar.Image = global::UI.Properties.Resources.btn_Configurar;
+			this.btnActualizar.Location = new System.Drawing.Point(279, 26);
+			this.btnActualizar.Name = "btnActualizar";
+			this.btnActualizar.Size = new System.Drawing.Size(35, 35);
+			this.btnActualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnActualizar.TabIndex = 25;
+			this.btnActualizar.TabStop = false;
+			this.btnActualizar.Click += new System.EventHandler(this.pictureBox1_Click);
+			this.btnActualizar.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnActualizar.MouseHover += new System.EventHandler(this.HoverLabel);
+			// 
 			// fechaHasta
 			// 
 			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -577,7 +607,6 @@
 			this.fechaHasta.Name = "fechaHasta";
 			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
 			this.fechaHasta.TabIndex = 1;
-			this.fechaHasta.ValueChanged += new System.EventHandler(this.ControlFecha);
 			// 
 			// fechaDesde
 			// 
@@ -586,7 +615,6 @@
 			this.fechaDesde.Name = "fechaDesde";
 			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
 			this.fechaDesde.TabIndex = 0;
-			this.fechaDesde.ValueChanged += new System.EventHandler(this.ControlFecha);
 			// 
 			// label1
 			// 
@@ -698,6 +726,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.btnActualizar)).EndInit();
 			this.gbxFuentes.ResumeLayout(false);
 			this.gbxFuentes.PerformLayout();
 			this.ResumeLayout(false);
@@ -755,5 +784,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraDesde;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraHasta;
+		private System.Windows.Forms.Label Actualizar;
+		private System.Windows.Forms.PictureBox btnActualizar;
 	}
 }

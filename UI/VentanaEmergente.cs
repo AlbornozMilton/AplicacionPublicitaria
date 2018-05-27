@@ -45,8 +45,8 @@ namespace UI
 						pbox_Icono.Image = Properties.Resources.Informacion;
 						btnCancelar.Visible = true;
 						btn_Aceptar.Text = "Si";
-						btn_Aceptar.Location = new Point(262, 178);
-						//Size = new Size(422, 240);
+						btn_Aceptar.Location = new Point(241, 168);
+						Size = new Size(393, 218);
 					}
 					break;
 				default:
