@@ -69,5 +69,22 @@ namespace Persistencia.DAL.EntityFramework
 							)
 				).ToList();
 		}
+
+		public List<Banner> BuscarBanner(string pNombre, DateTime pFechaInicio, DateTime pFechaFin)
+		{
+			return (
+				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
+				.Where(b => (b.Nombre.Contains(pNombre) || pNombre == null)
+							&&
+							(b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)
+				)).ToList();
+		}
+
+		public void EliminarBanner(int IdBanner)
+		{
+			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).FirstOrDefault();
+			iDbContext.Entry(banner).State = EntityState.Deleted;
+			iDbContext.SaveChanges();
+		}
 	}
 }

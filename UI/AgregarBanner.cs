@@ -12,6 +12,7 @@ namespace UI
 		List<RangoHorario> iHorarios = new List<RangoHorario>();
 		ControladorExtra iControlExtra = new ControladorExtra();
 		List<IFuente> iFuentes = new List<IFuente>();
+		private Banner iBanner;
 		string iDias;
 
 		public AgregarBanner()
@@ -19,12 +20,52 @@ namespace UI
 			InitializeComponent();
 		}
 
+		public AgregarBanner(Banner pBanner)
+		{
+			InitializeComponent();
+			iBanner = pBanner;
+		}
+
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
 			RellenarFuentes();
-			iDias = "";
 			horaHasta.Value = DateTime.Now.AddHours(1);
 			fechaHasta.Value = DateTime.Now.AddMonths(1);
+
+			if (iBanner != null)
+			{
+				cbx_Fuente.SelectedIndex = iFuentes.IndexOf(iFuentes.Where(f => f.FuenteId == iBanner.Fuente.FuenteId).First());
+
+				tbxNombreBanner.Text = iBanner.Nombre;
+
+				
+
+				string[] mDias = iBanner.RangoFecha.Dias.Split('-');
+				foreach (string item in mDias)
+				{
+					if (item == "lunes")
+						ckb_luenes.Checked = true;
+					else if (item == "martes")
+						ckb_martes.Checked = true;
+					else if (item == "miercoles")
+						ckb_miercoles.Checked = true;
+					else if (item == "jueves")
+						ckb_jueves.Checked = true;
+					else if (item == "viernes")
+						ckb_viernes.Checked = true;
+					else if (item == "sabado")
+						ckb_sabado.Checked = true;
+					else
+						ckb_domingo.Checked = true;
+				}
+
+				//iDias = iBanner.RangoFecha.Dias + "-";
+				iHorarios = iBanner.RangoFecha.Horarios;
+				foreach (var item in iHorarios)
+				{
+					dGV_horarios.Rows.Add(item.HoraInicio, item.HoraFin);
+				}
+			}
 		}
 
 		private void RellenarFuentes()
@@ -58,7 +99,7 @@ namespace UI
 				if (tbxNombreBanner.Text == "")
 					throw new Exception("Debe rellenar el campo Nombre");
 
-				if (iDias == null)
+				if (iDias == "" || iDias == null)
 					throw new Exception("Debe elegir al menos un Día");
 
 				if (dGV_horarios.Rows.Count == 0)
@@ -67,7 +108,7 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Para este banner se mostraran items por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
 
@@ -167,7 +208,6 @@ namespace UI
 		}
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
 		{
-
 			if (ckb_luenes.Checked)
 				ControlCheckedDia("lunes-", sender);
 			else

@@ -45,12 +45,31 @@ namespace UI
 
 		private void btnEditarBanner_Click(object sender, EventArgs e)
 		{
-
+			BuscarBanner f = new BuscarBanner();
+			f.ShowDialog();
+			if (f.DialogResult == DialogResult.OK)
+			{
+				new AgregarBanner(f.BanSelected).ShowDialog();
+			}
+			f.Dispose();
 		}
 
 		private void btnEliminarBanner_Click(object sender, EventArgs e)
 		{
-
+			BuscarBanner f = new BuscarBanner();
+			f.ShowDialog();
+			if (f.DialogResult == DialogResult.OK)
+			{
+				VentanaEmergente ve = new VentanaEmergente("¿Desea eliminar el Banner seleccionado?", VentanaEmergente.TipoMensaje.SiNo);
+				ve.ShowDialog();
+				if (ve.DialogResult == DialogResult.OK)
+				{
+					new ControladorBanner().EliminarBanner(f.BanSelected.BannerId);
+					new VentanaEmergente("Banner Eliminado", VentanaEmergente.TipoMensaje.Exito);
+				}
+				ve.Dispose();
+			}
+			f.Dispose();
 		}
 
 		private void btnFuentes_Click(object sender, EventArgs e)

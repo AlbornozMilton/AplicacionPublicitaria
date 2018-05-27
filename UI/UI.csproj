@@ -202,7 +202,10 @@
     </EmbeddedResource>
     <None Include="log4net.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dominio.Banner.datasource" />
     <None Include="Properties\DataSources\Dominio.IItem.datasource" />
+    <None Include="Properties\DataSources\Dominio.RangoFecha.datasource" />
+    <None Include="Properties\DataSources\Dominio.RangoHorario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

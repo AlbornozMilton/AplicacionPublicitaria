@@ -31,5 +31,20 @@ namespace Dominio
 			var rfMapped = Mapper.Map <RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
 			iUOfW.RepositorioBanner.AgregarBanner(pNombre, pIdFuente, rfMapped);
 		}
+
+		public List<Banner> BuscarBanner(string pNombre, DateTime pDesde, DateTime pHasta)
+		{
+			List<Banner> result = new List<Banner>();
+			foreach (var item in iUOfW.RepositorioBanner.BuscarBanner(pNombre, pDesde.Date,pHasta.Date))
+			{
+				result.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(item));
+			}
+			return result;
+		}
+
+		public void EliminarBanner(int IdBanner)
+		{
+			iUOfW.RepositorioBanner.EliminarBanner(IdBanner);
+		}
 	}
 }
