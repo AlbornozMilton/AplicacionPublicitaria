@@ -25,11 +25,11 @@ namespace Dominio
 			return "Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313";
 		}
 
-		public void AgregarBanner(int pBannerMod, string pNombre, int pIdFuente,DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
+		public void AgregarBanner(string pNombre, int pIdFuente,DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
 		{
 			RangoFecha rf = new RangoFecha(pRFDesde.Date, pRFHasta.Date, pDias, pRHorarios);
 			var rfMapped = Mapper.Map <RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
-			iUOfW.RepositorioBanner.AgregarBanner(pBannerMod, pNombre, pIdFuente, rfMapped);
+			iUOfW.RepositorioBanner.AgregarBanner(pNombre, pIdFuente, rfMapped);
 		}
 
 		public List<Banner> BuscarBanner(string pNombre, DateTime pDesde, DateTime pHasta)
@@ -45,6 +45,12 @@ namespace Dominio
 		public void EliminarBanner(int IdBanner)
 		{
 			iUOfW.RepositorioBanner.EliminarBanner(IdBanner);
+		}
+
+		public void ModificarBanner(int pBannerMod, string pNombre, int pIdFuente, DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
+		{
+			iUOfW.RepositorioBanner.EliminarBanner(pBannerMod);
+			AgregarBanner(pNombre, pIdFuente, pRFDesde, pRFHasta, pRHorarios, pDias); 
 		}
 	}
 }

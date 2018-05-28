@@ -40,42 +40,25 @@ namespace Persistencia.DAL.EntityFramework
 		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
 		/// </summary>
 		/// <param name="pBanner"></param>
-		public void AgregarBanner(int BannerMod, string pNombre, int pFuenteId, RangoFecha pRFecha)
+		public void AgregarBanner(string pNombre, int pFuenteId, RangoFecha pRFecha)
 		{
-			Banner b;
-
-			if (BannerMod != 0)
-				b = iDbContext.Banner.Where(ban => ban.BannerId == BannerMod).FirstOrDefault();
-			else
-				b = new Banner();
-
-			b.FuenteId = pFuenteId;
-			b.Nombre = pNombre;
-
-			RangoFecha rfDB = iDbContext.RangoFecha.Where(h => h.FechaInicio == pRFecha.FechaInicio && h.FechaFin == pRFecha.FechaFin).SingleOrDefault();
-			if (rfDB != null)
+			foreach (RangoHorario item in pRFecha.Horarios)
 			{
-				rfDB.Dias = pRFecha.Dias;
-				iDbContext.RangoHorario.RemoveRange(rfDB.Horarios);
-				rfDB.Horarios = pRFecha.Horarios;
-			}
-			else
-			{
-				b.RangoFechaId = 0;
-				b.RangoFecha = pRFecha;
-				foreach (RangoHorario item in pRFecha.Horarios)
-				{
-					if (item.RangoFecha != null)
-					{
-						item.RangoFecha = null;
-						item.RangoHorarioId = 0;
-					}
-				}
+				item.RangoFecha = null;
+				item.RangoHorarioId = 0;
 			}
 
-			if (BannerMod == 0)
-				iDbContext.Banner.Add(b);
+			Banner b = new Banner()
+			{
+				BannerId = 0,
+				Nombre = pNombre,
+				FuenteId = pFuenteId,
+				Fuente = null,
+				RangoFechaId = 0,
+				RangoFecha = pRFecha,
+			};
 
+			iDbContext.Banner.Add(b);
 			iDbContext.SaveChanges();
 		}
 

@@ -108,6 +108,9 @@ namespace UI
 				if (dGV_horarios.Rows.Count == 0)
 					throw new Exception("Debe elegir al menos un Horario");
 
+				if (txbTipoFuente.Text == "")
+					throw new Exception("Debe elegir una Fuente");
+
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
@@ -120,12 +123,12 @@ namespace UI
 					iDias = iDias.Remove(iDias.Length - 1);
 					if (iBanner != null)
 					{
-						new ControladorBanner().AgregarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
 						new VentanaEmergente("Banner Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					}
 					else
 					{
-						new ControladorBanner().AgregarBanner(0, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
 						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					}
 					Close();
