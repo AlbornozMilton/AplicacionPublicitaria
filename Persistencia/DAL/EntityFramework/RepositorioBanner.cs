@@ -13,29 +13,6 @@ namespace Persistencia.DAL.EntityFramework
 
 		}
 
-		/// <summary>
-		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
-		/// </summary>
-		/// <param name="pBanner"></param>
-		public void AgregarBanner(string pNombre, int pFuenteId, RangoFecha pRFecha)
-		{
-			Banner b = new Banner()
-			{
-				Nombre = pNombre,
-				FuenteId = pFuenteId,
-			};
-
-			RangoFecha aux = iDbContext.RangoFecha.Where(h => h.FechaInicio == pRFecha.FechaInicio && h.FechaFin == pRFecha.FechaFin).SingleOrDefault();
-
-			if (aux != null)
-				b.RangoFechaId = aux.RangoFechaId;
-			else
-				b.RangoFecha = pRFecha;
-
-			iDbContext.Banner.Add(b);
-			iDbContext.SaveChanges();
-		}
-
 		public List<Banner> BannersDelDia(DateTime pFecha)
 		{
 			// control fecha
@@ -59,15 +36,58 @@ namespace Persistencia.DAL.EntityFramework
 			return result;
 		}
 
+		/// <summary>
+		/// El Rango de Fecha ya paso el control, por lo que debe traer un RangoFechaId existente sino 0.
+		/// </summary>
+		/// <param name="pBanner"></param>
+		public void AgregarBanner(string pNombre, int pFuenteId, RangoFecha pRFecha)
+		{
+			foreach (RangoHorario item in pRFecha.Horarios)
+			{
+				item.RangoFecha = null;
+				item.RangoHorarioId = 0;
+			}
+
+			Banner b = new Banner()
+			{
+				BannerId = 0,
+				Nombre = pNombre,
+				FuenteId = pFuenteId,
+				Fuente = null,
+				RangoFechaId = 0,
+				RangoFecha = pRFecha,
+			};
+
+			iDbContext.Banner.Add(b);
+			iDbContext.SaveChanges();
+		}
+
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
 		{
 			return (
 				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
-				.Where(b => !(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
+				.Where(b =>
+							!(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
 							||
 							!(b.RangoFecha.FechaInicio > pFechaFin && b.RangoFecha.FechaFin > pFechaFin)
-							)
-				).ToList();
+				)).ToList();
+		}
+
+		public List<Banner> BuscarBanner(string pNombre, DateTime pFechaInicio, DateTime pFechaFin)
+		{
+			return (
+				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
+				.Where(b => (b.Nombre.Contains(pNombre) || pNombre == null)
+							&&
+							(b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)
+				)).ToList();
+		}
+
+		public void EliminarBanner(int IdBanner)
+		{
+			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).FirstOrDefault();
+			iDbContext.Entry(banner).State = EntityState.Deleted;
+			iDbContext.SaveChanges();
 		}
 	}
 }

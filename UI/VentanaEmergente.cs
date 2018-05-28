@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -49,12 +43,10 @@ namespace UI
 					{
 						lbl_Titulo.Text = "Atención";
 						pbox_Icono.Image = Properties.Resources.Informacion;
-						lblMensaje2.Text = "¿Desea Continuar?";
-						lblMensaje2.Visible = true;
 						btnCancelar.Visible = true;
 						btn_Aceptar.Text = "Si";
-						btn_Aceptar.Location = new Point(262, 178);
-						Size = new Size(422, 240);
+						btn_Aceptar.Location = new Point(287, 142);
+						//Size = new Size(393, 218);
 					}
 					break;
 				default:

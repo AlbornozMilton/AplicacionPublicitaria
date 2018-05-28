@@ -98,6 +98,12 @@
     <Compile Include="AgregarBanner.Designer.cs">
       <DependentUpon>AgregarBanner.cs</DependentUpon>
     </Compile>
+    <Compile Include="BuscarBanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarBanner.Designer.cs">
+      <DependentUpon>BuscarBanner.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuscarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <EmbeddedResource Include="AgregarCampaña.resx">
       <DependentUpon>AgregarCampaña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BuscarBanner.resx">
+      <DependentUpon>BuscarBanner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuscarCampaña.resx">
       <DependentUpon>BuscarCampaña.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,7 +202,10 @@
     </EmbeddedResource>
     <None Include="log4net.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dominio.Banner.datasource" />
     <None Include="Properties\DataSources\Dominio.IItem.datasource" />
+    <None Include="Properties\DataSources\Dominio.RangoFecha.datasource" />
+    <None Include="Properties\DataSources\Dominio.RangoHorario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

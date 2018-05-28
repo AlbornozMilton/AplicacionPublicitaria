@@ -12,19 +12,63 @@ namespace UI
 		List<RangoHorario> iHorarios = new List<RangoHorario>();
 		ControladorExtra iControlExtra = new ControladorExtra();
 		List<IFuente> iFuentes = new List<IFuente>();
-		string iDias;
+		private Banner iBanner;
+		string iDias = "";
 
 		public AgregarBanner()
 		{
 			InitializeComponent();
 		}
 
+		public AgregarBanner(Banner pBanner)
+		{
+			InitializeComponent();
+			iBanner = pBanner;
+		}
+
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
 			RellenarFuentes();
-			iDias = "";
 			horaHasta.Value = DateTime.Now.AddHours(1);
 			fechaHasta.Value = DateTime.Now.AddMonths(1);
+
+			if (iBanner != null)
+			{
+				fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
+				fechaHasta.Value = iBanner.RangoFecha.FechaFin;
+
+				cbx_Fuente.SelectedIndex = iFuentes.IndexOf(iFuentes.Where(f => f.FuenteId == iBanner.Fuente.FuenteId).First());
+
+				tbxNombreBanner.Text = iBanner.Nombre;		
+
+				string[] mDias = iBanner.RangoFecha.Dias.Split('-');
+				foreach (string item in mDias)
+				{
+					if (item == "lunes")
+						ckb_luenes.Checked = true;
+					else if (item == "martes")
+						ckb_martes.Checked = true;
+					else if (item == "miercoles")
+						ckb_miercoles.Checked = true;
+					else if (item == "jueves")
+						ckb_jueves.Checked = true;
+					else if (item == "viernes")
+						ckb_viernes.Checked = true;
+					else if (item == "sabado")
+						ckb_sabado.Checked = true;
+					else
+						ckb_domingo.Checked = true;
+				}
+
+				//iDias = iBanner.RangoFecha.Dias + "-";
+				iHorarios = iBanner.RangoFecha.Horarios;
+				foreach (var item in iHorarios)
+				{
+					dGV_horarios.Rows.Add(item.HoraInicio, item.HoraFin);
+				}
+			}
+
+			pictureBox1_Click(null, null);
 		}
 
 		private void RellenarFuentes()
@@ -58,26 +102,35 @@ namespace UI
 				if (tbxNombreBanner.Text == "")
 					throw new Exception("Debe rellenar el campo Nombre");
 
-				if (iDias == null)
+				if (iDias == "" || iDias == null)
 					throw new Exception("Debe elegir al menos un Día");
 
 				if (dGV_horarios.Rows.Count == 0)
 					throw new Exception("Debe elegir al menos un Horario");
 
+				if (txbTipoFuente.Text == "")
+					throw new Exception("Debe elegir una Fuente");
+
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					f = new VentanaEmergente("Para este banner se mostraran items por defecto" , VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Para este banner se mostraran items por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
 
 				if (dGV_itemsFuente.Rows.Count > 0 || f.DialogResult == DialogResult.OK)
 				{
-					// borra ultimo guion para que futuro Split('-') no genere un item string vacio
 					iDias = iDias.Remove(iDias.Length - 1);
-
-					new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
-					new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					if (iBanner != null)
+					{
+						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new VentanaEmergente("Banner Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					}
+					else
+					{
+						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					}
 					Close();
 				}
 			}
@@ -98,18 +151,16 @@ namespace UI
 			RellenarFuentes();
 		}
 
-		private void ControlFecha(object sender, EventArgs e)
+		private void ControlFecha(int pBannerExcluido)
 		{
 			try
 			{
-				if (fechaHasta.Value.Date < fechaDesde.Value.Date)
+				if (iBanner == null)
 				{
-					throw new Exception("La Fecha Desde tiene que ser mayor que la Fecha Hasta");
+					dGV_horarios.Rows.Clear();
+					iHorarios.Clear(); 
 				}
-
-				dGV_horarios.Rows.Clear();
-				iHorarios.Clear();
-				iControlExtra.ActualizarBannersEnRangoFecha(fechaDesde.Value, fechaHasta.Value);
+				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
 			}
 			catch (Exception E)
 			{
@@ -167,7 +218,6 @@ namespace UI
 		}
 		private void ckb_luenes_CheckedChanged(object sender, EventArgs e)
 		{
-
 			if (ckb_luenes.Checked)
 				ControlCheckedDia("lunes-", sender);
 			else
@@ -262,6 +312,14 @@ namespace UI
 				}
 			}
 			iItemBindingSource.ResetBindings(false);
+		}
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+			if (iBanner != null)
+				ControlFecha(iBanner.BannerId);
+			else
+				ControlFecha(0);
 		}
 	}
 }

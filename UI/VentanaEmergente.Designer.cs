@@ -33,7 +33,6 @@
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.lbl_Titulo = new System.Windows.Forms.Label();
 			this.btnCancelar = new System.Windows.Forms.Button();
-			this.lblMensaje2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pbox_Icono)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -61,6 +60,8 @@
 			// 
 			// btn_Aceptar
 			// 
+			this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btn_Aceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Aceptar.Location = new System.Drawing.Point(157, 142);
 			this.btn_Aceptar.Name = "btn_Aceptar";
@@ -85,8 +86,10 @@
 			// 
 			// btnCancelar
 			// 
+			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCancelar.Location = new System.Drawing.Point(83, 178);
+			this.btnCancelar.Location = new System.Drawing.Point(123, 142);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
 			this.btnCancelar.TabIndex = 22;
@@ -95,19 +98,6 @@
 			this.btnCancelar.Visible = false;
 			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
 			// 
-			// lblMensaje2
-			// 
-			this.lblMensaje2.BackColor = System.Drawing.Color.Transparent;
-			this.lblMensaje2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblMensaje2.ForeColor = System.Drawing.Color.White;
-			this.lblMensaje2.Location = new System.Drawing.Point(80, 143);
-			this.lblMensaje2.Name = "lblMensaje2";
-			this.lblMensaje2.Size = new System.Drawing.Size(263, 28);
-			this.lblMensaje2.TabIndex = 23;
-			this.lblMensaje2.Text = "Mensaje2";
-			this.lblMensaje2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblMensaje2.Visible = false;
-			// 
 			// VentanaEmergente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,7 +105,6 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(393, 196);
-			this.Controls.Add(this.lblMensaje2);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.lbl_Titulo);
 			this.Controls.Add(this.btn_Aceptar);
@@ -140,6 +129,5 @@
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Label lbl_Titulo;
 		private System.Windows.Forms.Button btnCancelar;
-		private System.Windows.Forms.Label lblMensaje2;
 	}
 }
