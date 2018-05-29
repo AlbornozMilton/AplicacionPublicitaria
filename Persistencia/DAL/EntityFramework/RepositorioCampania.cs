@@ -28,7 +28,7 @@ namespace Persistencia.DAL.EntityFramework
         public IEnumerable<Campania> GetFiltradas(Dictionary<Type, object> pFiltros)
         {
             string pNombre = (string)pFiltros[typeof(string)];
-            var campanias = from camp in this.iDbContext.Campania.Include("RangoFecha")
+            var campanias = from camp in this.iDbContext.Campania.Include("RangoFecha").Include("Imagenes")
                             where camp.Nombre.Contains(pNombre)
                             select camp;
             if (pFiltros.ContainsKey(typeof(RangoFecha)))
