@@ -59,9 +59,14 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dGV_Imagenes = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Horarios)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Imagenes)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -166,7 +171,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(524, 216);
+            this.groupBox1.Size = new System.Drawing.Size(455, 216);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Duración de la campaña";
@@ -220,7 +225,7 @@
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             this.dgv_Horarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Horarios.Size = new System.Drawing.Size(274, 178);
+            this.dgv_Horarios.Size = new System.Drawing.Size(215, 178);
             this.dgv_Horarios.TabIndex = 37;
             // 
             // clm_HoraDesde
@@ -360,12 +365,15 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.dGV_Imagenes);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(558, 108);
+            this.groupBox3.Location = new System.Drawing.Point(489, 108);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(293, 216);
+            this.groupBox3.Size = new System.Drawing.Size(362, 216);
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Imágenes";
@@ -395,7 +403,7 @@
             this.textBox2.Location = new System.Drawing.Point(543, 62);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(97, 20);
+            this.textBox2.Size = new System.Drawing.Size(133, 20);
             this.textBox2.TabIndex = 35;
             // 
             // label3
@@ -410,6 +418,35 @@
             this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 36;
             this.label3.Text = "Código";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(256, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 69);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(276, 157);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Vista Previa";
+            // 
+            // dGV_Imagenes
+            // 
+            this.dGV_Imagenes.AllowUserToAddRows = false;
+            this.dGV_Imagenes.AllowUserToDeleteRows = false;
+            this.dGV_Imagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Imagenes.Location = new System.Drawing.Point(7, 62);
+            this.dGV_Imagenes.Name = "dGV_Imagenes";
+            this.dGV_Imagenes.ReadOnly = true;
+            this.dGV_Imagenes.Size = new System.Drawing.Size(243, 138);
+            this.dGV_Imagenes.TabIndex = 35;
             // 
             // EliminarCampaña
             // 
@@ -435,11 +472,14 @@
             this.Name = "EliminarCampaña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EliminarCampaña";
+            this.Load += new System.EventHandler(this.EliminarCampaña_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Horarios)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Imagenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +515,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_HoraHasta;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DataGridView dGV_Imagenes;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

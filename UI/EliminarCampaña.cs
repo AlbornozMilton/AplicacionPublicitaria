@@ -13,14 +13,14 @@ namespace UI
 {
     public partial class EliminarCampaña : Form
     {
-        private Campania iCampaniaEliminada;
+        private Campania iCampaniaParaEliminar;
 
         private ControladorCampania iControladorCampania = new ControladorCampania();
 
         public EliminarCampaña(Campania pCampania)
         {
             InitializeComponent();
-            this.iCampaniaEliminada = pCampania;
+            this.iCampaniaParaEliminar = pCampania;
 
         }
 
@@ -41,9 +41,26 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iControladorCampania.EliminarCampania(this.iCampaniaEliminada);
+            iControladorCampania.EliminarCampania(this.iCampaniaParaEliminar);
             new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
             Close();
+        }
+        private void Cargar_dGV()
+        {
+            foreach (var imagen in iCampaniaParaEliminar.Imagenes)
+            {
+                dGV_Imagenes.Rows.Add(imagen.Nombre);
+            }
+        }
+        private void CargarCampos()
+        {
+            Cargar_dGV();
+        }
+
+        private void EliminarCampaña_Load(object sender, EventArgs e)
+        {
+            CargarCampos();
+            
         }
     }
 }
