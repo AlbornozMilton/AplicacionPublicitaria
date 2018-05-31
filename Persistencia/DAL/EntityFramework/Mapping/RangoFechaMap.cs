@@ -31,6 +31,11 @@ namespace Persistencia.DAL.EntityFramework.Mapping
                 .WithRequired(RH => RH.RangoFecha)
                 .Map(map => map.MapKey("RangoFechaId"))
                 .WillCascadeOnDelete();
+
+            //this.HasOptional(pCamp => pCamp.Campania)
+            //    .WithRequired(r => r.RangoFecha)
+            //    .Map(pMapping => pMapping.MapKey("RangoFechaId"))
+            //    .WillCascadeOnDelete();
         }
     }
 }
