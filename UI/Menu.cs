@@ -81,7 +81,10 @@ namespace UI
         {    
             BuscarCampaña iVentanaBuscar = new BuscarCampaña();
             iVentanaBuscar.ShowDialog();
-            new EliminarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
+            if (iVentanaBuscar.iCampaniaSeleccionada != null)
+            {
+                new EliminarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
+            }
         }
     }
 }

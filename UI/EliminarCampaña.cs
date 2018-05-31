@@ -13,14 +13,14 @@ namespace UI
 {
     public partial class EliminarCampaña : Form
     {
-        private Campania iCampaniaEliminada;
+        private Campania iCampaniaParaEliminar;
 
         private ControladorCampania iControladorCampania = new ControladorCampania();
 
         public EliminarCampaña(Campania pCampania)
         {
             InitializeComponent();
-            this.iCampaniaEliminada = pCampania;
+            this.iCampaniaParaEliminar = pCampania;
 
         }
 
@@ -41,9 +41,62 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iControladorCampania.EliminarCampania(this.iCampaniaEliminada);
+            iControladorCampania.EliminarCampania(this.iCampaniaParaEliminar);
             new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
             Close();
+        }
+        private void Cargar_Imagenes()
+        {
+            foreach (var imagen in iCampaniaParaEliminar.Imagenes)
+            {
+                dGV_Imagenes.Rows.Add(imagen.Nombre, imagen.Ruta);
+            }
+        }
+
+        private void Cargar_Horarios()
+        {
+            foreach (var hora in iCampaniaParaEliminar.RangoFecha.Horarios)
+            {
+                dGV_Horarios.Rows.Add(hora.HoraInicio,hora.HoraFin);
+            }
+        }
+
+        private void Cargar_Dias()
+        {
+            List<CheckBox> diasChecks = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+            List<string> dias = iCampaniaParaEliminar.RangoFecha.Dias.Split('-').ToList();
+            foreach (var check in diasChecks)
+            {
+                if (dias.Contains(check.Name))
+                {
+                    check.Checked = true;
+                    check.Enabled = true;
+                }
+            }
+        }
+
+        private void CargarCampos()
+        {
+            tbx_Nombre.Text = iCampaniaParaEliminar.Nombre;
+            tbx_Codigo.Text = iCampaniaParaEliminar.CampaniaId.ToString();
+            tbx_FechaDesde.Text = iCampaniaParaEliminar.RangoFecha.FechaInicio.ToString("dd/MM/yyyy");
+            tbx_FechaHasta.Text = iCampaniaParaEliminar.RangoFecha.FechaFin.ToString("dd/MM/yyyy");
+            tbx_IntTiempo.Text = iCampaniaParaEliminar.IntervaloTiempo.ToString();
+            Cargar_Dias();
+            Cargar_Imagenes();
+            Cargar_Horarios();
+        }
+
+        private void EliminarCampaña_Load(object sender, EventArgs e)
+        {
+            CargarCampos();
+            
+        }
+
+        private void dGV_Imagenes_SelectionChanged(object sender, EventArgs e)
+        {
+            string ruta = dGV_Imagenes.CurrentRow.Cells[1].Value.ToString();
+            pB_VistaPrevia.Image = Image.FromFile(ruta);
         }
     }
 }
