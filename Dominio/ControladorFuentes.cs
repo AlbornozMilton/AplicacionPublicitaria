@@ -17,7 +17,7 @@ namespace Dominio
 			Eliminar
 		}
 
-		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pNombreFuente, string pUrl)
+		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pDescripcion, string pUrl)
 		{
 			switch (pOperacion)
 			{
@@ -26,18 +26,18 @@ namespace Dominio
 						if (pTipo == "FuenteRss")
 							iUOfW.RepositorioFuentes.AgregarFuente
 								(
-								 new Persistencia.Dominio.FuenteRSS { NombreFuente = pNombreFuente, URL = pUrl }
+								 new Persistencia.Dominio.FuenteRSS { Descripcion = pDescripcion, URL = pUrl }
 								);
 						else
 							iUOfW.RepositorioFuentes.AgregarFuente
 								(
-								 new Persistencia.Dominio.TextoFijo { NombreFuente = pNombreFuente }
+								 new Persistencia.Dominio.TextoFijo { Descripcion = pDescripcion }
 								);
 					}
 					break;
 				case Operacion.Modificar:
 					{
-						iUOfW.RepositorioFuentes.ModificarFuente(pFuenteId, pNombreFuente, pUrl);
+						iUOfW.RepositorioFuentes.ModificarFuente(pFuenteId, pDescripcion, pUrl);
 					}
 					break;
 				case Operacion.Eliminar:

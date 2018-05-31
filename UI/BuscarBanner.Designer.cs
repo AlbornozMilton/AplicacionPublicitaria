@@ -56,9 +56,9 @@
 			this.lbl_X = new System.Windows.Forms.Label();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.btn_Cancelar = new System.Windows.Forms.Button();
-			this.colBanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.colFuente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.colRangoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbx_ParamBusqueda.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Filtrar)).BeginInit();
@@ -269,9 +269,9 @@
 			this.dataGridBanner.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dataGridBanner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridBanner.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colBanId,
+            this.colId,
             this.colNombre,
-            this.colFuente,
+            this.colDescripcion,
             this.colRangoFecha});
 			this.dataGridBanner.Cursor = System.Windows.Forms.Cursors.Arrow;
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
@@ -360,13 +360,13 @@
 			this.btn_Cancelar.UseVisualStyleBackColor = true;
 			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
 			// 
-			// colBanId
+			// colId
 			// 
-			this.colBanId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.colBanId.FillWeight = 40F;
-			this.colBanId.HeaderText = "IdBanner";
-			this.colBanId.Name = "colBanId";
-			this.colBanId.ReadOnly = true;
+			this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colId.FillWeight = 40F;
+			this.colId.HeaderText = "Id";
+			this.colId.Name = "colId";
+			this.colId.ReadOnly = true;
 			// 
 			// colNombre
 			// 
@@ -375,11 +375,12 @@
 			this.colNombre.Name = "colNombre";
 			this.colNombre.ReadOnly = true;
 			// 
-			// colFuente
+			// colDescripcion
 			// 
-			this.colFuente.HeaderText = "Fuente";
-			this.colFuente.Name = "colFuente";
-			this.colFuente.ReadOnly = true;
+			this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colDescripcion.HeaderText = "Descripción";
+			this.colDescripcion.Name = "colDescripcion";
+			this.colDescripcion.ReadOnly = true;
 			// 
 			// colRangoFecha
 			// 
@@ -446,9 +447,9 @@
 		private System.Windows.Forms.Label lbl_X;
 		private System.Windows.Forms.Button btn_Aceptar;
 		private System.Windows.Forms.Button btn_Cancelar;
-		private System.Windows.Forms.DataGridViewTextBoxColumn colBanId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-		private System.Windows.Forms.DataGridViewTextBoxColumn colFuente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
 		private System.Windows.Forms.DataGridViewTextBoxColumn colRangoFecha;
 	}
 }

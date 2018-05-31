@@ -9,12 +9,8 @@ namespace Persistencia.DAL.EntityFramework.Mapping
 			this.Property(pCamp => pCamp.FuenteId)
 				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-			this.Property(pCamp => pCamp.NombreFuente)
+			this.Property(pCamp => pCamp.Descripcion)
 				.IsRequired();
-
-			//this.HasMany<Item>(C => C.Items)
-			//	.WithRequired(C => C.Fuente)
-			//	.WillCascadeOnDelete();
 		}
 	}
 }

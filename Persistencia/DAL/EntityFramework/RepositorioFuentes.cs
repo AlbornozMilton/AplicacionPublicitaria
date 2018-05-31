@@ -35,17 +35,17 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public void ModificarFuente(int pIdFuente, string pNombreFuente, string pUrl)
+		public void ModificarFuente(int pIdFuente, string pDescripcion, string pUrl)
 		{
 			var fuente = iDbContext.Fuentes.Find(pIdFuente);
 
 			if (fuente.GetType().Name == "FuenteRSS")
 			{
-				((FuenteRSS)fuente).NombreFuente = pNombreFuente;
+				((FuenteRSS)fuente).Descripcion = pDescripcion;
 				((FuenteRSS)fuente).URL = pUrl;
 			}
 			else
-				((TextoFijo)fuente).NombreFuente = pNombreFuente;
+				((TextoFijo)fuente).Descripcion = pDescripcion;
 
 			iDbContext.SaveChanges();
 		}
@@ -53,12 +53,6 @@ namespace Persistencia.DAL.EntityFramework
 		public void EliminarFuente(int pIdFuente)
 		{
 			var fuente = iDbContext.Fuentes.Find(pIdFuente);
-
-			//if (fuente.GetType().Name == "FuenteRSS")
-			//	iDbContext.FuenteRSS.Remove(((FuenteRSS)fuente));
-			//else
-			//	iDbContext.TentoFijo.Remove(((TextoFijo)fuente));
-
 			iDbContext.Fuentes.Remove(fuente);
 			iDbContext.SaveChanges();
 		}

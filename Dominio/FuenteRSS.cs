@@ -1,7 +1,4 @@
-﻿using Dominio.RSS;
-using System.Collections.Generic;
-
-namespace Dominio
+﻿namespace Dominio
 {
     public class FuenteRSS: Fuente
     {

@@ -19,11 +19,11 @@ namespace UI
 			iFuentes = new ControladorFuentes().ObtenerFuentes();
 		}
 
-		public Fuentes(string pNombreFuente, List<IFuente> pFuentes)
+		public Fuentes(string pDescripcion, List<IFuente> pFuentes)
 		{
 			InitializeComponent();
 			iFuentes = pFuentes;
-			iFuenteSeleccionada = pNombreFuente;
+			iFuenteSeleccionada = pDescripcion;
 		}
 
 		private void Fuentes_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace UI
 
 				for (int i = 0; i < iFuentes.Count; i++)
 				{
-					cbx_Fuente.Items.Add(iFuentes[i].NombreFuente);
+					cbx_Fuente.Items.Add(iFuentes[i].Descripcion);
 				}
 				if (pIndex > 0)
 					cbx_Fuente.SelectedIndex = pIndex;
@@ -124,7 +124,7 @@ namespace UI
 						ControladorFuentes.Operacion.Eliminar,
 						tbxTipoFuente.Text,
 						_Fuente.FuenteId,
-						_Fuente.NombreFuente,
+						_Fuente.Descripcion,
 					    "");
 					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 
@@ -175,11 +175,6 @@ namespace UI
 			{
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
-		}
-
-		private void btnTodosItems_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)

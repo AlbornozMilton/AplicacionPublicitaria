@@ -10,7 +10,7 @@ namespace Persistencia.DAL
 		List<TextoFijo> FuentesTextoFijo();
 		void AgregarFuente(FuenteRSS pFuente);
 		void AgregarFuente(TextoFijo pFuente);
-		void ModificarFuente(int pIdFuente, string pNombreFuente,string pUrl);
+		void ModificarFuente(int pIdFuente, string pDescripcion, string pUrl);
 		void EliminarFuente(int pIdFuente);
 		void AgregarItem(int pFuenteId, Item pItem);
 		void ModificarItem(Item pItem);

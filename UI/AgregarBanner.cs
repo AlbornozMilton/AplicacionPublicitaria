@@ -77,7 +77,7 @@ namespace UI
 			iFuentes = new ControladorFuentes().ObtenerFuentes();
 			foreach (IFuente fuente in iFuentes)
 			{
-				cbx_Fuente.Items.Add(fuente.NombreFuente);
+				cbx_Fuente.Items.Add(fuente.Descripcion);
 			}
 		}
 
@@ -298,7 +298,7 @@ namespace UI
 			else
 			{
 				IRssReader mRssReader = new RawXmlRssReader();
-				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
+				var items = mRssReader.Read(_Fuente.Descripcion).ToList();
 				if (items.Count > 0)
 				{
 					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();

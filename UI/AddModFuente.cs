@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Dominio;
 
@@ -27,7 +26,7 @@ namespace UI
 				var nombreF = iFuente.GetType().Name;
 				cbxTipoFuente.Items.Add(nombreF);
 				cbxTipoFuente.SelectedIndex = 0;
-				tbxNombreFuente.Text = iFuente.NombreFuente;
+				tbxDescripcion.Text = iFuente.Descripcion;
 				if (nombreF == "FuenteRss")
 				{
 					txbUrl.Text = ((FuenteRSS)iFuente).URL;
@@ -44,19 +43,19 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (tbxNombreFuente.Text != "" && cbxTipoFuente.SelectedItem != null)
+			if (tbxDescripcion.Text != "" && cbxTipoFuente.SelectedItem != null)
 			{
 				Cursor = Cursors.WaitCursor;
 				var controlador = new ControladorFuentes();
 				if (iFuente != null)
 				{
-					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text, txbUrl.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
-					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text, txbUrl.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
@@ -95,7 +94,7 @@ namespace UI
 			{
 				if (cbxTipoFuente.SelectedItem != null && cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
 				{
-					if (String.IsNullOrWhiteSpace(this.tbxNombreFuente.Text))
+					if (String.IsNullOrWhiteSpace(this.tbxDescripcion.Text))
 					{
 						//cLogger.Info("No se ingresó URL");
 						btnAceptar.Enabled = false;

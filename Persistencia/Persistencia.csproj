@@ -79,7 +79,6 @@
     <Compile Include="Dominio\Dia.cs" />
     <Compile Include="Dominio\Fuente.cs" />
     <Compile Include="Dominio\FuenteRSS.cs" />
-    <Compile Include="Dominio\IFuente.cs" />
     <Compile Include="Dominio\Imagen.cs" />
     <Compile Include="Dominio\Item.cs" />
     <Compile Include="Dominio\Operacion.cs" />

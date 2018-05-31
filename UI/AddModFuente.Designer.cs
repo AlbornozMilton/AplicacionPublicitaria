@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.lbl_Title = new System.Windows.Forms.Label();
-			this.lblFuente = new System.Windows.Forms.Label();
+			this.lblDescripcion = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
-			this.tbxNombreFuente = new System.Windows.Forms.TextBox();
+			this.tbxDescripcion = new System.Windows.Forms.TextBox();
 			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnAceptar = new System.Windows.Forms.Button();
 			this.cbxTipoFuente = new System.Windows.Forms.ComboBox();
@@ -52,18 +52,18 @@
 			this.lbl_Title.TabIndex = 5;
 			this.lbl_Title.Text = "Agregar/Modificar Fuente";
 			// 
-			// lblFuente
+			// lblDescripcion
 			// 
-			this.lblFuente.AutoSize = true;
-			this.lblFuente.BackColor = System.Drawing.Color.Transparent;
-			this.lblFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblFuente.ForeColor = System.Drawing.Color.White;
-			this.lblFuente.Location = new System.Drawing.Point(15, 83);
-			this.lblFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.lblFuente.Name = "lblFuente";
-			this.lblFuente.Size = new System.Drawing.Size(123, 18);
-			this.lblFuente.TabIndex = 40;
-			this.lblFuente.Text = "Nombre Fuente";
+			this.lblDescripcion.AutoSize = true;
+			this.lblDescripcion.BackColor = System.Drawing.Color.Transparent;
+			this.lblDescripcion.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDescripcion.ForeColor = System.Drawing.Color.White;
+			this.lblDescripcion.Location = new System.Drawing.Point(42, 83);
+			this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblDescripcion.Name = "lblDescripcion";
+			this.lblDescripcion.Size = new System.Drawing.Size(93, 18);
+			this.lblDescripcion.TabIndex = 40;
+			this.lblDescripcion.Text = "Descripción";
 			// 
 			// lbl_tipoFuente
 			// 
@@ -78,12 +78,12 @@
 			this.lbl_tipoFuente.TabIndex = 39;
 			this.lbl_tipoFuente.Text = "Tipo Fuente";
 			// 
-			// tbxNombreFuente
+			// tbxDescripcion
 			// 
-			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 84);
-			this.tbxNombreFuente.Name = "tbxNombreFuente";
-			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
-			this.tbxNombreFuente.TabIndex = 0;
+			this.tbxDescripcion.Location = new System.Drawing.Point(145, 84);
+			this.tbxDescripcion.Name = "tbxDescripcion";
+			this.tbxDescripcion.Size = new System.Drawing.Size(467, 20);
+			this.tbxDescripcion.TabIndex = 0;
 			// 
 			// btnCancelar
 			// 
@@ -134,7 +134,7 @@
 			this.lblUrl.BackColor = System.Drawing.Color.Transparent;
 			this.lblUrl.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblUrl.ForeColor = System.Drawing.Color.White;
-			this.lblUrl.Location = new System.Drawing.Point(102, 119);
+			this.lblUrl.Location = new System.Drawing.Point(106, 119);
 			this.lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblUrl.Name = "lblUrl";
 			this.lblUrl.Size = new System.Drawing.Size(29, 18);
@@ -154,8 +154,8 @@
 			this.Controls.Add(this.cbxTipoFuente);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnAceptar);
-			this.Controls.Add(this.tbxNombreFuente);
-			this.Controls.Add(this.lblFuente);
+			this.Controls.Add(this.tbxDescripcion);
+			this.Controls.Add(this.lblDescripcion);
 			this.Controls.Add(this.lbl_tipoFuente);
 			this.Controls.Add(this.lbl_Title);
 			this.DoubleBuffered = true;
@@ -172,9 +172,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label lbl_Title;
-		private System.Windows.Forms.Label lblFuente;
+		private System.Windows.Forms.Label lblDescripcion;
 		private System.Windows.Forms.Label lbl_tipoFuente;
-		private System.Windows.Forms.TextBox tbxNombreFuente;
+		private System.Windows.Forms.TextBox tbxDescripcion;
 		private System.Windows.Forms.Button btnCancelar;
 		private System.Windows.Forms.Button btnAceptar;
 		private System.Windows.Forms.ComboBox cbxTipoFuente;
