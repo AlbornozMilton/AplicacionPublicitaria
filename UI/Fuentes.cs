@@ -75,10 +75,10 @@ namespace UI
 				btnEliminarItem.Visible = false;
 
 				IRssReader mRssReader = new RawXmlRssReader();
-				var items = mRssReader.Read(_Fuente.NombreFuente).ToList();
+				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					new VentanaEmergente("Solicitud exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 					fechaDesde.Enabled = false;
@@ -88,7 +88,7 @@ namespace UI
 				{
 					fechaDesde.Enabled = true;
 					fechaHasta.Enabled = true;
-					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
+					new VentanaEmergente("No se obtuvieron items en la solicitud reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
 					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
 				}
 			}
@@ -124,10 +124,11 @@ namespace UI
 						ControladorFuentes.Operacion.Eliminar,
 						tbxTipoFuente.Text,
 						_Fuente.FuenteId,
-						_Fuente.NombreFuente);
+						_Fuente.NombreFuente,
+					    "");
 					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					CargarFuentes(-1);
 
+					CargarFuentes(-1);
 				}
 				catch (Exception E)
 				{

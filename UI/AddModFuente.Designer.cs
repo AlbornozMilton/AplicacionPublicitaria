@@ -35,6 +35,8 @@
 			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnAceptar = new System.Windows.Forms.Button();
 			this.cbxTipoFuente = new System.Windows.Forms.ComboBox();
+			this.txbUrl = new System.Windows.Forms.TextBox();
+			this.lblUrl = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lbl_Title
@@ -56,7 +58,7 @@
 			this.lblFuente.BackColor = System.Drawing.Color.Transparent;
 			this.lblFuente.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblFuente.ForeColor = System.Drawing.Color.White;
-			this.lblFuente.Location = new System.Drawing.Point(15, 92);
+			this.lblFuente.Location = new System.Drawing.Point(15, 83);
 			this.lblFuente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblFuente.Name = "lblFuente";
 			this.lblFuente.Size = new System.Drawing.Size(123, 18);
@@ -78,17 +80,16 @@
 			// 
 			// tbxNombreFuente
 			// 
-			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 93);
+			this.tbxNombreFuente.Location = new System.Drawing.Point(145, 84);
 			this.tbxNombreFuente.Name = "tbxNombreFuente";
 			this.tbxNombreFuente.Size = new System.Drawing.Size(467, 20);
 			this.tbxNombreFuente.TabIndex = 0;
-			this.tbxNombreFuente.Leave += new System.EventHandler(this.tbxNombreFuente_Leave);
 			// 
 			// btnCancelar
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCancelar.Location = new System.Drawing.Point(531, 138);
+			this.btnCancelar.Location = new System.Drawing.Point(531, 144);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
 			this.btnCancelar.TabIndex = 3;
@@ -100,7 +101,7 @@
 			// 
 			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(433, 138);
+			this.btnAceptar.Location = new System.Drawing.Point(433, 144);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 2;
@@ -118,13 +119,38 @@
 			this.cbxTipoFuente.TabIndex = 0;
 			this.cbxTipoFuente.SelectedIndexChanged += new System.EventHandler(this.cbxTipoFuente_SelectedIndexChanged);
 			// 
+			// txbUrl
+			// 
+			this.txbUrl.Location = new System.Drawing.Point(145, 117);
+			this.txbUrl.Name = "txbUrl";
+			this.txbUrl.Size = new System.Drawing.Size(467, 20);
+			this.txbUrl.TabIndex = 41;
+			this.txbUrl.Visible = false;
+			this.txbUrl.Leave += new System.EventHandler(this.txbUrl_Leave);
+			// 
+			// lblUrl
+			// 
+			this.lblUrl.AutoSize = true;
+			this.lblUrl.BackColor = System.Drawing.Color.Transparent;
+			this.lblUrl.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblUrl.ForeColor = System.Drawing.Color.White;
+			this.lblUrl.Location = new System.Drawing.Point(102, 119);
+			this.lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblUrl.Name = "lblUrl";
+			this.lblUrl.Size = new System.Drawing.Size(29, 18);
+			this.lblUrl.TabIndex = 42;
+			this.lblUrl.Text = "Url";
+			this.lblUrl.Visible = false;
+			// 
 			// AddModFuente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(624, 183);
+			this.ClientSize = new System.Drawing.Size(624, 189);
+			this.Controls.Add(this.txbUrl);
+			this.Controls.Add(this.lblUrl);
 			this.Controls.Add(this.cbxTipoFuente);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnAceptar);
@@ -152,5 +178,7 @@
 		private System.Windows.Forms.Button btnCancelar;
 		private System.Windows.Forms.Button btnAceptar;
 		private System.Windows.Forms.ComboBox cbxTipoFuente;
+		private System.Windows.Forms.TextBox txbUrl;
+		private System.Windows.Forms.Label lblUrl;
 	}
 }

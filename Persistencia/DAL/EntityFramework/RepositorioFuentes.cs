@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistencia.Dominio;
 using System.Data.Entity;
 
@@ -37,12 +35,15 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public void ModificarFuente(int pIdFuente, string pNombreFuente)
+		public void ModificarFuente(int pIdFuente, string pNombreFuente, string pUrl)
 		{
 			var fuente = iDbContext.Fuentes.Find(pIdFuente);
 
 			if (fuente.GetType().Name == "FuenteRSS")
-				((FuenteRSS)fuente).URL = pNombreFuente;
+			{
+				((FuenteRSS)fuente).NombreFuente = pNombreFuente;
+				((FuenteRSS)fuente).URL = pUrl;
+			}
 			else
 				((TextoFijo)fuente).NombreFuente = pNombreFuente;
 
@@ -53,11 +54,12 @@ namespace Persistencia.DAL.EntityFramework
 		{
 			var fuente = iDbContext.Fuentes.Find(pIdFuente);
 
-			if (fuente.GetType().Name == "FuenteRSS")
-				iDbContext.FuenteRSS.Remove(((FuenteRSS)fuente));
-			else
-				iDbContext.TentoFijo.Remove(((TextoFijo)fuente));
+			//if (fuente.GetType().Name == "FuenteRSS")
+			//	iDbContext.FuenteRSS.Remove(((FuenteRSS)fuente));
+			//else
+			//	iDbContext.TentoFijo.Remove(((TextoFijo)fuente));
 
+			iDbContext.Fuentes.Remove(fuente);
 			iDbContext.SaveChanges();
 		}
 

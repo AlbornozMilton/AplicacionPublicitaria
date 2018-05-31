@@ -17,7 +17,7 @@ namespace Dominio
 			Eliminar
 		}
 
-		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pNombreFuente)
+		public void ABMFuente(Operacion pOperacion, string pTipo, int pFuenteId, string pNombreFuente, string pUrl)
 		{
 			switch (pOperacion)
 			{
@@ -26,7 +26,7 @@ namespace Dominio
 						if (pTipo == "FuenteRss")
 							iUOfW.RepositorioFuentes.AgregarFuente
 								(
-								 new Persistencia.Dominio.FuenteRSS { URL = pNombreFuente }
+								 new Persistencia.Dominio.FuenteRSS { NombreFuente = pNombreFuente, URL = pUrl }
 								);
 						else
 							iUOfW.RepositorioFuentes.AgregarFuente
@@ -37,7 +37,7 @@ namespace Dominio
 					break;
 				case Operacion.Modificar:
 					{
-						iUOfW.RepositorioFuentes.ModificarFuente(pFuenteId, pNombreFuente);
+						iUOfW.RepositorioFuentes.ModificarFuente(pFuenteId, pNombreFuente, pUrl);
 					}
 					break;
 				case Operacion.Eliminar:
@@ -66,7 +66,7 @@ namespace Dominio
 				resultado.Add(Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(fuente));
 			}
 
-			return resultado.OrderBy(f => f.NombreFuente).ToList();
+			return resultado.ToList();
 		}
 
 		public void ABMItems(Operacion pOP, int pFuenteId, IItem pItem)

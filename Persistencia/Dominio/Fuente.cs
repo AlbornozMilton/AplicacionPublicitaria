@@ -6,7 +6,7 @@ namespace Persistencia.Dominio
 	{
 		public int FuenteId { get; set; }
 
-		//public TipoFuente TipoFuente { get; set; }
+		public string NombreFuente { get; set; }
 
 		public List<Item> Items { get; set; }
     }

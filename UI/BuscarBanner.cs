@@ -33,7 +33,7 @@ namespace UI
 			dataGridBanner.Rows.Clear();
 			foreach (Banner item in iResult)
 			{
-				dataGridBanner.Rows.Add(item.BannerId,item.Nombre,
+				dataGridBanner.Rows.Add(item.BannerId,item.Nombre,item.Fuente.NombreFuente,
 					item.RangoFecha.FechaInicio.Date.ToString("d") + " - "+ item.RangoFecha.FechaFin.Date.ToString("d"));
 			}
 

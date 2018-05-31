@@ -24,19 +24,22 @@ namespace UI
 		{
 			if (iFuente != null)
 			{
-				cbxTipoFuente.Items.Add(iFuente.GetType().Name);
+				var nombreF = iFuente.GetType().Name;
+				cbxTipoFuente.Items.Add(nombreF);
 				cbxTipoFuente.SelectedIndex = 0;
 				tbxNombreFuente.Text = iFuente.NombreFuente;
-				if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
-					lblFuente.Text = "URL de Fuente";
+				if (nombreF == "FuenteRss")
+				{
+					txbUrl.Text = ((FuenteRSS)iFuente).URL;
+					//http://feeds.bbci.co.uk/mundo/rss.xml
+					//txbUrl.Visible = true;
+				}
 			}
 			else
 			{
 				string[] fuentes = { "FuenteRss", "TextoFijo" };
 				cbxTipoFuente.Items.AddRange(fuentes);
 			}
-
-			tbxNombreFuente_Leave(this, e);
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
@@ -45,18 +48,19 @@ namespace UI
 			{
 				Cursor = Cursors.WaitCursor;
 				var controlador = new ControladorFuentes();
-				if (iFuente != null) 
+				if (iFuente != null)
 				{
-					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxNombreFuente.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				else
 				{
-					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text);
+					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxNombreFuente.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
+				DialogResult = DialogResult.OK;
 				Close();
 			}
 			else
@@ -71,14 +75,21 @@ namespace UI
 		private void cbxTipoFuente_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
-				lblFuente.Text = "URL de Fuente";
+			{
+				lblUrl.Visible = true;
+				txbUrl.Visible = true;
+				txbUrl_Leave(null, null);
+			}
 			else
-				lblFuente.Text = "Nombre Fuente";
-
-			tbxNombreFuente_Leave(sender, e);
+			{
+				lblUrl.Text = "";
+				txbUrl.Visible = false;
+				lblUrl.Visible = false;
+				btnAceptar.Enabled = true;
+			}
 		}
 
-		private void tbxNombreFuente_Leave(object sender, EventArgs e)
+		private void txbUrl_Leave(object sender, EventArgs e)
 		{
 			try
 			{
@@ -93,7 +104,7 @@ namespace UI
 
 					Uri mUrl;
 
-					if (!Uri.TryCreate(this.tbxNombreFuente.Text.Trim(), UriKind.Absolute, out mUrl))
+					if (!Uri.TryCreate(this.txbUrl.Text.Trim(), UriKind.Absolute, out mUrl))
 					{
 						//cLogger.Info("URL inválida");
 						btnAceptar.Enabled = false;

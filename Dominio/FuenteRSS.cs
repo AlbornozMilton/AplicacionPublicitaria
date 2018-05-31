@@ -1,10 +1,10 @@
 ﻿using Dominio.RSS;
+using System.Collections.Generic;
 
 namespace Dominio
 {
-    public class FuenteRSS: Fuente, IFuente
+    public class FuenteRSS: Fuente
     {
-		private IRssReader ReaderRss { get; }
 		private string iUrl;
 
 		public FuenteRSS()
@@ -18,7 +18,5 @@ namespace Dominio
 		}
 
 		public string URL { get { return this.iUrl; } private set { this.iUrl = value; } }
-
-		public string NombreFuente { get { return this.iUrl; } private set { this.iUrl = value; } }
 	}
 }

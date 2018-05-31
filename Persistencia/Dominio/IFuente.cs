@@ -2,13 +2,11 @@
 
 namespace Persistencia.Dominio
 {
-	public interface IFuente
+	public interface IFuente //no se usa
 	{
 		int FuenteId { get; set; }
 
-		//string NombreFuente { get; set; }
-
-		//TipoFuente TipoFuente { get; set; }
+		string NombreFuente { get; set; }
 
 		List<Item> Items { get; set; }
 	}

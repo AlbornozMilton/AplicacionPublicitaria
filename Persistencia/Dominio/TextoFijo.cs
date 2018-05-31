@@ -1,7 +1,7 @@
 ﻿namespace Persistencia.Dominio
 {
-    public class TextoFijo: Fuente, IFuente
+    public class TextoFijo: Fuente
     {
-		public string NombreFuente { get; set; }
+
     }
 }
