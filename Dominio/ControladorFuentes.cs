@@ -92,20 +92,20 @@ namespace Dominio
 			}
 		}
 
-		public List<ItemGenerico> ItemsFuenteTexto(int pFuente, DateTime pDesde, DateTime pHasta)
+		public List<ItemGenerico> ItemsFuenteTexto(int pFuente, DateTime? pDesde, DateTime? pHasta)
 		{
 			List<ItemGenerico> lista = new List<ItemGenerico>();
-			foreach (var item in iUOfW.RepositorioFuentes.ObtenerItemsDeFuente(pFuente, pDesde.Date, pHasta.Date))
+			foreach (var item in iUOfW.RepositorioFuentes.ObtenerItemsDeFuente(pFuente, pDesde, pHasta))
 			{
 				lista.Add(Mapper.Map<Persistencia.Dominio.Item, ItemGenerico>(item));
 			}
 			return lista;
 		}
 
-		public List<RSS.RssItem> ItemsFuenteRss(int pFuenteId, DateTime pDesde, DateTime pHasta)
+		public List<RSS.RssItem> ItemsFuenteRss(int pFuenteId, DateTime? pDesde, DateTime? pHasta)
 		{
 			List<RSS.RssItem> lista = new List<RSS.RssItem>();
-			foreach (var item in iUOfW.RepositorioFuentes.ObtenerItemsDeFuente(pFuenteId, pDesde.Date, pHasta.Date))
+			foreach (var item in iUOfW.RepositorioFuentes.ObtenerItemsDeFuente(pFuenteId, pDesde, pHasta))
 			{
 				lista.Add(Mapper.Map<Persistencia.Dominio.Item, RSS.RssItem>(item));
 			}

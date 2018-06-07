@@ -62,14 +62,25 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
+		public void ModificarBanner(int pIdBanner, string pNombre, int pFuenteId, RangoFecha pRFecha)
+		{
+			EliminarBanner(pIdBanner);
+			AgregarBanner(pNombre, pFuenteId, pRFecha);
+		}
+
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
 		{
 			return (
 				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
 				.Where(b =>
-							!(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
+							//!(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
+							//||
+							//!(b.RangoFecha.FechaInicio > pFechaFin && b.RangoFecha.FechaFin > pFechaFin)
+							(b.RangoFecha.FechaFin >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)
 							||
-							!(b.RangoFecha.FechaInicio > pFechaFin && b.RangoFecha.FechaFin > pFechaFin)
+							(b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaInicio <= pFechaFin)
+							||
+							(b.RangoFecha.FechaInicio <= pFechaInicio && b.RangoFecha.FechaFin >= pFechaFin)
 				)).ToList();
 		}
 
@@ -85,8 +96,10 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void EliminarBanner(int IdBanner)
 		{
-			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).FirstOrDefault();
+			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).SingleOrDefault();
+			RangoFecha rf = iDbContext.RangoFecha.Where(f => f.RangoFechaId == banner.RangoFechaId).SingleOrDefault();
 			iDbContext.Entry(banner).State = EntityState.Deleted;
+			iDbContext.Entry(rf).State = EntityState.Deleted;
 			iDbContext.SaveChanges();
 		}
 	}

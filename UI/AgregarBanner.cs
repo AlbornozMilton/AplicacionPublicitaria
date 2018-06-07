@@ -161,6 +161,17 @@ namespace UI
 					iHorarios.Clear(); 
 				}
 				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
+				if (iBanner != null)
+					iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+			}
+			catch (ApplicationException)
+			{
+				if (iBanner != null)
+				{
+					fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
+					fechaHasta.Value = iBanner.RangoFecha.FechaFin; 
+				}
+				new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{
@@ -293,7 +304,7 @@ namespace UI
 
 			if (txbTipoFuente.Text != "FuenteRSS")
 			{
-				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
 			}
 			else
 			{
@@ -308,7 +319,7 @@ namespace UI
 				else
 				{
 					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
-					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 				}
 			}
 			iItemBindingSource.ResetBindings(false);

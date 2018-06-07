@@ -82,13 +82,13 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
-		public List<Item> ObtenerItemsDeFuente(int pFuente, DateTime pDesde, DateTime pHasta)
+		public List<Item> ObtenerItemsDeFuente(int pFuente, DateTime? pDesde, DateTime? pHasta)
 		{
 			return (
 					from i in iDbContext.Items
 					join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
 					where f.FuenteId == pFuente
-					&& (i.Fecha >= pDesde && i.Fecha <= pHasta)
+					&& ((i.Fecha >= pDesde && i.Fecha <= pHasta)||(pDesde == null && pHasta == null))
 					select i).ToList();
 		}
 

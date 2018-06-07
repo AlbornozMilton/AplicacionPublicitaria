@@ -40,6 +40,7 @@ namespace UI
 					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Modificar, _FuenteId, _Item);
 					new VentanaEmergente("Item Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
+				DialogResult = DialogResult.OK;
 				Close();
 			}
 		}

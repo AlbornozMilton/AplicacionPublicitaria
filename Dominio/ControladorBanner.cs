@@ -49,8 +49,9 @@ namespace Dominio
 
 		public void ModificarBanner(int pBannerMod, string pNombre, int pIdFuente, DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
 		{
-			iUOfW.RepositorioBanner.EliminarBanner(pBannerMod);
-			AgregarBanner(pNombre, pIdFuente, pRFDesde, pRFHasta, pRHorarios, pDias); 
+			RangoFecha rf = new RangoFecha(pRFDesde.Date, pRFHasta.Date, pDias, pRHorarios);
+			var rfMapped = Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
+			iUOfW.RepositorioBanner.ModificarBanner(pBannerMod, pNombre, pIdFuente, rfMapped);
 		}
 	}
 }

@@ -11,6 +11,6 @@ namespace Persistencia.DAL
 		List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin);
 		List<Banner> BuscarBanner(string pNombre, DateTime pFechaInicio, DateTime pFechaFin);
 		void EliminarBanner(int IdBanner);
-
+		void ModificarBanner(int pIdBanner, string pNombre, int pFuenteId, RangoFecha pRFecha);
 	}
 }
