@@ -18,10 +18,10 @@ namespace Persistencia.Dominio
 
 		public virtual  string Dias { get; set; }
 
-        public virtual List<Banner> Banners { get; set; }
+		//public virtual List<Banner> Banners { get; set; }
 
-        public virtual Campania Campania { get; set; }
+		//public virtual Campania Campania { get; set; }
 
-        public virtual List<RangoHorario> Horarios { get; set; }
-    }
+		public virtual List<RangoHorario> Horarios { get; set; }
+	}
 }

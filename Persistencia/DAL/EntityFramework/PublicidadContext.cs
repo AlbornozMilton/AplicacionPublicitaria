@@ -17,7 +17,6 @@ namespace Persistencia.DAL.EntityFramework
         //ATRIBUTOS       
         public virtual DbSet<Banner> Banner { get; set; }
         public virtual DbSet<Campania> Campania { get; set; }
-        public virtual DbSet<Dia> Dia { get; set; }
 		public virtual DbSet<Imagen> Imagen { get; set; }
         public virtual DbSet<RangoFecha> RangoFecha { get; set; }
         public virtual DbSet<RangoHorario> RangoHorario { get; set; }
@@ -34,7 +33,6 @@ namespace Persistencia.DAL.EntityFramework
 
             mBuilder.Configurations.Add(new BannerMap());
             mBuilder.Configurations.Add(new CampaniaMap());
-            mBuilder.Configurations.Add(new DiaMap());
             mBuilder.Configurations.Add(new ImagenMap());
             mBuilder.Configurations.Add(new RangoFechaMap());
             mBuilder.Configurations.Add(new RangoHorarioMap());

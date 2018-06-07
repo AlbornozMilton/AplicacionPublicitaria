@@ -161,6 +161,11 @@ namespace UI
 					iHorarios.Clear(); 
 				}
 				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
+				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+			}
+			catch (ApplicationException)
+			{
+				new VentanaEmergente("Las fecehas", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{

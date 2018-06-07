@@ -62,6 +62,12 @@ namespace Persistencia.DAL.EntityFramework
 			iDbContext.SaveChanges();
 		}
 
+		public void ModificarBanner(int pIdBanner, string pNombre, int pFuenteId, RangoFecha pRFecha)
+		{
+			EliminarBanner(pIdBanner);
+			AgregarBanner(pNombre, pFuenteId, pRFecha);
+		}
+
 		public List<Banner> BannersEnRangoFecha(DateTime pFechaInicio, DateTime pFechaFin)
 		{
 			return (
@@ -85,8 +91,10 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void EliminarBanner(int IdBanner)
 		{
-			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).FirstOrDefault();
+			Banner banner = iDbContext.Banner.Where(b => b.BannerId == IdBanner).SingleOrDefault();
+			RangoFecha rf = iDbContext.RangoFecha.Where(f => f.RangoFechaId == banner.RangoFechaId).SingleOrDefault();
 			iDbContext.Entry(banner).State = EntityState.Deleted;
+			iDbContext.Entry(rf).State = EntityState.Deleted;
 			iDbContext.SaveChanges();
 		}
 	}

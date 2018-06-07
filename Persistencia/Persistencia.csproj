@@ -56,7 +56,6 @@
     <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\BannerMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\CampaniaMap.cs" />
-    <Compile Include="DAL\EntityFramework\Mapping\DiaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\FuenteMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\FuenteRSSMap.cs" />
     <Compile Include="DAL\EntityFramework\Mapping\ImagenMap.cs" />
@@ -76,7 +75,6 @@
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Dominio\Banner.cs" />
     <Compile Include="Dominio\Campania.cs" />
-    <Compile Include="Dominio\Dia.cs" />
     <Compile Include="Dominio\Fuente.cs" />
     <Compile Include="Dominio\FuenteRSS.cs" />
     <Compile Include="Dominio\Imagen.cs" />
