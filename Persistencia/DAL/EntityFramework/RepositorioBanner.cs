@@ -73,9 +73,14 @@ namespace Persistencia.DAL.EntityFramework
 			return (
 				iDbContext.Banner.Include("RangoFecha.Horarios").Include("Fuente")
 				.Where(b =>
-							!(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
+							//!(b.RangoFecha.FechaInicio < pFechaInicio && b.RangoFecha.FechaFin < pFechaInicio)
+							//||
+							//!(b.RangoFecha.FechaInicio > pFechaFin && b.RangoFecha.FechaFin > pFechaFin)
+							(b.RangoFecha.FechaFin >= pFechaInicio && b.RangoFecha.FechaFin <= pFechaFin)
 							||
-							!(b.RangoFecha.FechaInicio > pFechaFin && b.RangoFecha.FechaFin > pFechaFin)
+							(b.RangoFecha.FechaInicio >= pFechaInicio && b.RangoFecha.FechaInicio <= pFechaFin)
+							||
+							(b.RangoFecha.FechaInicio <= pFechaInicio && b.RangoFecha.FechaFin >= pFechaFin)
 				)).ToList();
 		}
 
