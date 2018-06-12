@@ -33,7 +33,6 @@ namespace Dominio
         }
         public RangoFecha(DateTime pFechaInicio, DateTime pFechaFin, string pDias, List<RangoHorario>pHorarios)
         { 
-            //ver como tratar el codigo de rango de fecha --> creo que se asigna solo al meterlo a la BD
             this.iFechaInicio = pFechaInicio;
             this.iFechaFin = pFechaFin;
 			this.iDias = pDias;
