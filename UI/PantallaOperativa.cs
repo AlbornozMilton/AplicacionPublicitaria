@@ -87,7 +87,6 @@ namespace UI
 		{
 			iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
 			iControladorBanner.GenerarBannerFecha(DateTime.Now);
-			iControladorBanner.GenerarBannerFecha(DateTime.Now);
 			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute,0));
 
 			//////---------------De prueba----------------

@@ -47,6 +47,8 @@ namespace Dominio
 
 			if (bannerActual == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
 				bannerActual = BannerDefault(pHora, auxHInicio);
+			else if (BannersDelDia.Count == 0)
+				bannerActual = BannerDefault(new TimeSpan(pHora.Hours, pHora.Minutes, 0), new TimeSpan(23, 59, 59));
 			else //pasaron todos los horaris
 				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
 
