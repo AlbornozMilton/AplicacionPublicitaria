@@ -33,7 +33,7 @@ namespace Dominio
 			{
 				foreach (var horario in banner.RangoFecha.Horarios)
 				{
-					if (horario.HoraFin <= pHora && horario.HoraFin >= pHora)
+					if (horario.HoraInicio <= pHora && horario.HoraFin >= pHora)
 					{
 						bannerActual = banner; // si le corresponde el horario
 						break;
@@ -68,7 +68,7 @@ namespace Dominio
 				intervalo2 = new TimeSpan(23, 59, 59);
 			}
 
-			pIntervalo = Convert.ToInt32((intervalo2 - intervalo1).TotalMilliseconds);
+			pIntervalo = Math.Abs(Convert.ToInt32((intervalo2 - intervalo1).TotalMilliseconds));
 			this.BannerActual = bannerActual;
 		}
 

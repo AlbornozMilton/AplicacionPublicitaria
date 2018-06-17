@@ -120,6 +120,9 @@ namespace UI
 			{
 				try
 				{
+					if (_Fuente.Descripcion == "FuenteDefault")
+						throw new Exception("La Fuente seleccionada no puede ser eliminada");
+
 					new ControladorFuentes().ABMFuente(
 						ControladorFuentes.Operacion.Eliminar,
 						tbxTipoFuente.Text,
