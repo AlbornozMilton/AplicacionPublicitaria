@@ -30,7 +30,7 @@ namespace Dominio
 		public Banner GetBanner(TimeSpan pHora)
 		{
 			Banner bannerResult = null;
-			TimeSpan auxHInicio = new TimeSpan(23, 59, 0), auxHFin = new TimeSpan(23, 59, 59);
+			TimeSpan auxHInicio = new TimeSpan(23, 59, 0), auxHFin = new TimeSpan(23, 59, 59), horaCero = new TimeSpan(0, 0, 0);
 
 			foreach (var banner in BannersDelDia)
 			{
@@ -38,29 +38,21 @@ namespace Dominio
 				{
 					if (horario.HoraInicio <= pHora && horario.HoraFin >= pHora)
 					{
-						bannerResult = banner; // si le corresponde el horario
+						bannerResult = banner;
 						break;
 					}
-					else if (horario.HoraInicio <= auxHInicio)
-						auxHInicio = horario.HoraInicio; //limite para banner default
 
-					auxHFin = horario.HoraFin; //cuado ya pasaron todos los horarios
+					if (horario.HoraFin < auxHFin && horario.HoraFin < pHora)
+						auxHFin = horario.HoraFin;
+
+					if (horario.HoraInicio < auxHInicio && horario.HoraInicio > pHora)
+						auxHInicio = horario.HoraInicio;
 				}
 			}
 
-			TimeSpan horaSeg = new TimeSpan(pHora.Hours, pHora.Minutes, 0);
-
-			if (bannerResult == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
+			if (bannerResult == null)
 			{
-				bannerResult = BannerDefault(horaSeg, auxHInicio);
-			}
-			else if (BannersDelDia.Count == 0)
-			{
-				bannerResult = BannerDefault(horaSeg, new TimeSpan(23, 59, 59));
-			}
-			else //pasaron todos los horarios
-			{
-				bannerResult = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
+				bannerResult = BannerDefault(auxHFin, auxHInicio);
 			}
 
 			return bannerResult;
@@ -80,7 +72,7 @@ namespace Dominio
 			{
 				if (hora.HoraFin <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
-					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0,1,0)));
+					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 1, 0)));
 					break;
 				}
 			}
