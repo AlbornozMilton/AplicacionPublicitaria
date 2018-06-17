@@ -39,9 +39,11 @@
 			this.timer_TextoDeslizable = new System.Windows.Forms.Timer(this.components);
 			this.timer_Banner = new System.Windows.Forms.Timer(this.components);
 			this.bwBannerControl = new System.ComponentModel.BackgroundWorker();
+			this.pictureLoading = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).BeginInit();
 			this.panel_ContendorBanner.SuspendLayout();
 			this.panel_Banner.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureLoading)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBox_ImagenCamp
@@ -108,6 +110,20 @@
 			// 
 			this.timer_Banner.Tick += new System.EventHandler(this.timer_Banner_Tick);
 			// 
+			// pictureLoading
+			// 
+			this.pictureLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureLoading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pictureLoading.Image = global::UI.Properties.Resources.loading;
+			this.pictureLoading.Location = new System.Drawing.Point(354, 187);
+			this.pictureLoading.Name = "pictureLoading";
+			this.pictureLoading.Size = new System.Drawing.Size(85, 69);
+			this.pictureLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureLoading.TabIndex = 2;
+			this.pictureLoading.TabStop = false;
+			// 
 			// PantallaOperativa
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +132,7 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(784, 500);
+			this.Controls.Add(this.pictureLoading);
 			this.Controls.Add(this.pictureBox_ImagenCamp);
 			this.Controls.Add(this.panel_ContendorBanner);
 			this.DoubleBuffered = true;
@@ -130,6 +147,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_ImagenCamp)).EndInit();
 			this.panel_ContendorBanner.ResumeLayout(false);
 			this.panel_Banner.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureLoading)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -146,5 +164,6 @@
 		private System.Windows.Forms.Timer timer_TextoDeslizable;
 		private System.Windows.Forms.Timer timer_Banner;
 		private System.ComponentModel.BackgroundWorker bwBannerControl;
+		private System.Windows.Forms.PictureBox pictureLoading;
 	}
 }

@@ -83,7 +83,6 @@ namespace UI
 
 			//////---------------Banners----------------
 			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(this.Font.Size);
-			TextoBanner.Width = TextoBanner.Text.Length;
 			posx = TextoBanner.Location.X;
 			TextoBanner.BackColor = Color.Blue;
 			TextoBanner.ForeColor = Color.White;
@@ -97,6 +96,8 @@ namespace UI
 			this.ConfigurarTimers();
 
 			this.ObtenerPrimerCampania();
+
+			pictureLoading.Visible = false;
         }
 
 		private void timer_Banner_Tick(object sender, EventArgs e)
