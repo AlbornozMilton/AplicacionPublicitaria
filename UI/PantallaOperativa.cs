@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Dominio;
-using Dominio.RSS;
 
 namespace UI
 {
@@ -17,7 +16,7 @@ namespace UI
         private Campania iCampaniaActual;
         private Campania iCampaniaSiguiente;
 
-		private int posx, item = 0;
+		private int posx, item = 0, intervaloBanner = 0;
 
 		public PantallaOperativa()
         {
@@ -30,13 +29,6 @@ namespace UI
             this.timer_IntervaloImagen.Enabled = true;
             this.timer_IntervaloCamp.Interval = 1000;
             this.timer_IntervaloCamp.Enabled = true;
-
-			timer_Banner.Interval = 1000000; 
-			timer_Banner.Enabled = true;
-			timer_TextoDeslizable.Interval = 10;
-			timer_TextoDeslizable.Enabled = true;
-
-			//inicar tiempo banner
 		}
 
         private void ObtenerPrimerCampania()
@@ -87,15 +79,21 @@ namespace UI
 		{
 			iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
 			iControladorBanner.GenerarBannerFecha(DateTime.Now);
-			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute,0));
+			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute,0), out intervaloBanner);
 
-			//////---------------De prueba----------------
-			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
-			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+			//////---------------Banners----------------
+			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(this.Font.Size);
+			TextoBanner.Width = TextoBanner.Text.Length;
 			posx = TextoBanner.Location.X;
 			TextoBanner.BackColor = Color.Blue;
 			TextoBanner.ForeColor = Color.White;
 
+			timer_Banner.Interval = intervaloBanner;
+			timer_TextoDeslizable.Interval = 3;
+			timer_Banner.Enabled = true;
+			timer_TextoDeslizable.Enabled = true;
+			
+			/////--------------------
 			this.ConfigurarTimers();
 
 			this.ObtenerPrimerCampania();
@@ -103,22 +101,21 @@ namespace UI
 
 		private void timer_Banner_Tick(object sender, EventArgs e)
 		{
-			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0));
+			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0), out intervaloBanner);
 
-			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
-			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(ref item);
+			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(this.Font.Size); 
 			posx = TextoBanner.Location.X;
 		}
 
 		private void timer_TextoDeslizable_Tick(object sender, EventArgs e)
 		{
-			//if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			{
 				item++;
-				TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
+				TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(ref item);
 				posx = TextoBanner.Location.X;
-				TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+				TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(this.Font.Size);
 				TextoBanner.BackColor = Color.Blue;
 				TextoBanner.ForeColor = Color.White;
 
@@ -128,7 +125,7 @@ namespace UI
 				posx = TextoBanner.Location.X;
 			}
 
-			posx--;
+			posx -= 3;
 
 			TextoBanner.Location = new Point(posx, TextoBanner.Location.Y);
 		}

@@ -24,7 +24,7 @@ namespace Dominio
 			this.BannersDelDia = result;
 		}
 
-		public void GetBannerActual(TimeSpan pHora)
+		public void GetBannerActual(TimeSpan pHora, out int pIntervalo)
 		{
 			Banner bannerActual = null;
 			TimeSpan auxHInicio = new TimeSpan(23, 59, 0), auxHFin = new TimeSpan(23, 59, 59);
@@ -45,15 +45,31 @@ namespace Dominio
 				}
 			}
 
-			if (bannerActual == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
-				bannerActual = BannerDefault(pHora, auxHInicio);
-			else if (BannersDelDia.Count == 0)
-				bannerActual = BannerDefault(new TimeSpan(pHora.Hours, pHora.Minutes, 0), new TimeSpan(23, 59, 59));
-			else //pasaron todos los horaris
-				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
+			TimeSpan intervalo1;
+			TimeSpan intervalo2;
+			TimeSpan horaSeg = new TimeSpan(pHora.Hours, pHora.Minutes, 0);
 
+			if (bannerActual == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
+			{
+				bannerActual = BannerDefault(horaSeg, auxHInicio);
+				intervalo1 = horaSeg;
+				intervalo2 = auxHInicio;
+			}
+			else if (BannersDelDia.Count == 0)
+			{
+				bannerActual = BannerDefault(horaSeg, new TimeSpan(23, 59, 59));
+				intervalo1 = horaSeg;
+				intervalo2 = new TimeSpan(23, 59, 59);
+			}
+			else //pasaron todos los horaris
+			{
+				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
+				intervalo1 = auxHFin;
+				intervalo2 = new TimeSpan(23, 59, 59);
+			}
+
+			pIntervalo = Convert.ToInt32((intervalo2 - intervalo1).TotalMilliseconds);
 			this.BannerActual = bannerActual;
-			// retornar el texto o asignar a la variable local el banner actual
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
@@ -62,7 +78,7 @@ namespace Dominio
 			return new Banner("Publicidad por defecto", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
 		}
 
-		public string TextoDeFuenteActual(int pItem)
+		public string TextoDeFuenteActual(ref int pItem)
 		{
 			if (pItem + 1 > BannerActual.Fuente.Items.Count)
 				pItem = 0;
