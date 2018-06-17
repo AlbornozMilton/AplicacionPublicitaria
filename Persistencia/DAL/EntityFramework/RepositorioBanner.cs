@@ -13,27 +13,36 @@ namespace Persistencia.DAL.EntityFramework
 
 		}
 
-		public List<Banner> BannersDelDia(DateTime pFecha)
+		public List<Banner> BannersEnFecha(DateTime pFecha)
 		{
-			// control fecha
+			string diaString = "";
+			switch (pFecha.DayOfWeek)
+			{
+				case DayOfWeek.Sunday:
+					diaString = "domingo";
+					break;
+				case DayOfWeek.Monday:
+					diaString = "lunes";
+					break;
+				case DayOfWeek.Tuesday:
+					diaString = "martes";
+					break;
+				case DayOfWeek.Wednesday:
+					diaString = "miercoles";
+					break;
+				case DayOfWeek.Thursday:
+					diaString = "jueves";
+					break;
+				case DayOfWeek.Friday:
+					diaString = "viernes";
+					break;
+				case DayOfWeek.Saturday:
+					diaString = "sabado";
+					break;
+			}
 
-			//capturar las fuentes y armarlas segun su tipo
-
-			//devolver con fechas y horarios
-
-			var result = (from b in iDbContext.Banner
-						  join frss in iDbContext.FuenteRSS on b.FuenteId equals frss.FuenteId
-						  join ftx in iDbContext.TentoFijo on b.FuenteId equals ftx.FuenteId
-						  join r in iDbContext.RangoFecha on b.RangoFechaId equals r.RangoFechaId
-						  where (r.FechaInicio <= pFecha || r.FechaFin >= pFecha)
-						  select b
-					 ).ToList();
-
-			//foreach (var fuente in iDbContext.Banner)
-			//{
-			//	if
-			//}
-			return result;
+			return iDbContext.Banner.Include("Fuente").Include("RangoFecha.Horarios").Where(
+				b => (b.RangoFecha.FechaInicio <= pFecha && b.RangoFecha.FechaFin >= pFecha) && b.RangoFecha.Dias.Contains(diaString)).ToList();
 		}
 
 		/// <summary>

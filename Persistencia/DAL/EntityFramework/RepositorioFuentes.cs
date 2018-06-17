@@ -20,7 +20,25 @@ namespace Persistencia.DAL.EntityFramework
 
 		public List<TextoFijo> FuentesTextoFijo()
 		{
-			return iDbContext.TentoFijo.ToList();
+			return iDbContext.TextoFijo.ToList();
+		}
+
+		public TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre)
+		{
+			return (
+					from f in iDbContext.TextoFijo.Include("Items")
+					where (f.FuenteId == IdFuente || IdFuente == null)
+					&& (f.Descripcion == pNombre || pNombre == "")
+					select f).SingleOrDefault();
+		}
+
+		public FuenteRSS ObtenerFuenteRss(int? IdFuente, string pNombre)
+		{
+			return (
+					from f in iDbContext.FuenteRSS.Include("Items")
+					where (f.FuenteId == IdFuente || IdFuente == null)
+					&& (f.Descripcion == pNombre || pNombre == "")
+					select f).SingleOrDefault();
 		}
 
 		public void AgregarFuente(FuenteRSS pFuente)
@@ -31,7 +49,7 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void AgregarFuente(TextoFijo pFuente)
 		{
-			iDbContext.TentoFijo.Add(pFuente);
+			iDbContext.TextoFijo.Add(pFuente);
 			iDbContext.SaveChanges();
 		}
 
