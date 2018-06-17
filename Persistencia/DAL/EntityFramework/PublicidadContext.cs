@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         public virtual DbSet<RangoHorario> RangoHorario { get; set; }
 		public virtual DbSet<Fuente> Fuentes { get; set; }
 		public virtual DbSet<FuenteRSS> FuenteRSS { get; set; }
-		public virtual DbSet<TextoFijo> TentoFijo { get; set; }
+		public virtual DbSet<TextoFijo> TextoFijo { get; set; }
 		public virtual DbSet<Item> Items { get; set; }
 
 

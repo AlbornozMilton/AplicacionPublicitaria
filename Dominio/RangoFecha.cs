@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-/*
- 
-     int result = lFecha1.ComapreTo(lFecha2);  o bien--> int result = lFecha1.Date.ComapreTo(lFecha2.Date);
-        
-        result = -1 : Fecha1 es menor que Fecha 2 
-        result =  0 : Fecha1 es igual que Fecha 2
-        result = +1 : Fecha1 es menor que Fecha 2
-     
-     */
-
+	/*  int result = lFecha1.ComapreTo(lFecha2);  o bien--> int result = lFecha1.Date.ComapreTo(lFecha2.Date);
+        result = -1 : Fecha1 es menor que Fecha2 
+        result =  0 : Fecha1 es igual que Fecha2
+        result = +1 : Fecha1 es menor que Fecha2 */
 namespace Dominio
 {
    public class RangoFecha
@@ -23,8 +13,6 @@ namespace Dominio
         private DateTime iFechaFin;
 		private string iDias;
         private List<RangoHorario> iRangoHorario;
-        private List<Banner> iListaBanners;
-        private List<Campania> iListaCampanias;
 
         //CONSTRUCTOR
         public RangoFecha()
@@ -46,12 +34,10 @@ namespace Dominio
         {
             this.iFechaInicio = DateTime.Today.Date;
             this.iFechaFin = DateTime.Today.Date;
-            //this.iListaDia = null;
             this.iRangoHorario = new List<RangoHorario>();
             iRangoHorario.Add(pRangoH);
         }
 
-        //PROPIEDADES----------------------------------------------------------
         public int RangoFechaId
         {
             get { return this.iCodRangoFecha; }
@@ -70,12 +56,6 @@ namespace Dominio
             private set { this.iFechaFin = value; }
         }
 
-		//public List<Dia> Dias
-		//{
-		//    get { return this.iListaDia; }
-		//    private set { this.iListaDia = value; }
-		//}
-
 		public string Dias
 		{
 			get { return this.iDias; }
@@ -87,42 +67,18 @@ namespace Dominio
             get { return this.iRangoHorario; }
             private set { this.iRangoHorario = value; }
         }
-        public List<Banner> Banners
-        {
-            get { return this.iListaBanners; }
-            private set { this.iListaBanners = value; }
-        }
-
-        public List<Campania> Campanias
-        {
-            get { return this.iListaCampanias; }
-            private set { this.iListaCampanias = value; }
-        }
-        //METODOS----------------------------------------------------------
-
+        
+		//METODOS----------------------------------------------------------
         public string FechaString(DateTime pFecha)
         {
             return String.Format("{0}/{1}/{2}",pFecha.Day,pFecha.Month,pFecha.Day);
         }
-        public RangoFecha AgregarHorario(RangoHorario pRangoH)
-        {
-            this.Horarios = new List<RangoHorario>();
-            this.Horarios.Add(pRangoH);
+
+		public RangoFecha AgregarHorario(RangoHorario pRangoH)
+		{
+			this.Horarios = new List<RangoHorario>();
+			this.Horarios.Add(pRangoH);
             return this;
         }
-        
-
-        //public void AgregarDia(DateTime pDia)
-        //{
-        //    //por si se agrega un dia que no este en el rango de fechas pre-establecido
-        //    if (!(pDia>=this.iFechaInicio || pDia <= this.iFechaFin))
-        //    {
-        //        throw new Exception();
-        //    }
-
-        //    this.iListaDia.Add(new Dia(pDia));
-
-        //}
-
     }
 }

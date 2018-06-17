@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Dominio.RSS;
@@ -38,6 +35,8 @@ namespace UI
 			timer_Banner.Enabled = true;
 			timer_TextoDeslizable.Interval = 10;
 			timer_TextoDeslizable.Enabled = true;
+
+			//inicar tiempo banner
 		}
 
         private void ObtenerPrimerCampania()
@@ -48,8 +47,8 @@ namespace UI
 
         private void MostrarCampania()
         {
-            this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
-            this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+            //this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
+            //this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
             this.backgroundWorker_CambioCamp.RunWorkerAsync();
         }
 
@@ -62,7 +61,7 @@ namespace UI
 
         private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
         {
-             this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+             //this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
         }
 
         private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
@@ -87,9 +86,7 @@ namespace UI
 		private void PantallaOperativa_Load(object sender, EventArgs e)
 		{
 			iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
-			//iControladorBanner.AgregarBanner();
-			//obtener banner del dia
-			iControladorBanner.GenerarBannerDelDia();
+			iControladorBanner.GenerarBannerFecha(DateTime.Now);
 
 			//////---------------De prueba----------------
 			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width+1,TextoBanner.Location.Y);
@@ -129,5 +126,3 @@ namespace UI
 		}
 	}
 }
-
-//checkbox dias,q ya los marque
