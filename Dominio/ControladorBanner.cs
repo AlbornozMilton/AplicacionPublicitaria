@@ -24,7 +24,7 @@ namespace Dominio
 			this.BannersDelDia = result;
 		}
 
-		public void GetBannerActual(TimeSpan pHora)
+		public void GetBannerActual(TimeSpan pHora, out int pIntervalo)
 		{
 			Banner bannerActual = null;
 			TimeSpan auxHInicio = new TimeSpan(23, 59, 0), auxHFin = new TimeSpan(23, 59, 59);
@@ -39,19 +39,37 @@ namespace Dominio
 						break;
 					}
 					else if (horario.HoraInicio <= auxHInicio)
-						auxHInicio = horario.HoraInicio; //limite de banner default
+						auxHInicio = horario.HoraInicio; //limite para banner default
 
-					auxHFin = horario.HoraFin; //para cuado ya se pasaron todos los horarios
+					auxHFin = horario.HoraFin; //cuado ya pasaron todos los horarios
 				}
 			}
 
-			if (bannerActual == null)
-				bannerActual = BannerDefault(pHora, auxHInicio);
-			else if (auxHInicio == new TimeSpan(23, 59, 0))
-				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
+			TimeSpan intervalo1;
+			TimeSpan intervalo2;
+			TimeSpan horaSeg = new TimeSpan(pHora.Hours, pHora.Minutes, 0);
 
+			if (bannerActual == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
+			{
+				bannerActual = BannerDefault(horaSeg, auxHInicio);
+				intervalo1 = horaSeg;
+				intervalo2 = auxHInicio;
+			}
+			else if (BannersDelDia.Count == 0)
+			{
+				bannerActual = BannerDefault(horaSeg, new TimeSpan(23, 59, 59));
+				intervalo1 = horaSeg;
+				intervalo2 = new TimeSpan(23, 59, 59);
+			}
+			else //pasaron todos los horaris
+			{
+				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
+				intervalo1 = auxHFin;
+				intervalo2 = new TimeSpan(23, 59, 59);
+			}
+
+			pIntervalo = Convert.ToInt32((intervalo2 - intervalo1).TotalMilliseconds);
 			this.BannerActual = bannerActual;
-			// retornar el texto o asignar a la variable local el banner actual
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
@@ -60,9 +78,14 @@ namespace Dominio
 			return new Banner("Publicidad por defecto", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
 		}
 
-		public string TextoDeFuenteActual()
+		public string TextoDeFuenteActual(ref int pItem)
 		{
-			return "Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313";
+			if (pItem + 1 > BannerActual.Fuente.Items.Count)
+				pItem = 0;
+
+			var item = BannerActual.Fuente.Items[pItem];
+
+			return ("[" + item.Fecha + "] " + BannerActual.Fuente.Descripcion + ": " + item.Titulo + " - " + item.Texto);
 		}
 
 		public void AgregarBanner(string pNombre, int pIdFuente, DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
