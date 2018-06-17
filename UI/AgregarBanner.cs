@@ -28,6 +28,7 @@ namespace UI
 
 		private void AgregarBanner_Load(object sender, EventArgs e)
 		{
+			dGV_horarios.AllowUserToOrderColumns = true;
 			RellenarFuentes();
 			horaHasta.Value = DateTime.Now.AddHours(1);
 			fechaHasta.Value = DateTime.Now.AddMonths(1);
@@ -39,7 +40,7 @@ namespace UI
 
 				cbx_Fuente.SelectedIndex = iFuentes.IndexOf(iFuentes.Where(f => f.FuenteId == iBanner.Fuente.FuenteId).First());
 
-				tbxNombreBanner.Text = iBanner.Nombre;		
+				tbxNombreBanner.Text = iBanner.Nombre;
 
 				string[] mDias = iBanner.RangoFecha.Dias.Split('-');
 				foreach (string item in mDias)
@@ -90,7 +91,9 @@ namespace UI
 		{
 			if (dGV_horarios.CurrentRow != null)
 			{
-				iHorarios.RemoveAt(dGV_horarios.CurrentRow.Index);
+				string[] horaInicio = dGV_horarios.CurrentRow.Cells[0].Value.ToString().Split(':');
+				TimeSpan horaInicioTime = new TimeSpan(Convert.ToInt32(horaInicio[0]), Convert.ToInt32(horaInicio[1]), 0);
+				iHorarios.Remove(iHorarios.Where(h => h.HoraInicio == horaInicioTime).SingleOrDefault());
 				dGV_horarios.Rows.Remove(dGV_horarios.CurrentRow);
 			}
 		}
@@ -120,15 +123,31 @@ namespace UI
 
 				if (dGV_itemsFuente.Rows.Count > 0 || f.DialogResult == DialogResult.OK)
 				{
-					iDias = iDias.Remove(iDias.Length - 1);
+					iDias = "";
+					if (ckb_luenes.Checked)
+						iDias += "lunes-";
+					if (ckb_martes.Checked)
+						iDias += "martes-";
+					if (ckb_miercoles.Checked)
+						iDias += "miercoles-";
+					if (ckb_jueves.Checked)
+						iDias += "jueves-";
+					if (ckb_viernes.Checked)
+						iDias += "viernes-";
+					if (ckb_sabado.Checked)
+						iDias += "sabado-";
+					if (ckb_domingo.Checked)
+						iDias += "domingo-";
+					iDias = iDias.Remove(iDias.Length-1);
+
 					if (iBanner != null)
 					{
-						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					}
 					else
 					{
-						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios, iDias);
+						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					}
 					Close();
@@ -158,7 +177,7 @@ namespace UI
 				if (iBanner == null)
 				{
 					dGV_horarios.Rows.Clear();
-					iHorarios.Clear(); 
+					iHorarios.Clear();
 				}
 				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
 				if (iBanner != null)
@@ -169,7 +188,7 @@ namespace UI
 				if (iBanner != null)
 				{
 					fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
-					fechaHasta.Value = iBanner.RangoFecha.FechaFin; 
+					fechaHasta.Value = iBanner.RangoFecha.FechaFin;
 				}
 				new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
@@ -200,12 +219,11 @@ namespace UI
 
 				iHorarios.Add(new RangoHorario(desde, hasta));
 				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
-				dGV_horarios.Rows.Add(desde, hasta);
-
+				dGV_horarios.Rows.Add(desde.ToString("hh\\:mm"), hasta.ToString("hh\\:mm"));
 			}
-			catch(ApplicationException E)
+			catch (ApplicationException E)
 			{
-				iHorarios.RemoveAt(iHorarios.Count-1);
+				iHorarios.RemoveAt(iHorarios.Count - 1);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)

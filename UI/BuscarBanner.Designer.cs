@@ -51,15 +51,15 @@
 			this.rangoHorarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.dataGridBanner = new System.Windows.Forms.DataGridView();
+			this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.colRangoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lbl_Dias = new System.Windows.Forms.Label();
 			this.lbl_Min = new System.Windows.Forms.Label();
 			this.lbl_X = new System.Windows.Forms.Label();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.btn_Cancelar = new System.Windows.Forms.Button();
-			this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.colRangoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gbx_ParamBusqueda.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Filtrar)).BeginInit();
 			this.panelResult.SuspendLayout();
@@ -300,6 +300,35 @@
 			this.dataGridBanner.TabIndex = 0;
 			this.dataGridBanner.SelectionChanged += new System.EventHandler(this.dataGridBanner_SelectionChanged);
 			// 
+			// colId
+			// 
+			this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colId.FillWeight = 40F;
+			this.colId.HeaderText = "Id";
+			this.colId.Name = "colId";
+			this.colId.ReadOnly = true;
+			// 
+			// colNombre
+			// 
+			this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colNombre.HeaderText = "Nombre";
+			this.colNombre.Name = "colNombre";
+			this.colNombre.ReadOnly = true;
+			// 
+			// colDescripcion
+			// 
+			this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colDescripcion.HeaderText = "Descripción";
+			this.colDescripcion.Name = "colDescripcion";
+			this.colDescripcion.ReadOnly = true;
+			// 
+			// colRangoFecha
+			// 
+			this.colRangoFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.colRangoFecha.HeaderText = "Rango Fecha";
+			this.colRangoFecha.Name = "colRangoFecha";
+			this.colRangoFecha.ReadOnly = true;
+			// 
 			// lbl_Dias
 			// 
 			this.lbl_Dias.BackColor = System.Drawing.Color.Transparent;
@@ -309,7 +338,7 @@
 			this.lbl_Dias.Name = "lbl_Dias";
 			this.lbl_Dias.Size = new System.Drawing.Size(213, 67);
 			this.lbl_Dias.TabIndex = 31;
-			this.lbl_Dias.Text = "Dias";
+			this.lbl_Dias.Text = "DIAS";
 			this.lbl_Dias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lbl_Min
@@ -359,35 +388,6 @@
 			this.btn_Cancelar.Text = "Cancelar";
 			this.btn_Cancelar.UseVisualStyleBackColor = true;
 			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
-			// 
-			// colId
-			// 
-			this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.colId.FillWeight = 40F;
-			this.colId.HeaderText = "Id";
-			this.colId.Name = "colId";
-			this.colId.ReadOnly = true;
-			// 
-			// colNombre
-			// 
-			this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.colNombre.HeaderText = "Nombre";
-			this.colNombre.Name = "colNombre";
-			this.colNombre.ReadOnly = true;
-			// 
-			// colDescripcion
-			// 
-			this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.colDescripcion.HeaderText = "Descripción";
-			this.colDescripcion.Name = "colDescripcion";
-			this.colDescripcion.ReadOnly = true;
-			// 
-			// colRangoFecha
-			// 
-			this.colRangoFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.colRangoFecha.HeaderText = "Rango Fecha";
-			this.colRangoFecha.Name = "colRangoFecha";
-			this.colRangoFecha.ReadOnly = true;
 			// 
 			// BuscarBanner
 			// 

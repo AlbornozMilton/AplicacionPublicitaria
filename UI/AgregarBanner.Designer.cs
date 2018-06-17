@@ -405,17 +405,20 @@
 			// 
 			this.dGV_horarios.AllowUserToAddRows = false;
 			this.dGV_horarios.AllowUserToDeleteRows = false;
+			this.dGV_horarios.AllowUserToOrderColumns = true;
 			this.dGV_horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_horarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmHoraDesde,
             this.clmHoraHasta});
 			this.dGV_horarios.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.dGV_horarios.Location = new System.Drawing.Point(3, 91);
+			this.dGV_horarios.MultiSelect = false;
 			this.dGV_horarios.Name = "dGV_horarios";
 			this.dGV_horarios.ReadOnly = true;
 			this.dGV_horarios.RowHeadersVisible = false;
 			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
 			this.dGV_horarios.RowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dGV_horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_horarios.Size = new System.Drawing.Size(421, 122);
 			this.dGV_horarios.TabIndex = 21;
 			// 
