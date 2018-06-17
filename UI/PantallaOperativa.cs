@@ -17,7 +17,7 @@ namespace UI
         private Campania iCampaniaActual;
         private Campania iCampaniaSiguiente;
 
-		private int posx;
+		private int posx, item = 0;
 
 		public PantallaOperativa()
         {
@@ -87,41 +87,50 @@ namespace UI
 		{
 			iCampaniasHoy = iControladorCampania.ObtenerCampaniasParaElDia(DateTime.Today.Date);
 			iControladorBanner.GenerarBannerFecha(DateTime.Now);
+			iControladorBanner.GenerarBannerFecha(DateTime.Now);
+			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute,0));
 
 			//////---------------De prueba----------------
-			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width+1,TextoBanner.Location.Y);
-			posx = TextoBanner.Location.X;
-			//TextoBanner.Text = iControladorBanner.TextoDeFuenteActual();
-
-			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read("http://feeds.bbci.co.uk/mundo/rss.xml").ToList();
-
-			foreach (var itemReader in items)
-			{
-				TextoBanner.Text += itemReader.Texto + "//";
-			}
-			TextoBanner.Text = items[0].Fecha + " (" + (items[0].Url) + ") " + items[0].Titulo + ": " + items[0].Texto;
-
+			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
 			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
-			//posx = TextoBanner.Location.Y;
-			//////---------------De prueba----------------
+			posx = TextoBanner.Location.X;
+			TextoBanner.BackColor = Color.Blue;
+			TextoBanner.ForeColor = Color.White;
 
-			//configurarTimersbanner(tiempo en pantalla, tiempo velocidad de texto)
 			this.ConfigurarTimers();
-            this.ObtenerPrimerCampania();
+
+			this.ObtenerPrimerCampania();
         }
+
+		private void timer_Banner_Tick(object sender, EventArgs e)
+		{
+			iControladorBanner.GetBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0));
+
+			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
+			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+			posx = TextoBanner.Location.X;
+		}
 
 		private void timer_TextoDeslizable_Tick(object sender, EventArgs e)
 		{
-			//TODO: posx configurable segun cantidad de texto y tiempo
-			posx -= 3;
+			//if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			if ((TextoBanner.Location.X + TextoBanner.Width) <= panel_Banner.Location.X)
 			{
+				item++;
+				TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(item);
+				posx = TextoBanner.Location.X;
+				TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
+				TextoBanner.BackColor = Color.Blue;
+				TextoBanner.ForeColor = Color.White;
+
 				TextoBanner.Location = new Point(
 				panel_Banner.Location.X + panel_Banner.Width,
 				TextoBanner.Location.Y);
 				posx = TextoBanner.Location.X;
 			}
+
+			posx--;
+
 			TextoBanner.Location = new Point(posx, TextoBanner.Location.Y);
 		}
 	}

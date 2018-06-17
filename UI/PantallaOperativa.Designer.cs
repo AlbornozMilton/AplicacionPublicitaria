@@ -91,18 +91,22 @@
 			// 
 			// TextoBanner
 			// 
-			this.TextoBanner.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.TextoBanner.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.TextoBanner.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.TextoBanner.Location = new System.Drawing.Point(188, 2);
+			this.TextoBanner.Location = new System.Drawing.Point(753, 0);
 			this.TextoBanner.Margin = new System.Windows.Forms.Padding(0);
 			this.TextoBanner.Name = "TextoBanner";
-			this.TextoBanner.Size = new System.Drawing.Size(130, 27);
+			this.TextoBanner.Size = new System.Drawing.Size(10, 35);
 			this.TextoBanner.TabIndex = 0;
-			this.TextoBanner.Text = "label1";
+			this.TextoBanner.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// timer_TextoDeslizable
 			// 
 			this.timer_TextoDeslizable.Tick += new System.EventHandler(this.timer_TextoDeslizable_Tick);
+			// 
+			// timer_Banner
+			// 
+			this.timer_Banner.Tick += new System.EventHandler(this.timer_Banner_Tick);
 			// 
 			// PantallaOperativa
 			// 

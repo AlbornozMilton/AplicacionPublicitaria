@@ -39,15 +39,15 @@ namespace Dominio
 						break;
 					}
 					else if (horario.HoraInicio <= auxHInicio)
-						auxHInicio = horario.HoraInicio; //limite de banner default
+						auxHInicio = horario.HoraInicio; //limite para banner default
 
-					auxHFin = horario.HoraFin; //para cuado ya se pasaron todos los horarios
+					auxHFin = horario.HoraFin; //cuado ya pasaron todos los horarios
 				}
 			}
 
-			if (bannerActual == null)
+			if (bannerActual == null && auxHInicio != new TimeSpan(23, 59, 0)) //faltan horarios pero ahora es default 
 				bannerActual = BannerDefault(pHora, auxHInicio);
-			else if (auxHInicio == new TimeSpan(23, 59, 0))
+			else //pasaron todos los horaris
 				bannerActual = BannerDefault(auxHFin, new TimeSpan(23, 59, 59));
 
 			this.BannerActual = bannerActual;
@@ -60,9 +60,14 @@ namespace Dominio
 			return new Banner("Publicidad por defecto", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
 		}
 
-		public string TextoDeFuenteActual()
+		public string TextoDeFuenteActual(int pItem)
 		{
-			return "Texto de prueba, mañana se denelas llenaasdasda asd asd asd asdasd ssdasda sd asda sd asd asd asd asd asd asd s papaaa....12313";
+			if (pItem + 1 > BannerActual.Fuente.Items.Count)
+				pItem = 0;
+
+			var item = BannerActual.Fuente.Items[pItem];
+
+			return ("[" + item.Fecha + "] " + BannerActual.Fuente.Descripcion + ": " + item.Titulo + " - " + item.Texto);
 		}
 
 		public void AgregarBanner(string pNombre, int pIdFuente, DateTime pRFDesde, DateTime pRFHasta, List<RangoHorario> pRHorarios, string pDias)
