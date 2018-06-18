@@ -30,7 +30,7 @@ namespace Dominio
 		public Banner GetBanner(TimeSpan pHora)
 		{
 			Banner bannerResult = null;
-			TimeSpan auxHInicio = new TimeSpan(23, 59, 0), auxHFin = new TimeSpan(23, 59, 59), horaCero = new TimeSpan(0, 0, 0);
+			TimeSpan auxHInicio = new TimeSpan(23, 59, 59), auxHFin = new TimeSpan(0, 0, 0);
 
 			foreach (var banner in BannersDelDia)
 			{
@@ -42,7 +42,7 @@ namespace Dominio
 						break;
 					}
 
-					if (horario.HoraFin < auxHFin && horario.HoraFin < pHora)
+					if (horario.HoraFin > auxHFin && horario.HoraFin < pHora)
 						auxHFin = horario.HoraFin;
 
 					if (horario.HoraInicio < auxHInicio && horario.HoraInicio > pHora)
@@ -52,7 +52,13 @@ namespace Dominio
 
 			if (bannerResult == null)
 			{
-				bannerResult = BannerDefault(auxHFin, auxHInicio);
+				if (auxHFin == new TimeSpan(0, 0, 0))
+					bannerResult = BannerDefault(auxHFin, pHora);
+				else
+				if (auxHInicio == new TimeSpan(23, 59, 59))
+					bannerResult = BannerDefault(pHora, auxHInicio);
+				else
+					bannerResult = BannerDefault(auxHFin, auxHInicio);
 			}
 
 			return bannerResult;

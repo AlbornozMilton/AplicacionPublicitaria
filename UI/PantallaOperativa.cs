@@ -80,7 +80,6 @@ namespace UI
 			//////---------------Banners----------------
 			iControladorBanner.GenerarBannerFecha(DateTime.Now);
 			iControladorBanner.ActBannerActual(new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0));
-			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(ref item);
 			GenerarTextoBanner(TextoBanner);
 			timer_Banner.Interval = iControladorBanner.IntervaloBanner();
 			timer_TextoDeslizable.Interval = 2;
@@ -108,9 +107,6 @@ namespace UI
 			{
 				item++;
 				GenerarTextoBanner(TextoBanner);
-				//TextoBanner.Location = new Point(
-				//panel_Banner.Location.X + panel_Banner.Width,
-				//TextoBanner.Location.Y);
 			}
 
 			posx -= 4;
@@ -119,6 +115,7 @@ namespace UI
 
 		private void GenerarTextoBanner(Label textoBanner)
 		{
+			TextoBanner.Text = iControladorBanner.TextoDeFuenteActual(ref item);
 			TextoBanner.Width = TextoBanner.Text.Length * Convert.ToInt32(TextoBanner.Font.Size);
 			TextoBanner.Location = new Point(panel_Banner.Location.X + panel_Banner.Width, TextoBanner.Location.Y);
 			posx = TextoBanner.Location.X;
