@@ -198,5 +198,11 @@ namespace UI
                 new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
             }
         }
+
+        private void dGV_Imagenes_SelectionChanged(object sender, EventArgs e)
+        {
+            string ruta = dgv_Imagenes.CurrentRow.Cells[1].Value.ToString();
+            pB_VistaPrevia.Image = Image.FromFile(ruta);
+        }
     }
 }
