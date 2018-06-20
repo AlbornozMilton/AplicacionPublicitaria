@@ -153,9 +153,11 @@ namespace UI
 			if ((IItem)iItemBindingSource.Current != null)
 			{
 				ItemsFuentes f = new ItemsFuentes((IItem)iItemBindingSource.Current, _Fuente.FuenteId);
+				iItemBindingSource.SuspendBinding();
 				f.ShowDialog();
 				if (f.DialogResult == DialogResult.OK)
 					CargarItems();
+				iItemBindingSource.ResumeBinding();
 			}
 		}
 
