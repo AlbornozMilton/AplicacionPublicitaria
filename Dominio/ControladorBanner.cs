@@ -83,7 +83,7 @@ namespace Dominio
 			{
 				BannerActual = GetBanner(pHora);
 
-				string tipoFuente = new ControladorFuentes().GetTipoFuente(BannerActual.Fuente.FuenteId);
+				IFuente _Fuente = new ControladorFuentes().GetTipoFuente(BannerActual.Fuente.FuenteId);
 
 				if (tipoFuente == "FuenteRSS")
 				{

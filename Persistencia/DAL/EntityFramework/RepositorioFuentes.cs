@@ -134,16 +134,20 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ActualizarItemsRss(List<Item> pItems, int pFuenteId)
 		{
-			var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
+			//var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
+			var ultIFechaItem = iDbContext.Items.Last().Fecha;
 
-			if (itemsDB.Count > 0)
-				iDbContext.Items.RemoveRange(itemsDB);
+			//if (itemsDB.Count > 0)
+			//	iDbContext.Items.RemoveRange(itemsDB);
 
 			foreach (var itemExt in pItems)
 			{
-				iDbContext.Items.Attach(itemExt);
-				itemExt.FuenteId = pFuenteId;
-				iDbContext.Entry(itemExt).State = EntityState.Added;
+				if (itemExt.Fecha > ultIFechaItem)
+				{
+					iDbContext.Items.Attach(itemExt);
+					itemExt.FuenteId = pFuenteId;
+					iDbContext.Entry(itemExt).State = EntityState.Added; 
+				}
 			}
 
 			iDbContext.SaveChanges();
