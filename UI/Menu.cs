@@ -6,7 +6,7 @@ namespace UI
 {
     public partial class Menu : Form
     {
-		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\AplicacionPublicitaria.txt
+		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\CarteleriaDigital.log
 		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		public Menu()

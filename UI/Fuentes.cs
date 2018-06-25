@@ -123,15 +123,20 @@ namespace UI
 					if (_Fuente.Descripcion == "FuenteDefault")
 						throw new Exception("La Fuente seleccionada no puede ser eliminada");
 
-					new ControladorFuentes().ABMFuente(
-						ControladorFuentes.Operacion.Eliminar,
-						tbxTipoFuente.Text,
-						_Fuente.FuenteId,
-						_Fuente.Descripcion,
-					    "");
-					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-
-					CargarFuentes(-1);
+					VentanaEmergente ve = new VentanaEmergente("¿Desea eliminar la Fuente seleccionada?", VentanaEmergente.TipoMensaje.SiNo);
+					ve.ShowDialog();
+					if (ve.DialogResult == DialogResult.OK)
+					{
+						new ControladorFuentes().ABMFuente(
+							ControladorFuentes.Operacion.Eliminar,
+							tbxTipoFuente.Text,
+							_Fuente.FuenteId,
+							_Fuente.Descripcion,
+							"");
+						new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						CargarFuentes(-1);
+					}
+					ve.Dispose();
 				}
 				catch (Exception E)
 				{
@@ -145,7 +150,7 @@ namespace UI
 			ItemsFuentes f = new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId);
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
-				CargarItems(); 
+				CargarItems();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
@@ -168,12 +173,18 @@ namespace UI
 			{
 				if (iItemBindingSource.Current != null)
 				{
-					new ControladorFuentes().ABMItems(
-								ControladorFuentes.Operacion.Eliminar,
-								_Fuente.FuenteId,
-								(IItem)iItemBindingSource.Current);
-					new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					CargarItems();
+					VentanaEmergente ve = new VentanaEmergente("¿Desea eliminar el Item seleccionado?", VentanaEmergente.TipoMensaje.SiNo);
+					ve.ShowDialog();
+					if (ve.DialogResult == DialogResult.OK)
+					{
+						new ControladorFuentes().ABMItems(
+									ControladorFuentes.Operacion.Eliminar,
+									_Fuente.FuenteId,
+									(IItem)iItemBindingSource.Current);
+						new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						CargarItems();
+					}
+					ve.Dispose();
 				}
 			}
 			catch (Exception E)
