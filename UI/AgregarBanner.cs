@@ -9,6 +9,7 @@ namespace UI
 {
 	public partial class AgregarBanner : Form
 	{
+		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		List<RangoHorario> iHorarios = new List<RangoHorario>();
 		ControladorExtra iControlExtra = new ControladorExtra();
 		List<IFuente> iFuentes = new List<IFuente>();
@@ -17,11 +18,13 @@ namespace UI
 
 		public AgregarBanner()
 		{
+			Looger.Debug("Nuevo banner");
 			InitializeComponent();
 		}
 
 		public AgregarBanner(Banner pBanner)
 		{
+			Looger.Debug("Modificando banner");
 			InitializeComponent();
 			iBanner = pBanner;
 		}

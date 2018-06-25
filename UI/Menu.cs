@@ -6,8 +6,12 @@ namespace UI
 {
     public partial class Menu : Form
     {
-        public Menu()
+		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\AplicacionPublicitaria.txt
+		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+		public Menu()
         {
+			Looger.Debug("Inicio de la App");
             InitializeComponent();
         }
 
@@ -23,16 +27,18 @@ namespace UI
 
         private void btn_AgregarCampania_Click(object sender, EventArgs e)
         {
+			Looger.Debug("Agregar Campaña");
             new AgregarCampaña().ShowDialog();
-        }
+		}
 
-        private void btn_Reproducir_Click(object sender, EventArgs e)
+		private void btn_Reproducir_Click(object sender, EventArgs e)
         {
             new PantallaOperativa().ShowDialog();
-        }
+		}
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
+			Looger.Debug("Agregar Banner");
 			new AgregarBanner().ShowDialog();
 		}
 
