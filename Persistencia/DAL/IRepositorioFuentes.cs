@@ -8,7 +8,6 @@ namespace Persistencia.DAL
 	{
 		List<FuenteRSS> FuentesRSS();
 		List<TextoFijo> FuentesTextoFijo();
-		string ObtenerTipoFuente(int IdFuente);
 		TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre);
 		FuenteRSS ObtenerFuenteRss(int? IdFuente, string pNombre);
 		void AgregarFuente(FuenteRSS pFuente);
@@ -20,5 +19,6 @@ namespace Persistencia.DAL
 		void EliminarItem(int pItemId);
 		List<Item> ObtenerItemsDeFuente(int pFuente, DateTime? pDesde, DateTime? pHasta);
 		void ActualizarItemsRss(List<Item> pItems, int pFuenteId);
+		string RssUrl(int IdFuente);
 	}
 }

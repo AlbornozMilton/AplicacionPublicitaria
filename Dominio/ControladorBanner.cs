@@ -82,19 +82,8 @@ namespace Dominio
 			try
 			{
 				BannerActual = GetBanner(pHora);
-
-				IFuente _Fuente = new ControladorFuentes().GetTipoFuente(BannerActual.Fuente.FuenteId);
-
-				if (tipoFuente == "FuenteRSS")
-				{
-					//BannerActual.Fuente =
-
-						RequestRss();
-				}
-				else
-
-
-					CorrerHilo();
+				RequestRss();
+				CorrerHilo();
 			}
 			catch (InvalidCastException)
 			{
@@ -142,28 +131,31 @@ namespace Dominio
 
 		private void RequestRss()
 		{
-			FuenteRSS _Fuente = (FuenteRSS)BannerActual.Fuente;
+			string url = new ControladorFuentes().RssUrl(BannerActual.Fuente.FuenteId);
 
-			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read(_Fuente.URL).ToList();
-			if (items.Count > 0) //hubo respuesta
+			if (url != "")
 			{
-				_Fuente.Items.Clear();
-				foreach (var item in items)
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(url).ToList();
+				if (items.Count > 0) //hubo respuesta
 				{
-					_Fuente.Items.Add(new RssItem
+					BannerActual.Fuente.Items.Clear();
+					foreach (var item in items)
 					{
-						Fecha = item.Fecha,
-						Titulo = item.Titulo,
-						Texto = item.Texto,
-						Url = item.Url
-					});
-				}
+						BannerActual.Fuente.Items.Add(new RssItem
+						{
+							Fecha = item.Fecha,
+							Titulo = item.Titulo,
+							Texto = item.Texto,
+							Url = item.Url
+						});
+					}
 
-				new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
+				}
+				else if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
+					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items; 
 			}
-			else if (_Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
-				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)

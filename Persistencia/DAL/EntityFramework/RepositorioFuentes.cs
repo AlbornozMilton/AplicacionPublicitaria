@@ -23,19 +23,12 @@ namespace Persistencia.DAL.EntityFramework
 			return iDbContext.TextoFijo.ToList();
 		}
 
-		public string ObtenerTipoFuente(int FuenteId)
+		public string RssUrl(int FuenteId)
 		{
-			string result = "";
-
 			var fuenteRss = iDbContext.FuenteRSS.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
 			if (fuenteRss != null)
-				return fuenteRss.GetType().ToString();
-
-			var fuenteTxt = iDbContext.TextoFijo.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
-			if (fuenteTxt != null)
-				return fuenteTxt.GetType().ToString();
-
-			return result;
+				return fuenteRss.URL;
+			return "";
 		}
 
 		public TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre)
