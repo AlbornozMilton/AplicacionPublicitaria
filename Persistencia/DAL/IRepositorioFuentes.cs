@@ -8,6 +8,7 @@ namespace Persistencia.DAL
 	{
 		List<FuenteRSS> FuentesRSS();
 		List<TextoFijo> FuentesTextoFijo();
+		string ObtenerTipoFuente(int IdFuente);
 		TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre);
 		FuenteRSS ObtenerFuenteRss(int? IdFuente, string pNombre);
 		void AgregarFuente(FuenteRSS pFuente);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Persistencia.DAL.EntityFramework;
 using AutoMapper;
 using System.Threading;
+using Dominio.RSS;
+using System.Linq;
 
 namespace Dominio
 {
@@ -22,7 +24,18 @@ namespace Dominio
 			List<Banner> result = new List<Banner>();
 			foreach (var item in iUOfW.RepositorioBanner.BannersEnFecha(pDia.Date))
 			{
-				result.Add(Mapper.Map<Persistencia.Dominio.Banner, Banner>(item));
+				var bannerMapped = Mapper.Map<Persistencia.Dominio.Banner, Banner>(item);
+				switch (item.Fuente.GetType().ToString())
+				{
+					case ("Persistencia.Dominio.FuenteRSS"):
+						Mapper.Map<Persistencia.Dominio.FuenteRSS, FuenteRSS>((Persistencia.Dominio.FuenteRSS)bannerMapped.Fuente);
+						break;
+					case ("Persistencia.Dominio.TextoFijo"):
+						Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>((Persistencia.Dominio.TextoFijo)bannerMapped.Fuente);
+						break;
+				}
+				result.Add(bannerMapped);
+
 			}
 			this.BannersDelDia = result;
 		}
@@ -66,9 +79,34 @@ namespace Dominio
 
 		public void ActBannerActual(TimeSpan pHora)
 		{
-			BannerActual = GetBanner(pHora);
+			try
+			{
+				BannerActual = GetBanner(pHora);
 
+				string tipoFuente = new ControladorFuentes().GetTipoFuente(BannerActual.Fuente.FuenteId);
+
+				if (tipoFuente == "FuenteRSS")
+				{
+					//BannerActual.Fuente =
+
+						RequestRss();
+				}
+				else
+
+
+					CorrerHilo();
+			}
+			catch (InvalidCastException)
+			{
+				CorrerHilo();
+				throw;
+			}
+		}
+
+		private void CorrerHilo()
+		{
 			hiloBanner = new Thread(() => ActBannerProximo());
+			hiloBanner.Priority = ThreadPriority.Highest;
 			hiloBanner.Start();
 		}
 
@@ -86,9 +124,46 @@ namespace Dominio
 
 		public void IntercambiarBanners()
 		{
-			BannerActual = BannerProximo;
-			hiloBanner = new Thread(() => ActBannerProximo());
-			hiloBanner.Start();
+			try
+			{
+				BannerActual = BannerProximo;
+
+				if (BannerActual.Fuente.GetType().ToString() == "FuenteRSS")
+					RequestRss();
+
+				CorrerHilo();
+			}
+			catch (InvalidCastException)
+			{
+				CorrerHilo();
+				throw;
+			}
+		}
+
+		private void RequestRss()
+		{
+			FuenteRSS _Fuente = (FuenteRSS)BannerActual.Fuente;
+
+			IRssReader mRssReader = new RawXmlRssReader();
+			var items = mRssReader.Read(_Fuente.URL).ToList();
+			if (items.Count > 0) //hubo respuesta
+			{
+				_Fuente.Items.Clear();
+				foreach (var item in items)
+				{
+					_Fuente.Items.Add(new RssItem
+					{
+						Fecha = item.Fecha,
+						Titulo = item.Titulo,
+						Texto = item.Texto,
+						Url = item.Url
+					});
+				}
+
+				new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+			}
+			else if (_Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
+				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)

@@ -327,7 +327,7 @@ namespace UI
 			else
 			{
 				IRssReader mRssReader = new RawXmlRssReader();
-				var items = mRssReader.Read(_Fuente.Descripcion).ToList();
+				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
 					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();

@@ -88,7 +88,7 @@ namespace UI
 				{
 					fechaDesde.Enabled = true;
 					fechaHasta.Enabled = true;
-					new VentanaEmergente("No se obtuvieron items en la solicitud reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).Show();
 					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 				}
 			}

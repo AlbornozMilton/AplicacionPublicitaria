@@ -18,6 +18,8 @@ namespace Dominio.AutoMapper
 
 				cfg.CreateMap<IFuente, pers.FuenteRSS>().ReverseMap();
 				cfg.CreateMap<IFuente, pers.TextoFijo>().ReverseMap();
+				cfg.CreateMap<Fuente, pers.FuenteRSS>().ReverseMap();
+				cfg.CreateMap<Fuente, pers.TextoFijo>().ReverseMap();
 				cfg.CreateMap<TextoFijo, pers.TextoFijo>().ReverseMap();
 				cfg.CreateMap<FuenteRSS, pers.FuenteRSS>().ReverseMap();
 

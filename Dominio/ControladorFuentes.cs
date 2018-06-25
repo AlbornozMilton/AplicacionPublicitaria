@@ -17,6 +17,11 @@ namespace Dominio
 			Eliminar
 		}
 
+		public string GetTipoFuente(int IdFuente)
+		{
+			return iUOfW.RepositorioFuentes.ObtenerTipoFuente(IdFuente);
+		}
+
 		public TextoFijo ObtenerFuenteTextoFijo(int? IdFuente, string pNombre)
 		{
 			return (Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(iUOfW.RepositorioFuentes.ObtenerFuenteTexto(IdFuente,pNombre)));

@@ -23,6 +23,21 @@ namespace Persistencia.DAL.EntityFramework
 			return iDbContext.TextoFijo.ToList();
 		}
 
+		public string ObtenerTipoFuente(int FuenteId)
+		{
+			string result = "";
+
+			var fuenteRss = iDbContext.FuenteRSS.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
+			if (fuenteRss != null)
+				return fuenteRss.GetType().ToString();
+
+			var fuenteTxt = iDbContext.TextoFijo.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
+			if (fuenteTxt != null)
+				return fuenteTxt.GetType().ToString();
+
+			return result;
+		}
+
 		public TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre)
 		{
 			return (
@@ -106,7 +121,7 @@ namespace Persistencia.DAL.EntityFramework
 					from i in iDbContext.Items
 					join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
 					where f.FuenteId == pFuente
-					&& ((i.Fecha >= pDesde && i.Fecha <= pHasta)||(pDesde == null && pHasta == null))
+					&& ((i.Fecha >= pDesde && i.Fecha <= pHasta) || (pDesde == null && pHasta == null))
 					select i).ToList();
 		}
 
