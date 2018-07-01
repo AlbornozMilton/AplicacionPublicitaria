@@ -57,7 +57,8 @@ namespace Dominio
 			if (bannerResult == null)
 			{
 				if (auxHFin == new TimeSpan(0, 0, 0))
-					bannerResult = BannerDefault(auxHFin, pHora);
+					//bannerResult = BannerDefault(auxHFin, auxHInicio);
+					bannerResult = BannerDefault(pHora, auxHInicio);
 				else
 				if (auxHInicio == new TimeSpan(23, 59, 59))
 					bannerResult = BannerDefault(pHora, auxHInicio);
@@ -151,7 +152,7 @@ namespace Dominio
 			{
 				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
-					intervalo = Convert.ToInt32((hora.HoraFin - hora.HoraInicio).TotalMilliseconds);
+					intervalo = Convert.ToInt32((hora.HoraFin - DateTime.Now.TimeOfDay).TotalMilliseconds);
 					break;
 				}
 			}

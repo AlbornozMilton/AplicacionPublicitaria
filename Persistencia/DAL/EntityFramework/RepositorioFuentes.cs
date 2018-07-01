@@ -127,13 +127,7 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ActualizarItemsRss(List<Item> pItems, int pFuenteId)
 		{
-			//var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
-			//var ultIFechaItem = iDbContext.Items.Last().Fecha;
 			var ultIFechaItem = iDbContext.Items.Max(i => i.Fecha);
-
-			//if (itemsDB.Count > 0)
-			//	iDbContext.Items.RemoveRange(itemsDB);
-
 			foreach (var itemExt in pItems)
 			{
 				if (itemExt.Fecha > ultIFechaItem)
