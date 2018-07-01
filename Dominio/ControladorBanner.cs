@@ -25,15 +25,6 @@ namespace Dominio
 			foreach (var item in iUOfW.RepositorioBanner.BannersEnFecha(pDia.Date))
 			{
 				var bannerMapped = Mapper.Map<Persistencia.Dominio.Banner, Banner>(item);
-				switch (item.Fuente.GetType().ToString())
-				{
-					case ("Persistencia.Dominio.FuenteRSS"):
-						Mapper.Map<Persistencia.Dominio.FuenteRSS, FuenteRSS>((Persistencia.Dominio.FuenteRSS)bannerMapped.Fuente);
-						break;
-					case ("Persistencia.Dominio.TextoFijo"):
-						Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>((Persistencia.Dominio.TextoFijo)bannerMapped.Fuente);
-						break;
-				}
 				result.Add(bannerMapped);
 
 			}
@@ -113,20 +104,9 @@ namespace Dominio
 
 		public void IntercambiarBanners()
 		{
-			try
-			{
-				BannerActual = BannerProximo;
-
-				if (BannerActual.Fuente.GetType().ToString() == "FuenteRSS")
-					RequestRss();
-
-				CorrerHilo();
-			}
-			catch (InvalidCastException)
-			{
-				CorrerHilo();
-				throw;
-			}
+			BannerActual = BannerProximo;
+			RequestRss();
+			CorrerHilo();
 		}
 
 		private void RequestRss()
@@ -154,14 +134,14 @@ namespace Dominio
 					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
 				}
 				else if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
-					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items; 
+					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 			}
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("Publicidad por defecto", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
+			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
 		}
 
 		public int IntervaloBanner()

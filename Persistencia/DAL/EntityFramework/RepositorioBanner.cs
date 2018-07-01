@@ -41,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
 					break;
 			}
 
-			var bannersReturn = iDbContext.Banner.Include("RangoFecha.Horarios").Where(
+			var bannersReturn = iDbContext.Banner.Include("Fuente").Include("RangoFecha.Horarios").Where(
 				b => (b.RangoFecha.FechaInicio <= pFecha && b.RangoFecha.FechaFin >= pFecha) && b.RangoFecha.Dias.Contains(diaString)).ToList();
 
 			return bannersReturn;
