@@ -95,7 +95,7 @@ namespace Dominio
 		{
 			foreach (var hora in BannerActual.RangoFecha.Horarios)
 			{
-				if (hora.HoraFin <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
+				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
 					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 1, 0)));
 					break;

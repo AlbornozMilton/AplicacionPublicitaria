@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Dominio;
+using System.Linq;
 
 namespace UI
 {
@@ -85,5 +86,15 @@ namespace UI
                 new EliminarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
             }
         }
-    }
+
+		private void HoverLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true)[0].Visible = true;
+		}
+
+		private void LeaveLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true).First().Visible = false;
+		}
+	}
 }
