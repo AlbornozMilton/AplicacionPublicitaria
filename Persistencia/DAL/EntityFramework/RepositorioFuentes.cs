@@ -15,12 +15,12 @@ namespace Persistencia.DAL.EntityFramework
 
 		public List<FuenteRSS> FuentesRSS()
 		{
-			return iDbContext.FuenteRSS.ToList();
+			return iDbContext.FuenteRSS.Include("Items").ToList();
 		}
 
 		public List<TextoFijo> FuentesTextoFijo()
 		{
-			return iDbContext.TextoFijo.ToList();
+			return iDbContext.TextoFijo.Include("Items").ToList();
 		}
 
 		public string RssUrl(int FuenteId)

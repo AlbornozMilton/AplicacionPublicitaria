@@ -333,14 +333,15 @@ namespace UI
 				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 				}
 				else
 				{
-					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).Show();
-					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+					iItemBindingSource.DataSource = _Fuente.Items;
 				}
 			}
 			iItemBindingSource.ResetBindings(false);

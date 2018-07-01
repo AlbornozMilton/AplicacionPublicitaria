@@ -66,7 +66,7 @@ namespace UI
 				btnEliminarItem.Visible = true;
 				fechaDesde.Enabled = true;
 				fechaHasta.Enabled = true;
-				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 			}
 			else
 			{
@@ -78,7 +78,7 @@ namespace UI
 				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					new VentanaEmergente("Solicitud exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 					fechaDesde.Enabled = false;
@@ -88,8 +88,9 @@ namespace UI
 				{
 					fechaDesde.Enabled = true;
 					fechaHasta.Enabled = true;
-					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).Show();
-					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					iItemBindingSource.DataSource = _Fuente.Items;
+					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 				}
 			}
 			iItemBindingSource.ResetBindings(false);
