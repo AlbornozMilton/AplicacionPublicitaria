@@ -15,27 +15,20 @@ namespace Persistencia.DAL.EntityFramework
 
 		public List<FuenteRSS> FuentesRSS()
 		{
-			return iDbContext.FuenteRSS.ToList();
+			return iDbContext.FuenteRSS.Include("Items").ToList();
 		}
 
 		public List<TextoFijo> FuentesTextoFijo()
 		{
-			return iDbContext.TextoFijo.ToList();
+			return iDbContext.TextoFijo.Include("Items").ToList();
 		}
 
-		public string ObtenerTipoFuente(int FuenteId)
+		public string RssUrl(int FuenteId)
 		{
-			string result = "";
-
 			var fuenteRss = iDbContext.FuenteRSS.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
 			if (fuenteRss != null)
-				return fuenteRss.GetType().ToString();
-
-			var fuenteTxt = iDbContext.TextoFijo.Where(f => f.FuenteId == FuenteId).SingleOrDefault();
-			if (fuenteTxt != null)
-				return fuenteTxt.GetType().ToString();
-
-			return result;
+				return fuenteRss.URL;
+			return "";
 		}
 
 		public TextoFijo ObtenerFuenteTexto(int? IdFuente, string pNombre)
@@ -134,16 +127,15 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ActualizarItemsRss(List<Item> pItems, int pFuenteId)
 		{
-			var itemsDB = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).OrderBy(i => i.Fecha).ToList();
-
-			if (itemsDB.Count > 0)
-				iDbContext.Items.RemoveRange(itemsDB);
-
+			var ultIFechaItem = iDbContext.Items.Max(i => i.Fecha);
 			foreach (var itemExt in pItems)
 			{
-				iDbContext.Items.Attach(itemExt);
-				itemExt.FuenteId = pFuenteId;
-				iDbContext.Entry(itemExt).State = EntityState.Added;
+				if (itemExt.Fecha > ultIFechaItem)
+				{
+					iDbContext.Items.Attach(itemExt);
+					itemExt.FuenteId = pFuenteId;
+					iDbContext.Entry(itemExt).State = EntityState.Added; 
+				}
 			}
 
 			iDbContext.SaveChanges();

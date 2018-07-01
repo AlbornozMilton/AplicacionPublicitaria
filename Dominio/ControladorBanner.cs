@@ -25,15 +25,6 @@ namespace Dominio
 			foreach (var item in iUOfW.RepositorioBanner.BannersEnFecha(pDia.Date))
 			{
 				var bannerMapped = Mapper.Map<Persistencia.Dominio.Banner, Banner>(item);
-				switch (item.Fuente.GetType().ToString())
-				{
-					case ("Persistencia.Dominio.FuenteRSS"):
-						Mapper.Map<Persistencia.Dominio.FuenteRSS, FuenteRSS>((Persistencia.Dominio.FuenteRSS)bannerMapped.Fuente);
-						break;
-					case ("Persistencia.Dominio.TextoFijo"):
-						Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>((Persistencia.Dominio.TextoFijo)bannerMapped.Fuente);
-						break;
-				}
 				result.Add(bannerMapped);
 
 			}
@@ -66,7 +57,8 @@ namespace Dominio
 			if (bannerResult == null)
 			{
 				if (auxHFin == new TimeSpan(0, 0, 0))
-					bannerResult = BannerDefault(auxHFin, pHora);
+					//bannerResult = BannerDefault(auxHFin, auxHInicio);
+					bannerResult = BannerDefault(pHora, auxHInicio);
 				else
 				if (auxHInicio == new TimeSpan(23, 59, 59))
 					bannerResult = BannerDefault(pHora, auxHInicio);
@@ -82,19 +74,8 @@ namespace Dominio
 			try
 			{
 				BannerActual = GetBanner(pHora);
-
-				string tipoFuente = new ControladorFuentes().GetTipoFuente(BannerActual.Fuente.FuenteId);
-
-				if (tipoFuente == "FuenteRSS")
-				{
-					//BannerActual.Fuente =
-
-						RequestRss();
-				}
-				else
-
-
-					CorrerHilo();
+				RequestRss();
+				CorrerHilo();
 			}
 			catch (InvalidCastException)
 			{
@@ -114,7 +95,7 @@ namespace Dominio
 		{
 			foreach (var hora in BannerActual.RangoFecha.Horarios)
 			{
-				if (hora.HoraFin <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
+				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
 					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 1, 0)));
 					break;
@@ -124,52 +105,44 @@ namespace Dominio
 
 		public void IntercambiarBanners()
 		{
-			try
-			{
-				BannerActual = BannerProximo;
-
-				if (BannerActual.Fuente.GetType().ToString() == "FuenteRSS")
-					RequestRss();
-
-				CorrerHilo();
-			}
-			catch (InvalidCastException)
-			{
-				CorrerHilo();
-				throw;
-			}
+			BannerActual = BannerProximo;
+			RequestRss();
+			CorrerHilo();
 		}
 
 		private void RequestRss()
 		{
-			FuenteRSS _Fuente = (FuenteRSS)BannerActual.Fuente;
+			string url = new ControladorFuentes().RssUrl(BannerActual.Fuente.FuenteId);
 
-			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read(_Fuente.URL).ToList();
-			if (items.Count > 0) //hubo respuesta
+			if (url != "")
 			{
-				_Fuente.Items.Clear();
-				foreach (var item in items)
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(url).ToList();
+				if (items.Count > 0) //hubo respuesta
 				{
-					_Fuente.Items.Add(new RssItem
+					BannerActual.Fuente.Items.Clear();
+					foreach (var item in items)
 					{
-						Fecha = item.Fecha,
-						Titulo = item.Titulo,
-						Texto = item.Texto,
-						Url = item.Url
-					});
-				}
+						BannerActual.Fuente.Items.Add(new RssItem
+						{
+							Fecha = item.Fecha,
+							Titulo = item.Titulo,
+							Texto = item.Texto,
+							Url = item.Url
+						});
+					}
 
-				new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
+				}
+				else if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
+					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 			}
-			else if (_Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
-				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("Publicidad por defecto", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
+			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
 		}
 
 		public int IntervaloBanner()
@@ -179,7 +152,7 @@ namespace Dominio
 			{
 				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
-					intervalo = Convert.ToInt32((hora.HoraFin - hora.HoraInicio).TotalMilliseconds);
+					intervalo = Convert.ToInt32((hora.HoraFin - DateTime.Now.TimeOfDay).TotalMilliseconds);
 					break;
 				}
 			}

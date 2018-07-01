@@ -52,6 +52,8 @@ namespace UI
 				default:
                     break;
             }
+
+			Focus();
         }
 
         public enum TipoMensaje

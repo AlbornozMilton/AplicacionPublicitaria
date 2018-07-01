@@ -30,26 +30,33 @@
         {
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.btn_EliminarCampania = new System.Windows.Forms.PictureBox();
-			this.btn_EditarCampania = new System.Windows.Forms.PictureBox();
-			this.btnAgregarBanner = new System.Windows.Forms.PictureBox();
+			this.btnEliminarCampania = new System.Windows.Forms.PictureBox();
+			this.btnEditarCampania = new System.Windows.Forms.PictureBox();
+			this.btnAgregarCampania = new System.Windows.Forms.PictureBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.btnFuentes = new System.Windows.Forms.PictureBox();
 			this.btnEliminarBanner = new System.Windows.Forms.PictureBox();
 			this.btnEditarBanner = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.btnNuevoBanner = new System.Windows.Forms.PictureBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btn_Reproducir = new System.Windows.Forms.PictureBox();
+			this.AgregarCampania = new System.Windows.Forms.Label();
+			this.EditarCampania = new System.Windows.Forms.Label();
+			this.NuevoBanner = new System.Windows.Forms.Label();
+			this.EditarBanner = new System.Windows.Forms.Label();
+			this.EliminarBanner = new System.Windows.Forms.Label();
+			this.Fuentes = new System.Windows.Forms.Label();
+			this.EliminarCampania = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.btn_EliminarCampania)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_EditarCampania)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnAgregarBanner)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEliminarCampania)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEditarCampania)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnAgregarCampania)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarBanner)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEditarBanner)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnNuevoBanner)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Reproducir)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -68,9 +75,12 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.btn_EliminarCampania);
-			this.groupBox1.Controls.Add(this.btn_EditarCampania);
-			this.groupBox1.Controls.Add(this.btnAgregarBanner);
+			this.groupBox1.Controls.Add(this.EliminarCampania);
+			this.groupBox1.Controls.Add(this.EditarCampania);
+			this.groupBox1.Controls.Add(this.AgregarCampania);
+			this.groupBox1.Controls.Add(this.btnEliminarCampania);
+			this.groupBox1.Controls.Add(this.btnEditarCampania);
+			this.groupBox1.Controls.Add(this.btnAgregarCampania);
 			this.groupBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox1.ForeColor = System.Drawing.Color.White;
 			this.groupBox1.Location = new System.Drawing.Point(20, 59);
@@ -80,44 +90,54 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Campañas";
 			// 
-			// btn_EliminarCampania
+			// btnEliminarCampania
 			// 
-			this.btn_EliminarCampania.Image = global::UI.Properties.Resources.btn_Borrar;
-			this.btn_EliminarCampania.Location = new System.Drawing.Point(236, 21);
-			this.btn_EliminarCampania.Name = "btn_EliminarCampania";
-			this.btn_EliminarCampania.Size = new System.Drawing.Size(50, 50);
-			this.btn_EliminarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.btn_EliminarCampania.TabIndex = 11;
-			this.btn_EliminarCampania.TabStop = false;
-			this.btn_EliminarCampania.Click += new System.EventHandler(this.btn_EliminarCampania_Click);
+			this.btnEliminarCampania.Image = global::UI.Properties.Resources.btn_Borrar;
+			this.btnEliminarCampania.Location = new System.Drawing.Point(331, 21);
+			this.btnEliminarCampania.Name = "btnEliminarCampania";
+			this.btnEliminarCampania.Size = new System.Drawing.Size(50, 50);
+			this.btnEliminarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.btnEliminarCampania.TabIndex = 11;
+			this.btnEliminarCampania.TabStop = false;
+			this.btnEliminarCampania.Click += new System.EventHandler(this.btn_EliminarCampania_Click);
+			this.btnEliminarCampania.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEliminarCampania.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
-			// btn_EditarCampania
+			// btnEditarCampania
 			// 
-			this.btn_EditarCampania.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btn_EditarCampania.Location = new System.Drawing.Point(134, 21);
-			this.btn_EditarCampania.Name = "btn_EditarCampania";
-			this.btn_EditarCampania.Size = new System.Drawing.Size(50, 50);
-			this.btn_EditarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.btn_EditarCampania.TabIndex = 10;
-			this.btn_EditarCampania.TabStop = false;
+			this.btnEditarCampania.Image = global::UI.Properties.Resources.btn_Editar;
+			this.btnEditarCampania.Location = new System.Drawing.Point(182, 21);
+			this.btnEditarCampania.Name = "btnEditarCampania";
+			this.btnEditarCampania.Size = new System.Drawing.Size(50, 50);
+			this.btnEditarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.btnEditarCampania.TabIndex = 10;
+			this.btnEditarCampania.TabStop = false;
+			this.btnEditarCampania.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEditarCampania.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
-			// btnAgregarBanner
+			// btnAgregarCampania
 			// 
-			this.btnAgregarBanner.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnAgregarBanner.Location = new System.Drawing.Point(33, 21);
-			this.btnAgregarBanner.Name = "btnAgregarBanner";
-			this.btnAgregarBanner.Size = new System.Drawing.Size(50, 50);
-			this.btnAgregarBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.btnAgregarBanner.TabIndex = 9;
-			this.btnAgregarBanner.TabStop = false;
-			this.btnAgregarBanner.Click += new System.EventHandler(this.btn_AgregarCampania_Click);
+			this.btnAgregarCampania.Image = global::UI.Properties.Resources.btn_Agregar;
+			this.btnAgregarCampania.Location = new System.Drawing.Point(33, 21);
+			this.btnAgregarCampania.Name = "btnAgregarCampania";
+			this.btnAgregarCampania.Size = new System.Drawing.Size(50, 50);
+			this.btnAgregarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.btnAgregarCampania.TabIndex = 9;
+			this.btnAgregarCampania.TabStop = false;
+			this.btnAgregarCampania.Click += new System.EventHandler(this.btn_AgregarCampania_Click);
+			this.btnAgregarCampania.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnAgregarCampania.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.Fuentes);
+			this.groupBox2.Controls.Add(this.EliminarBanner);
+			this.groupBox2.Controls.Add(this.EditarBanner);
+			this.groupBox2.Controls.Add(this.NuevoBanner);
 			this.groupBox2.Controls.Add(this.btnFuentes);
 			this.groupBox2.Controls.Add(this.btnEliminarBanner);
 			this.groupBox2.Controls.Add(this.btnEditarBanner);
-			this.groupBox2.Controls.Add(this.pictureBox1);
+			this.groupBox2.Controls.Add(this.btnNuevoBanner);
 			this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox2.ForeColor = System.Drawing.Color.White;
 			this.groupBox2.Location = new System.Drawing.Point(19, 160);
@@ -137,39 +157,48 @@
 			this.btnFuentes.TabIndex = 13;
 			this.btnFuentes.TabStop = false;
 			this.btnFuentes.Click += new System.EventHandler(this.btnFuentes_Click);
+			this.btnFuentes.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnFuentes.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// btnEliminarBanner
 			// 
 			this.btnEliminarBanner.Image = global::UI.Properties.Resources.btn_Borrar;
-			this.btnEliminarBanner.Location = new System.Drawing.Point(237, 21);
+			this.btnEliminarBanner.Location = new System.Drawing.Point(239, 21);
 			this.btnEliminarBanner.Name = "btnEliminarBanner";
 			this.btnEliminarBanner.Size = new System.Drawing.Size(50, 50);
 			this.btnEliminarBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.btnEliminarBanner.TabIndex = 12;
 			this.btnEliminarBanner.TabStop = false;
 			this.btnEliminarBanner.Click += new System.EventHandler(this.btnEliminarBanner_Click);
+			this.btnEliminarBanner.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEliminarBanner.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// btnEditarBanner
 			// 
 			this.btnEditarBanner.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnEditarBanner.Location = new System.Drawing.Point(135, 21);
+			this.btnEditarBanner.Location = new System.Drawing.Point(131, 21);
 			this.btnEditarBanner.Name = "btnEditarBanner";
 			this.btnEditarBanner.Size = new System.Drawing.Size(50, 50);
 			this.btnEditarBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.btnEditarBanner.TabIndex = 11;
 			this.btnEditarBanner.TabStop = false;
 			this.btnEditarBanner.Click += new System.EventHandler(this.btnEditarBanner_Click);
+			this.btnEditarBanner.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnEditarBanner.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
-			// pictureBox1
+			// btnNuevoBanner
 			// 
-			this.pictureBox1.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.pictureBox1.Location = new System.Drawing.Point(34, 21);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 10;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+			this.btnNuevoBanner.Image = global::UI.Properties.Resources.btn_Agregar;
+			this.btnNuevoBanner.Location = new System.Drawing.Point(34, 21);
+			this.btnNuevoBanner.Name = "btnNuevoBanner";
+			this.btnNuevoBanner.Size = new System.Drawing.Size(50, 50);
+			this.btnNuevoBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.btnNuevoBanner.TabIndex = 10;
+			this.btnNuevoBanner.TabStop = false;
+			this.btnNuevoBanner.Tag = "Nuevo Banner";
+			this.btnNuevoBanner.Click += new System.EventHandler(this.pictureBox1_Click);
+			this.btnNuevoBanner.MouseLeave += new System.EventHandler(this.LeaveLabel);
+			this.btnNuevoBanner.MouseHover += new System.EventHandler(this.HoverLabel);
 			// 
 			// label2
 			// 
@@ -200,13 +229,104 @@
 			// btn_Reproducir
 			// 
 			this.btn_Reproducir.Image = global::UI.Properties.Resources.btn_Reproducir;
-			this.btn_Reproducir.Location = new System.Drawing.Point(468, 137);
+			this.btn_Reproducir.Location = new System.Drawing.Point(454, 124);
 			this.btn_Reproducir.Name = "btn_Reproducir";
-			this.btn_Reproducir.Size = new System.Drawing.Size(50, 50);
-			this.btn_Reproducir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.btn_Reproducir.Size = new System.Drawing.Size(71, 68);
+			this.btn_Reproducir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.btn_Reproducir.TabIndex = 12;
 			this.btn_Reproducir.TabStop = false;
 			this.btn_Reproducir.Click += new System.EventHandler(this.btn_Reproducir_Click);
+			// 
+			// AgregarCampania
+			// 
+			this.AgregarCampania.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.AgregarCampania.AutoSize = true;
+			this.AgregarCampania.BackColor = System.Drawing.Color.Maroon;
+			this.AgregarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.AgregarCampania.Location = new System.Drawing.Point(30, 74);
+			this.AgregarCampania.Name = "AgregarCampania";
+			this.AgregarCampania.Size = new System.Drawing.Size(57, 14);
+			this.AgregarCampania.TabIndex = 43;
+			this.AgregarCampania.Text = "Agregar";
+			this.AgregarCampania.Visible = false;
+			// 
+			// EditarCampania
+			// 
+			this.EditarCampania.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditarCampania.AutoSize = true;
+			this.EditarCampania.BackColor = System.Drawing.Color.Maroon;
+			this.EditarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EditarCampania.Location = new System.Drawing.Point(186, 74);
+			this.EditarCampania.Name = "EditarCampania";
+			this.EditarCampania.Size = new System.Drawing.Size(44, 14);
+			this.EditarCampania.TabIndex = 44;
+			this.EditarCampania.Text = "Editar";
+			this.EditarCampania.Visible = false;
+			// 
+			// NuevoBanner
+			// 
+			this.NuevoBanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.NuevoBanner.AutoSize = true;
+			this.NuevoBanner.BackColor = System.Drawing.Color.Maroon;
+			this.NuevoBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.NuevoBanner.Location = new System.Drawing.Point(31, 74);
+			this.NuevoBanner.Name = "NuevoBanner";
+			this.NuevoBanner.Size = new System.Drawing.Size(57, 14);
+			this.NuevoBanner.TabIndex = 43;
+			this.NuevoBanner.Text = "Agregar";
+			this.NuevoBanner.Visible = false;
+			// 
+			// EditarBanner
+			// 
+			this.EditarBanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditarBanner.AutoSize = true;
+			this.EditarBanner.BackColor = System.Drawing.Color.Maroon;
+			this.EditarBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EditarBanner.Location = new System.Drawing.Point(137, 74);
+			this.EditarBanner.Name = "EditarBanner";
+			this.EditarBanner.Size = new System.Drawing.Size(44, 14);
+			this.EditarBanner.TabIndex = 44;
+			this.EditarBanner.Text = "Editar";
+			this.EditarBanner.Visible = false;
+			// 
+			// EliminarBanner
+			// 
+			this.EliminarBanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EliminarBanner.AutoSize = true;
+			this.EliminarBanner.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EliminarBanner.Location = new System.Drawing.Point(238, 74);
+			this.EliminarBanner.Name = "EliminarBanner";
+			this.EliminarBanner.Size = new System.Drawing.Size(56, 14);
+			this.EliminarBanner.TabIndex = 45;
+			this.EliminarBanner.Text = "Eliminar";
+			this.EliminarBanner.Visible = false;
+			// 
+			// Fuentes
+			// 
+			this.Fuentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.Fuentes.AutoSize = true;
+			this.Fuentes.BackColor = System.Drawing.Color.Maroon;
+			this.Fuentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.Fuentes.Location = new System.Drawing.Point(330, 73);
+			this.Fuentes.Name = "Fuentes";
+			this.Fuentes.Size = new System.Drawing.Size(58, 14);
+			this.Fuentes.TabIndex = 46;
+			this.Fuentes.Text = "Fuentes";
+			this.Fuentes.Visible = false;
+			// 
+			// EliminarCampania
+			// 
+			this.EliminarCampania.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.EliminarCampania.AutoSize = true;
+			this.EliminarCampania.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.EliminarCampania.Location = new System.Drawing.Point(328, 74);
+			this.EliminarCampania.Name = "EliminarCampania";
+			this.EliminarCampania.Size = new System.Drawing.Size(56, 14);
+			this.EliminarCampania.TabIndex = 47;
+			this.EliminarCampania.Text = "Eliminar";
+			this.EliminarCampania.Visible = false;
 			// 
 			// Menu
 			// 
@@ -229,15 +349,15 @@
 			this.Text = "Menu";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.btn_EliminarCampania)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btn_EditarCampania)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnAgregarBanner)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEliminarCampania)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnEditarCampania)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnAgregarCampania)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btnFuentes)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEliminarBanner)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btnEditarBanner)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnNuevoBanner)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Reproducir)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -251,13 +371,20 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox btn_EliminarCampania;
-        private System.Windows.Forms.PictureBox btn_EditarCampania;
-        private System.Windows.Forms.PictureBox btnAgregarBanner;
+        private System.Windows.Forms.PictureBox btnEliminarCampania;
+        private System.Windows.Forms.PictureBox btnEditarCampania;
+        private System.Windows.Forms.PictureBox btnAgregarCampania;
         private System.Windows.Forms.PictureBox btn_Reproducir;
 		private System.Windows.Forms.PictureBox btnEliminarBanner;
 		private System.Windows.Forms.PictureBox btnEditarBanner;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox btnNuevoBanner;
 		private System.Windows.Forms.PictureBox btnFuentes;
+		private System.Windows.Forms.Label EditarCampania;
+		private System.Windows.Forms.Label AgregarCampania;
+		private System.Windows.Forms.Label Fuentes;
+		private System.Windows.Forms.Label EliminarBanner;
+		private System.Windows.Forms.Label EditarBanner;
+		private System.Windows.Forms.Label NuevoBanner;
+		private System.Windows.Forms.Label EliminarCampania;
 	}
 }

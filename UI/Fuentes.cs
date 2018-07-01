@@ -66,7 +66,7 @@ namespace UI
 				btnEliminarItem.Visible = true;
 				fechaDesde.Enabled = true;
 				fechaHasta.Enabled = true;
-				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value, fechaHasta.Value);
+				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 			}
 			else
 			{
@@ -78,7 +78,7 @@ namespace UI
 				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud exitosa", VentanaEmergente.TipoMensaje.Exito).Show();
+					new VentanaEmergente("Solicitud exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 					fechaDesde.Enabled = false;
@@ -88,8 +88,9 @@ namespace UI
 				{
 					fechaDesde.Enabled = true;
 					fechaHasta.Enabled = true;
-					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).Show();
-					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					iItemBindingSource.DataSource = _Fuente.Items;
+					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 				}
 			}
 			iItemBindingSource.ResetBindings(false);
@@ -123,15 +124,20 @@ namespace UI
 					if (_Fuente.Descripcion == "FuenteDefault")
 						throw new Exception("La Fuente seleccionada no puede ser eliminada");
 
-					new ControladorFuentes().ABMFuente(
-						ControladorFuentes.Operacion.Eliminar,
-						tbxTipoFuente.Text,
-						_Fuente.FuenteId,
-						_Fuente.Descripcion,
-					    "");
-					new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-
-					CargarFuentes(-1);
+					VentanaEmergente ve = new VentanaEmergente("¿Desea eliminar la Fuente seleccionada?", VentanaEmergente.TipoMensaje.SiNo);
+					ve.ShowDialog();
+					if (ve.DialogResult == DialogResult.OK)
+					{
+						new ControladorFuentes().ABMFuente(
+							ControladorFuentes.Operacion.Eliminar,
+							tbxTipoFuente.Text,
+							_Fuente.FuenteId,
+							_Fuente.Descripcion,
+							"");
+						new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						CargarFuentes(-1);
+					}
+					ve.Dispose();
 				}
 				catch (Exception E)
 				{
@@ -145,7 +151,7 @@ namespace UI
 			ItemsFuentes f = new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId);
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
-				CargarItems(); 
+				CargarItems();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
@@ -168,12 +174,18 @@ namespace UI
 			{
 				if (iItemBindingSource.Current != null)
 				{
-					new ControladorFuentes().ABMItems(
-								ControladorFuentes.Operacion.Eliminar,
-								_Fuente.FuenteId,
-								(IItem)iItemBindingSource.Current);
-					new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					CargarItems();
+					VentanaEmergente ve = new VentanaEmergente("¿Desea eliminar el Item seleccionado?", VentanaEmergente.TipoMensaje.SiNo);
+					ve.ShowDialog();
+					if (ve.DialogResult == DialogResult.OK)
+					{
+						new ControladorFuentes().ABMItems(
+									ControladorFuentes.Operacion.Eliminar,
+									_Fuente.FuenteId,
+									(IItem)iItemBindingSource.Current);
+						new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						CargarItems();
+					}
+					ve.Dispose();
 				}
 			}
 			catch (Exception E)

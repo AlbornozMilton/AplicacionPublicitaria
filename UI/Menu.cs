@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using Dominio;
+using System.Linq;
 
 namespace UI
 {
     public partial class Menu : Form
     {
-		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\AplicacionPublicitaria.txt
+		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\CarteleriaDigital.log
 		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		public Menu()
@@ -85,5 +86,15 @@ namespace UI
                 new EliminarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
             }
         }
-    }
+
+		private void HoverLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true)[0].Visible = true;
+		}
+
+		private void LeaveLabel(object sender, EventArgs e)
+		{
+			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true).First().Visible = false;
+		}
+	}
 }

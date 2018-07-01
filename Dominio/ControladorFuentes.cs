@@ -17,9 +17,9 @@ namespace Dominio
 			Eliminar
 		}
 
-		public string GetTipoFuente(int IdFuente)
+		public string RssUrl(int FuenteId)
 		{
-			return iUOfW.RepositorioFuentes.ObtenerTipoFuente(IdFuente);
+			return iUOfW.RepositorioFuentes.RssUrl(FuenteId);
 		}
 
 		public TextoFijo ObtenerFuenteTextoFijo(int? IdFuente, string pNombre)
