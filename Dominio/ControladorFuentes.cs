@@ -24,7 +24,7 @@ namespace Dominio
 
 		public TextoFijo ObtenerFuenteTextoFijo(int? IdFuente, string pNombre)
 		{
-			return (Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(iUOfW.RepositorioFuentes.ObtenerFuenteTexto(IdFuente,pNombre)));
+			return (Mapper.Map<Persistencia.Dominio.TextoFijo, TextoFijo>(iUOfW.RepositorioFuentes.ObtenerFuenteTexto(IdFuente, pNombre)));
 		}
 
 		public FuenteRSS ObtenerFuenteRss(int? IdFuente, string pNombre)
@@ -38,16 +38,10 @@ namespace Dominio
 			{
 				case Operacion.Agregar:
 					{
-						if (pTipo == "FuenteRss")
-							iUOfW.RepositorioFuentes.AgregarFuente
-								(
-								 new Persistencia.Dominio.FuenteRSS { Descripcion = pDescripcion, URL = pUrl }
-								);
+						if (pTipo == "FuenteRSS")
+							iUOfW.RepositorioFuentes.AgregarFuente(new Persistencia.Dominio.FuenteRSS { Descripcion = pDescripcion, URL = pUrl });
 						else
-							iUOfW.RepositorioFuentes.AgregarFuente
-								(
-								 new Persistencia.Dominio.TextoFijo { Descripcion = pDescripcion }
-								);
+							iUOfW.RepositorioFuentes.AgregarFuente(new Persistencia.Dominio.TextoFijo { Descripcion = pDescripcion });
 					}
 					break;
 				case Operacion.Modificar:

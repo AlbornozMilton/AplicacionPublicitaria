@@ -134,12 +134,12 @@
 			this.lblUrl.BackColor = System.Drawing.Color.Transparent;
 			this.lblUrl.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblUrl.ForeColor = System.Drawing.Color.White;
-			this.lblUrl.Location = new System.Drawing.Point(106, 119);
+			this.lblUrl.Location = new System.Drawing.Point(98, 116);
 			this.lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblUrl.Name = "lblUrl";
-			this.lblUrl.Size = new System.Drawing.Size(29, 18);
+			this.lblUrl.Size = new System.Drawing.Size(37, 18);
 			this.lblUrl.TabIndex = 42;
-			this.lblUrl.Text = "Url";
+			this.lblUrl.Text = "URL";
 			this.lblUrl.Visible = false;
 			// 
 			// AddModFuente
@@ -149,8 +149,8 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(624, 189);
-			this.Controls.Add(this.txbUrl);
 			this.Controls.Add(this.lblUrl);
+			this.Controls.Add(this.txbUrl);
 			this.Controls.Add(this.cbxTipoFuente);
 			this.Controls.Add(this.btnCancelar);
 			this.Controls.Add(this.btnAceptar);

@@ -27,11 +27,12 @@ namespace UI
 				cbxTipoFuente.Items.Add(nombreF);
 				cbxTipoFuente.SelectedIndex = 0;
 				tbxDescripcion.Text = iFuente.Descripcion;
-				if (nombreF == "FuenteRss")
+				if (nombreF == "FuenteRSS")
 				{
+					lblUrl.Visible = true;
 					txbUrl.Text = ((FuenteRSS)iFuente).URL;
+					txbUrl.Visible = true;
 					//http://feeds.bbci.co.uk/mundo/rss.xml
-					//txbUrl.Visible = true;
 				}
 			}
 			else
@@ -43,8 +44,14 @@ namespace UI
 
 		private void btnAceptar_Click(object sender, EventArgs e)
 		{
-			if (tbxDescripcion.Text != "" && cbxTipoFuente.SelectedItem != null)
+			try
 			{
+				if (cbxTipoFuente.SelectedItem == null || tbxDescripcion.Text == "")
+					throw new Exception("Debe rellenar todos los campos");
+
+				if (txbUrl.Visible && txbUrl.Text == "")
+					throw new Exception("Debe rellenar todos los campos");
+
 				Cursor = Cursors.WaitCursor;
 				var controlador = new ControladorFuentes();
 				if (iFuente != null)
@@ -59,11 +66,14 @@ namespace UI
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
+
 				DialogResult = DialogResult.OK;
 				Close();
 			}
-			else
-				new VentanaEmergente("Debe rellenar todos los campos", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+			}
 		}
 
 		private void btnCancelar_Click(object sender, EventArgs e)
