@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbx_Nombre = new System.Windows.Forms.TextBox();
@@ -63,6 +63,10 @@
             this.clm_HoraDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_HoraHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_Abajo = new System.Windows.Forms.PictureBox();
+            this.btn_Subir = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pB_VistaPrevia = new System.Windows.Forms.PictureBox();
             this.numUD_IntTiempo = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -76,19 +80,19 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.pB_VistaPrevia = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_AgregarHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_BorrarHora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Horarios)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Abajo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Subir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pB_VistaPrevia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_IntTiempo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_AgregarImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_BorrarImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Imagenes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pB_VistaPrevia)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -303,7 +307,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(269, 110);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(277, 203);
+            this.groupBox2.Size = new System.Drawing.Size(246, 203);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Horarios de la campaña";
@@ -311,7 +315,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(223, 67);
+            this.label11.Location = new System.Drawing.Point(198, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 14);
             this.label11.TabIndex = 27;
@@ -321,7 +325,7 @@
             // btn_AgregarHora
             // 
             this.btn_AgregarHora.Image = global::UI.Properties.Resources.btn_Agregar;
-            this.btn_AgregarHora.Location = new System.Drawing.Point(184, 29);
+            this.btn_AgregarHora.Location = new System.Drawing.Point(159, 28);
             this.btn_AgregarHora.Name = "btn_AgregarHora";
             this.btn_AgregarHora.Size = new System.Drawing.Size(35, 35);
             this.btn_AgregarHora.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -347,7 +351,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(175, 67);
+            this.label10.Location = new System.Drawing.Point(150, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 14);
             this.label10.TabIndex = 26;
@@ -357,7 +361,7 @@
             // btn_BorrarHora
             // 
             this.btn_BorrarHora.Image = global::UI.Properties.Resources.btn_Cerrar;
-            this.btn_BorrarHora.Location = new System.Drawing.Point(225, 29);
+            this.btn_BorrarHora.Location = new System.Drawing.Point(200, 28);
             this.btn_BorrarHora.Name = "btn_BorrarHora";
             this.btn_BorrarHora.Size = new System.Drawing.Size(35, 35);
             this.btn_BorrarHora.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -387,7 +391,7 @@
             this.dtp_HoraDesde.Location = new System.Drawing.Point(68, 26);
             this.dtp_HoraDesde.Name = "dtp_HoraDesde";
             this.dtp_HoraDesde.ShowUpDown = true;
-            this.dtp_HoraDesde.Size = new System.Drawing.Size(95, 22);
+            this.dtp_HoraDesde.Size = new System.Drawing.Size(75, 22);
             this.dtp_HoraDesde.TabIndex = 23;
             // 
             // dtp_HoraHasta
@@ -397,7 +401,7 @@
             this.dtp_HoraHasta.Location = new System.Drawing.Point(68, 65);
             this.dtp_HoraHasta.Name = "dtp_HoraHasta";
             this.dtp_HoraHasta.ShowUpDown = true;
-            this.dtp_HoraHasta.Size = new System.Drawing.Size(95, 22);
+            this.dtp_HoraHasta.Size = new System.Drawing.Size(75, 22);
             this.dtp_HoraHasta.TabIndex = 0;
             // 
             // dgv_Horarios
@@ -406,34 +410,34 @@
             this.dgv_Horarios.AllowUserToDeleteRows = false;
             this.dgv_Horarios.AllowUserToOrderColumns = true;
             this.dgv_Horarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Horarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Horarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_Horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Horarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_HoraDesde,
             this.clm_HoraHasta});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Horarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Horarios.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_Horarios.Location = new System.Drawing.Point(6, 106);
             this.dgv_Horarios.Name = "dgv_Horarios";
             this.dgv_Horarios.ReadOnly = true;
             this.dgv_Horarios.RowHeadersVisible = false;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Horarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Horarios.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_Horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Horarios.Size = new System.Drawing.Size(265, 91);
+            this.dgv_Horarios.Size = new System.Drawing.Size(234, 91);
             this.dgv_Horarios.TabIndex = 21;
             // 
             // clm_HoraDesde
@@ -450,6 +454,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_Abajo);
+            this.groupBox3.Controls.Add(this.btn_Subir);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.pB_VistaPrevia);
             this.groupBox3.Controls.Add(this.numUD_IntTiempo);
@@ -460,12 +466,54 @@
             this.groupBox3.Controls.Add(this.btn_BorrarImagen);
             this.groupBox3.Controls.Add(this.dgv_Imagenes);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(552, 110);
+            this.groupBox3.Location = new System.Drawing.Point(521, 110);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(404, 179);
+            this.groupBox3.Size = new System.Drawing.Size(435, 179);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cargar Imágenes";
+            // 
+            // btn_Abajo
+            // 
+            this.btn_Abajo.Image = global::UI.Properties.Resources.btn_Abajo;
+            this.btn_Abajo.Location = new System.Drawing.Point(279, 137);
+            this.btn_Abajo.Name = "btn_Abajo";
+            this.btn_Abajo.Size = new System.Drawing.Size(28, 29);
+            this.btn_Abajo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Abajo.TabIndex = 34;
+            this.btn_Abajo.TabStop = false;
+            this.btn_Abajo.Click += new System.EventHandler(this.btn_Abajo_Click);
+            // 
+            // btn_Subir
+            // 
+            this.btn_Subir.Image = global::UI.Properties.Resources.btn_Arriba;
+            this.btn_Subir.Location = new System.Drawing.Point(279, 106);
+            this.btn_Subir.Name = "btn_Subir";
+            this.btn_Subir.Size = new System.Drawing.Size(28, 29);
+            this.btn_Subir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Subir.TabIndex = 33;
+            this.btn_Subir.TabStop = false;
+            this.btn_Subir.Click += new System.EventHandler(this.btn_Subir_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(333, 158);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 14);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Vista Previa";
+            this.label15.Visible = false;
+            // 
+            // pB_VistaPrevia
+            // 
+            this.pB_VistaPrevia.BackColor = System.Drawing.Color.White;
+            this.pB_VistaPrevia.Location = new System.Drawing.Point(313, 81);
+            this.pB_VistaPrevia.Name = "pB_VistaPrevia";
+            this.pB_VistaPrevia.Size = new System.Drawing.Size(116, 74);
+            this.pB_VistaPrevia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pB_VistaPrevia.TabIndex = 30;
+            this.pB_VistaPrevia.TabStop = false;
             // 
             // numUD_IntTiempo
             // 
@@ -542,35 +590,35 @@
             this.dgv_Imagenes.AllowUserToAddRows = false;
             this.dgv_Imagenes.AllowUserToDeleteRows = false;
             this.dgv_Imagenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Imagenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Imagenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_Imagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Imagenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Nombre,
             this.clm_Ruta});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Imagenes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Imagenes.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_Imagenes.Location = new System.Drawing.Point(6, 81);
             this.dgv_Imagenes.MultiSelect = false;
             this.dgv_Imagenes.Name = "dgv_Imagenes";
             this.dgv_Imagenes.ReadOnly = true;
             this.dgv_Imagenes.RowHeadersVisible = false;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Imagenes.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Imagenes.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgv_Imagenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Imagenes.Size = new System.Drawing.Size(270, 92);
+            this.dgv_Imagenes.Size = new System.Drawing.Size(267, 92);
             this.dgv_Imagenes.TabIndex = 26;
             this.dgv_Imagenes.SelectionChanged += new System.EventHandler(this.dGV_Imagenes_SelectionChanged);
             // 
@@ -634,26 +682,6 @@
             this.label9.Text = "X";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // pB_VistaPrevia
-            // 
-            this.pB_VistaPrevia.BackColor = System.Drawing.Color.White;
-            this.pB_VistaPrevia.Location = new System.Drawing.Point(282, 81);
-            this.pB_VistaPrevia.Name = "pB_VistaPrevia";
-            this.pB_VistaPrevia.Size = new System.Drawing.Size(116, 74);
-            this.pB_VistaPrevia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pB_VistaPrevia.TabIndex = 30;
-            this.pB_VistaPrevia.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(302, 158);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(81, 14);
-            this.label15.TabIndex = 31;
-            this.label15.Text = "Vista Previa";
-            this.label15.Visible = false;
-            // 
             // AgregarCampaña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -689,11 +717,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Horarios)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Abajo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Subir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pB_VistaPrevia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUD_IntTiempo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_AgregarImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_BorrarImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Imagenes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pB_VistaPrevia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -744,6 +774,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Ruta;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pB_VistaPrevia;
+        private System.Windows.Forms.PictureBox btn_Subir;
+        private System.Windows.Forms.PictureBox btn_Abajo;
     }
 }
 

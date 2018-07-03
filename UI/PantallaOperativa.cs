@@ -38,8 +38,8 @@ namespace UI
 
 		private void MostrarCampania()
 		{
-			//this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
-			//this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+			this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
+			this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
 			this.backgroundWorker_CambioCamp.RunWorkerAsync();
 		}
 
@@ -52,7 +52,7 @@ namespace UI
 
 		private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
 		{
-			//this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+			this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
 		}
 
 		private void timer_IntervaloCamp_Tick(object sender, EventArgs e)

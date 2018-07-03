@@ -204,5 +204,27 @@ namespace UI
             string ruta = dgv_Imagenes.CurrentRow.Cells[1].Value.ToString();
             pB_VistaPrevia.Image = Image.FromFile(ruta);
         }
+
+        private void btn_Subir_Click(object sender, EventArgs e)
+        {
+            if (dgv_Imagenes.SelectedRows.Count > 0 && dgv_Imagenes.CurrentRow.Index != 0)
+            {
+                var index = dgv_Imagenes.CurrentRow.Index;
+                var fila = dgv_Imagenes.CurrentRow;
+                dgv_Imagenes.Rows.Remove(fila);
+                dgv_Imagenes.Rows.Insert(index - 1, fila);
+            } 
+        }
+
+        private void btn_Abajo_Click(object sender, EventArgs e)
+        {
+            if (dgv_Imagenes.SelectedRows.Count > 0 && dgv_Imagenes.CurrentRow.Index +1 < dgv_Imagenes.Rows.Count)
+            {
+                var index = dgv_Imagenes.CurrentRow.Index;
+                var fila = dgv_Imagenes.CurrentRow;
+                dgv_Imagenes.Rows.Remove(fila);
+                dgv_Imagenes.Rows.Insert(index + 1, fila);
+            }
+        }
     }
 }

@@ -275,5 +275,11 @@
   <ItemGroup>
     <None Include="Resources\loading.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Abajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Arriba.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
