@@ -104,6 +104,7 @@ namespace UI
                 string dias = DevolverDias(new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday });
                 if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
                 {
+                    LlenarListaImagenes(dgv_Imagenes); 
                     iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
                     new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
                     Close();
@@ -158,14 +159,21 @@ namespace UI
             }
         }
 
+        private void LlenarListaImagenes (DataGridView listaImagenes)
+        {
+            for (int i = 0; i < listaImagenes.Rows.Count; i++)
+            {
+                Imagen nuevaImagen = new Imagen(listaImagenes.Rows[i].Cells[0].Value.ToString(), listaImagenes.Rows[i].Cells[1].Value.ToString());
+                imagenes.Add(nuevaImagen);
+            }
+        }
+
         private void btn_AgregarImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog buscarImagenes = new OpenFileDialog();
             buscarImagenes.ShowDialog();
             if (buscarImagenes.FileName != "")
             {
-                Imagen imagenSeleccionada = new Imagen(buscarImagenes.SafeFileName,buscarImagenes.FileName);
-                imagenes.Add(imagenSeleccionada);
                 dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
             }
         }
@@ -177,6 +185,8 @@ namespace UI
 
         private void dtp_FechaHasta_ValueChanged(object sender, EventArgs e)
         {
+            List<CheckBox> checksDias = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+            checksDias.ForEach(c => c.Enabled = false);
             try
             {
                 if ((DateTime.Compare(dtp_FechaDesde.Value.Date,dtp_FechaHasta.Value.Date)) > 0)
@@ -184,7 +194,6 @@ namespace UI
                     throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de inicio");
                 }
                 List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
-                List<CheckBox> checksDias = new List<CheckBox>() {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
                 foreach (var dia in checksDias)
                 {
                     if (dias.Contains(dia.Name))
@@ -201,7 +210,7 @@ namespace UI
 
         private void dGV_Imagenes_SelectionChanged(object sender, EventArgs e)
         {
-            string ruta = dgv_Imagenes.CurrentRow.Cells[1].Value.ToString();
+            string ruta = dgv_Imagenes.SelectedCells[1].Value.ToString();
             pB_VistaPrevia.Image = Image.FromFile(ruta);
         }
 
@@ -213,6 +222,10 @@ namespace UI
                 var fila = dgv_Imagenes.CurrentRow;
                 dgv_Imagenes.Rows.Remove(fila);
                 dgv_Imagenes.Rows.Insert(index - 1, fila);
+                dgv_Imagenes.Rows[index - 1].Selected = true;
+                dgv_Imagenes.Rows[index - 1].Cells[0].Selected = true;
+                dgv_Imagenes.CurrentCellChanged += new EventHandler(dgv_Imagenes_CurrentCellChanged);
+                dgv_Imagenes.SelectionChanged += new EventHandler(dGV_Imagenes_SelectionChanged);
             } 
         }
 
@@ -224,7 +237,16 @@ namespace UI
                 var fila = dgv_Imagenes.CurrentRow;
                 dgv_Imagenes.Rows.Remove(fila);
                 dgv_Imagenes.Rows.Insert(index + 1, fila);
+                dgv_Imagenes.Rows[index + 1].Selected = true;
+                dgv_Imagenes.Rows[index + 1].Cells[0].Selected = true;
+                dgv_Imagenes.CurrentCellChanged += new EventHandler(dgv_Imagenes_CurrentCellChanged);
+                dgv_Imagenes.SelectionChanged += new EventHandler(dGV_Imagenes_SelectionChanged);
             }
+        }
+
+        private void dgv_Imagenes_CurrentCellChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
