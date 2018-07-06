@@ -51,6 +51,18 @@ namespace Persistencia.DAL.EntityFramework
             }
         }
 
+        public IEnumerable<Campania> GetCampaniasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            var campanias = from camp in (this.iDbContext.Campania.Include("RangoFecha.Horarios").Include("RangoFecha"))
+                            where ((camp.RangoFecha.FechaFin >= pFechaDesde && camp.RangoFecha.FechaFin <= pFechaHasta)
+                            ||
+                            (camp.RangoFecha.FechaInicio >= pFechaDesde && camp.RangoFecha.FechaInicio <= pFechaHasta)
+                            ||
+                            (camp.RangoFecha.FechaInicio <= pFechaDesde && camp.RangoFecha.FechaFin >= pFechaHasta))
+                            select camp;
+            return campanias.ToList();
+        }
+
         public IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia)
         {
             var campanias = from camp in (this.iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Horarios")).Include("RangoFecha")/*.Dias*/

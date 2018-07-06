@@ -20,6 +20,7 @@ namespace UI
         List<RangoHorario> horarios = new List<RangoHorario>();
         List<Imagen> imagenes = new List<Imagen>();
         ControladorCampania iControladorCampania=  new ControladorCampania();
+        ControladorExtra iControladorExtra = new ControladorExtra();
 
         public AgregarCampaña()
         {
@@ -85,8 +86,9 @@ namespace UI
         /// </summary>
         /// <param name="pDiasSeleccionados"></param>
         /// <returns></returns>
-        private string DevolverDias(List<CheckBox> pDiasSeleccionados)
+        private string DevolverDias()
         {
+            List<CheckBox> pDiasSeleccionados = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
             string dias = "";
             foreach (var dia in pDiasSeleccionados)
             {
@@ -101,7 +103,7 @@ namespace UI
         {
             try
             {
-                string dias = DevolverDias(new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday });
+                string dias = DevolverDias();
                 if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
                 {
                     LlenarListaImagenes(dgv_Imagenes); 
@@ -129,7 +131,6 @@ namespace UI
         {
             if (dgv_Imagenes.CurrentRow != null)
             {
-                imagenes.RemoveAll(i => i.Nombre == dgv_Imagenes.CurrentRow.Cells[0].Value.ToString());
                 dgv_Imagenes.Rows.Remove(dgv_Imagenes.CurrentRow);
             }
         }
@@ -144,6 +145,7 @@ namespace UI
                 {
                     if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
                     {
+                        iControladorExtra.ComprobarHorarioCampania(horaDesde, horaHasta, DevolverDias());
                         horarios.Add(new RangoHorario(horaDesde,horaHasta));
                         dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));
                     } 
@@ -183,8 +185,16 @@ namespace UI
 
         }
 
+        private void dtp_FechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+            dgv_Horarios.Rows.Clear();
+        }
+
         private void dtp_FechaHasta_ValueChanged(object sender, EventArgs e)
         {
+            iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+            dgv_Horarios.Rows.Clear();
             List<CheckBox> checksDias = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
             checksDias.ForEach(c => c.Enabled = false);
             try
@@ -244,9 +254,34 @@ namespace UI
             }
         }
 
-        private void dgv_Imagenes_CurrentCellChanged(object sender, EventArgs e)
-        {
+        private void dgv_Imagenes_CurrentCellChanged(object sender, EventArgs e) { }
 
-        }
+        //private void ControlFecha(int pBannerExcluido)
+        //{
+        //    try
+        //    {
+        //        //if (iBanner == null)
+        //        //{
+        //        //    dGV_horarios.Rows.Clear();
+        //        //    iHorarios.Clear();
+        //        //}
+        //        iControladorExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
+        //        //if (iBanner != null)
+        //        //    iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+        //    }
+        //    catch (ApplicationException)
+        //    {
+        //        //if (iBanner != null)
+        //        //{
+        //        //    fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
+        //        //    fechaHasta.Value = iBanner.RangoFecha.FechaFin;
+        //        //}
+        //        new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+        //    }
+        //    catch (Exception E)
+        //    {
+        //        new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+        //    }
+        //}
     }
 }

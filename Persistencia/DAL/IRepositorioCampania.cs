@@ -13,5 +13,7 @@ namespace Persistencia.DAL
 
         IEnumerable<Campania> GetFiltradas(Dictionary<Type, object> pFiltros);
 
+        IEnumerable<Campania> GetCampaniasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta);
+
     }
 }

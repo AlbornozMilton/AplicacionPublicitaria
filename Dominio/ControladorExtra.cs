@@ -30,7 +30,11 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
-			//idem a ActualizarBannersEnRangoFecha
+            var campPersistencia = iUOfW.RepositorioCampania.GetCampaniasEntreFechas(pFechaDesde, pFechaHasta);
+            foreach (var camp in campPersistencia)
+            {
+                iCampaniasEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Campania, Dominio.Campania>(camp));
+            }
 		}
 
 		/// <summary>

@@ -292,6 +292,7 @@
             this.dtp_FechaDesde.Name = "dtp_FechaDesde";
             this.dtp_FechaDesde.Size = new System.Drawing.Size(113, 22);
             this.dtp_FechaDesde.TabIndex = 10;
+            this.dtp_FechaDesde.ValueChanged += new System.EventHandler(this.dtp_FechaDesde_ValueChanged);
             // 
             // groupBox2
             // 
