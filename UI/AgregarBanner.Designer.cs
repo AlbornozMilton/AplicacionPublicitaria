@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.titulo = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
@@ -176,6 +179,7 @@
 			this.gbxDias.Controls.Add(this.ckb_jueves);
 			this.gbxDias.Controls.Add(this.ckb_martes);
 			this.gbxDias.Controls.Add(this.ckb_luenes);
+			this.gbxDias.Font = new System.Drawing.Font("Verdana", 9F);
 			this.gbxDias.ForeColor = System.Drawing.Color.White;
 			this.gbxDias.Location = new System.Drawing.Point(17, 200);
 			this.gbxDias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -191,13 +195,15 @@
 			this.ckb_miercoles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_miercoles.AutoSize = true;
+			this.ckb_miercoles.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_miercoles.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_miercoles.ForeColor = System.Drawing.Color.White;
-			this.ckb_miercoles.Location = new System.Drawing.Point(74, 70);
+			this.ckb_miercoles.Location = new System.Drawing.Point(45, 69);
 			this.ckb_miercoles.Name = "ckb_miercoles";
-			this.ckb_miercoles.Size = new System.Drawing.Size(71, 17);
+			this.ckb_miercoles.Size = new System.Drawing.Size(84, 18);
 			this.ckb_miercoles.TabIndex = 2;
 			this.ckb_miercoles.Text = "Miércoles";
-			this.ckb_miercoles.UseVisualStyleBackColor = true;
+			this.ckb_miercoles.UseVisualStyleBackColor = false;
 			this.ckb_miercoles.CheckedChanged += new System.EventHandler(this.ckb_miercoles_CheckedChanged);
 			// 
 			// ckb_viernes
@@ -205,13 +211,15 @@
 			this.ckb_viernes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_viernes.AutoSize = true;
+			this.ckb_viernes.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_viernes.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_viernes.ForeColor = System.Drawing.Color.White;
-			this.ckb_viernes.Location = new System.Drawing.Point(158, 22);
+			this.ckb_viernes.Location = new System.Drawing.Point(208, 21);
 			this.ckb_viernes.Name = "ckb_viernes";
-			this.ckb_viernes.Size = new System.Drawing.Size(61, 17);
+			this.ckb_viernes.Size = new System.Drawing.Size(73, 18);
 			this.ckb_viernes.TabIndex = 4;
 			this.ckb_viernes.Text = "Viernes";
-			this.ckb_viernes.UseVisualStyleBackColor = true;
+			this.ckb_viernes.UseVisualStyleBackColor = false;
 			this.ckb_viernes.CheckedChanged += new System.EventHandler(this.ckb_viernes_CheckedChanged);
 			// 
 			// ckb_sabado
@@ -219,13 +227,15 @@
 			this.ckb_sabado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_sabado.AutoSize = true;
+			this.ckb_sabado.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_sabado.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_sabado.ForeColor = System.Drawing.Color.White;
-			this.ckb_sabado.Location = new System.Drawing.Point(158, 46);
+			this.ckb_sabado.Location = new System.Drawing.Point(208, 45);
 			this.ckb_sabado.Name = "ckb_sabado";
-			this.ckb_sabado.Size = new System.Drawing.Size(68, 17);
+			this.ckb_sabado.Size = new System.Drawing.Size(81, 18);
 			this.ckb_sabado.TabIndex = 5;
 			this.ckb_sabado.Text = "Sábados";
-			this.ckb_sabado.UseVisualStyleBackColor = true;
+			this.ckb_sabado.UseVisualStyleBackColor = false;
 			this.ckb_sabado.CheckedChanged += new System.EventHandler(this.ckb_sabado_CheckedChanged);
 			// 
 			// ckb_domingo
@@ -233,13 +243,15 @@
 			this.ckb_domingo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_domingo.AutoSize = true;
+			this.ckb_domingo.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_domingo.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_domingo.ForeColor = System.Drawing.Color.White;
-			this.ckb_domingo.Location = new System.Drawing.Point(158, 70);
+			this.ckb_domingo.Location = new System.Drawing.Point(208, 69);
 			this.ckb_domingo.Name = "ckb_domingo";
-			this.ckb_domingo.Size = new System.Drawing.Size(73, 17);
+			this.ckb_domingo.Size = new System.Drawing.Size(88, 18);
 			this.ckb_domingo.TabIndex = 6;
 			this.ckb_domingo.Text = "Domingos";
-			this.ckb_domingo.UseVisualStyleBackColor = true;
+			this.ckb_domingo.UseVisualStyleBackColor = false;
 			this.ckb_domingo.CheckedChanged += new System.EventHandler(this.ckb_domingo_CheckedChanged);
 			// 
 			// ckb_jueves
@@ -247,13 +259,15 @@
 			this.ckb_jueves.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_jueves.AutoSize = true;
+			this.ckb_jueves.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_jueves.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_jueves.ForeColor = System.Drawing.Color.White;
-			this.ckb_jueves.Location = new System.Drawing.Point(74, 94);
+			this.ckb_jueves.Location = new System.Drawing.Point(45, 93);
 			this.ckb_jueves.Name = "ckb_jueves";
-			this.ckb_jueves.Size = new System.Drawing.Size(60, 17);
+			this.ckb_jueves.Size = new System.Drawing.Size(69, 18);
 			this.ckb_jueves.TabIndex = 3;
 			this.ckb_jueves.Text = "Jueves";
-			this.ckb_jueves.UseVisualStyleBackColor = true;
+			this.ckb_jueves.UseVisualStyleBackColor = false;
 			this.ckb_jueves.CheckedChanged += new System.EventHandler(this.ckb_jueves_CheckedChanged);
 			// 
 			// ckb_martes
@@ -261,13 +275,15 @@
 			this.ckb_martes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_martes.AutoSize = true;
+			this.ckb_martes.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_martes.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_martes.ForeColor = System.Drawing.Color.White;
-			this.ckb_martes.Location = new System.Drawing.Point(74, 46);
+			this.ckb_martes.Location = new System.Drawing.Point(45, 45);
 			this.ckb_martes.Name = "ckb_martes";
-			this.ckb_martes.Size = new System.Drawing.Size(58, 17);
+			this.ckb_martes.Size = new System.Drawing.Size(69, 18);
 			this.ckb_martes.TabIndex = 1;
 			this.ckb_martes.Text = "Martes";
-			this.ckb_martes.UseVisualStyleBackColor = true;
+			this.ckb_martes.UseVisualStyleBackColor = false;
 			this.ckb_martes.CheckedChanged += new System.EventHandler(this.ckb_martes_CheckedChanged);
 			// 
 			// ckb_luenes
@@ -275,13 +291,15 @@
 			this.ckb_luenes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ckb_luenes.AutoSize = true;
+			this.ckb_luenes.BackColor = System.Drawing.Color.Transparent;
+			this.ckb_luenes.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ckb_luenes.ForeColor = System.Drawing.Color.White;
-			this.ckb_luenes.Location = new System.Drawing.Point(74, 22);
+			this.ckb_luenes.Location = new System.Drawing.Point(45, 21);
 			this.ckb_luenes.Name = "ckb_luenes";
-			this.ckb_luenes.Size = new System.Drawing.Size(55, 17);
+			this.ckb_luenes.Size = new System.Drawing.Size(64, 18);
 			this.ckb_luenes.TabIndex = 0;
 			this.ckb_luenes.Text = "Lunes";
-			this.ckb_luenes.UseVisualStyleBackColor = true;
+			this.ckb_luenes.UseVisualStyleBackColor = false;
 			this.ckb_luenes.CheckedChanged += new System.EventHandler(this.ckb_luenes_CheckedChanged);
 			// 
 			// gbxHorarios
@@ -297,6 +315,7 @@
 			this.gbxHorarios.Controls.Add(this.horaDesde);
 			this.gbxHorarios.Controls.Add(this.horaHasta);
 			this.gbxHorarios.Controls.Add(this.dGV_horarios);
+			this.gbxHorarios.Font = new System.Drawing.Font("Verdana", 9F);
 			this.gbxHorarios.ForeColor = System.Drawing.Color.White;
 			this.gbxHorarios.Location = new System.Drawing.Point(360, 109);
 			this.gbxHorarios.Name = "gbxHorarios";
@@ -309,9 +328,11 @@
 			// 
 			this.BorrarHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.BorrarHorario.AutoSize = true;
-			this.BorrarHorario.Location = new System.Drawing.Point(377, 67);
+			this.BorrarHorario.BackColor = System.Drawing.Color.Transparent;
+			this.BorrarHorario.Font = new System.Drawing.Font("Verdana", 9F);
+			this.BorrarHorario.Location = new System.Drawing.Point(372, 67);
 			this.BorrarHorario.Name = "BorrarHorario";
-			this.BorrarHorario.Size = new System.Drawing.Size(35, 13);
+			this.BorrarHorario.Size = new System.Drawing.Size(46, 14);
 			this.BorrarHorario.TabIndex = 27;
 			this.BorrarHorario.Text = "Borrar";
 			this.BorrarHorario.Visible = false;
@@ -347,9 +368,11 @@
 			// 
 			this.AgregarHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.AgregarHorario.AutoSize = true;
-			this.AgregarHorario.Location = new System.Drawing.Point(291, 67);
+			this.AgregarHorario.BackColor = System.Drawing.Color.Transparent;
+			this.AgregarHorario.Font = new System.Drawing.Font("Verdana", 9F);
+			this.AgregarHorario.Location = new System.Drawing.Point(285, 67);
 			this.AgregarHorario.Name = "AgregarHorario";
-			this.AgregarHorario.Size = new System.Drawing.Size(44, 13);
+			this.AgregarHorario.Size = new System.Drawing.Size(57, 14);
 			this.AgregarHorario.TabIndex = 26;
 			this.AgregarHorario.Text = "Agregar";
 			this.AgregarHorario.Visible = false;
@@ -388,7 +411,7 @@
 			this.horaDesde.Location = new System.Drawing.Point(82, 26);
 			this.horaDesde.Name = "horaDesde";
 			this.horaDesde.ShowUpDown = true;
-			this.horaDesde.Size = new System.Drawing.Size(137, 20);
+			this.horaDesde.Size = new System.Drawing.Size(137, 22);
 			this.horaDesde.TabIndex = 0;
 			// 
 			// horaHasta
@@ -398,7 +421,7 @@
 			this.horaHasta.Location = new System.Drawing.Point(82, 60);
 			this.horaHasta.Name = "horaHasta";
 			this.horaHasta.ShowUpDown = true;
-			this.horaHasta.Size = new System.Drawing.Size(137, 20);
+			this.horaHasta.Size = new System.Drawing.Size(137, 22);
 			this.horaHasta.TabIndex = 1;
 			// 
 			// dGV_horarios
@@ -406,6 +429,14 @@
 			this.dGV_horarios.AllowUserToAddRows = false;
 			this.dGV_horarios.AllowUserToDeleteRows = false;
 			this.dGV_horarios.AllowUserToOrderColumns = true;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F);
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_horarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this.dGV_horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_horarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmHoraDesde,
@@ -416,8 +447,8 @@
 			this.dGV_horarios.Name = "dGV_horarios";
 			this.dGV_horarios.ReadOnly = true;
 			this.dGV_horarios.RowHeadersVisible = false;
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-			this.dGV_horarios.RowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+			this.dGV_horarios.RowsDefaultCellStyle = dataGridViewCellStyle10;
 			this.dGV_horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_horarios.Size = new System.Drawing.Size(421, 122);
 			this.dGV_horarios.TabIndex = 21;
@@ -425,6 +456,8 @@
 			// clmHoraDesde
 			// 
 			this.clmHoraDesde.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.clmHoraDesde.DefaultCellStyle = dataGridViewCellStyle8;
 			this.clmHoraDesde.HeaderText = "Hora Desde";
 			this.clmHoraDesde.Name = "clmHoraDesde";
 			this.clmHoraDesde.ReadOnly = true;
@@ -432,6 +465,8 @@
 			// clmHoraHasta
 			// 
 			this.clmHoraHasta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.clmHoraHasta.DefaultCellStyle = dataGridViewCellStyle9;
 			this.clmHoraHasta.HeaderText = "Hora Hasta";
 			this.clmHoraHasta.Name = "clmHoraHasta";
 			this.clmHoraHasta.ReadOnly = true;
@@ -440,10 +475,12 @@
 			// 
 			this.Fuentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.Fuentes.AutoSize = true;
+			this.Fuentes.BackColor = System.Drawing.Color.Transparent;
+			this.Fuentes.Font = new System.Drawing.Font("Verdana", 9F);
 			this.Fuentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.Fuentes.Location = new System.Drawing.Point(720, 57);
+			this.Fuentes.Location = new System.Drawing.Point(711, 56);
 			this.Fuentes.Name = "Fuentes";
-			this.Fuentes.Size = new System.Drawing.Size(45, 13);
+			this.Fuentes.Size = new System.Drawing.Size(58, 14);
 			this.Fuentes.TabIndex = 4;
 			this.Fuentes.Text = "Fuentes";
 			this.Fuentes.Visible = false;
@@ -454,7 +491,7 @@
 			this.cbx_Fuente.FormattingEnabled = true;
 			this.cbx_Fuente.Location = new System.Drawing.Point(75, 33);
 			this.cbx_Fuente.Name = "cbx_Fuente";
-			this.cbx_Fuente.Size = new System.Drawing.Size(261, 21);
+			this.cbx_Fuente.Size = new System.Drawing.Size(261, 22);
 			this.cbx_Fuente.TabIndex = 3;
 			this.cbx_Fuente.SelectedIndexChanged += new System.EventHandler(this.cbx_FuenteRss_SelectedIndexChanged);
 			// 
@@ -475,6 +512,7 @@
 			// 
 			this.groupBox_items.Controls.Add(this.dGV_itemsFuente);
 			this.groupBox_items.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.groupBox_items.Font = new System.Drawing.Font("Verdana", 9F);
 			this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.groupBox_items.Location = new System.Drawing.Point(3, 70);
 			this.groupBox_items.Name = "groupBox_items";
@@ -495,25 +533,25 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9F);
+			dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle11;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
+			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 18);
 			this.dGV_itemsFuente.MultiSelect = false;
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
 			this.dGV_itemsFuente.ReadOnly = true;
 			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dGV_itemsFuente.RowHeadersVisible = false;
-			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle12;
 			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(758, 159);
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(758, 157);
 			this.dGV_itemsFuente.TabIndex = 1;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -568,6 +606,7 @@
 			this.groupBox2.Controls.Add(this.fechaDesde);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.Controls.Add(this.label13);
+			this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F);
 			this.groupBox2.ForeColor = System.Drawing.Color.White;
 			this.groupBox2.Location = new System.Drawing.Point(17, 109);
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -582,9 +621,11 @@
 			// 
 			this.Actualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.Actualizar.AutoSize = true;
-			this.Actualizar.Location = new System.Drawing.Point(271, 64);
+			this.Actualizar.BackColor = System.Drawing.Color.Transparent;
+			this.Actualizar.Font = new System.Drawing.Font("Verdana", 9F);
+			this.Actualizar.Location = new System.Drawing.Point(261, 64);
 			this.Actualizar.Name = "Actualizar";
-			this.Actualizar.Size = new System.Drawing.Size(53, 13);
+			this.Actualizar.Size = new System.Drawing.Size(68, 14);
 			this.Actualizar.TabIndex = 28;
 			this.Actualizar.Text = "Actualizar";
 			this.Actualizar.Visible = false;
@@ -608,7 +649,7 @@
 			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.fechaHasta.Location = new System.Drawing.Point(74, 52);
 			this.fechaHasta.Name = "fechaHasta";
-			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
+			this.fechaHasta.Size = new System.Drawing.Size(165, 22);
 			this.fechaHasta.TabIndex = 1;
 			// 
 			// fechaDesde
@@ -616,7 +657,7 @@
 			this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.fechaDesde.Location = new System.Drawing.Point(74, 26);
 			this.fechaDesde.Name = "fechaDesde";
-			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
+			this.fechaDesde.Size = new System.Drawing.Size(165, 22);
 			this.fechaDesde.TabIndex = 0;
 			// 
 			// label1
@@ -650,8 +691,9 @@
 			this.txbTipoFuente.Location = new System.Drawing.Point(446, 33);
 			this.txbTipoFuente.Name = "txbTipoFuente";
 			this.txbTipoFuente.ReadOnly = true;
-			this.txbTipoFuente.Size = new System.Drawing.Size(107, 20);
+			this.txbTipoFuente.Size = new System.Drawing.Size(107, 22);
 			this.txbTipoFuente.TabIndex = 39;
+			this.txbTipoFuente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// gbxFuentes
 			// 
@@ -663,6 +705,7 @@
 			this.gbxFuentes.Controls.Add(this.cbx_Fuente);
 			this.gbxFuentes.Controls.Add(this.lblFuentes);
 			this.gbxFuentes.Controls.Add(this.Fuentes);
+			this.gbxFuentes.Font = new System.Drawing.Font("Verdana", 9F);
 			this.gbxFuentes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.gbxFuentes.Location = new System.Drawing.Point(17, 331);
 			this.gbxFuentes.Name = "gbxFuentes";
@@ -673,9 +716,10 @@
 			// 
 			// tbxNombreBanner
 			// 
-			this.tbxNombreBanner.Location = new System.Drawing.Point(88, 62);
+			this.tbxNombreBanner.Font = new System.Drawing.Font("Verdana", 9F);
+			this.tbxNombreBanner.Location = new System.Drawing.Point(88, 61);
 			this.tbxNombreBanner.Name = "tbxNombreBanner";
-			this.tbxNombreBanner.Size = new System.Drawing.Size(354, 20);
+			this.tbxNombreBanner.Size = new System.Drawing.Size(354, 22);
 			this.tbxNombreBanner.TabIndex = 42;
 			// 
 			// lblNomBanner
@@ -785,9 +829,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraDesde;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraHasta;
 		private System.Windows.Forms.Label Actualizar;
 		private System.Windows.Forms.PictureBox btnActualizar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraDesde;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clmHoraHasta;
 	}
 }

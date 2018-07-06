@@ -58,7 +58,7 @@
 			this.lblDescripcion.BackColor = System.Drawing.Color.Transparent;
 			this.lblDescripcion.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblDescripcion.ForeColor = System.Drawing.Color.White;
-			this.lblDescripcion.Location = new System.Drawing.Point(42, 83);
+			this.lblDescripcion.Location = new System.Drawing.Point(45, 84);
 			this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblDescripcion.Name = "lblDescripcion";
 			this.lblDescripcion.Size = new System.Drawing.Size(93, 18);
@@ -80,16 +80,17 @@
 			// 
 			// tbxDescripcion
 			// 
+			this.tbxDescripcion.Font = new System.Drawing.Font("Verdana", 9F);
 			this.tbxDescripcion.Location = new System.Drawing.Point(145, 84);
 			this.tbxDescripcion.Name = "tbxDescripcion";
-			this.tbxDescripcion.Size = new System.Drawing.Size(467, 20);
+			this.tbxDescripcion.Size = new System.Drawing.Size(457, 22);
 			this.tbxDescripcion.TabIndex = 0;
 			// 
 			// btnCancelar
 			// 
 			this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCancelar.Location = new System.Drawing.Point(531, 144);
+			this.btnCancelar.Location = new System.Drawing.Point(521, 144);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(81, 33);
 			this.btnCancelar.TabIndex = 3;
@@ -101,7 +102,7 @@
 			// 
 			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(433, 144);
+			this.btnAceptar.Location = new System.Drawing.Point(419, 145);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 2;
@@ -112,18 +113,20 @@
 			// cbxTipoFuente
 			// 
 			this.cbxTipoFuente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxTipoFuente.Font = new System.Drawing.Font("Verdana", 9F);
 			this.cbxTipoFuente.FormattingEnabled = true;
 			this.cbxTipoFuente.Location = new System.Drawing.Point(145, 53);
 			this.cbxTipoFuente.Name = "cbxTipoFuente";
-			this.cbxTipoFuente.Size = new System.Drawing.Size(136, 21);
+			this.cbxTipoFuente.Size = new System.Drawing.Size(136, 22);
 			this.cbxTipoFuente.TabIndex = 0;
 			this.cbxTipoFuente.SelectedIndexChanged += new System.EventHandler(this.cbxTipoFuente_SelectedIndexChanged);
 			// 
 			// txbUrl
 			// 
+			this.txbUrl.Font = new System.Drawing.Font("Verdana", 9F);
 			this.txbUrl.Location = new System.Drawing.Point(145, 117);
 			this.txbUrl.Name = "txbUrl";
-			this.txbUrl.Size = new System.Drawing.Size(467, 20);
+			this.txbUrl.Size = new System.Drawing.Size(457, 22);
 			this.txbUrl.TabIndex = 41;
 			this.txbUrl.Visible = false;
 			this.txbUrl.Leave += new System.EventHandler(this.txbUrl_Leave);
@@ -134,7 +137,7 @@
 			this.lblUrl.BackColor = System.Drawing.Color.Transparent;
 			this.lblUrl.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblUrl.ForeColor = System.Drawing.Color.White;
-			this.lblUrl.Location = new System.Drawing.Point(98, 116);
+			this.lblUrl.Location = new System.Drawing.Point(101, 117);
 			this.lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblUrl.Name = "lblUrl";
 			this.lblUrl.Size = new System.Drawing.Size(37, 18);

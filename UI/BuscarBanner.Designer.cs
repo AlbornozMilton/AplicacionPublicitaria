@@ -103,16 +103,18 @@
 			// lblNombre
 			// 
 			this.lblNombre.AutoSize = true;
-			this.lblNombre.Location = new System.Drawing.Point(16, 34);
+			this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+			this.lblNombre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic);
+			this.lblNombre.Location = new System.Drawing.Point(10, 32);
 			this.lblNombre.Name = "lblNombre";
-			this.lblNombre.Size = new System.Drawing.Size(61, 14);
+			this.lblNombre.Size = new System.Drawing.Size(74, 18);
 			this.lblNombre.TabIndex = 43;
 			this.lblNombre.Text = "Nombre:";
 			// 
 			// dtp_FechaDesde
 			// 
 			this.dtp_FechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtp_FechaDesde.Location = new System.Drawing.Point(387, 31);
+			this.dtp_FechaDesde.Location = new System.Drawing.Point(408, 31);
 			this.dtp_FechaDesde.Name = "dtp_FechaDesde";
 			this.dtp_FechaDesde.Size = new System.Drawing.Size(113, 22);
 			this.dtp_FechaDesde.TabIndex = 1;
@@ -121,12 +123,12 @@
 			// 
 			this.label_Hasta.AutoSize = true;
 			this.label_Hasta.BackColor = System.Drawing.Color.Transparent;
-			this.label_Hasta.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_Hasta.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic);
 			this.label_Hasta.ForeColor = System.Drawing.Color.White;
-			this.label_Hasta.Location = new System.Drawing.Point(507, 34);
+			this.label_Hasta.Location = new System.Drawing.Point(528, 31);
 			this.label_Hasta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label_Hasta.Name = "label_Hasta";
-			this.label_Hasta.Size = new System.Drawing.Size(49, 14);
+			this.label_Hasta.Size = new System.Drawing.Size(58, 18);
 			this.label_Hasta.TabIndex = 41;
 			this.label_Hasta.Text = "Hasta:";
 			// 
@@ -134,26 +136,26 @@
 			// 
 			this.label_Desde.AutoSize = true;
 			this.label_Desde.BackColor = System.Drawing.Color.Transparent;
-			this.label_Desde.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_Desde.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic);
 			this.label_Desde.ForeColor = System.Drawing.Color.White;
-			this.label_Desde.Location = new System.Drawing.Point(333, 34);
+			this.label_Desde.Location = new System.Drawing.Point(340, 32);
 			this.label_Desde.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label_Desde.Name = "label_Desde";
-			this.label_Desde.Size = new System.Drawing.Size(52, 14);
+			this.label_Desde.Size = new System.Drawing.Size(61, 18);
 			this.label_Desde.TabIndex = 40;
 			this.label_Desde.Text = "Desde:";
 			// 
 			// dtp_FechaHasta
 			// 
 			this.dtp_FechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtp_FechaHasta.Location = new System.Drawing.Point(563, 31);
+			this.dtp_FechaHasta.Location = new System.Drawing.Point(593, 29);
 			this.dtp_FechaHasta.Name = "dtp_FechaHasta";
 			this.dtp_FechaHasta.Size = new System.Drawing.Size(113, 22);
 			this.dtp_FechaHasta.TabIndex = 2;
 			// 
 			// TB_Nombre
 			// 
-			this.TB_Nombre.Location = new System.Drawing.Point(83, 31);
+			this.TB_Nombre.Location = new System.Drawing.Point(90, 31);
 			this.TB_Nombre.Multiline = true;
 			this.TB_Nombre.Name = "TB_Nombre";
 			this.TB_Nombre.Size = new System.Drawing.Size(243, 22);
@@ -191,7 +193,7 @@
 			this.datagridHorario.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -204,7 +206,7 @@
 			this.datagridHorario.DataSource = this.rangoHorarioBindingSource;
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
 			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -249,6 +251,7 @@
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.dataGridBanner);
+			this.panel1.Font = new System.Drawing.Font("Verdana", 9F);
 			this.panel1.Location = new System.Drawing.Point(16, 119);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(618, 339);
@@ -261,7 +264,7 @@
 			this.dataGridBanner.AllowUserToOrderColumns = true;
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -276,7 +279,7 @@
 			this.dataGridBanner.Cursor = System.Windows.Forms.Cursors.Arrow;
 			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
 			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
 			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -288,7 +291,7 @@
 			this.dataGridBanner.ReadOnly = true;
 			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -332,7 +335,7 @@
 			// lbl_Dias
 			// 
 			this.lbl_Dias.BackColor = System.Drawing.Color.Transparent;
-			this.lbl_Dias.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_Dias.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
 			this.lbl_Dias.ForeColor = System.Drawing.Color.White;
 			this.lbl_Dias.Location = new System.Drawing.Point(637, 119);
 			this.lbl_Dias.Name = "lbl_Dias";
