@@ -117,7 +117,7 @@
 			// 
 			this.btnNuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNuevaFuente.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnNuevaFuente.Location = new System.Drawing.Point(623, 32);
+			this.btnNuevaFuente.Location = new System.Drawing.Point(631, 32);
 			this.btnNuevaFuente.Name = "btnNuevaFuente";
 			this.btnNuevaFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnNuevaFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -135,13 +135,14 @@
 			this.groupBox_items.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox_items.BackColor = System.Drawing.Color.Maroon;
 			this.groupBox_items.Controls.Add(this.dGV_itemsFuente);
+			this.groupBox_items.Font = new System.Drawing.Font("Verdana", 9F);
 			this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.groupBox_items.Location = new System.Drawing.Point(16, 167);
 			this.groupBox_items.Name = "groupBox_items";
-			this.groupBox_items.Size = new System.Drawing.Size(957, 210);
+			this.groupBox_items.Size = new System.Drawing.Size(942, 210);
 			this.groupBox_items.TabIndex = 39;
 			this.groupBox_items.TabStop = false;
-			this.groupBox_items.Text = "tems";
+			this.groupBox_items.Text = "Items";
 			// 
 			// dGV_itemsFuente
 			// 
@@ -156,14 +157,14 @@
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 16);
+			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 18);
 			this.dGV_itemsFuente.MultiSelect = false;
 			this.dGV_itemsFuente.Name = "dGV_itemsFuente";
 			this.dGV_itemsFuente.ReadOnly = true;
@@ -172,7 +173,7 @@
 			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
 			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_itemsFuente.Size = new System.Drawing.Size(951, 191);
+			this.dGV_itemsFuente.Size = new System.Drawing.Size(936, 189);
 			this.dGV_itemsFuente.TabIndex = 0;
 			this.dGV_itemsFuente.DoubleClick += new System.EventHandler(this.ModificarItem_Click);
 			// 
@@ -213,16 +214,18 @@
 			this.tbxTipoFuente.ReadOnly = true;
 			this.tbxTipoFuente.Size = new System.Drawing.Size(120, 20);
 			this.tbxTipoFuente.TabIndex = 41;
+			this.tbxTipoFuente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// ModificarItem
 			// 
 			this.ModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.ModificarItem.AutoSize = true;
-			this.ModificarItem.BackColor = System.Drawing.Color.Maroon;
+			this.ModificarItem.BackColor = System.Drawing.Color.Transparent;
+			this.ModificarItem.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ModificarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.ModificarItem.Location = new System.Drawing.Point(102, 421);
 			this.ModificarItem.Name = "ModificarItem";
-			this.ModificarItem.Size = new System.Drawing.Size(73, 13);
+			this.ModificarItem.Size = new System.Drawing.Size(95, 14);
 			this.ModificarItem.TabIndex = 48;
 			this.ModificarItem.Text = "Modificar Item";
 			this.ModificarItem.Visible = false;
@@ -231,11 +234,12 @@
 			// 
 			this.EliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.EliminarItem.AutoSize = true;
-			this.EliminarItem.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarItem.BackColor = System.Drawing.Color.Transparent;
+			this.EliminarItem.Font = new System.Drawing.Font("Verdana", 9F);
 			this.EliminarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.EliminarItem.Location = new System.Drawing.Point(196, 421);
+			this.EliminarItem.Location = new System.Drawing.Point(212, 421);
 			this.EliminarItem.Name = "EliminarItem";
-			this.EliminarItem.Size = new System.Drawing.Size(66, 13);
+			this.EliminarItem.Size = new System.Drawing.Size(89, 14);
 			this.EliminarItem.TabIndex = 46;
 			this.EliminarItem.Text = "Eliminar Item";
 			this.EliminarItem.Visible = false;
@@ -244,7 +248,7 @@
 			// 
 			this.btnEliminarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnEliminarItem.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnEliminarItem.Location = new System.Drawing.Point(212, 383);
+			this.btnEliminarItem.Location = new System.Drawing.Point(240, 383);
 			this.btnEliminarItem.Name = "btnEliminarItem";
 			this.btnEliminarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnEliminarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,11 +262,12 @@
 			// 
 			this.AgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.AgregarItem.AutoSize = true;
-			this.AgregarItem.BackColor = System.Drawing.Color.Maroon;
+			this.AgregarItem.BackColor = System.Drawing.Color.Transparent;
+			this.AgregarItem.Font = new System.Drawing.Font("Verdana", 9F);
 			this.AgregarItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.AgregarItem.Location = new System.Drawing.Point(16, 422);
 			this.AgregarItem.Name = "AgregarItem";
-			this.AgregarItem.Size = new System.Drawing.Size(62, 13);
+			this.AgregarItem.Size = new System.Drawing.Size(80, 14);
 			this.AgregarItem.TabIndex = 43;
 			this.AgregarItem.Text = "Nuevo Item";
 			this.AgregarItem.Visible = false;
@@ -271,7 +276,7 @@
 			// 
 			this.btnAgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnAgregarItem.Image = global::UI.Properties.Resources.btn_Agregar;
-			this.btnAgregarItem.Location = new System.Drawing.Point(29, 383);
+			this.btnAgregarItem.Location = new System.Drawing.Point(40, 383);
 			this.btnAgregarItem.Name = "btnAgregarItem";
 			this.btnAgregarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnAgregarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -286,7 +291,7 @@
 			// 
 			this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAceptar.Location = new System.Drawing.Point(889, 402);
+			this.btnAceptar.Location = new System.Drawing.Point(877, 403);
 			this.btnAceptar.Name = "btnAceptar";
 			this.btnAceptar.Size = new System.Drawing.Size(81, 33);
 			this.btnAceptar.TabIndex = 49;
@@ -298,11 +303,12 @@
 			// 
 			this.NuevaFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.NuevaFuente.AutoSize = true;
-			this.NuevaFuente.BackColor = System.Drawing.Color.Maroon;
+			this.NuevaFuente.BackColor = System.Drawing.Color.Transparent;
+			this.NuevaFuente.Font = new System.Drawing.Font("Verdana", 9F);
 			this.NuevaFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.NuevaFuente.Location = new System.Drawing.Point(601, 70);
 			this.NuevaFuente.Name = "NuevaFuente";
-			this.NuevaFuente.Size = new System.Drawing.Size(75, 13);
+			this.NuevaFuente.Size = new System.Drawing.Size(95, 14);
 			this.NuevaFuente.TabIndex = 42;
 			this.NuevaFuente.Text = "Nueva Fuente";
 			this.NuevaFuente.Visible = false;
@@ -321,11 +327,12 @@
 			// 
 			this.ModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.ModificarFuente.AutoSize = true;
-			this.ModificarFuente.BackColor = System.Drawing.Color.Maroon;
+			this.ModificarFuente.BackColor = System.Drawing.Color.Transparent;
+			this.ModificarFuente.Font = new System.Drawing.Font("Verdana", 9F);
 			this.ModificarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.ModificarFuente.Location = new System.Drawing.Point(684, 70);
+			this.ModificarFuente.Location = new System.Drawing.Point(703, 70);
 			this.ModificarFuente.Name = "ModificarFuente";
-			this.ModificarFuente.Size = new System.Drawing.Size(86, 13);
+			this.ModificarFuente.Size = new System.Drawing.Size(110, 14);
 			this.ModificarFuente.TabIndex = 56;
 			this.ModificarFuente.Text = "Modificar Fuente";
 			this.ModificarFuente.Visible = false;
@@ -334,11 +341,12 @@
 			// 
 			this.EliminarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.EliminarFuente.AutoSize = true;
-			this.EliminarFuente.BackColor = System.Drawing.Color.Maroon;
+			this.EliminarFuente.BackColor = System.Drawing.Color.Transparent;
+			this.EliminarFuente.Font = new System.Drawing.Font("Verdana", 9F);
 			this.EliminarFuente.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.EliminarFuente.Location = new System.Drawing.Point(774, 70);
+			this.EliminarFuente.Location = new System.Drawing.Point(816, 70);
 			this.EliminarFuente.Name = "EliminarFuente";
-			this.EliminarFuente.Size = new System.Drawing.Size(79, 13);
+			this.EliminarFuente.Size = new System.Drawing.Size(104, 14);
 			this.EliminarFuente.TabIndex = 54;
 			this.EliminarFuente.Text = "Eliminar Fuente";
 			this.EliminarFuente.Visible = false;
@@ -347,7 +355,7 @@
 			// 
 			this.btnEliminarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnEliminarFuente.Image = global::UI.Properties.Resources.btn_Cerrar;
-			this.btnEliminarFuente.Location = new System.Drawing.Point(795, 32);
+			this.btnEliminarFuente.Location = new System.Drawing.Point(850, 32);
 			this.btnEliminarFuente.Name = "btnEliminarFuente";
 			this.btnEliminarFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnEliminarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -389,7 +397,7 @@
 			// 
 			this.btnModificarFuente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnModificarFuente.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarFuente.Location = new System.Drawing.Point(710, 32);
+			this.btnModificarFuente.Location = new System.Drawing.Point(740, 32);
 			this.btnModificarFuente.Name = "btnModificarFuente";
 			this.btnModificarFuente.Size = new System.Drawing.Size(35, 35);
 			this.btnModificarFuente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -403,7 +411,7 @@
 			// 
 			this.btnModificarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnModificarItem.Image = global::UI.Properties.Resources.btn_Editar;
-			this.btnModificarItem.Location = new System.Drawing.Point(119, 383);
+			this.btnModificarItem.Location = new System.Drawing.Point(132, 383);
 			this.btnModificarItem.Name = "btnModificarItem";
 			this.btnModificarItem.Size = new System.Drawing.Size(35, 35);
 			this.btnModificarItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -415,18 +423,20 @@
 			// 
 			// fechaHasta
 			// 
+			this.fechaHasta.Font = new System.Drawing.Font("Verdana", 9F);
 			this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.fechaHasta.Location = new System.Drawing.Point(338, 135);
+			this.fechaHasta.Location = new System.Drawing.Point(338, 131);
 			this.fechaHasta.Name = "fechaHasta";
-			this.fechaHasta.Size = new System.Drawing.Size(165, 20);
+			this.fechaHasta.Size = new System.Drawing.Size(165, 22);
 			this.fechaHasta.TabIndex = 62;
 			// 
 			// fechaDesde
 			// 
+			this.fechaDesde.Font = new System.Drawing.Font("Verdana", 9F);
 			this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.fechaDesde.Location = new System.Drawing.Point(82, 134);
+			this.fechaDesde.Location = new System.Drawing.Point(82, 131);
 			this.fechaDesde.Name = "fechaDesde";
-			this.fechaDesde.Size = new System.Drawing.Size(165, 20);
+			this.fechaDesde.Size = new System.Drawing.Size(165, 22);
 			this.fechaDesde.TabIndex = 61;
 			// 
 			// label1
