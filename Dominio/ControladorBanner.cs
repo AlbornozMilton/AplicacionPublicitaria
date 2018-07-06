@@ -57,7 +57,6 @@ namespace Dominio
 			if (bannerResult == null)
 			{
 				if (auxHFin == new TimeSpan(0, 0, 0))
-					//bannerResult = BannerDefault(auxHFin, auxHInicio);
 					bannerResult = BannerDefault(pHora, auxHInicio);
 				else
 				if (auxHInicio == new TimeSpan(23, 59, 59))

@@ -63,10 +63,37 @@ namespace Persistencia.DAL.EntityFramework
             return campanias.ToList();
         }
 
-        public IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia)
-        {
-            var campanias = from camp in (this.iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Horarios")).Include("RangoFecha")/*.Dias*/
-							where (pDia >= camp.RangoFecha.FechaInicio && pDia <= camp.RangoFecha.FechaFin )
+		public IEnumerable<Campania> GetCampaniasParaElDia(DateTime pDia)
+		{
+			string diaString = "";
+			switch (pDia.DayOfWeek)
+			{
+				case DayOfWeek.Sunday:
+					diaString = "domingo";
+					break;
+				case DayOfWeek.Monday:
+					diaString = "lunes";
+					break;
+				case DayOfWeek.Tuesday:
+					diaString = "martes";
+					break;
+				case DayOfWeek.Wednesday:
+					diaString = "miercoles";
+					break;
+				case DayOfWeek.Thursday:
+					diaString = "jueves";
+					break;
+				case DayOfWeek.Friday:
+					diaString = "viernes";
+					break;
+				case DayOfWeek.Saturday:
+					diaString = "sabado";
+					break;
+			}
+
+			var campanias = from camp in (this.iDbContext.Campania.Include("Imagenes").Include("RangoFecha.Horarios")).Include("RangoFecha")/*.Dias*/
+							where ((pDia >= camp.RangoFecha.FechaInicio && pDia <= camp.RangoFecha.FechaFin) 
+							&& camp.RangoFecha.Dias.Contains(diaString))
 							//&& (camp.RangoFecha.Dias.Where(d => d.Nombre == pDia.DayOfWeek.ToString())).Count() != 0)
                             select camp;
             return campanias.ToList();
