@@ -101,7 +101,8 @@ namespace Dominio
 			List<RangoHorario> listaHorarios = new List<RangoHorario>();
 			listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
 			List<Imagen> listaImagenes = new List<Imagen>();
-			Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Mauri\\Downloads\\Transferencia.png");
+            //Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Mauri\\Downloads\\Transferencia.jpg");
+            Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Downloads\\Parcial.jpeg");
 			listaImagenes.Add(imagenPublicidad);
 			return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios), listaImagenes);
 		}
@@ -137,7 +138,7 @@ namespace Dominio
 		{
 			foreach (var rangHor in pHorarios)
 			{
-				if ((pHoraDesde >= rangHor.HoraInicio && pHoraDesde <= rangHor.HoraFin) || (pHoraHasta <= rangHor.HoraFin && pHoraHasta > rangHor.HoraInicio))
+				if ((pHoraDesde >= rangHor.HoraInicio && pHoraDesde < rangHor.HoraFin) || (pHoraHasta <= rangHor.HoraFin && pHoraHasta > rangHor.HoraInicio))
 				{
 					throw new Exception("El rango ingresado se superpone con otro ya cargado");
 				}
