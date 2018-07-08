@@ -150,12 +150,17 @@ namespace Dominio
 			int intervalo = 0;
 			foreach (var hora in BannerActual.RangoFecha.Horarios)
 			{
-				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
+				TimeSpan diff = DateTime.Now.TimeOfDay.Add(new TimeSpan(0, 0, 1));
+				if (hora.HoraInicio <= diff && hora.HoraFin >= diff)
 				{
 					intervalo = Convert.ToInt32((hora.HoraFin - DateTime.Now.TimeOfDay).TotalMilliseconds);
 					break;
 				}
 			}
+
+			if (intervalo == 0)
+				throw new Exception("ceroooo");
+
 			return Math.Abs(intervalo);
 		}
 
