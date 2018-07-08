@@ -120,7 +120,7 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					f = new VentanaEmergente("Para este banner se mostraran items por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Para este Banner se mostraran Items de Fuente por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
 
@@ -141,7 +141,7 @@ namespace UI
 						iDias += "sabado-";
 					if (ckb_domingo.Checked)
 						iDias += "domingo-";
-					iDias = iDias.Remove(iDias.Length-1);
+					iDias = iDias.Remove(iDias.Length - 1);
 
 					if (iBanner != null)
 					{
@@ -182,7 +182,9 @@ namespace UI
 					dGV_horarios.Rows.Clear();
 					iHorarios.Clear();
 				}
+
 				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
+
 				if (iBanner != null)
 					iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 			}
@@ -324,22 +326,20 @@ namespace UI
 			txbTipoFuente.Text = _Fuente.GetType().Name;
 
 			if (txbTipoFuente.Text != "FuenteRSS")
-			{
 				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
-			}
 			else
 			{
 				IRssReader mRssReader = new RawXmlRssReader();
 				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 				}
 				else
 				{
-					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 					iItemBindingSource.DataSource = _Fuente.Items;
 				}

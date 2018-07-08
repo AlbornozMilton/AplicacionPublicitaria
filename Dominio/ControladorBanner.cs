@@ -133,15 +133,16 @@ namespace Dominio
 
 					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
 				}
-				else if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
-					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 			}
+
+			if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y/o no tiene items en bd
+				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(1, "").Items;
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
+			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
 		}
 
 		public int IntervaloBanner()
