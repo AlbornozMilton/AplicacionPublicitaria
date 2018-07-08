@@ -208,6 +208,8 @@
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F);
 			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.Format = "hh\\:mm";
+			dataGridViewCellStyle2.NullValue = null;
 			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -225,6 +227,7 @@
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
 			this.datagridHorario.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.datagridHorario.RowHeadersVisible = false;
+			this.datagridHorario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.datagridHorario.Size = new System.Drawing.Size(210, 269);
 			this.datagridHorario.TabIndex = 0;
 			// 
