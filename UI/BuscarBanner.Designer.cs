@@ -412,6 +412,7 @@
 			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "BuscarBanner";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "BuscarBanner";
 			this.Load += new System.EventHandler(this.BuscarBanner_Load);
 			this.gbx_ParamBusqueda.ResumeLayout(false);
