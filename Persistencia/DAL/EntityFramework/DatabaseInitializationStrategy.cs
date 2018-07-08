@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using Persistencia.Dominio;
 
@@ -12,10 +9,23 @@ namespace Persistencia.DAL.EntityFramework
     {
         protected override void Seed(DbContext context)
         {
-            //instanciar clases y relaciones <-- CREO QUE NO
-            //aca va lo que queremos que se cargue en la base de datos al crearse. (DATOS FIJO DEL PROGRAMA)
+			TextoFijo f = new TextoFijo
+			{
+				Descripcion = "PubliApp",
+				Items = new List<Item>
+				{
+					new Item
+					{
+						Fecha = DateTime.Now,
+						Titulo = "Elija su Título",
+						Texto = "Coloque contenido exclusivo."
+					}
+				}
+			};
 
-            base.Seed(context);
+			context.Set<TextoFijo>().Add(f);
+
+			base.Seed(context);
         }
     }
 }
