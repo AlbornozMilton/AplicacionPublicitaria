@@ -74,9 +74,9 @@ namespace Dominio
 				{
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
-						if (!(horario.HoraInicio.CompareTo(pHoraInicio) > 0 && horario.HoraInicio.CompareTo(pHoraFin) > 0)
+						if (!(horario.HoraInicio.CompareTo(pHoraInicio) > 0 && horario.HoraInicio.CompareTo(pHoraFin) >= 0)
 						&&
-						(!(horario.HoraFin.CompareTo(pHoraInicio) < 0 && horario.HoraFin.CompareTo(pHoraFin) < 0)))
+						(!(horario.HoraFin.CompareTo(pHoraInicio) <= 0 && horario.HoraFin.CompareTo(pHoraFin) < 0)))
 							throw new ApplicationException("Los Horarios y Días elegidos no se encuentran disponibles");
 					}
 				}

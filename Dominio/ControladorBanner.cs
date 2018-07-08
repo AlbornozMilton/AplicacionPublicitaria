@@ -96,7 +96,7 @@ namespace Dominio
 			{
 				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
-					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 1, 0)));
+					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 0, 1)));
 					break;
 				}
 			}

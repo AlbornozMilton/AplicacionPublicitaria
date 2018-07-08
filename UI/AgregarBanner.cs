@@ -216,9 +216,9 @@ namespace UI
 
 				foreach (RangoHorario item in iHorarios)
 				{
-					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) > 0)
+					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) >= 0)
 						&&
-						(!(item.HoraFin.CompareTo(desde) < 0 && item.HoraFin.CompareTo(hasta) < 0)))
+						(!(item.HoraFin.CompareTo(desde) <= 0 && item.HoraFin.CompareTo(hasta) < 0)))
 						throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
 				}
 
