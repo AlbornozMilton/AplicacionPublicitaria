@@ -75,7 +75,10 @@ namespace UI
      
         private void btn_Filtrar_Click(object sender, EventArgs e)
         {
-            Dictionary<Type, object> filtros = new Dictionary<Type, object>();
+			btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
+			Cursor = Cursors.WaitCursor;
+
+			Dictionary<Type, object> filtros = new Dictionary<Type, object>();
             string nombre = "";
             if (this.CB_Nombre.Checked)
             {
@@ -90,7 +93,10 @@ namespace UI
             iListaCampanias = iControladorCampania.ObtenerCampaniasFiltradas(filtros);
             dGV_Campanias.Rows.Clear();
             Cargar_dGV();
-        }
+
+			btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
+			Cursor = Cursors.WaitCursor;
+		}
 
         private void CB_Nombre_CheckedChanged(object sender, EventArgs e)
         {
@@ -133,5 +139,14 @@ namespace UI
             }
         }
 
-    }
+		private void btn_Filtrar_MouseHover(object sender, EventArgs e)
+		{
+			btn_Filtrar.BorderStyle = BorderStyle.FixedSingle;
+		}
+
+		private void btn_Filtrar_MouseLeave(object sender, EventArgs e)
+		{
+			btn_Filtrar.BorderStyle = BorderStyle.None;
+		}
+	}
 }

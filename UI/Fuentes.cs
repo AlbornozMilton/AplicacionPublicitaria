@@ -230,7 +230,21 @@ namespace UI
 
 		private void btnBuscar_Click(object sender, EventArgs e)
 		{
+			btnBuscar.BorderStyle = BorderStyle.Fixed3D;
+			Cursor = Cursors.WaitCursor;
 			CargarItems();
+			btnBuscar.BorderStyle = BorderStyle.None;
+			Cursor = Cursors.Default;
+		}
+
+		private void btnBuscar_MouseHover(object sender, EventArgs e)
+		{
+			btnBuscar.BorderStyle = BorderStyle.FixedSingle;
+		}
+
+		private void btnBuscar_MouseLeave(object sender, EventArgs e)
+		{
+			btnBuscar.BorderStyle = BorderStyle.None;
 		}
 	}
 }
