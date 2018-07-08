@@ -333,36 +333,27 @@ namespace UI
 			txbTipoFuente.Text = _Fuente.GetType().Name;
 
 			if (txbTipoFuente.Text != "FuenteRSS")
-			{
 				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
-				iItemBindingSource.ResetBindings(false);
-			}
 			else
 			{
-				hiloRss = new Thread(() => RequestRss(_Fuente));
-				hiloRss.Priority = ThreadPriority.Highest;
-				hiloRss.Start();
-			}
-		}
-
-		private void RequestRss(IFuente _Fuente)
-		{
-			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
-			if (items.Count > 0)
-			{
-				new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-				iItemBindingSource.DataSource = items.ToList();
-				new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
-			}
-			else
-			{
-				new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-				//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
-				iItemBindingSource.DataSource = _Fuente.Items;
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
+				if (items.Count > 0)
+				{
+					new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+				}
+				else
+				{
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+					iItemBindingSource.DataSource = _Fuente.Items;
+				}
 			}
 			iItemBindingSource.ResetBindings(false);
 		}
+
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
 			if (iBanner != null)

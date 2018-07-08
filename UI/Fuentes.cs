@@ -70,40 +70,30 @@ namespace UI
 				btnEliminarItem.Visible = true;
 				fechaDesde.Enabled = true;
 				fechaHasta.Enabled = true;
-				//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 				iItemBindingSource.DataSource = _Fuente.Items;
-				iItemBindingSource.ResetBindings(true);
 			}
 			else
 			{
 				btnAgregarItem.Visible = false;
 				btnModificarItem.Visible = false;
 				btnEliminarItem.Visible = false;
-				hiloRss = new Thread(() => RequestRss());
-				hiloRss.Priority = ThreadPriority.Highest;
-				hiloRss.Start();
-			}
-		}
-
-		private void RequestRss()
-		{
-			IRssReader mRssReader = new RawXmlRssReader();
-			var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
-			if (items.Count > 0)
-			{
-				new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-				iItemBindingSource.DataSource = items.ToList();
-				new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
-				fechaDesde.Enabled = false;
-				fechaHasta.Enabled = false;
-			}
-			else
-			{
-				fechaDesde.Enabled = true;
-				fechaHasta.Enabled = true;
-				new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-				iItemBindingSource.DataSource = _Fuente.Items;
-				//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
+				IRssReader mRssReader = new RawXmlRssReader();
+				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
+				if (items.Count > 0)
+				{
+					new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					iItemBindingSource.DataSource = items.ToList();
+					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+					fechaDesde.Enabled = false;
+					fechaHasta.Enabled = false;
+				}
+				else
+				{
+					fechaDesde.Enabled = true;
+					fechaHasta.Enabled = true;
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					iItemBindingSource.DataSource = _Fuente.Items;
+				}
 			}
 			iItemBindingSource.ResetBindings(true);
 		}
