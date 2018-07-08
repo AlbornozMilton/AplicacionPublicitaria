@@ -12,7 +12,7 @@ namespace Dominio
 	{
 		UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext());
 
-		private List<Banner> BannersDelDia = new List<Banner>();
+		private List<Banner> BannersDelDia;
 		public Banner BannerActual { get; private set; }
 		public Banner BannerProximo { get; private set; }
 

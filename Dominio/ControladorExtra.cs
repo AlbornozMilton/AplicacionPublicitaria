@@ -44,10 +44,13 @@ namespace Dominio
 		{
 			foreach (Banner mBanner in iBannersEnRangoFecha)
 			{
-				RangoFecha auxRFecha = mBanner.RangoFecha;
-				foreach (RangoHorario item in pHorarios)
+				if (mBanner.RangoFecha != null)
 				{
-					ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias);
+					RangoFecha auxRFecha = mBanner.RangoFecha;
+					foreach (RangoHorario item in pHorarios)
+					{
+						ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias);
+					} 
 				}
 			}
 		}
