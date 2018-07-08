@@ -12,7 +12,7 @@ namespace Dominio
 	{
 		UnitOfWork iUOfW = new UnitOfWork(new PublicidadContext());
 
-		private List<Banner> BannersDelDia = new List<Banner>();
+		private List<Banner> BannersDelDia;
 		public Banner BannerActual { get; private set; }
 		public Banner BannerProximo { get; private set; }
 
@@ -96,7 +96,7 @@ namespace Dominio
 			{
 				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
 				{
-					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 1, 0)));
+					BannerProximo = GetBanner(hora.HoraFin.Add(new TimeSpan(0, 0, 1)));
 					break;
 				}
 			}
@@ -133,15 +133,16 @@ namespace Dominio
 
 					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
 				}
-				else if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y no tiene items en bd
-					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault").Items;
 			}
+
+			if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y/o no tiene items en bd
+				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(1, "").Items;
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(null, "FuenteDefault"), rf);
+			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
 		}
 
 		public int IntervaloBanner()
@@ -149,12 +150,17 @@ namespace Dominio
 			int intervalo = 0;
 			foreach (var hora in BannerActual.RangoFecha.Horarios)
 			{
-				if (hora.HoraInicio <= DateTime.Now.TimeOfDay && hora.HoraFin >= DateTime.Now.TimeOfDay)
+				TimeSpan diff = DateTime.Now.TimeOfDay.Add(new TimeSpan(0, 0, 1));
+				if (hora.HoraInicio <= diff && hora.HoraFin >= diff)
 				{
 					intervalo = Convert.ToInt32((hora.HoraFin - DateTime.Now.TimeOfDay).TotalMilliseconds);
 					break;
 				}
 			}
+
+			if (intervalo == 0)
+				throw new Exception("ceroooo");
+
 			return Math.Abs(intervalo);
 		}
 

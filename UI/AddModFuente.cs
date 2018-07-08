@@ -37,7 +37,7 @@ namespace UI
 			}
 			else
 			{
-				string[] fuentes = { "FuenteRss", "TextoFijo" };
+				string[] fuentes = { "FuenteRSS", "TextoFijo" };
 				cbxTipoFuente.Items.AddRange(fuentes);
 			}
 		}
@@ -83,7 +83,7 @@ namespace UI
 
 		private void cbxTipoFuente_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
+			if (cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
 			{
 				lblUrl.Visible = true;
 				txbUrl.Visible = true;
@@ -102,9 +102,9 @@ namespace UI
 		{
 			try
 			{
-				if (cbxTipoFuente.SelectedItem != null && cbxTipoFuente.SelectedItem.ToString() == "FuenteRss")
+				if (cbxTipoFuente.SelectedItem != null && cbxTipoFuente.SelectedItem.ToString() == "FuenteRSS")
 				{
-					if (String.IsNullOrWhiteSpace(this.tbxDescripcion.Text))
+					if (String.IsNullOrWhiteSpace(this.txbUrl.Text))
 					{
 						//cLogger.Info("No se ingresó URL");
 						btnAceptar.Enabled = false;

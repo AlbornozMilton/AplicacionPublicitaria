@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 using Dominio.RSS;
+using System.Threading;
 
 namespace UI
 {
@@ -15,6 +16,8 @@ namespace UI
 		List<IFuente> iFuentes = new List<IFuente>();
 		private Banner iBanner;
 		string iDias = "";
+		private Thread hiloRss;
+
 
 		public AgregarBanner()
 		{
@@ -95,8 +98,12 @@ namespace UI
 			if (dGV_horarios.CurrentRow != null)
 			{
 				string[] horaInicio = dGV_horarios.CurrentRow.Cells[0].Value.ToString().Split(':');
+				string[] horaFin = dGV_horarios.CurrentRow.Cells[1].Value.ToString().Split(':');
 				TimeSpan horaInicioTime = new TimeSpan(Convert.ToInt32(horaInicio[0]), Convert.ToInt32(horaInicio[1]), 0);
-				iHorarios.Remove(iHorarios.Where(h => h.HoraInicio == horaInicioTime).SingleOrDefault());
+				TimeSpan horaFinTime = new TimeSpan(Convert.ToInt32(horaFin[0]), Convert.ToInt32(horaFin[1]), 0);
+				RangoHorario rh = new RangoHorario(horaInicioTime, horaFinTime);
+				iHorarios.Remove(iHorarios.Where(h => h.HoraInicio == rh.HoraInicio && h.HoraFin == rh.HoraFin).SingleOrDefault());
+				iBanner.RangoFecha.Horarios.Remove(iBanner.RangoFecha.Horarios.Where(h => h.HoraInicio == rh.HoraInicio && h.HoraFin == rh.HoraFin).SingleOrDefault());
 				dGV_horarios.Rows.Remove(dGV_horarios.CurrentRow);
 			}
 		}
@@ -120,7 +127,7 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					f = new VentanaEmergente("Para este banner se mostraran items por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Para este Banner se mostraran Items de Fuente por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
 
@@ -141,7 +148,7 @@ namespace UI
 						iDias += "sabado-";
 					if (ckb_domingo.Checked)
 						iDias += "domingo-";
-					iDias = iDias.Remove(iDias.Length-1);
+					iDias = iDias.Remove(iDias.Length - 1);
 
 					if (iBanner != null)
 					{
@@ -182,7 +189,9 @@ namespace UI
 					dGV_horarios.Rows.Clear();
 					iHorarios.Clear();
 				}
+
 				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
+
 				if (iBanner != null)
 					iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
 			}
@@ -214,9 +223,9 @@ namespace UI
 
 				foreach (RangoHorario item in iHorarios)
 				{
-					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) > 0)
+					if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) >= 0)
 						&&
-						(!(item.HoraFin.CompareTo(desde) < 0 && item.HoraFin.CompareTo(hasta) < 0)))
+						(!(item.HoraFin.CompareTo(desde) <= 0 && item.HoraFin.CompareTo(hasta) < 0)))
 						throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
 				}
 
@@ -324,22 +333,20 @@ namespace UI
 			txbTipoFuente.Text = _Fuente.GetType().Name;
 
 			if (txbTipoFuente.Text != "FuenteRSS")
-			{
 				iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
-			}
 			else
 			{
 				IRssReader mRssReader = new RawXmlRssReader();
 				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
 				if (items.Count > 0)
 				{
-					new VentanaEmergente("Solicitud web exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 					iItemBindingSource.DataSource = items.ToList();
 					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 				}
 				else
 				{
-					new VentanaEmergente("No se obtuvieron items en la solicitud web reciente", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 					iItemBindingSource.DataSource = _Fuente.Items;
 				}

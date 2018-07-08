@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbl_Title = new System.Windows.Forms.Label();
 			this.lblFuente = new System.Windows.Forms.Label();
 			this.lbl_tipoFuente = new System.Windows.Forms.Label();
@@ -155,14 +155,14 @@
             this.fechaDataGridViewTextBoxColumn,
             this.textoDataGridViewTextBoxColumn});
 			this.dGV_itemsFuente.DataSource = this.iItemBindingSource;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F);
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F);
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle3;
 			this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_itemsFuente.Location = new System.Drawing.Point(3, 18);
 			this.dGV_itemsFuente.MultiSelect = false;
@@ -170,8 +170,8 @@
 			this.dGV_itemsFuente.ReadOnly = true;
 			this.dGV_itemsFuente.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dGV_itemsFuente.RowHeadersVisible = false;
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+			this.dGV_itemsFuente.RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_itemsFuente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_itemsFuente.Size = new System.Drawing.Size(936, 189);
 			this.dGV_itemsFuente.TabIndex = 0;
@@ -209,10 +209,11 @@
 			// 
 			// tbxTipoFuente
 			// 
-			this.tbxTipoFuente.Location = new System.Drawing.Point(119, 86);
+			this.tbxTipoFuente.Font = new System.Drawing.Font("Verdana", 9F);
+			this.tbxTipoFuente.Location = new System.Drawing.Point(119, 85);
 			this.tbxTipoFuente.Name = "tbxTipoFuente";
 			this.tbxTipoFuente.ReadOnly = true;
-			this.tbxTipoFuente.Size = new System.Drawing.Size(120, 20);
+			this.tbxTipoFuente.Size = new System.Drawing.Size(120, 22);
 			this.tbxTipoFuente.TabIndex = 41;
 			this.tbxTipoFuente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -316,10 +317,11 @@
 			// cbx_Fuente
 			// 
 			this.cbx_Fuente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbx_Fuente.Font = new System.Drawing.Font("Verdana", 9F);
 			this.cbx_Fuente.FormattingEnabled = true;
-			this.cbx_Fuente.Location = new System.Drawing.Point(119, 46);
+			this.cbx_Fuente.Location = new System.Drawing.Point(119, 45);
 			this.cbx_Fuente.Name = "cbx_Fuente";
-			this.cbx_Fuente.Size = new System.Drawing.Size(466, 21);
+			this.cbx_Fuente.Size = new System.Drawing.Size(466, 22);
 			this.cbx_Fuente.TabIndex = 52;
 			this.cbx_Fuente.SelectedIndexChanged += new System.EventHandler(this.cbx_Fuente_SelectedIndexChanged);
 			// 
@@ -475,6 +477,8 @@
 			this.btnBuscar.TabIndex = 65;
 			this.btnBuscar.TabStop = false;
 			this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+			this.btnBuscar.MouseLeave += new System.EventHandler(this.btnBuscar_MouseLeave);
+			this.btnBuscar.MouseHover += new System.EventHandler(this.btnBuscar_MouseHover);
 			// 
 			// Fuentes
 			// 
