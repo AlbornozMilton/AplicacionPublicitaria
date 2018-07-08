@@ -95,8 +95,12 @@ namespace UI
 			if (dGV_horarios.CurrentRow != null)
 			{
 				string[] horaInicio = dGV_horarios.CurrentRow.Cells[0].Value.ToString().Split(':');
+				string[] horaFin = dGV_horarios.CurrentRow.Cells[1].Value.ToString().Split(':');
 				TimeSpan horaInicioTime = new TimeSpan(Convert.ToInt32(horaInicio[0]), Convert.ToInt32(horaInicio[1]), 0);
-				iHorarios.Remove(iHorarios.Where(h => h.HoraInicio == horaInicioTime).SingleOrDefault());
+				TimeSpan horaFinTime = new TimeSpan(Convert.ToInt32(horaFin[0]), Convert.ToInt32(horaFin[1]), 0);
+				RangoHorario rh = new RangoHorario(horaInicioTime, horaFinTime);
+				iHorarios.Remove(iHorarios.Where(h => h.HoraInicio == rh.HoraInicio && h.HoraFin == rh.HoraFin).SingleOrDefault());
+				iBanner.RangoFecha.Horarios.Remove(iBanner.RangoFecha.Horarios.Where(h => h.HoraInicio == rh.HoraInicio && h.HoraFin == rh.HoraFin).SingleOrDefault());
 				dGV_horarios.Rows.Remove(dGV_horarios.CurrentRow);
 			}
 		}

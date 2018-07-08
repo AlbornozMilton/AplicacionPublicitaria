@@ -21,7 +21,7 @@ namespace Dominio
 			foreach (var banner in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
 			{
 				if (banner.BannerId != pBannerExcluido)
-					iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner,Banner>(banner));
+					iBannersEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Banner, Banner>(banner));
 			}
 		}
 
@@ -30,11 +30,11 @@ namespace Dominio
 		/// </summary>
 		public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta)
 		{
-            var campPersistencia = iUOfW.RepositorioCampania.GetCampaniasEntreFechas(pFechaDesde, pFechaHasta);
-            foreach (var camp in campPersistencia)
-            {
-                iCampaniasEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Campania, Dominio.Campania>(camp));
-            }
+			var campPersistencia = iUOfW.RepositorioCampania.GetCampaniasEntreFechas(pFechaDesde, pFechaHasta);
+			foreach (var camp in campPersistencia)
+			{
+				iCampaniasEnRangoFecha.Add(Mapper.Map<Persistencia.Dominio.Campania, Dominio.Campania>(camp));
+			}
 		}
 
 		/// <summary>
@@ -47,7 +47,7 @@ namespace Dominio
 				RangoFecha auxRFecha = mBanner.RangoFecha;
 				foreach (RangoHorario item in pHorarios)
 				{
-					ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias); 
+					ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias);
 				}
 			}
 		}
