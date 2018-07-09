@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 using Dominio.RSS;
-using System.Threading;
 
 namespace UI
 {
@@ -13,7 +12,6 @@ namespace UI
 		private List<IFuente> iFuentes;
 		private IFuente _Fuente;
 		string iFuenteSeleccionada;
-		private Thread hiloRss;
 
 		public Fuentes()
 		{
@@ -21,10 +19,9 @@ namespace UI
 			iFuentes = new ControladorFuentes().ObtenerFuentes();
 		}
 
-		public Fuentes(string pDescripcion, List<IFuente> pFuentes)
+		public Fuentes(string pDescripcion)
 		{
 			InitializeComponent();
-			iFuentes = pFuentes;
 			iFuenteSeleccionada = pDescripcion;
 		}
 
@@ -32,30 +29,19 @@ namespace UI
 		{
 			fechaDesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 			fechaHasta.Value = fechaDesde.Value.AddMonths(1);
-			CargarFuentes(-1);
+			CargarFuentes();
 		}
 
-		private void CargarFuentes(int pIndex)
+		private void CargarFuentes()
 		{
 			iFuentes = new ControladorFuentes().ObtenerFuentes();
 
-			if (iFuentes.Count > 0)
+			cbx_Fuente.Items.Clear();
+
+			for (int i = 0; i < iFuentes.Count; i++)
 			{
-				cbx_Fuente.Items.Clear();
-
-				for (int i = 0; i < iFuentes.Count; i++)
-				{
-					cbx_Fuente.Items.Add(iFuentes[i].Descripcion);
-				}
-				if (pIndex > 0)
-					cbx_Fuente.SelectedIndex = pIndex;
-				else if (pIndex == 0)
-					cbx_Fuente.SelectedIndex = iFuentes.Count - 1;
-				else
-					cbx_Fuente.SelectedIndex = 0;
+				cbx_Fuente.Items.Add(iFuentes[i].Descripcion);
 			}
-
-			CargarItems();
 		}
 
 		private void CargarItems()
@@ -103,7 +89,7 @@ namespace UI
 			AddModFuente f = new AddModFuente();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
-				CargarFuentes(0);
+				CargarFuentes();
 		}
 
 		private void btnModFuente_Click(object sender, EventArgs e)
@@ -113,7 +99,7 @@ namespace UI
 				AddModFuente f = new AddModFuente(_Fuente);
 				f.ShowDialog();
 				if (f.DialogResult == DialogResult.OK)
-					CargarFuentes(cbx_Fuente.SelectedIndex);
+					CargarFuentes();
 			}
 		}
 
@@ -137,7 +123,7 @@ namespace UI
 							_Fuente.Descripcion,
 							"");
 						new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						CargarFuentes(-1);
+						CargarFuentes();
 					}
 					ve.Dispose();
 				}
@@ -153,7 +139,7 @@ namespace UI
 			ItemsFuentes f = new ItemsFuentes(new ItemGenerico() { ItemId = 0, Fecha = DateTime.Now }, _Fuente.FuenteId);
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
-				CargarFuentes(cbx_Fuente.SelectedIndex);
+				CargarFuentes();
 		}
 
 		private void ModificarItem_Click(object sender, EventArgs e)
@@ -164,7 +150,7 @@ namespace UI
 				iItemBindingSource.SuspendBinding();
 				f.ShowDialog();
 				if (f.DialogResult == DialogResult.OK)
-					CargarFuentes(cbx_Fuente.SelectedIndex);
+					CargarFuentes();
 				iItemBindingSource.ResumeBinding();
 			}
 		}
@@ -187,7 +173,7 @@ namespace UI
 									_Fuente.FuenteId,
 									(IItem)iItemBindingSource.Current);
 						new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						CargarFuentes(cbx_Fuente.SelectedIndex);
+						CargarFuentes();
 					}
 					ve.Dispose();
 				}

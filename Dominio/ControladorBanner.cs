@@ -116,11 +116,16 @@ namespace Dominio
 			if (url != "")
 			{
 				IRssReader mRssReader = new RawXmlRssReader();
-				var items = mRssReader.Read(url).ToList();
-				if (items.Count > 0) //hubo respuesta
+				List<RssItem> items = new List<RssItem>();
+				items = mRssReader.Read(url).ToList();
+				BannerActual.Fuente.Items.Clear();
+
+				if (items.Count == 0) //no hubo respuesta
+					BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteRss(BannerActual.Fuente.FuenteId, "").Items.OrderByDescending(i => i.Fecha).ToList();
+				else
 				{
-					BannerActual.Fuente.Items.Clear();
-					foreach (var item in items)
+					var itemsOrdenados = items.OrderByDescending(i => i.Fecha);
+					foreach (var item in itemsOrdenados)
 					{
 						BannerActual.Fuente.Items.Add(new RssItem
 						{
@@ -130,19 +135,20 @@ namespace Dominio
 							Url = item.Url
 						});
 					}
-
 					new ControladorFuentes().ActualizarItemsRss(items, BannerActual.Fuente.FuenteId);
 				}
 			}
 
-			if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y/o no tiene items en bd
-				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(1, "").Items;
+			if (BannerActual.Fuente.Items.Count == 0) //no hubo respuesta y/o no tiene items en bd (puede no ser rss)
+				BannerActual.Fuente.Items = new ControladorFuentes().ObtenerFuenteTextoFijo(1, "").Items.OrderByDescending(i => i.Fecha).ToList();
+			else
+				BannerActual.Fuente.Items = BannerActual.Fuente.Items.OrderByDescending(i => i.Fecha).ToList(); // si no es rss
 		}
 
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
+			return new Banner("AP", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
 		}
 
 		public int IntervaloBanner()
@@ -157,10 +163,6 @@ namespace Dominio
 					break;
 				}
 			}
-
-			if (intervalo == 0)
-				throw new Exception("ceroooo");
-
 			return Math.Abs(intervalo);
 		}
 
