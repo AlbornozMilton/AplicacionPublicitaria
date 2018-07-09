@@ -16,8 +16,6 @@ namespace UI
 		List<IFuente> iFuentes = new List<IFuente>();
 		private Banner iBanner;
 		string iDias = "";
-		private Thread hiloRss;
-
 
 		public AgregarBanner()
 		{
@@ -67,15 +65,16 @@ namespace UI
 						ckb_domingo.Checked = true;
 				}
 
-				//iDias = iBanner.RangoFecha.Dias + "-";
 				iHorarios = iBanner.RangoFecha.Horarios;
 				foreach (var item in iHorarios)
 				{
 					dGV_horarios.Rows.Add(item.HoraInicio, item.HoraFin);
 				}
-			}
 
-			pictureBox1_Click(null, null);
+				iControlExtra.ActualizarBannersEnRangoFecha(iBanner.BannerId, fechaDesde.Value, fechaHasta.Value);
+			}
+			else
+				iControlExtra.ActualizarBannersEnRangoFecha(0, fechaDesde.Value, fechaHasta.Value);
 		}
 
 		private void RellenarFuentes()
@@ -180,20 +179,26 @@ namespace UI
 			RellenarFuentes();
 		}
 
-		private void ControlFecha(int pBannerExcluido)
+		private void ControlFecha()
 		{
 			try
 			{
+				iBanner.RangoFecha.Horarios.Clear();
+				iHorarios.Clear();
+				dGV_horarios.Rows.Clear();
+				iDias = "";
+				ckb_luenes.Checked = false;
+				ckb_martes.Checked = false;
+				ckb_miercoles.Checked = false;
+				ckb_jueves.Checked = false;
+				ckb_viernes.Checked = false;
+				ckb_sabado.Checked = false;
+				ckb_domingo.Checked = false;
+
 				if (iBanner == null)
-				{
-					dGV_horarios.Rows.Clear();
-					iHorarios.Clear();
-				}
-
-				iControlExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
-
-				if (iBanner != null)
-					iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+					iControlExtra.ActualizarBannersEnRangoFecha(0, fechaDesde.Value, fechaHasta.Value);
+				else
+					iControlExtra.ActualizarBannersEnRangoFecha(iBanner.BannerId, fechaDesde.Value, fechaHasta.Value);
 			}
 			catch (ApplicationException)
 			{
@@ -347,7 +352,6 @@ namespace UI
 				else
 				{
 					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-					//iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, fechaDesde.Value.Date, fechaHasta.Value.Date);
 					iItemBindingSource.DataSource = _Fuente.Items;
 				}
 			}
@@ -356,10 +360,7 @@ namespace UI
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
-			if (iBanner != null)
-				ControlFecha(iBanner.BannerId);
-			else
-				ControlFecha(0);
+			ControlFecha();
 		}
 	}
 }

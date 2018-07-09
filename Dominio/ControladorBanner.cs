@@ -142,7 +142,7 @@ namespace Dominio
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
-			return new Banner("FuenteDefault", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
+			return new Banner("AP", new ControladorFuentes().ObtenerFuenteTextoFijo(1, ""), rf);
 		}
 
 		public int IntervaloBanner()
@@ -157,10 +157,6 @@ namespace Dominio
 					break;
 				}
 			}
-
-			if (intervalo == 0)
-				throw new Exception("ceroooo");
-
 			return Math.Abs(intervalo);
 		}
 

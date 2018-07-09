@@ -13,7 +13,6 @@ namespace UI
 		private List<IFuente> iFuentes;
 		private IFuente _Fuente;
 		string iFuenteSeleccionada;
-		private Thread hiloRss;
 
 		public Fuentes()
 		{
