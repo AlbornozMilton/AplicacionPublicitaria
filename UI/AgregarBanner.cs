@@ -175,7 +175,7 @@ namespace UI
 
 		private void btnFuentes_Click(object sender, EventArgs e)
 		{
-			new Fuentes(cbx_Fuente.SelectedText, iFuentes).ShowDialog();
+			new Fuentes(cbx_Fuente.SelectedText).ShowDialog();
 			RellenarFuentes();
 		}
 

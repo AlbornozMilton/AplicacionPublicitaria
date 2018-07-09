@@ -65,7 +65,7 @@ namespace UI
 				if (ve.DialogResult == DialogResult.OK)
 				{
 					new ControladorBanner().EliminarBanner(f.BanSelected.BannerId);
-					new VentanaEmergente("Banner Eliminado", VentanaEmergente.TipoMensaje.Exito);
+					new VentanaEmergente("Banner Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 				}
 				ve.Dispose();
 			}
