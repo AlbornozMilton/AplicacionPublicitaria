@@ -287,5 +287,8 @@
   <ItemGroup>
     <None Include="Resources\Icono.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenPorDefecto.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

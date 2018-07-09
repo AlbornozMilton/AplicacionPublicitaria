@@ -48,7 +48,7 @@ namespace UI
             if (iCampaniaActual.Nombre == "Default")
             {
                 this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
-                return UI.Properties.Resources.PorDefecto;
+                return UI.Properties.Resources.ImagenPorDefecto;
             }
             else
             {
