@@ -96,5 +96,15 @@ namespace UI
 		{
 			Controls.Find(((PictureBox)sender).Name.Replace("btn", ""), true).First().Visible = false;
 		}
-	}
+
+        private void btnEditarCampania_Click(object sender, EventArgs e)
+        {
+            BuscarCampaña iVentanaBuscar = new BuscarCampaña();
+            iVentanaBuscar.ShowDialog();
+            if (iVentanaBuscar.iCampaniaSeleccionada != null)
+            {
+                new AgregarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
+            }
+        }
+    }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.EliminarCampania = new System.Windows.Forms.Label();
@@ -152,6 +153,7 @@
             this.btnEditarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnEditarCampania.TabIndex = 10;
             this.btnEditarCampania.TabStop = false;
+            this.btnEditarCampania.Click += new System.EventHandler(this.btnEditarCampania_Click);
             this.btnEditarCampania.MouseLeave += new System.EventHandler(this.LeaveLabel);
             this.btnEditarCampania.MouseHover += new System.EventHandler(this.HoverLabel);
             // 
@@ -362,6 +364,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";

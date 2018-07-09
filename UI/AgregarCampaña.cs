@@ -19,6 +19,22 @@ namespace UI
 			InitializeComponent();
 		}
 
+        public AgregarCampaña(Campania unaCampania)
+        {
+            InitializeComponent();
+            cargarCamposVentana(unaCampania);
+        }
+
+        private void cargarCamposVentana(Campania unaCampania)
+        {
+            tbx_Nombre.Text = unaCampania.Nombre;
+            //tbx_Codigo.Text = unaCampania.CampaniaId.ToString();
+            dtp_FechaDesde.Value = unaCampania.RangoFecha.FechaInicio; //ToString("dd/MM/yyyy");
+            dtp_FechaHasta.Value = unaCampania.RangoFecha.FechaFin; // .ToString("dd/MM/yyyy");
+            numUD_IntTiempo.Text = unaCampania.IntervaloTiempo.ToString();
+
+        }
+
 		private void label9_Click(object sender, EventArgs e)
 		{
 			Close();
