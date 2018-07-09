@@ -126,7 +126,7 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					f = new VentanaEmergente("Para este Banner se mostraran Items de Fuente por defecto \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
+					f = new VentanaEmergente("Se asignaran items de fuente por defecto en tiempo de operativa \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
 
