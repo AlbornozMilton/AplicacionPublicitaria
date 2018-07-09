@@ -13,6 +13,7 @@ namespace UI
 		List<Imagen> imagenes = new List<Imagen>();
 		ControladorCampania iControladorCampania = new ControladorCampania();
 		ControladorExtra iControladorExtra = new ControladorExtra();
+        Campania iCampaniaModificar = null;
 
 		public AgregarCampaña()
 		{
@@ -22,16 +23,61 @@ namespace UI
         public AgregarCampaña(Campania unaCampania)
         {
             InitializeComponent();
-            cargarCamposVentana(unaCampania);
+            iCampaniaModificar = unaCampania;
         }
 
-        private void cargarCamposVentana(Campania unaCampania)
+        private void AgregarCampaña_Load(object sender, EventArgs e)
         {
-            tbx_Nombre.Text = unaCampania.Nombre;
-            //tbx_Codigo.Text = unaCampania.CampaniaId.ToString();
-            dtp_FechaDesde.Value = unaCampania.RangoFecha.FechaInicio; //ToString("dd/MM/yyyy");
-            dtp_FechaHasta.Value = unaCampania.RangoFecha.FechaFin; // .ToString("dd/MM/yyyy");
-            numUD_IntTiempo.Text = unaCampania.IntervaloTiempo.ToString();
+            if (iCampaniaModificar != null)
+            {
+                lbl_NombreVentana.Text = "Modificar Campaña";
+                lbl_Id.Visible = true;
+                lbl_nroID.Visible = true;
+                cargarCamposVentana();
+            }
+        }
+
+        private void Cargar_Imagenes()
+        {
+            foreach (var imagen in iCampaniaModificar.Imagenes)
+            {
+                dgv_Imagenes.Rows.Add(imagen.Nombre, imagen.Ruta);
+            }
+        }
+
+        private void Cargar_Horarios()
+        {
+            foreach (var hora in iCampaniaModificar.RangoFecha.Horarios)
+            {
+                dgv_Horarios.Rows.Add(hora.HoraInicio, hora.HoraFin);
+            }
+        }
+
+        private void Cargar_Dias()
+        {
+            List<CheckBox> diasChecks = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+            List<string> dias = iCampaniaModificar.RangoFecha.Dias.Split('-').ToList();
+            foreach (var check in diasChecks)
+            {
+                if (dias.Contains(check.Name))
+                {
+                    check.Checked = true;
+                    check.Enabled = true;
+                }
+            }
+        }
+
+        private void cargarCamposVentana()
+        {
+            tbx_Nombre.Text = iCampaniaModificar.Nombre;
+            lbl_nroID.Text = iCampaniaModificar.CampaniaId.ToString();
+            dtp_FechaDesde.Value = iCampaniaModificar.RangoFecha.FechaInicio; //ToString("dd/MM/yyyy");
+            dtp_FechaHasta.Value = iCampaniaModificar.RangoFecha.FechaFin; // .ToString("dd/MM/yyyy");
+            numUD_IntTiempo.Text = iCampaniaModificar.IntervaloTiempo.ToString();
+            Cargar_Dias();
+            Cargar_Imagenes();
+            Cargar_Horarios();
+
 
         }
 
@@ -188,10 +234,6 @@ namespace UI
 			}
 		}
 
-		private void AgregarCampaña_Load(object sender, EventArgs e)
-		{
-
-		}
 
 		private void dtp_FechaDesde_ValueChanged(object sender, EventArgs e)
 		{

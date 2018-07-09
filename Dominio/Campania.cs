@@ -27,7 +27,15 @@ namespace Dominio
             iRangoFecha = pRangoFecha;
             this.iListaImagen = new List<Imagen>();
             this.iListaImagen = pImagenes;
-            this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
+            //No me gusta lo sguiente
+            if (pImagenes != null)
+            {
+                this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();
+            }
+            else
+            {
+                this.iEnumeradorListaImg = null;
+            }
         }
 
         public int CampaniaId

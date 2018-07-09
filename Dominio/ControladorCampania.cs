@@ -100,11 +100,11 @@ namespace Dominio
 			string listaDias = DateTime.Today.DayOfWeek.ToString();
 			List<RangoHorario> listaHorarios = new List<RangoHorario>();
 			listaHorarios.Add(new RangoHorario(pHoraInicio, pHoraInicio.Add(new TimeSpan(00, 01, 00))));
-			List<Imagen> listaImagenes = new List<Imagen>();
+			//List<Imagen> listaImagenes = new List<Imagen>();
 			//Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Mauri\\Downloads\\Transferencia.png");
-			Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Downloads\\Parcial.jpeg");
-			listaImagenes.Add(imagenPublicidad);
-			return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios), listaImagenes);
+			//Imagen imagenPublicidad = new Imagen("ImgDefault", "C:\\Users\\Milton\\Downloads\\Parcial.jpeg");
+			//listaImagenes.Add(imagenPublicidad);
+			return new Campania("Default", 60, new RangoFecha(DateTime.Today.Date, DateTime.Today.Date, DateTime.Today.DayOfWeek.ToString(), listaHorarios), null);
 		}
 
 		/// <summary>

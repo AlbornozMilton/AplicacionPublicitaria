@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_NombreVentana = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbx_Nombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -80,6 +80,8 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lbl_Id = new System.Windows.Forms.Label();
+            this.lbl_nroID = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_AgregarHora)).BeginInit();
@@ -95,18 +97,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Imagenes)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_NombreVentana
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Agregar Campaña";
+            this.lbl_NombreVentana.AutoSize = true;
+            this.lbl_NombreVentana.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_NombreVentana.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NombreVentana.ForeColor = System.Drawing.Color.White;
+            this.lbl_NombreVentana.Location = new System.Drawing.Point(16, 14);
+            this.lbl_NombreVentana.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_NombreVentana.Name = "lbl_NombreVentana";
+            this.lbl_NombreVentana.Size = new System.Drawing.Size(168, 18);
+            this.lbl_NombreVentana.TabIndex = 2;
+            this.lbl_NombreVentana.Text = "Agregar Campaña";
             // 
             // label2
             // 
@@ -684,6 +686,33 @@
             this.label9.Text = "X";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
+            // lbl_Id
+            // 
+            this.lbl_Id.AutoSize = true;
+            this.lbl_Id.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Id.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Id.ForeColor = System.Drawing.Color.White;
+            this.lbl_Id.Location = new System.Drawing.Point(785, 65);
+            this.lbl_Id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Id.Name = "lbl_Id";
+            this.lbl_Id.Size = new System.Drawing.Size(101, 18);
+            this.lbl_Id.TabIndex = 23;
+            this.lbl_Id.Text = "Campaña ID";
+            this.lbl_Id.Visible = false;
+            // 
+            // lbl_nroID
+            // 
+            this.lbl_nroID.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_nroID.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nroID.ForeColor = System.Drawing.Color.White;
+            this.lbl_nroID.Location = new System.Drawing.Point(900, 65);
+            this.lbl_nroID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_nroID.Name = "lbl_nroID";
+            this.lbl_nroID.Size = new System.Drawing.Size(56, 18);
+            this.lbl_nroID.TabIndex = 24;
+            this.lbl_nroID.Text = "unID";
+            this.lbl_nroID.Visible = false;
+            // 
             // AgregarCampaña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -692,6 +721,8 @@
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(977, 364);
+            this.Controls.Add(this.lbl_nroID);
+            this.Controls.Add(this.lbl_Id);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_Cancelar);
@@ -700,7 +731,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.tbx_Nombre);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_NombreVentana);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -732,7 +763,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_NombreVentana;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbx_Nombre;
@@ -778,6 +809,8 @@
         private System.Windows.Forms.PictureBox pB_VistaPrevia;
         private System.Windows.Forms.PictureBox btn_Subir;
         private System.Windows.Forms.PictureBox btn_Abajo;
+        private System.Windows.Forms.Label lbl_Id;
+        private System.Windows.Forms.Label lbl_nroID;
     }
 }
 

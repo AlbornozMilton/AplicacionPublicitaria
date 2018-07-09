@@ -39,20 +39,28 @@ namespace UI
 		private void MostrarCampania()
 		{
 			this.timer_IntervaloCamp.Interval = Convert.ToInt32(Math.Truncate(iCampaniaActual.RangoFecha.Horarios[0].HoraFin.TotalMilliseconds - DateTime.Now.TimeOfDay.TotalMilliseconds));
-			this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+            this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania();
 			this.backgroundWorker_CambioCamp.RunWorkerAsync();
 		}
 
-		private Image ObtenerImagenCampania(Campania pCampania)
+		private Image ObtenerImagenCampania()
 		{
-			Imagen imagenActual = pCampania.SiguienteImagen();
-			this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
-			return Image.FromFile(imagenActual.Ruta);
+            if (iCampaniaActual.Nombre == "Default")
+            {
+                this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
+                return UI.Properties.Resources.PorDefecto;
+            }
+            else
+            {
+                Imagen imagenActual = iCampaniaActual.SiguienteImagen();
+                this.timer_IntervaloImagen.Interval = iCampaniaActual.IntervaloTiempo * 1000;
+                return Image.FromFile(imagenActual.Ruta);
+            }
 		}
 
 		private void timer_IntervaloImagen_Tick(object sender, EventArgs e)
 		{
-			this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania(this.iCampaniaActual);
+			this.pictureBox_ImagenCamp.Image = this.ObtenerImagenCampania();
 		}
 
 		private void timer_IntervaloCamp_Tick(object sender, EventArgs e)
