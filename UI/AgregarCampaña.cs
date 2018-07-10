@@ -142,7 +142,7 @@ namespace UI
 		private string DevolverDias()
 		{
 			List<CheckBox> pDiasSeleccionados = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
-			string dias = "";
+			string dias = null;
 			foreach (var dia in pDiasSeleccionados)
 			{
 				if (dia.Checked)
@@ -150,7 +150,7 @@ namespace UI
 					dias = dias + (dia.Name) + "-";
 				}
 			}
-			return dias;
+            return dias;
 		}
 		private void btn_Aceptar_Click(object sender, EventArgs e)
 		{

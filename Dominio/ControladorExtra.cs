@@ -72,7 +72,7 @@ namespace Dominio
 
 			foreach (string dia in mdias)
 			{
-				if (pDias.Contains(dia))
+				if (pDias.Contains(dia) && dia!="")
 				{
 					foreach (RangoHorario horario in pRangoFecha.Horarios)
 					{
