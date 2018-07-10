@@ -13,6 +13,7 @@ namespace Dominio
         private DateTime iFechaFin;
 		private string iDias;
         private List<RangoHorario> iRangoHorario;
+        private Campania iCampania;
 
         //CONSTRUCTOR
         public RangoFecha()
@@ -38,6 +39,11 @@ namespace Dominio
             iRangoHorario.Add(pRangoH);
         }
 
+        public Campania Campania
+        {
+            get { return this.iCampania; }
+            private set { this.iCampania = value; }
+        }
         public int RangoFechaId
         {
             get { return this.iCodRangoFecha; }

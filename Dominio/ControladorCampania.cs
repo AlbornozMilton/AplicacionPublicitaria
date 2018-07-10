@@ -27,6 +27,12 @@ namespace Dominio
 			iUOfW.Complete();
 		}
 
+        public void ModificarCampania(Campania campVieja, string pNombre, int pIntTiempo, DateTime pFechaDesde, DateTime pFechaHasta, string pDias, List<RangoHorario> pHorarios, List<Imagen> pImagenes)
+        {
+            EliminarCampania(campVieja);
+            AgregarCampania(pNombre, pIntTiempo, pFechaDesde, pFechaHasta, pDias, pHorarios, pImagenes);
+        }
+
 		public void EliminarCampania(Campania pCampania)
 		{
 			var MapCamp = Mapper.Map<Campania, Persistencia.Dominio.Campania>(pCampania);

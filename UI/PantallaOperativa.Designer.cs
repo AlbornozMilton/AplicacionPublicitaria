@@ -86,16 +86,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Banner.BackColor = System.Drawing.Color.White;
             this.panel_Banner.Controls.Add(this.TextoBanner);
-            this.panel_Banner.Location = new System.Drawing.Point(12, 15);
+            this.panel_Banner.Location = new System.Drawing.Point(0, 15);
             this.panel_Banner.Name = "panel_Banner";
-            this.panel_Banner.Size = new System.Drawing.Size(760, 35);
+            this.panel_Banner.Size = new System.Drawing.Size(784, 35);
             this.panel_Banner.TabIndex = 0;
             // 
             // TextoBanner
             // 
             this.TextoBanner.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.TextoBanner.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextoBanner.Location = new System.Drawing.Point(750, 0);
+            this.TextoBanner.Location = new System.Drawing.Point(774, 0);
             this.TextoBanner.Margin = new System.Windows.Forms.Padding(0);
             this.TextoBanner.Name = "TextoBanner";
             this.TextoBanner.Size = new System.Drawing.Size(10, 35);

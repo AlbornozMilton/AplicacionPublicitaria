@@ -20,7 +20,7 @@ namespace Persistencia.Dominio
 
 		//public virtual List<Banner> Banners { get; set; }
 
-		//public virtual Campania Campania { get; set; }
+		public virtual Campania Campania { get; set; }
 
 		public virtual List<RangoHorario> Horarios { get; set; }
 	}

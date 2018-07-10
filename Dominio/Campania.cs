@@ -69,8 +69,11 @@ namespace Dominio
             }
         }
 
-        /// Devuelve la siguiente imagen a mostrar (de forma cíclica)
-        
+
+        /// <summary>
+        /// Devuelve la siguiente imagen a mostrar (de forma cíclica) 
+        /// </summary>
+        /// <returns></returns>
         public Imagen SiguienteImagen()
         {
             Imagen imagenSiguiente;

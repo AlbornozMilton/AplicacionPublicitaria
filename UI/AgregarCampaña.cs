@@ -77,8 +77,6 @@ namespace UI
             Cargar_Dias();
             Cargar_Imagenes();
             Cargar_Horarios();
-
-
         }
 
 		private void label9_Click(object sender, EventArgs e)
@@ -135,6 +133,7 @@ namespace UI
 		{
 			Close();
 		}
+
 		/// <summary>
 		/// Devuelve una lista de dias en forma de string cuyo caracter delimitador es -
 		/// </summary>
@@ -158,12 +157,18 @@ namespace UI
 			try
 			{
 				string dias = DevolverDias();
-				//if (iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value))
 				iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value);
-
 				LlenarListaImagenes(dgv_Imagenes);
-				iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
-				new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                if (iCampaniaModificar != null)
+                {
+                    iControladorCampania.ModificarCampania(iCampaniaModificar, tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
+                    new VentanaEmergente("Campaña Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                }
+                else
+                {
+                    iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
+                    new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                }
 				Close();
 			}
 			catch (Exception E)
@@ -233,7 +238,6 @@ namespace UI
 				dgv_Imagenes.Rows.Add(buscarImagenes.SafeFileName, buscarImagenes.FileName);
 			}
 		}
-
 
 		private void dtp_FechaDesde_ValueChanged(object sender, EventArgs e)
 		{
