@@ -150,6 +150,7 @@ namespace UI
 					dias = dias + (dia.Name) + "-";
 				}
 			}
+            dias = dias.Remove(dias.Length-1);
             return dias;
 		}
 		private void btn_Aceptar_Click(object sender, EventArgs e)
