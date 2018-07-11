@@ -150,7 +150,10 @@ namespace UI
 					dias = dias + (dia.Name) + "-";
 				}
 			}
-            dias = dias.Remove(dias.Length-1);
+            if (dias != null)
+            {
+                dias = dias.Remove(dias.Length - 1);
+            };
             return dias;
 		}
 		private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -197,9 +200,13 @@ namespace UI
 
 		private void btn_AgregarHora_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				TimeSpan horaDesde = new TimeSpan(dtp_HoraDesde.Value.Hour, dtp_HoraDesde.Value.Minute, 00);
+            try
+            {
+                if (DevolverDias() == null)
+                {
+                    throw new Exception("Se debe seleccionar al menos un dia");
+                }
+                TimeSpan horaDesde = new TimeSpan(dtp_HoraDesde.Value.Hour, dtp_HoraDesde.Value.Minute, 00);
 				TimeSpan horaHasta = new TimeSpan(dtp_HoraHasta.Value.Hour, dtp_HoraHasta.Value.Minute, 00);
 				if (horaHasta.TotalMinutes > horaDesde.TotalMinutes)
 				{
@@ -219,11 +226,11 @@ namespace UI
 					throw new Exception("La hora de fin debe ser mayor a la hora de inicio por al menos 1 minuto");
 				}
 			}
-			catch (Exception E)
-			{
-				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-			}
-		}
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+            }
+        }
 
 		private void LlenarListaImagenes(DataGridView listaImagenes)
 		{
