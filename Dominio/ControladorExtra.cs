@@ -84,5 +84,10 @@ namespace Dominio
 				}
 			}
 		}
-	}
+
+        public void DescartarCampania(Campania iCampaniaModificar)
+        {
+            iCampaniasEnRangoFecha.RemoveAll(c => c.CampaniaId == iCampaniaModificar.CampaniaId);
+        }
+    }
 }

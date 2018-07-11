@@ -70,7 +70,6 @@ namespace UI
                 if (dias.Contains(check.Name))
                 {
                     check.Checked = true;
-                    check.Enabled = true;
                 }
             }
         }

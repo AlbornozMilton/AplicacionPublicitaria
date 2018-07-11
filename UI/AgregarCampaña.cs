@@ -205,6 +205,10 @@ namespace UI
 				{
 					if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
 					{
+                        if (iCampaniaModificar != null)
+                        {
+                            iControladorExtra.DescartarCampania(iCampaniaModificar);
+                        }
 						iControladorExtra.ComprobarHorarioCampania(horaDesde, horaHasta, DevolverDias());
 						horarios.Add(new RangoHorario(horaDesde, horaHasta));
 						dgv_Horarios.Rows.Add(horarios.Last<RangoHorario>().HoraInicio.ToString(@"hh\:mm"), horarios.Last<RangoHorario>().HoraFin.ToString(@"hh\:mm"));

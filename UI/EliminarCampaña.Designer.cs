@@ -59,14 +59,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGV_Imagenes = new System.Windows.Forms.DataGridView();
+            this.clm_NombreImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Ruta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.pB_VistaPrevia = new System.Windows.Forms.PictureBox();
             this.tbx_IntTiempo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tbx_Codigo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.clm_NombreImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Ruta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Horarios)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -154,6 +154,7 @@
             this.tbx_Nombre.Location = new System.Drawing.Point(102, 63);
             this.tbx_Nombre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_Nombre.Name = "tbx_Nombre";
+            this.tbx_Nombre.ReadOnly = true;
             this.tbx_Nombre.Size = new System.Drawing.Size(332, 22);
             this.tbx_Nombre.TabIndex = 31;
             // 
@@ -188,6 +189,7 @@
             this.tbx_FechaHasta.Location = new System.Drawing.Point(87, 70);
             this.tbx_FechaHasta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_FechaHasta.Name = "tbx_FechaHasta";
+            this.tbx_FechaHasta.ReadOnly = true;
             this.tbx_FechaHasta.Size = new System.Drawing.Size(116, 22);
             this.tbx_FechaHasta.TabIndex = 39;
             // 
@@ -197,6 +199,7 @@
             this.tbx_FechaDesde.Location = new System.Drawing.Point(87, 30);
             this.tbx_FechaDesde.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_FechaDesde.Name = "tbx_FechaDesde";
+            this.tbx_FechaDesde.ReadOnly = true;
             this.tbx_FechaDesde.Size = new System.Drawing.Size(116, 22);
             this.tbx_FechaDesde.TabIndex = 38;
             // 
@@ -221,7 +224,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -428,6 +431,18 @@
             this.dGV_Imagenes.TabIndex = 35;
             this.dGV_Imagenes.SelectionChanged += new System.EventHandler(this.dGV_Imagenes_SelectionChanged);
             // 
+            // clm_NombreImagen
+            // 
+            this.clm_NombreImagen.HeaderText = "Nombre";
+            this.clm_NombreImagen.Name = "clm_NombreImagen";
+            this.clm_NombreImagen.ReadOnly = true;
+            // 
+            // clm_Ruta
+            // 
+            this.clm_Ruta.HeaderText = "Ruta";
+            this.clm_Ruta.Name = "clm_Ruta";
+            this.clm_Ruta.ReadOnly = true;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -453,6 +468,7 @@
             this.tbx_IntTiempo.Location = new System.Drawing.Point(229, 23);
             this.tbx_IntTiempo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_IntTiempo.Name = "tbx_IntTiempo";
+            this.tbx_IntTiempo.ReadOnly = true;
             this.tbx_IntTiempo.Size = new System.Drawing.Size(34, 22);
             this.tbx_IntTiempo.TabIndex = 32;
             // 
@@ -474,6 +490,7 @@
             this.tbx_Codigo.Location = new System.Drawing.Point(543, 62);
             this.tbx_Codigo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_Codigo.Name = "tbx_Codigo";
+            this.tbx_Codigo.ReadOnly = true;
             this.tbx_Codigo.Size = new System.Drawing.Size(133, 22);
             this.tbx_Codigo.TabIndex = 35;
             // 
@@ -489,18 +506,6 @@
             this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 36;
             this.label3.Text = "Código";
-            // 
-            // clm_NombreImagen
-            // 
-            this.clm_NombreImagen.HeaderText = "Nombre";
-            this.clm_NombreImagen.Name = "clm_NombreImagen";
-            this.clm_NombreImagen.ReadOnly = true;
-            // 
-            // clm_Ruta
-            // 
-            this.clm_Ruta.HeaderText = "Ruta";
-            this.clm_Ruta.Name = "clm_Ruta";
-            this.clm_Ruta.ReadOnly = true;
             // 
             // EliminarCampaña
             // 
