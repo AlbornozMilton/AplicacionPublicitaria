@@ -71,8 +71,8 @@ namespace UI
         {
             tbx_Nombre.Text = iCampaniaModificar.Nombre;
             lbl_nroID.Text = iCampaniaModificar.CampaniaId.ToString();
-            dtp_FechaDesde.Value = iCampaniaModificar.RangoFecha.FechaInicio; //ToString("dd/MM/yyyy");
-            dtp_FechaHasta.Value = iCampaniaModificar.RangoFecha.FechaFin; // .ToString("dd/MM/yyyy");
+            dtp_FechaDesde.Value = iCampaniaModificar.RangoFecha.FechaInicio;
+            dtp_FechaHasta.Value = iCampaniaModificar.RangoFecha.FechaFin; 
             numUD_IntTiempo.Text = iCampaniaModificar.IntervaloTiempo.ToString();
             Cargar_Dias();
             Cargar_Imagenes();
@@ -240,40 +240,56 @@ namespace UI
 			}
 		}
 
+        private void actualizarCambioDeFecha()
+        {
+            iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+            dgv_Horarios.Rows.Clear();
+            horarios.Clear();
+            List<CheckBox> checksDias = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+            checksDias.ForEach(c => c.Enabled = false);
+            checksDias.ForEach(c => c.Checked = false);
+            try
+            {
+                if ((DateTime.Compare(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date)) > 0)
+                {
+                    throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de inicio");
+                }
+                List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+                foreach (var dia in checksDias)
+                {
+                    if (dias.Contains(dia.Name))
+                    {
+                        dia.Enabled = true;
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+
 		private void dtp_FechaDesde_ValueChanged(object sender, EventArgs e)
 		{
-			iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
-			dgv_Horarios.Rows.Clear();
+            
 		}
 
 		private void dtp_FechaHasta_ValueChanged(object sender, EventArgs e)
 		{
-			iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
-			dgv_Horarios.Rows.Clear();
-			List<CheckBox> checksDias = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
-			checksDias.ForEach(c => c.Enabled = false);
-			try
-			{
-				if ((DateTime.Compare(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date)) > 0)
-				{
-					throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de inicio");
-				}
-				List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
-				foreach (var dia in checksDias)
-				{
-					if (dias.Contains(dia.Name))
-					{
-						dia.Enabled = true;
-					}
-				}
-			}
-			catch (Exception E)
-			{
-				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-			}
+            actualizarCambioDeFecha();
 		}
 
-		private void dGV_Imagenes_SelectionChanged(object sender, EventArgs e)
+        private void dtp_FechaDesde_Leave(object sender, EventArgs e)
+        {
+            actualizarCambioDeFecha();
+        }
+
+        private void dtp_FechaHasta_Leave(object sender, EventArgs e)
+        {
+            actualizarCambioDeFecha();
+        }
+
+        private void dGV_Imagenes_SelectionChanged(object sender, EventArgs e)
 		{
 			string ruta = dgv_Imagenes.SelectedCells[1].Value.ToString();
 			pB_VistaPrevia.Image = Image.FromFile(ruta);
@@ -311,32 +327,6 @@ namespace UI
 
 		private void dgv_Imagenes_CurrentCellChanged(object sender, EventArgs e) { }
 
-		//private void ControlFecha(int pBannerExcluido)
-		//{
-		//    try
-		//    {
-		//        //if (iBanner == null)
-		//        //{
-		//        //    dGV_horarios.Rows.Clear();
-		//        //    iHorarios.Clear();
-		//        //}
-		//        iControladorExtra.ActualizarBannersEnRangoFecha(pBannerExcluido, fechaDesde.Value, fechaHasta.Value);
-		//        //if (iBanner != null)
-		//        //    iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
-		//    }
-		//    catch (ApplicationException)
-		//    {
-		//        //if (iBanner != null)
-		//        //{
-		//        //    fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
-		//        //    fechaHasta.Value = iBanner.RangoFecha.FechaFin;
-		//        //}
-		//        new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-		//    }
-		//    catch (Exception E)
-		//    {
-		//        new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-		//    }
-		//}
-	}
+        
+    }
 }
