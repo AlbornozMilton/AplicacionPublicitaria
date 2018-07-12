@@ -40,6 +40,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Carga una lista de imagenes de una campaña en pantalla
+        /// </summary>
         private void Cargar_Imagenes()
         {
             foreach (var imagen in iCampaniaModificar.Imagenes)
@@ -48,6 +51,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Carga los horarios de una campaña en pantalla
+        /// </summary>
         private void Cargar_Horarios()
         {
             foreach (var hora in iCampaniaModificar.RangoFecha.Horarios)
@@ -57,6 +63,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Checkea los dias seleccionados en una campaña
+        /// </summary>
         private void Cargar_Dias()
         {
             List<CheckBox> diasChecks = new List<CheckBox>() { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
@@ -71,6 +80,9 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Rellena todos los campos de la ventana a partir de una campaña
+        /// </summary>
         private void cargarCamposVentana()
         {
             tbx_Nombre.Text = iCampaniaModificar.Nombre;
@@ -240,6 +252,10 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// Genera la lista de imagenes asociada a una campaña
+        /// </summary>
+        /// <param name="listaImagenes"></param>
 		private void LlenarListaImagenes(DataGridView listaImagenes)
 		{
 			for (int i = 0; i < listaImagenes.Rows.Count; i++)
@@ -259,6 +275,9 @@ namespace UI
 			}
 		}
 
+        /// <summary>
+        /// actualiza la lista de campañas entre fechas y controla la nueva fecha seleccionada
+        /// </summary>
         private void actualizarCambioDeFecha()
         {
             iControladorExtra.ActualizarCampaniasEnRangoFecha(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
