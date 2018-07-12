@@ -76,7 +76,6 @@ namespace UI
         private void btn_Filtrar_Click(object sender, EventArgs e)
         {
 			btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
-			Cursor = Cursors.WaitCursor;
 
 			Dictionary<Type, object> filtros = new Dictionary<Type, object>();
             string nombre = "";
@@ -95,7 +94,6 @@ namespace UI
             Cargar_dGV();
 
 			btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
-			Cursor = Cursors.WaitCursor;
 		}
 
         private void CB_Nombre_CheckedChanged(object sender, EventArgs e)

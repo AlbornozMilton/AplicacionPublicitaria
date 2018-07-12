@@ -15,5 +15,7 @@ namespace Persistencia.DAL
 
         IEnumerable<Campania> GetCampaniasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta);
 
+        void EliminarCampania(int pIdCampania);
+
     }
 }

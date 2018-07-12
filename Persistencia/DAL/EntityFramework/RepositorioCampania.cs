@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Persistencia.Dominio;
+using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -71,5 +72,15 @@ namespace Persistencia.DAL.EntityFramework
                             select camp;
             return campanias.ToList();
         }
+
+        public void EliminarCampania(int pIdCampania)
+        {
+            Campania camp = iDbContext.Campania.Where(c => c.CampaniaId == pIdCampania).SingleOrDefault();
+            RangoFecha rf = iDbContext.RangoFecha.Where(f => f.RangoFechaId == camp.RangoFechaId).SingleOrDefault();
+            iDbContext.Entry(camp).State = EntityState.Deleted;
+            iDbContext.Entry(rf).State = EntityState.Deleted;
+            iDbContext.SaveChanges();
+        }
+
     }
 }

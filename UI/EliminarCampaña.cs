@@ -41,7 +41,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iControladorCampania.EliminarCampania(this.iCampaniaParaEliminar);
+            iControladorCampania.EliminarCampania(this.iCampaniaParaEliminar.CampaniaId);
             new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
             Close();
         }

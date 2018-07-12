@@ -16,6 +16,7 @@ namespace Persistencia.Dominio
 
         public List<Imagen> Imagenes { get; set; }
 
+        public int RangoFechaId { get; set; }
         public RangoFecha RangoFecha { get; set; }
     }
 }

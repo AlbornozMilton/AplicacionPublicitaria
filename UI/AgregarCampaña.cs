@@ -165,7 +165,7 @@ namespace UI
 				LlenarListaImagenes(dgv_Imagenes);
                 if (iCampaniaModificar != null)
                 {
-                    iControladorCampania.ModificarCampania(iCampaniaModificar, tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
+                    iControladorCampania.ModificarCampania(iCampaniaModificar.CampaniaId, tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
                     new VentanaEmergente("Campaña Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
                 }
                 else
