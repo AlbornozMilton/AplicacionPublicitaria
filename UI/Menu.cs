@@ -23,6 +23,7 @@ namespace UI
 
         private void label3_Click(object sender, EventArgs e)
         {
+            Looger.Debug("Cierre de la App");
             Close();
         }
 
@@ -45,7 +46,8 @@ namespace UI
 
 		private void btnEditarBanner_Click(object sender, EventArgs e)
 		{
-			BuscarBanner f = new BuscarBanner();
+            Looger.Debug("Modificar Banner");
+            BuscarBanner f = new BuscarBanner();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
 			{
@@ -56,7 +58,8 @@ namespace UI
 
 		private void btnEliminarBanner_Click(object sender, EventArgs e)
 		{
-			BuscarBanner f = new BuscarBanner();
+            Looger.Debug("Eliminar Banner");
+            BuscarBanner f = new BuscarBanner();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
 			{
@@ -78,7 +81,8 @@ namespace UI
 		}
 
         private void btn_EliminarCampania_Click(object sender, EventArgs e)
-        {    
+        {
+            Looger.Debug("Eliminar Campaña");
             BuscarCampaña iVentanaBuscar = new BuscarCampaña();
             iVentanaBuscar.ShowDialog();
             if (iVentanaBuscar.iCampaniaSeleccionada != null)
@@ -99,6 +103,7 @@ namespace UI
 
         private void btnEditarCampania_Click(object sender, EventArgs e)
         {
+            Looger.Debug("Modificar Campaña");
             BuscarCampaña iVentanaBuscar = new BuscarCampaña();
             iVentanaBuscar.ShowDialog();
             if (iVentanaBuscar.iCampaniaSeleccionada != null)
