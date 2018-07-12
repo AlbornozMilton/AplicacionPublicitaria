@@ -13,12 +13,14 @@ namespace UI
 {
     public partial class BuscarCampaña : Form
     {
+        private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ControladorCampania iControladorCampania = new ControladorCampania();
         private List<Campania> iListaCampanias = new List<Campania>();
         public Campania iCampaniaSeleccionada;
 
         public BuscarCampaña()
         {
+            Looger.Debug("Buscando campañas");
             InitializeComponent();
         }
 
@@ -29,11 +31,13 @@ namespace UI
 
         private void label9_Click(object sender, EventArgs e)
         {
+            Looger.Debug("Busqueda de campañas cancelada"); 
             Close();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
+            Looger.Debug("Busqueda de campañas cancelada");
             Close();
         }
 
@@ -64,6 +68,7 @@ namespace UI
                 {
                     int i = dGV_Campanias.CurrentRow.Index;
                     this.iCampaniaSeleccionada = iListaCampanias[i];
+                    Looger.Debug("Campaña buscada seleccionada");
                     Close();
                 }
             }
@@ -92,8 +97,8 @@ namespace UI
             iListaCampanias = iControladorCampania.ObtenerCampaniasFiltradas(filtros);
             dGV_Campanias.Rows.Clear();
             Cargar_dGV();
-
-			btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
+            Looger.Debug("Filtrando busqueda de campañas");
+            btn_Filtrar.BorderStyle = BorderStyle.Fixed3D;
 		}
 
         private void CB_Nombre_CheckedChanged(object sender, EventArgs e)
