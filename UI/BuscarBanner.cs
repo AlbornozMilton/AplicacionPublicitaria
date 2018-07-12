@@ -7,12 +7,14 @@ namespace UI
 {
 	public partial class BuscarBanner : Form
 	{
-		private List<Banner> iResult = new List<Banner>();
+        private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private List<Banner> iResult = new List<Banner>();
 		public Banner BanSelected;
 
 		public BuscarBanner()
 		{
-			InitializeComponent();
+            Looger.Debug("Buscando campañas");
+            InitializeComponent();
 		}
 
 		private void BuscarBanner_Load(object sender, EventArgs e)
@@ -39,7 +41,8 @@ namespace UI
 
 			btn_Filtrar.BorderStyle = BorderStyle.None;
 			Cursor = Cursors.Default;
-			dataGridBanner.Focus();
+            Looger.Debug("Filtrando campañas");
+            dataGridBanner.Focus();
 		}
 
 		private void btn_Filtrar_MouseHover(object sender, EventArgs e)
@@ -69,13 +72,15 @@ namespace UI
 
 		private void lbl_X_Click(object sender, EventArgs e)
 		{
-			DialogResult = DialogResult.Cancel;
+            Looger.Debug("Busqueda de campañas cancelada");
+            DialogResult = DialogResult.Cancel;
 			Close();
 		}
 
 		private void btn_Cancelar_Click(object sender, EventArgs e)
 		{
-			DialogResult = DialogResult.Cancel;
+            Looger.Debug("Busqueda de campañas cancelada");
+            DialogResult = DialogResult.Cancel;
 			Close();
 		}
 
@@ -83,7 +88,8 @@ namespace UI
 		{
 			if (dataGridBanner.CurrentRow != null)
 			{
-				BanSelected = iResult.Find(b => b.BannerId == Convert.ToInt32((dataGridBanner.CurrentRow.Cells[0].Value)));
+                Looger.Debug("Campaña buscada seleccionada");
+                BanSelected = iResult.Find(b => b.BannerId == Convert.ToInt32((dataGridBanner.CurrentRow.Cells[0].Value)));
 				DialogResult = DialogResult.OK;
 				Close();
 			}
