@@ -52,7 +52,8 @@ namespace UI
         {
             foreach (var hora in iCampaniaModificar.RangoFecha.Horarios)
             {
-                dgv_Horarios.Rows.Add(hora.HoraInicio, hora.HoraFin);
+                horarios.Add(hora);
+                dgv_Horarios.Rows.Add(hora.HoraInicio.ToString(@"hh\:mm"), hora.HoraFin.ToString(@"hh\:mm"));
             }
         }
 
