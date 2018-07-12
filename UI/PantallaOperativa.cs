@@ -9,7 +9,8 @@ namespace UI
 {
 	public partial class PantallaOperativa : Form
 	{
-		private ControladorCampania iControladorCampania = new ControladorCampania();
+        private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private ControladorCampania iControladorCampania = new ControladorCampania();
 		private ControladorBanner iControladorBanner = new ControladorBanner();
 		private List<Campania> iCampaniasHoy = new List<Campania>();
 		private Campania iCampaniaActual;
@@ -19,7 +20,8 @@ namespace UI
 
 		public PantallaOperativa()
 		{
-			InitializeComponent();
+            Looger.Debug("Ejecutando pantalla operativa");
+            InitializeComponent();
 		}
 
 		private void ConfigurarTimers()
@@ -78,7 +80,8 @@ namespace UI
 		{
 			if (e.KeyChar == 27)
 			{
-				Close();
+                Looger.Debug("Pantalla operativa cerrada");
+                Close();
 			}
 		}
 

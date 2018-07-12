@@ -9,7 +9,8 @@ namespace UI
 {
 	public partial class AgregarCampaña : Form
 	{
-		List<RangoHorario> horarios = new List<RangoHorario>();
+        private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        List<RangoHorario> horarios = new List<RangoHorario>();
 		List<Imagen> imagenes = new List<Imagen>();
 		ControladorCampania iControladorCampania = new ControladorCampania();
 		ControladorExtra iControladorExtra = new ControladorExtra();
@@ -17,11 +18,13 @@ namespace UI
 
 		public AgregarCampaña()
 		{
-			InitializeComponent();
+            Looger.Debug("Agregando campaña");
+            InitializeComponent();
 		}
 
         public AgregarCampaña(Campania unaCampania)
         {
+            Looger.Debug("Modificando campaña");
             InitializeComponent();
             iCampaniaModificar = unaCampania;
         }
@@ -81,7 +84,8 @@ namespace UI
 
 		private void label9_Click(object sender, EventArgs e)
 		{
-			Close();
+            Looger.Debug("Operacion de campaña cancelada");
+            Close();
 		}
 
 		private void label8_Click(object sender, EventArgs e)
@@ -131,7 +135,8 @@ namespace UI
 
 		private void btn_Cancelar_Click(object sender, EventArgs e)
 		{
-			Close();
+            Looger.Debug("Operacion de campaña cancelada");
+            Close();
 		}
 
 		/// <summary>
@@ -167,11 +172,13 @@ namespace UI
                 {
                     iControladorCampania.ModificarCampania(iCampaniaModificar.CampaniaId, tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
                     new VentanaEmergente("Campaña Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    Looger.Debug("Campaña Modificada");
                 }
                 else
                 {
                     iControladorCampania.AgregarCampania(tbx_Nombre.Text, Convert.ToInt32(numUD_IntTiempo.Text), dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date, dias, horarios, imagenes);
                     new VentanaEmergente("Campaña Guardada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    Looger.Debug("Campaña Agregada");
                 }
 				Close();
 			}
