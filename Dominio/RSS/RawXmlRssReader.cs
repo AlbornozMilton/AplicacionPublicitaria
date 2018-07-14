@@ -7,8 +7,6 @@ namespace Dominio.RSS
 {
 	public class RawXmlRssReader : RssReader
 	{
-		private static readonly ILog cLogger = LogManager.GetLogger<RawXmlRssReader>();
-
 		public override IEnumerable<RssItem> Read(Uri pUrl)
 		{
 			if (pUrl == null)
@@ -41,16 +39,16 @@ namespace Dominio.RSS
 
 			XmlDocument mRssXmlDocument = new XmlDocument();
 
-			cLogger.Info("Obteniendo feeds...");
-			cLogger.DebugFormat("Obteniendo feeds desde {0}...", pUrl.AbsoluteUri);
+			//cLogger.Info("Obteniendo feeds...");
+			//cLogger.DebugFormat("Obteniendo feeds desde {0}...", pUrl.AbsoluteUri);
 
 			mRssXmlDocument.Load(mXmlReader);
 
-			cLogger.Info("Ha finalizado la obtención de feeds.");
-			cLogger.Debug(pLogger => pLogger("Se ha obtenido el siguiente XML: {0}", mRssXmlDocument.OuterXml));
+			//cLogger.Info("Ha finalizado la obtención de feeds.")
+			//cLogger.Debug(pLogger => pLogger("Se ha obtenido el siguiente XML: {0}", mRssXmlDocument.OuterXml));
 			IList<RssItem> mRssItems = new List<RssItem>();
 
-			cLogger.Info("Adaptando feeds...");
+			//cLogger.Info("Adaptando feeds...");
 			foreach (XmlNode bRssXmlItem in mRssXmlDocument.SelectNodes("//channel/item"))
 			{
 				mRssItems.Add(new RssItem
@@ -62,7 +60,7 @@ namespace Dominio.RSS
 				});
 			}
 
-			cLogger.Info("Devolviendo feeds adaptados...");
+			//cLogger.Info("Devolviendo feeds adaptados...");
 			return mRssItems;
 		}
 
