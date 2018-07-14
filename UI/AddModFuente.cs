@@ -6,6 +6,8 @@ namespace UI
 {
 	public partial class AddModFuente : Form
 	{
+		private static readonly log4net.ILog Loger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		private IFuente iFuente;
 
 		public AddModFuente()
