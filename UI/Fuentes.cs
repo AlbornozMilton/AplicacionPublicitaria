@@ -42,46 +42,69 @@ namespace UI
 			{
 				cbx_Fuente.Items.Add(iFuentes[i].Descripcion);
 			}
+
+			iItemBindingSource.Clear();
 		}
 
 		private void CargarItems()
 		{
-			_Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
-			tbxTipoFuente.Text = _Fuente.GetType().Name;
+			try
+			{
+				_Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+				tbxTipoFuente.Text = _Fuente.GetType().Name;
 
-			if (tbxTipoFuente.Text != "FuenteRSS")
-			{
-				btnAgregarItem.Visible = true;
-				btnModificarItem.Visible = true;
-				btnEliminarItem.Visible = true;
-				fechaDesde.Enabled = true;
-				fechaHasta.Enabled = true;
-				iItemBindingSource.DataSource = _Fuente.Items;
-			}
-			else
-			{
-				btnAgregarItem.Visible = false;
-				btnModificarItem.Visible = false;
-				btnEliminarItem.Visible = false;
-				IRssReader mRssReader = new RawXmlRssReader();
-				var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
-				if (items.Count > 0)
+				if (tbxTipoFuente.Text != "FuenteRSS")
 				{
-					new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					iItemBindingSource.DataSource = items.ToList();
-					new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
-					fechaDesde.Enabled = false;
-					fechaHasta.Enabled = false;
+					btnAgregarItem.Visible = true;
+					btnModificarItem.Visible = true;
+					btnEliminarItem.Visible = true;
+					fechaDesde.Enabled = true;
+					fechaHasta.Enabled = true;
+					iItemBindingSource.DataSource = _Fuente.Items;
 				}
 				else
 				{
-					fechaDesde.Enabled = true;
-					fechaHasta.Enabled = true;
-					new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-					iItemBindingSource.DataSource = _Fuente.Items;
+					btnAgregarItem.Visible = false;
+					btnModificarItem.Visible = false;
+					btnEliminarItem.Visible = false;
+					IRssReader mRssReader = new RawXmlRssReader();
+					var itemsRss = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
+					if (itemsRss.Count > 0)
+					{
+						new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						iItemBindingSource.DataSource = itemsRss;
+						new ControladorFuentes().ActualizarItemsRss(itemsRss, _Fuente.FuenteId);
+						fechaDesde.Enabled = false;
+						fechaHasta.Enabled = false;
+					}
+					else
+					{
+						fechaDesde.Enabled = true;
+						fechaHasta.Enabled = true;
+						new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+						RssSinItems();
+					}
 				}
+				iItemBindingSource.ResetBindings(true);
 			}
-			iItemBindingSource.ResetBindings(true);
+			catch (Exception)
+			{
+				new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+				RssSinItems();
+			}
+		}
+
+		private void RssSinItems()
+		{
+			_Fuente.Items.Clear();
+			var itemsRss = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, null, null);
+
+			if (itemsRss.Count > 0)
+				_Fuente.Items.AddRange(itemsRss.OrderByDescending(f => f.Fecha));
+			else // no tiene items rss anteriores en bd
+				_Fuente.Items.AddRange(new ControladorFuentes().ItemsFuenteTexto(1, null, null).OrderByDescending(f =>f.Fecha));
+
+			iItemBindingSource.DataSource = _Fuente.Items;
 		}
 
 		private void btnNuevaFuente_Click(object sender, EventArgs e)
@@ -151,7 +174,6 @@ namespace UI
 				f.ShowDialog();
 				if (f.DialogResult == DialogResult.OK)
 					CargarFuentes();
-				iItemBindingSource.ResumeBinding();
 			}
 		}
 
@@ -216,11 +238,14 @@ namespace UI
 
 		private void btnBuscar_Click(object sender, EventArgs e)
 		{
-			btnBuscar.BorderStyle = BorderStyle.Fixed3D;
+			if (cbx_Fuente.SelectedIndex > -1)
+			{
+				btnBuscar.BorderStyle = BorderStyle.Fixed3D;
 			Cursor = Cursors.WaitCursor;
 			CargarItems();
 			btnBuscar.BorderStyle = BorderStyle.None;
 			Cursor = Cursors.Default;
+			}
 		}
 
 		private void btnBuscar_MouseHover(object sender, EventArgs e)

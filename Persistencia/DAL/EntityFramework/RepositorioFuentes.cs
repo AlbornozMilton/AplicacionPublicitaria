@@ -112,8 +112,8 @@ namespace Persistencia.DAL.EntityFramework
 		{
 			return (
 					from i in iDbContext.Items
-					join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
-					where f.FuenteId == pFuente
+						//join f in iDbContext.Fuentes on i.FuenteId equals f.FuenteId
+					where i.FuenteId == pFuente
 					&& ((i.Fecha >= pDesde && i.Fecha <= pHasta) || (pDesde == null && pHasta == null))
 					select i).ToList();
 		}
@@ -127,14 +127,20 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void ActualizarItemsRss(List<Item> pItems, int pFuenteId)
 		{
-			var ultIFechaItem = iDbContext.Items.Max(i => i.Fecha);
+			var count = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).ToList().Count;
+
+			DateTime? ultFecha = null;
+			if (count > 0)
+				ultFecha = iDbContext.Items.Where(i => i.FuenteId == pFuenteId).Max(i => i.Fecha);
+
 			foreach (var itemExt in pItems)
 			{
-				if (itemExt.Fecha > ultIFechaItem)
+				itemExt.FuenteId = pFuenteId;
+
+				if (count == 0 || (itemExt.Fecha != null && itemExt.Fecha > ultFecha))
 				{
 					iDbContext.Items.Attach(itemExt);
-					itemExt.FuenteId = pFuenteId;
-					iDbContext.Entry(itemExt).State = EntityState.Added; 
+					iDbContext.Entry(itemExt).State = EntityState.Added;
 				}
 			}
 
