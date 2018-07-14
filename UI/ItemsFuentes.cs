@@ -6,11 +6,14 @@ namespace UI
 {
 	public partial class ItemsFuentes : Form
 	{
+		private static readonly log4net.ILog Loger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		private IItem _Item;
 		private int _FuenteId;
 
 		public ItemsFuentes(IItem pItem, int pFuenteId)
 		{
+			Loger.Info("Iniciando Item");
 			InitializeComponent();
 			_Item = pItem;
 			_Item.Fecha = DateTime.Now;
@@ -21,7 +24,6 @@ namespace UI
 		{
 			_Item.Fecha.GetDateTimeFormats('g');
 			iItemBindingSource.DataSource = _Item;
-			//fechaTextBox.Text =  ;
 		}
 
 		private void btnAceptar_Click(object sender, EventArgs e)
@@ -32,11 +34,13 @@ namespace UI
 				{
 					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Agregar, _FuenteId, _Item);
 					new VentanaEmergente("Item Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					Loger.Info("Item Agregado");
 				}
 				else
 				{
 					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Modificar, _FuenteId, _Item);
 					new VentanaEmergente("Item Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					Loger.Info("Item Modificado");
 				}
 				DialogResult = DialogResult.OK;
 				Close();
@@ -45,6 +49,7 @@ namespace UI
 
 		private void btnCancelar_Click(object sender, EventArgs e)
 		{
+			Loger.Info("Cancelar");
 			Close();
 		}
 	}
