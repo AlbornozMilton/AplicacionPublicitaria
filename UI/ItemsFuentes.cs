@@ -34,13 +34,11 @@ namespace UI
 				{
 					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Agregar, _FuenteId, _Item);
 					new VentanaEmergente("Item Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					Loger.Info("Item Agregado");
 				}
 				else
 				{
 					new ControladorFuentes().ABMItems(ControladorFuentes.Operacion.Modificar, _FuenteId, _Item);
 					new VentanaEmergente("Item Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					Loger.Info("Item Modificado");
 				}
 				DialogResult = DialogResult.OK;
 				Close();

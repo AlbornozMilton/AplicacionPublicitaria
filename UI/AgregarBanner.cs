@@ -126,7 +126,6 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
-					Loger.Info("Se asignaran items de fuente por defecto en tiempo de operativa");
 					f = new VentanaEmergente("Se asignaran items de fuente por defecto en tiempo de operativa \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
@@ -154,20 +153,17 @@ namespace UI
 					{
 						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						Loger.Info("Banner Modificado");
 					}
 					else
 					{
 						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						Loger.Info("Banner Agergado");
 					}
 					Close();
 				}
 			}
 			catch (Exception E)
 			{
-				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -218,12 +214,10 @@ namespace UI
 					fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
 					fechaHasta.Value = iBanner.RangoFecha.FechaFin;
 				}
-				Loger.Error("Para las fechas elegidas no se permiten los dias y/o horarios");
 				new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{
-				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -254,7 +248,6 @@ namespace UI
 			}
 			catch (ApplicationException E)
 			{
-				Loger.Info("Falla en el Control de Horarios");
 				iHorarios.RemoveAt(iHorarios.Count - 1);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
@@ -370,7 +363,6 @@ namespace UI
 					Loger.Debug("Petición de Fuente RSS: " + Fuente.URL);
 					if (items.Count > 0)
 					{
-						Loger.Info("Solicitud RSS exitosa");
 						new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 						iItemBindingSource.DataSource = items.ToList();
 						Loger.Debug("Actualizando Items Rss en BD");
@@ -378,7 +370,6 @@ namespace UI
 					}
 					else
 					{
-						Loger.Info("No se obtuvieron items en la solicitud RSS");
 						new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 						RssSinItems(Fuente);
 					}
@@ -387,7 +378,6 @@ namespace UI
 			}
 			catch (Exception)
 			{
-				Loger.Error("No se ha podido establecer conexión a RSS");
 				new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 				RssSinItems((FuenteRSS)iFuentes.ElementAt(cbx_Fuente.SelectedIndex));
 			}

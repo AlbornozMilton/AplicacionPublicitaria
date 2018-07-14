@@ -64,14 +64,12 @@ namespace UI
 					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					Loger.Info("Fuente Modificada");
 				}
 				else
 				{
 					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-					Loger.Info("Fuente Agregada");
 				}
 
 				DialogResult = DialogResult.OK;
@@ -79,7 +77,6 @@ namespace UI
 			}
 			catch (Exception E)
 			{
-				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -137,7 +134,6 @@ namespace UI
 			}
 			catch (Exception E)
 			{
-				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}

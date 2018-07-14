@@ -85,7 +85,6 @@ namespace UI
 
 					if (itemsRss.Count > 0)
 					{
-						Loger.Info("Solicitud RSS exitosa");
 						new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 						iItemBindingSource.DataSource = itemsRss;
 						new ControladorFuentes().ActualizarItemsRss(itemsRss, _Fuente.FuenteId);
@@ -96,7 +95,6 @@ namespace UI
 					{
 						fechaDesde.Enabled = true;
 						fechaHasta.Enabled = true;
-						Loger.Info("No se obtuvieron items en la solicitud RSS");
 						new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 						RssSinItems();
 					}
@@ -105,7 +103,6 @@ namespace UI
 			}
 			catch (Exception)
 			{
-				Loger.Error("No se ha podido establecer conexión a RSS");
 				new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 				RssSinItems();
 			}
@@ -174,7 +171,6 @@ namespace UI
 							_Fuente.FuenteId,
 							_Fuente.Descripcion,
 							"");
-						Loger.Info("Fuente Eliminada");
 						new VentanaEmergente("Fuente Eliminada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 						CargarFuentes();
 					}
@@ -182,7 +178,6 @@ namespace UI
 				}
 				catch (Exception E)
 				{
-					Loger.Error(E.Message);
 					new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 				}
 			}
@@ -230,7 +225,6 @@ namespace UI
 									ControladorFuentes.Operacion.Eliminar,
 									_Fuente.FuenteId,
 									(IItem)iItemBindingSource.Current);
-						Loger.Info("Item Eliminado");
 						new VentanaEmergente("Item Eliminado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 						CargarFuentes();
 					}
@@ -239,7 +233,6 @@ namespace UI
 			}
 			catch (Exception E)
 			{
-				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
