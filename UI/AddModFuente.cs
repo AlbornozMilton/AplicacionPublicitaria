@@ -12,11 +12,13 @@ namespace UI
 
 		public AddModFuente()
 		{
+			Loger.Info("Nueva Fuente");
 			InitializeComponent();
 		}
 
 		public AddModFuente(IFuente pFuente)
 		{
+			Loger.Info("Modificar Fuente");
 			InitializeComponent();
 			iFuente = pFuente;
 		}
@@ -26,6 +28,7 @@ namespace UI
 			if (iFuente != null)
 			{
 				var nombreF = iFuente.GetType().Name;
+				Loger.Info("Tipo Fuente :" + nombreF);
 				cbxTipoFuente.Items.Add(nombreF);
 				cbxTipoFuente.SelectedIndex = 0;
 				tbxDescripcion.Text = iFuente.Descripcion;
@@ -61,12 +64,14 @@ namespace UI
 					controlador.ABMFuente(ControladorFuentes.Operacion.Modificar, cbxTipoFuente.SelectedItem.ToString(), iFuente.FuenteId, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Modificada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					Loger.Info("Fuente Modificada");
 				}
 				else
 				{
 					controlador.ABMFuente(ControladorFuentes.Operacion.Agregar, cbxTipoFuente.SelectedItem.ToString(), 0, tbxDescripcion.Text, txbUrl.Text);
 					Cursor = Cursors.Default;
 					new VentanaEmergente("Fuente Agregada", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+					Loger.Info("Fuente Agregada");
 				}
 
 				DialogResult = DialogResult.OK;
@@ -74,12 +79,14 @@ namespace UI
 			}
 			catch (Exception E)
 			{
+				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
 
 		private void btnCancelar_Click(object sender, EventArgs e)
 		{
+			Loger.Info("Cancelar");
 			Close();
 		}
 
@@ -98,6 +105,8 @@ namespace UI
 				lblUrl.Visible = false;
 				btnAceptar.Enabled = true;
 			}
+
+			Loger.Debug("Fuente seleccionada: " + cbxTipoFuente.SelectedItem.ToString());
 		}
 
 		private void txbUrl_Leave(object sender, EventArgs e)
@@ -128,6 +137,7 @@ namespace UI
 			}
 			catch (Exception E)
 			{
+				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}

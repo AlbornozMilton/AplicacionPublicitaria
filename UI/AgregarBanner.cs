@@ -269,7 +269,7 @@ namespace UI
 		{
 			try
 			{
-				Loger.Debug("Control check del día" + pDia);
+				Loger.Debug("Control check del día " + pDia);
 				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias += pDia);
 			}
 			catch (ApplicationException E)
