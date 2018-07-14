@@ -4,13 +4,12 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 using Dominio.RSS;
-using System.Threading;
 
 namespace UI
 {
 	public partial class AgregarBanner : Form
 	{
-		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+		private static readonly log4net.ILog Loger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		List<RangoHorario> iHorarios = new List<RangoHorario>();
 		ControladorExtra iControlExtra = new ControladorExtra();
 		List<IFuente> iFuentes = new List<IFuente>();
@@ -19,13 +18,13 @@ namespace UI
 
 		public AgregarBanner()
 		{
-			Looger.Debug("Nuevo banner");
+			Loger.Info("Generando nuevo Banner");
 			InitializeComponent();
 		}
 
 		public AgregarBanner(Banner pBanner)
 		{
-			Looger.Debug("Modificando banner");
+			Loger.Info("Modificando Banner");
 			InitializeComponent();
 			iBanner = pBanner;
 		}
@@ -89,6 +88,7 @@ namespace UI
 
 		private void btnAgregarHorario_Click(object sender, EventArgs e)
 		{
+			Loger.Debug("Control de Horarios");
 			ControlHorarios();
 		}
 
@@ -126,6 +126,7 @@ namespace UI
 				VentanaEmergente f = null;
 				if (dGV_itemsFuente.Rows.Count == 0)
 				{
+					Loger.Info("Se asignaran items de fuente por defecto en tiempo de operativa");
 					f = new VentanaEmergente("Se asignaran items de fuente por defecto en tiempo de operativa \n \n ¿Desea continuar?", VentanaEmergente.TipoMensaje.SiNo);
 					f.ShowDialog();
 				}
@@ -153,17 +154,20 @@ namespace UI
 					{
 						new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Modificado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						Loger.Info("Banner Modificado");
 					}
 					else
 					{
 						new ControladorBanner().AgregarBanner(tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
 						new VentanaEmergente("Banner Agregado", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+						Loger.Info("Banner Agergado");
 					}
 					Close();
 				}
 			}
 			catch (Exception E)
 			{
+				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -183,7 +187,7 @@ namespace UI
 		{
 			try
 			{
-				iBanner.RangoFecha.Horarios.Clear();
+				Loger.Info("Reseteando valores de UI");
 				iHorarios.Clear();
 				dGV_horarios.Rows.Clear();
 				iDias = "";
@@ -196,9 +200,16 @@ namespace UI
 				ckb_domingo.Checked = false;
 
 				if (iBanner == null)
+				{
+					Loger.Debug("Reset para nuevo Banner");
 					iControlExtra.ActualizarBannersEnRangoFecha(0, fechaDesde.Value, fechaHasta.Value);
+				}
 				else
+				{
+					Loger.Debug("Reset para modificar Banner");
+					iBanner.RangoFecha.Horarios.Clear();
 					iControlExtra.ActualizarBannersEnRangoFecha(iBanner.BannerId, fechaDesde.Value, fechaHasta.Value);
+				}
 			}
 			catch (ApplicationException)
 			{
@@ -207,10 +218,12 @@ namespace UI
 					fechaDesde.Value = iBanner.RangoFecha.FechaInicio;
 					fechaHasta.Value = iBanner.RangoFecha.FechaFin;
 				}
+				Loger.Error("Para las fechas elegidas no se permiten los dias y/o horarios");
 				new VentanaEmergente("Para las fechas elegidas no se permiten los dias y/o horarios", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{
+				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -236,15 +249,18 @@ namespace UI
 
 				iHorarios.Add(new RangoHorario(desde, hasta));
 				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias);
+				Loger.Info("Éxito en el Control de Horarios");
 				dGV_horarios.Rows.Add(desde.ToString("hh\\:mm"), hasta.ToString("hh\\:mm"));
 			}
 			catch (ApplicationException E)
 			{
+				Loger.Info("Falla en el Control de Horarios");
 				iHorarios.RemoveAt(iHorarios.Count - 1);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 			catch (Exception E)
 			{
+				Loger.Error(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -253,12 +269,16 @@ namespace UI
 		{
 			try
 			{
+				Loger.Debug("Control check del día" + pDia);
 				iControlExtra.ComprobarHorarioBanner(iHorarios, iDias += pDia);
 			}
 			catch (ApplicationException E)
 			{
+				Loger.Info("Fallo en el control de check del día" + pDia);
+
 				iDias = iDias.Replace(pDia, "");
 				((CheckBox)sender).Checked = false;
+				Loger.Info(E.Message);
 				new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
@@ -344,23 +364,29 @@ namespace UI
 				else
 				{
 					IRssReader mRssReader = new RawXmlRssReader();
-					var items = mRssReader.Read(((FuenteRSS)_Fuente).URL).ToList();
+					var Fuente = (FuenteRSS)_Fuente;
+					var items = mRssReader.Read(Fuente.URL).ToList();
+					Loger.Debug("Petición de Fuente RSS: " + Fuente.URL);
 					if (items.Count > 0)
 					{
+						Loger.Info("Solicitud RSS exitosa");
 						new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
 						iItemBindingSource.DataSource = items.ToList();
+						Loger.Debug("Actualizando Items Rss en BD");
 						new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
 					}
 					else
 					{
+						Loger.Info("No se obtuvieron items en la solicitud RSS");
 						new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-						RssSinItems((FuenteRSS)_Fuente);
+						RssSinItems(Fuente);
 					}
 				}
 				iItemBindingSource.ResetBindings(false);
 			}
 			catch (Exception)
 			{
+				Loger.Error("No se ha podido establecer conexión a RSS");
 				new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 				RssSinItems((FuenteRSS)iFuentes.ElementAt(cbx_Fuente.SelectedIndex));
 			}
@@ -372,9 +398,16 @@ namespace UI
 			var itemsRss = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, null, null);
 
 			if (itemsRss.Count > 0)
+			{
+				Loger.Debug("Items anteriores en BD para la Fuente seleccionada");
 				_Fuente.Items.AddRange(itemsRss.OrderByDescending(f => f.Fecha));
+			}
 			else // no tiene items rss anteriores en bd
+			{
+				Loger.Debug("No exiten items en BD para la Fuente seleccionada");
+				Loger.Debug("Se asignaron items de la fuente por defecto");
 				_Fuente.Items.AddRange(new ControladorFuentes().ItemsFuenteTexto(1, null, null).OrderByDescending(f => f.Fecha));
+			}
 
 			iItemBindingSource.DataSource = _Fuente.Items;
 		}
