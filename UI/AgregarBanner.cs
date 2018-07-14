@@ -359,6 +359,7 @@ namespace UI
 				IFuente _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
 				txbTipoFuente.Text = _Fuente.GetType().Name;
 
+				Loger.Info("Tipo Fuente elegida " + txbTipoFuente.Text);
 				if (txbTipoFuente.Text != "FuenteRSS")
 					iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
 				else
