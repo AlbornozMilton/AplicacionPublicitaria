@@ -151,6 +151,13 @@ namespace UI
                         iDias += "domingo-";
                     iDias = iDias.Remove(iDias.Length - 1);
 
+                    if (cbx_Fuente.SelectedItem == null)
+                    {
+                        f = new VentanaEmergente("Debe elegir una Fuente", VentanaEmergente.TipoMensaje.Alerta);
+                        f.ShowDialog();
+                        return;
+                    }
+
                     if (iBanner != null)
                     {
                         new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
@@ -240,7 +247,7 @@ namespace UI
                     if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) >= 0)
                         &&
                         (!(item.HoraFin.CompareTo(desde) <= 0 && item.HoraFin.CompareTo(hasta) < 0)))
-                        throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+                        throw new Exception("Horario ya seleccionado");
                 }
 
                 iHorarios.Add(new RangoHorario(desde, hasta));
