@@ -17,12 +17,11 @@ namespace UI
 
         private ControladorCampania iControladorCampania = new ControladorCampania();
 
-        private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public EliminarCampaña(Campania pCampania)
         {
             InitializeComponent();
-            Looger.Debug("Eliminando Campaña");
+            MyLogger4Net.Logger.Debug("Eliminando Campaña");
             this.iCampaniaParaEliminar = pCampania;
 
         }
@@ -34,21 +33,21 @@ namespace UI
 
         private void label9_Click(object sender, EventArgs e)
         {
-            Looger.Debug("Eliminación de Campaña Cancelada");
+            MyLogger4Net.Logger.Debug("Eliminación de Campaña Cancelada");
             Close();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Close();
-            Looger.Debug("Eliminación de Campaña Cancelada");
+            MyLogger4Net.Logger.Debug("Eliminación de Campaña Cancelada");
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             iControladorCampania.EliminarCampania(this.iCampaniaParaEliminar.CampaniaId);
             new VentanaEmergente("Campaña Eliminada Correctamente", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-            Looger.Debug("Campaña Eliminada");
+            MyLogger4Net.Logger.Debug("Campaña Eliminada");
             Close();
         }
         private void Cargar_Imagenes()

@@ -68,10 +68,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(21, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 18);
+            this.label1.Size = new System.Drawing.Size(178, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Menú Principal";
             // 
@@ -85,9 +85,11 @@
             this.groupBox1.Controls.Add(this.btnAgregarCampania);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(15, 59);
+            this.groupBox1.Location = new System.Drawing.Point(20, 73);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 102);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(549, 126);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campañas";
@@ -98,9 +100,10 @@
             this.EliminarCampania.AutoSize = true;
             this.EliminarCampania.BackColor = System.Drawing.Color.Maroon;
             this.EliminarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EliminarCampania.Location = new System.Drawing.Point(279, 74);
+            this.EliminarCampania.Location = new System.Drawing.Point(372, 91);
+            this.EliminarCampania.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EliminarCampania.Name = "EliminarCampania";
-            this.EliminarCampania.Size = new System.Drawing.Size(56, 14);
+            this.EliminarCampania.Size = new System.Drawing.Size(65, 18);
             this.EliminarCampania.TabIndex = 47;
             this.EliminarCampania.Text = "Eliminar";
             this.EliminarCampania.Visible = false;
@@ -111,9 +114,10 @@
             this.EditarCampania.AutoSize = true;
             this.EditarCampania.BackColor = System.Drawing.Color.Maroon;
             this.EditarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EditarCampania.Location = new System.Drawing.Point(186, 74);
+            this.EditarCampania.Location = new System.Drawing.Point(248, 91);
+            this.EditarCampania.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EditarCampania.Name = "EditarCampania";
-            this.EditarCampania.Size = new System.Drawing.Size(44, 14);
+            this.EditarCampania.Size = new System.Drawing.Size(50, 18);
             this.EditarCampania.TabIndex = 44;
             this.EditarCampania.Text = "Editar";
             this.EditarCampania.Visible = false;
@@ -124,9 +128,10 @@
             this.AgregarCampania.AutoSize = true;
             this.AgregarCampania.BackColor = System.Drawing.Color.Maroon;
             this.AgregarCampania.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AgregarCampania.Location = new System.Drawing.Point(77, 74);
+            this.AgregarCampania.Location = new System.Drawing.Point(103, 91);
+            this.AgregarCampania.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AgregarCampania.Name = "AgregarCampania";
-            this.AgregarCampania.Size = new System.Drawing.Size(57, 14);
+            this.AgregarCampania.Size = new System.Drawing.Size(66, 18);
             this.AgregarCampania.TabIndex = 43;
             this.AgregarCampania.Text = "Agregar";
             this.AgregarCampania.Visible = false;
@@ -134,7 +139,8 @@
             // btnEliminarCampania
             // 
             this.btnEliminarCampania.Image = global::UI.Properties.Resources.btn_Borrar;
-            this.btnEliminarCampania.Location = new System.Drawing.Point(282, 21);
+            this.btnEliminarCampania.Location = new System.Drawing.Point(376, 26);
+            this.btnEliminarCampania.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminarCampania.Name = "btnEliminarCampania";
             this.btnEliminarCampania.Size = new System.Drawing.Size(50, 50);
             this.btnEliminarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -147,7 +153,8 @@
             // btnEditarCampania
             // 
             this.btnEditarCampania.Image = global::UI.Properties.Resources.btn_Editar;
-            this.btnEditarCampania.Location = new System.Drawing.Point(182, 21);
+            this.btnEditarCampania.Location = new System.Drawing.Point(243, 26);
+            this.btnEditarCampania.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditarCampania.Name = "btnEditarCampania";
             this.btnEditarCampania.Size = new System.Drawing.Size(50, 50);
             this.btnEditarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -160,7 +167,8 @@
             // btnAgregarCampania
             // 
             this.btnAgregarCampania.Image = global::UI.Properties.Resources.btn_Agregar;
-            this.btnAgregarCampania.Location = new System.Drawing.Point(79, 21);
+            this.btnAgregarCampania.Location = new System.Drawing.Point(105, 26);
+            this.btnAgregarCampania.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregarCampania.Name = "btnAgregarCampania";
             this.btnAgregarCampania.Size = new System.Drawing.Size(50, 50);
             this.btnAgregarCampania.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -182,9 +190,11 @@
             this.groupBox2.Controls.Add(this.btnNuevoBanner);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(14, 160);
+            this.groupBox2.Location = new System.Drawing.Point(19, 197);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(412, 102);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(549, 126);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Banners";
@@ -195,9 +205,10 @@
             this.Fuentes.AutoSize = true;
             this.Fuentes.BackColor = System.Drawing.Color.Maroon;
             this.Fuentes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Fuentes.Location = new System.Drawing.Point(330, 73);
+            this.Fuentes.Location = new System.Drawing.Point(440, 90);
+            this.Fuentes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Fuentes.Name = "Fuentes";
-            this.Fuentes.Size = new System.Drawing.Size(58, 14);
+            this.Fuentes.Size = new System.Drawing.Size(67, 18);
             this.Fuentes.TabIndex = 46;
             this.Fuentes.Text = "Fuentes";
             this.Fuentes.Visible = false;
@@ -208,9 +219,10 @@
             this.EliminarBanner.AutoSize = true;
             this.EliminarBanner.BackColor = System.Drawing.Color.Maroon;
             this.EliminarBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EliminarBanner.Location = new System.Drawing.Point(229, 74);
+            this.EliminarBanner.Location = new System.Drawing.Point(305, 91);
+            this.EliminarBanner.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EliminarBanner.Name = "EliminarBanner";
-            this.EliminarBanner.Size = new System.Drawing.Size(56, 14);
+            this.EliminarBanner.Size = new System.Drawing.Size(65, 18);
             this.EliminarBanner.TabIndex = 45;
             this.EliminarBanner.Text = "Eliminar";
             this.EliminarBanner.Visible = false;
@@ -221,9 +233,10 @@
             this.EditarBanner.AutoSize = true;
             this.EditarBanner.BackColor = System.Drawing.Color.Maroon;
             this.EditarBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EditarBanner.Location = new System.Drawing.Point(137, 74);
+            this.EditarBanner.Location = new System.Drawing.Point(183, 91);
+            this.EditarBanner.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EditarBanner.Name = "EditarBanner";
-            this.EditarBanner.Size = new System.Drawing.Size(44, 14);
+            this.EditarBanner.Size = new System.Drawing.Size(50, 18);
             this.EditarBanner.TabIndex = 44;
             this.EditarBanner.Text = "Editar";
             this.EditarBanner.Visible = false;
@@ -234,9 +247,10 @@
             this.NuevoBanner.AutoSize = true;
             this.NuevoBanner.BackColor = System.Drawing.Color.Maroon;
             this.NuevoBanner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NuevoBanner.Location = new System.Drawing.Point(28, 74);
+            this.NuevoBanner.Location = new System.Drawing.Point(37, 91);
+            this.NuevoBanner.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NuevoBanner.Name = "NuevoBanner";
-            this.NuevoBanner.Size = new System.Drawing.Size(57, 14);
+            this.NuevoBanner.Size = new System.Drawing.Size(66, 18);
             this.NuevoBanner.TabIndex = 43;
             this.NuevoBanner.Text = "Agregar";
             this.NuevoBanner.Visible = false;
@@ -244,7 +258,8 @@
             // btnFuentes
             // 
             this.btnFuentes.Image = global::UI.Properties.Resources.btn_Listar;
-            this.btnFuentes.Location = new System.Drawing.Point(333, 21);
+            this.btnFuentes.Location = new System.Drawing.Point(444, 26);
+            this.btnFuentes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFuentes.Name = "btnFuentes";
             this.btnFuentes.Size = new System.Drawing.Size(50, 49);
             this.btnFuentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -257,7 +272,8 @@
             // btnEliminarBanner
             // 
             this.btnEliminarBanner.Image = global::UI.Properties.Resources.btn_Borrar;
-            this.btnEliminarBanner.Location = new System.Drawing.Point(232, 21);
+            this.btnEliminarBanner.Location = new System.Drawing.Point(309, 26);
+            this.btnEliminarBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminarBanner.Name = "btnEliminarBanner";
             this.btnEliminarBanner.Size = new System.Drawing.Size(50, 50);
             this.btnEliminarBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -270,7 +286,8 @@
             // btnEditarBanner
             // 
             this.btnEditarBanner.Image = global::UI.Properties.Resources.btn_Editar;
-            this.btnEditarBanner.Location = new System.Drawing.Point(132, 21);
+            this.btnEditarBanner.Location = new System.Drawing.Point(176, 26);
+            this.btnEditarBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditarBanner.Name = "btnEditarBanner";
             this.btnEditarBanner.Size = new System.Drawing.Size(50, 50);
             this.btnEditarBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -283,7 +300,8 @@
             // btnNuevoBanner
             // 
             this.btnNuevoBanner.Image = global::UI.Properties.Resources.btn_Agregar;
-            this.btnNuevoBanner.Location = new System.Drawing.Point(33, 21);
+            this.btnNuevoBanner.Location = new System.Drawing.Point(44, 26);
+            this.btnNuevoBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevoBanner.Name = "btnNuevoBanner";
             this.btnNuevoBanner.Size = new System.Drawing.Size(50, 50);
             this.btnNuevoBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -300,9 +318,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(471, -7);
+            this.label2.Location = new System.Drawing.Point(628, -9);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 39);
+            this.label2.Size = new System.Drawing.Size(47, 52);
             this.label2.TabIndex = 6;
             this.label2.Text = "_";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -313,9 +332,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(509, 9);
+            this.label3.Location = new System.Drawing.Point(679, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 29);
+            this.label3.Size = new System.Drawing.Size(36, 36);
             this.label3.TabIndex = 7;
             this.label3.Text = "X";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -323,9 +343,10 @@
             // btnReproducir
             // 
             this.btnReproducir.Image = global::UI.Properties.Resources.btn_Reproducir;
-            this.btnReproducir.Location = new System.Drawing.Point(452, 124);
+            this.btnReproducir.Location = new System.Drawing.Point(603, 153);
+            this.btnReproducir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReproducir.Name = "btnReproducir";
-            this.btnReproducir.Size = new System.Drawing.Size(71, 68);
+            this.btnReproducir.Size = new System.Drawing.Size(95, 84);
             this.btnReproducir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnReproducir.TabIndex = 12;
             this.btnReproducir.TabStop = false;
@@ -340,21 +361,22 @@
             this.Reproducir.BackColor = System.Drawing.Color.Transparent;
             this.Reproducir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reproducir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Reproducir.Location = new System.Drawing.Point(430, 195);
+            this.Reproducir.Location = new System.Drawing.Point(573, 240);
+            this.Reproducir.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Reproducir.Name = "Reproducir";
-            this.Reproducir.Size = new System.Drawing.Size(111, 14);
+            this.Reproducir.Size = new System.Drawing.Size(127, 18);
             this.Reproducir.TabIndex = 48;
             this.Reproducir.Text = "Iniciar Cartelería";
             this.Reproducir.Visible = false;
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
             this.BackgroundImage = global::UI.Properties.Resources.FondoVentanas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(548, 290);
+            this.ClientSize = new System.Drawing.Size(731, 357);
             this.Controls.Add(this.Reproducir);
             this.Controls.Add(this.btnReproducir);
             this.Controls.Add(this.label3);
@@ -365,9 +387,11 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnEliminarCampania)).EndInit();

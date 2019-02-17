@@ -116,6 +116,7 @@
     <Compile Include="ModificarCampaña.Designer.cs">
       <DependentUpon>ModificarCampaña.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyLogger4Net.cs" />
     <Compile Include="PantallaOperativa.cs">
       <SubType>Form</SubType>
     </Compile>
