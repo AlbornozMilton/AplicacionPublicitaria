@@ -27,7 +27,7 @@ namespace Dominio
             iRangoFecha = pRangoFecha;
             this.iListaImagen = new List<Imagen>();
             this.iListaImagen = pImagenes;
-            //No me gusta lo sguiente
+            //No me gusta lo siguiente
             if (pImagenes != null)
             {
                 this.iEnumeradorListaImg = this.iListaImagen.GetEnumerator();

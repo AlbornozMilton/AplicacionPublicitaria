@@ -16,7 +16,6 @@ namespace Persistencia.DAL.EntityFramework
             }
             this.iDbContext = pContext;
          
-            //this --> por el constructor de AccountRepository
             this.RepositorioCampania = new RepositorioCampania(this.iDbContext);
 
 			this.RepositorioBanner = new RepositorioBanner(this.iDbContext);

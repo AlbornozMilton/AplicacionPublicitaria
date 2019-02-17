@@ -18,7 +18,7 @@ namespace Dominio
 
 		private Thread hiloBanner;
 
-
+        //carga la lista de Banners del Dia
 		public void GenerarBannerFecha(DateTime pDia)
 		{
 			List<Banner> result = new List<Banner>();
@@ -31,6 +31,7 @@ namespace Dominio
 			this.BannersDelDia = result;
 		}
 
+        //Devuelve el banner correspondiente a la hora pasada por parametro
 		public Banner GetBanner(TimeSpan pHora)
 		{
 			Banner bannerResult = null;
@@ -68,6 +69,7 @@ namespace Dominio
 			return bannerResult;
 		}
 
+        //Asigna banner actual
 		public void ActBannerActual(TimeSpan pHora)
 		{
 			try
@@ -83,6 +85,7 @@ namespace Dominio
 			}
 		}
 
+        //Corre un hilo paralelo que busca el banner siguiente al actual
 		private void CorrerHilo()
 		{
 			hiloBanner = new Thread(() => ActBannerProximo());
@@ -90,6 +93,7 @@ namespace Dominio
 			hiloBanner.Start();
 		}
 
+        //Busca y Asigna banner proximo
 		public void ActBannerProximo()
 		{
 			foreach (var hora in BannerActual.RangoFecha.Horarios)
@@ -102,6 +106,7 @@ namespace Dominio
 			}
 		}
 
+        //asigna el proximo banner a mostrar
 		public void IntercambiarBanners()
 		{
 			BannerActual = BannerProximo;
@@ -145,6 +150,7 @@ namespace Dominio
 				BannerActual.Fuente.Items = BannerActual.Fuente.Items.OrderByDescending(i => i.Fecha).ToList(); // si no es rss
 		}
 
+        //crea banner con texto por defecto
 		private Banner BannerDefault(TimeSpan pHoraInicio, TimeSpan pHoraFin)
 		{
 			RangoFecha rf = new RangoFecha(new RangoHorario(pHoraInicio, pHoraFin));
@@ -166,6 +172,7 @@ namespace Dominio
 			return Math.Abs(intervalo);
 		}
 
+        //Devuele el texto deslizable correspondinete a un item
 		public string TextoDeFuenteActual(ref int pItem)
 		{
 			if (pItem + 1 > BannerActual.Fuente.Items.Count)
@@ -184,6 +191,7 @@ namespace Dominio
 			var rfMapped = Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
 			iUOfW.RepositorioBanner.AgregarBanner(pNombre, pIdFuente, rfMapped);
 		}
+
 
 		public List<Banner> BuscarBanner(string pNombre, DateTime pDesde, DateTime pHasta)
 		{

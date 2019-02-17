@@ -10,7 +10,7 @@ namespace Dominio
     {
         private int iCodRangoHora;
         private TimeSpan iHoraInicio;
-        private TimeSpan iHoraFin; //TIMESPAN ???
+        private TimeSpan iHoraFin;
 
         private RangoFecha iRangoFecha;
 
