@@ -6,19 +6,18 @@ namespace UI
 {
 	public partial class AddModFuente : Form
 	{
-		private static readonly log4net.ILog Loger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		private IFuente iFuente;
 
 		public AddModFuente()
 		{
-			Loger.Info("Nueva Fuente");
+            MyLogger4Net.Logger.Info("Nueva Fuente");
 			InitializeComponent();
 		}
 
 		public AddModFuente(IFuente pFuente)
 		{
-			Loger.Info("Modificar Fuente");
+            MyLogger4Net.Logger.Info("Modificar Fuente");
 			InitializeComponent();
 			iFuente = pFuente;
 		}
@@ -28,7 +27,7 @@ namespace UI
 			if (iFuente != null)
 			{
 				var nombreF = iFuente.GetType().Name;
-				Loger.Info("Tipo Fuente :" + nombreF);
+                MyLogger4Net.Logger.Info("Tipo Fuente :" + nombreF);
 				cbxTipoFuente.Items.Add(nombreF);
 				cbxTipoFuente.SelectedIndex = 0;
 				tbxDescripcion.Text = iFuente.Descripcion;
@@ -83,7 +82,7 @@ namespace UI
 
 		private void btnCancelar_Click(object sender, EventArgs e)
 		{
-			Loger.Info("Cancelar");
+            MyLogger4Net.Logger.Info("Cancelar");
 			Close();
 		}
 
@@ -103,7 +102,7 @@ namespace UI
 				btnAceptar.Enabled = true;
 			}
 
-			Loger.Debug("Fuente seleccionada: " + cbxTipoFuente.SelectedItem.ToString());
+            MyLogger4Net.Logger.Debug("Fuente seleccionada: " + cbxTipoFuente.SelectedItem.ToString());
 		}
 
 		private void txbUrl_Leave(object sender, EventArgs e)
