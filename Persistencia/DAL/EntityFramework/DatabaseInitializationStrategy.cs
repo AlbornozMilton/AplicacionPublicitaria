@@ -11,7 +11,7 @@ namespace Persistencia.DAL.EntityFramework
         {
 			TextoFijo f = new TextoFijo
 			{
-				Descripcion = "PubliApp",
+				Descripcion = "PublicApp",
 				Items = new List<Item>
 				{
 					new Item
