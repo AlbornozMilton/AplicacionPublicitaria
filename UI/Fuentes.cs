@@ -303,7 +303,7 @@ namespace UI
                 {
                     fechaDesde.Enabled = true;
                     fechaHasta.Enabled = true;
-                    new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                    new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
                     RssSinItems();
                 }
             }

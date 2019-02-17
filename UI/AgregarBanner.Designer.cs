@@ -81,10 +81,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txbTipoFuente = new System.Windows.Forms.TextBox();
             this.gbxFuentes = new System.Windows.Forms.GroupBox();
+            this.txlabel_peticionRss = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbxNombreBanner = new System.Windows.Forms.TextBox();
             this.lblNomBanner = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txlabel_peticionRss = new System.Windows.Forms.Label();
             this.gbxDias.SuspendLayout();
             this.gbxHorarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgregarHorario)).BeginInit();
@@ -157,7 +157,7 @@
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(811, 724);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(108, 41);
             this.btnAceptar.TabIndex = 5;
@@ -170,7 +170,7 @@
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(941, 724);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(108, 41);
             this.btnCancelar.TabIndex = 6;
@@ -207,7 +207,7 @@
             this.ckb_miercoles.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_miercoles.ForeColor = System.Drawing.Color.White;
             this.ckb_miercoles.Location = new System.Drawing.Point(60, 85);
-            this.ckb_miercoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_miercoles.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_miercoles.Name = "ckb_miercoles";
             this.ckb_miercoles.Size = new System.Drawing.Size(99, 22);
             this.ckb_miercoles.TabIndex = 2;
@@ -224,7 +224,7 @@
             this.ckb_viernes.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_viernes.ForeColor = System.Drawing.Color.White;
             this.ckb_viernes.Location = new System.Drawing.Point(277, 26);
-            this.ckb_viernes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_viernes.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_viernes.Name = "ckb_viernes";
             this.ckb_viernes.Size = new System.Drawing.Size(84, 22);
             this.ckb_viernes.TabIndex = 4;
@@ -241,7 +241,7 @@
             this.ckb_sabado.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_sabado.ForeColor = System.Drawing.Color.White;
             this.ckb_sabado.Location = new System.Drawing.Point(277, 55);
-            this.ckb_sabado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_sabado.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_sabado.Name = "ckb_sabado";
             this.ckb_sabado.Size = new System.Drawing.Size(94, 22);
             this.ckb_sabado.TabIndex = 5;
@@ -258,7 +258,7 @@
             this.ckb_domingo.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_domingo.ForeColor = System.Drawing.Color.White;
             this.ckb_domingo.Location = new System.Drawing.Point(277, 85);
-            this.ckb_domingo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_domingo.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_domingo.Name = "ckb_domingo";
             this.ckb_domingo.Size = new System.Drawing.Size(105, 22);
             this.ckb_domingo.TabIndex = 6;
@@ -275,7 +275,7 @@
             this.ckb_jueves.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_jueves.ForeColor = System.Drawing.Color.White;
             this.ckb_jueves.Location = new System.Drawing.Point(60, 115);
-            this.ckb_jueves.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_jueves.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_jueves.Name = "ckb_jueves";
             this.ckb_jueves.Size = new System.Drawing.Size(81, 22);
             this.ckb_jueves.TabIndex = 3;
@@ -292,7 +292,7 @@
             this.ckb_martes.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_martes.ForeColor = System.Drawing.Color.White;
             this.ckb_martes.Location = new System.Drawing.Point(60, 55);
-            this.ckb_martes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_martes.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_martes.Name = "ckb_martes";
             this.ckb_martes.Size = new System.Drawing.Size(81, 22);
             this.ckb_martes.TabIndex = 1;
@@ -309,7 +309,7 @@
             this.ckb_luenes.Font = new System.Drawing.Font("Verdana", 9F);
             this.ckb_luenes.ForeColor = System.Drawing.Color.White;
             this.ckb_luenes.Location = new System.Drawing.Point(60, 26);
-            this.ckb_luenes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb_luenes.Margin = new System.Windows.Forms.Padding(4);
             this.ckb_luenes.Name = "ckb_luenes";
             this.ckb_luenes.Size = new System.Drawing.Size(73, 22);
             this.ckb_luenes.TabIndex = 0;
@@ -333,9 +333,9 @@
             this.gbxHorarios.Font = new System.Drawing.Font("Verdana", 9F);
             this.gbxHorarios.ForeColor = System.Drawing.Color.White;
             this.gbxHorarios.Location = new System.Drawing.Point(480, 134);
-            this.gbxHorarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxHorarios.Margin = new System.Windows.Forms.Padding(4);
             this.gbxHorarios.Name = "gbxHorarios";
-            this.gbxHorarios.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxHorarios.Padding = new System.Windows.Forms.Padding(4);
             this.gbxHorarios.Size = new System.Drawing.Size(569, 266);
             this.gbxHorarios.TabIndex = 1;
             this.gbxHorarios.TabStop = false;
@@ -360,7 +360,7 @@
             this.btnAgregarHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarHorario.Image = global::UI.Properties.Resources.btn_Agregar;
             this.btnAgregarHorario.Location = new System.Drawing.Point(392, 36);
-            this.btnAgregarHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarHorario.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarHorario.Name = "btnAgregarHorario";
             this.btnAgregarHorario.Size = new System.Drawing.Size(47, 43);
             this.btnAgregarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -402,7 +402,7 @@
             this.btnBorrarHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBorrarHorario.Image = global::UI.Properties.Resources.btn_Cerrar;
             this.btnBorrarHorario.Location = new System.Drawing.Point(503, 36);
-            this.btnBorrarHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrarHorario.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrarHorario.Name = "btnBorrarHorario";
             this.btnBorrarHorario.Size = new System.Drawing.Size(47, 43);
             this.btnBorrarHorario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -430,7 +430,7 @@
             this.horaDesde.CustomFormat = "HH:mm";
             this.horaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.horaDesde.Location = new System.Drawing.Point(109, 32);
-            this.horaDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.horaDesde.Margin = new System.Windows.Forms.Padding(4);
             this.horaDesde.Name = "horaDesde";
             this.horaDesde.ShowUpDown = true;
             this.horaDesde.Size = new System.Drawing.Size(181, 26);
@@ -441,7 +441,7 @@
             this.horaHasta.CustomFormat = "HH:mm";
             this.horaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.horaHasta.Location = new System.Drawing.Point(109, 74);
-            this.horaHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.horaHasta.Margin = new System.Windows.Forms.Padding(4);
             this.horaHasta.Name = "horaHasta";
             this.horaHasta.ShowUpDown = true;
             this.horaHasta.Size = new System.Drawing.Size(181, 26);
@@ -476,7 +476,7 @@
             this.dGV_horarios.DefaultCellStyle = dataGridViewCellStyle4;
             this.dGV_horarios.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dGV_horarios.Location = new System.Drawing.Point(4, 112);
-            this.dGV_horarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dGV_horarios.Margin = new System.Windows.Forms.Padding(4);
             this.dGV_horarios.MultiSelect = false;
             this.dGV_horarios.Name = "dGV_horarios";
             this.dGV_horarios.ReadOnly = true;
@@ -525,7 +525,7 @@
             this.cbx_Fuente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_Fuente.FormattingEnabled = true;
             this.cbx_Fuente.Location = new System.Drawing.Point(100, 41);
-            this.cbx_Fuente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbx_Fuente.Margin = new System.Windows.Forms.Padding(4);
             this.cbx_Fuente.Name = "cbx_Fuente";
             this.cbx_Fuente.Size = new System.Drawing.Size(347, 26);
             this.cbx_Fuente.TabIndex = 3;
@@ -551,9 +551,9 @@
             this.groupBox_items.Font = new System.Drawing.Font("Verdana", 9F);
             this.groupBox_items.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox_items.Location = new System.Drawing.Point(4, 86);
-            this.groupBox_items.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_items.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_items.Name = "groupBox_items";
-            this.groupBox_items.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_items.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_items.Size = new System.Drawing.Size(1019, 219);
             this.groupBox_items.TabIndex = 36;
             this.groupBox_items.TabStop = false;
@@ -581,7 +581,7 @@
             this.dGV_itemsFuente.DefaultCellStyle = dataGridViewCellStyle6;
             this.dGV_itemsFuente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_itemsFuente.Location = new System.Drawing.Point(4, 23);
-            this.dGV_itemsFuente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dGV_itemsFuente.Margin = new System.Windows.Forms.Padding(4);
             this.dGV_itemsFuente.MultiSelect = false;
             this.dGV_itemsFuente.Name = "dGV_itemsFuente";
             this.dGV_itemsFuente.ReadOnly = true;
@@ -628,7 +628,7 @@
             this.btnFuentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFuentes.Image = global::UI.Properties.Resources.btn_Editar;
             this.btnFuentes.Location = new System.Drawing.Point(964, 23);
-            this.btnFuentes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFuentes.Margin = new System.Windows.Forms.Padding(4);
             this.btnFuentes.Name = "btnFuentes";
             this.btnFuentes.Size = new System.Drawing.Size(47, 43);
             this.btnFuentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -676,7 +676,7 @@
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Image = global::UI.Properties.Resources.btn_Configurar;
             this.btnActualizar.Location = new System.Drawing.Point(372, 32);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(47, 43);
             this.btnActualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -690,7 +690,7 @@
             // 
             this.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fechaHasta.Location = new System.Drawing.Point(99, 64);
-            this.fechaHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fechaHasta.Margin = new System.Windows.Forms.Padding(4);
             this.fechaHasta.Name = "fechaHasta";
             this.fechaHasta.Size = new System.Drawing.Size(219, 26);
             this.fechaHasta.TabIndex = 1;
@@ -699,7 +699,7 @@
             // 
             this.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaDesde.Location = new System.Drawing.Point(99, 32);
-            this.fechaDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fechaDesde.Margin = new System.Windows.Forms.Padding(4);
             this.fechaDesde.Name = "fechaDesde";
             this.fechaDesde.Size = new System.Drawing.Size(219, 26);
             this.fechaDesde.TabIndex = 0;
@@ -733,7 +733,7 @@
             // txbTipoFuente
             // 
             this.txbTipoFuente.Location = new System.Drawing.Point(595, 41);
-            this.txbTipoFuente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbTipoFuente.Margin = new System.Windows.Forms.Padding(4);
             this.txbTipoFuente.Name = "txbTipoFuente";
             this.txbTipoFuente.ReadOnly = true;
             this.txbTipoFuente.Size = new System.Drawing.Size(141, 26);
@@ -755,19 +755,48 @@
             this.gbxFuentes.Font = new System.Drawing.Font("Verdana", 9F);
             this.gbxFuentes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbxFuentes.Location = new System.Drawing.Point(23, 407);
-            this.gbxFuentes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxFuentes.Margin = new System.Windows.Forms.Padding(4);
             this.gbxFuentes.Name = "gbxFuentes";
-            this.gbxFuentes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxFuentes.Padding = new System.Windows.Forms.Padding(4);
             this.gbxFuentes.Size = new System.Drawing.Size(1027, 309);
             this.gbxFuentes.TabIndex = 40;
             this.gbxFuentes.TabStop = false;
             this.gbxFuentes.Text = "Fuentes";
             // 
+            // txlabel_peticionRss
+            // 
+            this.txlabel_peticionRss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txlabel_peticionRss.AutoSize = true;
+            this.txlabel_peticionRss.BackColor = System.Drawing.Color.Transparent;
+            this.txlabel_peticionRss.Font = new System.Drawing.Font("Verdana", 9F);
+            this.txlabel_peticionRss.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txlabel_peticionRss.Location = new System.Drawing.Point(824, 71);
+            this.txlabel_peticionRss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txlabel_peticionRss.Name = "txlabel_peticionRss";
+            this.txlabel_peticionRss.Size = new System.Drawing.Size(100, 18);
+            this.txlabel_peticionRss.TabIndex = 41;
+            this.txlabel_peticionRss.Text = "Petición RSS";
+            this.txlabel_peticionRss.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::UI.Properties.Resources.btn_Abajo;
+            this.pictureBox1.Location = new System.Drawing.Point(856, 24);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
             // tbxNombreBanner
             // 
             this.tbxNombreBanner.Font = new System.Drawing.Font("Verdana", 9F);
             this.tbxNombreBanner.Location = new System.Drawing.Point(117, 75);
-            this.tbxNombreBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxNombreBanner.Margin = new System.Windows.Forms.Padding(4);
             this.tbxNombreBanner.Name = "tbxNombreBanner";
             this.tbxNombreBanner.Size = new System.Drawing.Size(471, 26);
             this.tbxNombreBanner.TabIndex = 42;
@@ -784,35 +813,6 @@
             this.lblNomBanner.Size = new System.Drawing.Size(85, 23);
             this.lblNomBanner.TabIndex = 41;
             this.lblNomBanner.Text = "Nombre";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::UI.Properties.Resources.btn_Abajo;
-            this.pictureBox1.Location = new System.Drawing.Point(856, 24);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 40;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
-            // 
-            // txlabel_peticionRss
-            // 
-            this.txlabel_peticionRss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txlabel_peticionRss.AutoSize = true;
-            this.txlabel_peticionRss.BackColor = System.Drawing.Color.Transparent;
-            this.txlabel_peticionRss.Font = new System.Drawing.Font("Verdana", 9F);
-            this.txlabel_peticionRss.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txlabel_peticionRss.Location = new System.Drawing.Point(828, 71);
-            this.txlabel_peticionRss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txlabel_peticionRss.Name = "txlabel_peticionRss";
-            this.txlabel_peticionRss.Size = new System.Drawing.Size(100, 18);
-            this.txlabel_peticionRss.TabIndex = 41;
-            this.txlabel_peticionRss.Text = "Petición RSS";
-            this.txlabel_peticionRss.Visible = false;
             // 
             // AgregarBanner
             // 
@@ -835,7 +835,7 @@
             this.Controls.Add(this.titulo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AgregarBanner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
