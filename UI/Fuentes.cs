@@ -64,7 +64,9 @@ namespace UI
 
 				if (tbxTipoFuente.Text != "FuenteRSS")
 				{
-					btnAgregarItem.Visible = true;
+                    btn_peticionRss.Visible = false;
+                    txlabel_teicionRss.Visible = false;
+                    btnAgregarItem.Visible = true;
 					btnModificarItem.Visible = true;
 					btnEliminarItem.Visible = true;
 					fechaDesde.Enabled = true;
@@ -73,43 +75,24 @@ namespace UI
 				}
 				else
 				{
-					btnAgregarItem.Visible = false;
-					btnModificarItem.Visible = false;
-					btnEliminarItem.Visible = false;
-					IRssReader mRssReader = new RawXmlRssReader();
-
-					var iFuente = (FuenteRSS)_Fuente;
-					Loger.Debug("Petición de Fuente RSS: " + iFuente.URL);
-
-					var itemsRss = mRssReader.Read(iFuente.URL).ToList();
-
-					if (itemsRss.Count > 0)
-					{
-						new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-						iItemBindingSource.DataSource = itemsRss;
-						new ControladorFuentes().ActualizarItemsRss(itemsRss, _Fuente.FuenteId);
-						fechaDesde.Enabled = false;
-						fechaHasta.Enabled = false;
-					}
-					else
-					{
-						fechaDesde.Enabled = true;
-						fechaHasta.Enabled = true;
-						new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-						RssSinItems();
-					}
-				}
+                    iItemBindingSource.Clear();
+                    btn_peticionRss.Visible = true;
+                    txlabel_teicionRss.Visible = true;
+                    btnAgregarItem.Visible = false;
+                    btnModificarItem.Visible = false;
+                    btnEliminarItem.Visible = false;
+                }
 				iItemBindingSource.ResetBindings(true);
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-				new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-				RssSinItems();
+				new VentanaEmergente(e.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
 			}
 		}
 
 		private void RssSinItems()
 		{
+            string msg = "";
 			_Fuente.Items.Clear();
 			var itemsRss = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, null, null);
 
@@ -117,18 +100,23 @@ namespace UI
 			{
 				Loger.Debug("Items anteriores en BD para la Fuente seleccionada");
 				_Fuente.Items.AddRange(itemsRss.OrderByDescending(f => f.Fecha));
-			}
+                msg = "Se asignaron los items locales de la última petición";
+
+            }
 			else // no tiene items rss anteriores en bd
 			{
 				Loger.Debug("No exiten items en BD para la Fuente seleccionada");
 				Loger.Debug("Se asignaron items de la fuente por defecto");
-				_Fuente.Items.AddRange(new ControladorFuentes().ItemsFuenteTexto(1, null, null).OrderByDescending(f => f.Fecha));
+                msg = "Se asignaron items de la fuente por defecto";
+                _Fuente.Items.AddRange(new ControladorFuentes().ItemsFuenteTexto(1, null, null).OrderByDescending(f => f.Fecha));
 			}
 
 			iItemBindingSource.DataSource = _Fuente.Items;
-		}
+            new VentanaEmergente(msg, VentanaEmergente.TipoMensaje.Informacion).ShowDialog();
 
-		private void btnNuevaFuente_Click(object sender, EventArgs e)
+        }
+
+        private void btnNuevaFuente_Click(object sender, EventArgs e)
 		{
 			Loger.Info("Agregar Fuente");
 			AddModFuente f = new AddModFuente();
@@ -291,5 +279,39 @@ namespace UI
 		{
 			btnBuscar.BorderStyle = BorderStyle.None;
 		}
-	}
+
+        private void btn_peticionRss_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IRssReader mRssReader = new RawXmlRssReader();
+
+                var iFuente = (FuenteRSS)_Fuente;
+                Loger.Debug("Petición de Fuente RSS: " + iFuente.URL);
+
+                var itemsRss = mRssReader.Read(iFuente.URL).ToList();
+
+                if (itemsRss.Count > 0)
+                {
+                    fechaDesde.Enabled = false;
+                    fechaHasta.Enabled = false;
+                    iItemBindingSource.DataSource = itemsRss;
+                    new ControladorFuentes().ActualizarItemsRss(itemsRss, _Fuente.FuenteId);
+                    new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                }
+                else
+                {
+                    fechaDesde.Enabled = true;
+                    fechaHasta.Enabled = true;
+                    new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                    RssSinItems();
+                }
+            }
+            catch (Exception ex)
+            {
+                new VentanaEmergente(ex.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                RssSinItems();
+            }
+        }
+    }
 }

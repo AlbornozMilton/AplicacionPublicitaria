@@ -7,12 +7,10 @@ namespace UI
 {
     public partial class Menu : Form
     {
-		//ubicacion: ...\AppPublicitaria\UI\bin\Debug\CarteleriaDigital.log
-		private static readonly log4net.ILog Looger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+		
 		public Menu()
         {
-			Looger.Debug("Inicio de la App");
+            MyLogger4Net.Logger.Debug("Inicio de la App");
             InitializeComponent();
         }
 
@@ -23,13 +21,13 @@ namespace UI
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Looger.Debug("Cierre de la App");
+            MyLogger4Net.Logger.Debug("Cierre de la App");
             Close();
         }
 
         private void btn_AgregarCampania_Click(object sender, EventArgs e)
         {
-			Looger.Debug("Agregar Campaña");
+            MyLogger4Net.Logger.Debug("Agregar Campaña");
             new AgregarCampaña().ShowDialog();
 		}
 
@@ -40,13 +38,13 @@ namespace UI
 
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
-			Looger.Debug("Agregar Banner");
+            MyLogger4Net.Logger.Debug("Agregar Banner");
 			new AgregarBanner().ShowDialog();
 		}
 
 		private void btnEditarBanner_Click(object sender, EventArgs e)
 		{
-            Looger.Debug("Modificar Banner");
+            MyLogger4Net.Logger.Debug("Modificar Banner");
             BuscarBanner f = new BuscarBanner();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
@@ -58,7 +56,7 @@ namespace UI
 
 		private void btnEliminarBanner_Click(object sender, EventArgs e)
 		{
-            Looger.Debug("Eliminar Banner");
+            MyLogger4Net.Logger.Debug("Eliminar Banner");
             BuscarBanner f = new BuscarBanner();
 			f.ShowDialog();
 			if (f.DialogResult == DialogResult.OK)
@@ -82,7 +80,7 @@ namespace UI
 
         private void btn_EliminarCampania_Click(object sender, EventArgs e)
         {
-            Looger.Debug("Eliminar Campaña");
+            MyLogger4Net.Logger.Debug("Eliminar Campaña");
             BuscarCampaña iVentanaBuscar = new BuscarCampaña();
             iVentanaBuscar.ShowDialog();
             if (iVentanaBuscar.iCampaniaSeleccionada != null)
@@ -103,13 +101,18 @@ namespace UI
 
         private void btnEditarCampania_Click(object sender, EventArgs e)
         {
-            Looger.Debug("Modificar Campaña");
+            MyLogger4Net.Logger.Debug("Modificar Campaña");
             BuscarCampaña iVentanaBuscar = new BuscarCampaña();
             iVentanaBuscar.ShowDialog();
             if (iVentanaBuscar.iCampaniaSeleccionada != null)
             {
                 new AgregarCampaña(iVentanaBuscar.iCampaniaSeleccionada).ShowDialog();
             }
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,7 @@ namespace UI
         List<RangoHorario> iHorarios = new List<RangoHorario>();
         ControladorExtra iControlExtra = new ControladorExtra();
         List<IFuente> iFuentes = new List<IFuente>();
+        IFuente _Fuente;
         private Banner iBanner;
         string iDias = "";
 
@@ -151,6 +152,13 @@ namespace UI
                         iDias += "domingo-";
                     iDias = iDias.Remove(iDias.Length - 1);
 
+                    if (cbx_Fuente.SelectedItem == null)
+                    {
+                        f = new VentanaEmergente("Debe elegir una Fuente", VentanaEmergente.TipoMensaje.Alerta);
+                        f.ShowDialog();
+                        return;
+                    }
+
                     if (iBanner != null)
                     {
                         new ControladorBanner().ModificarBanner(iBanner.BannerId, tbxNombreBanner.Text, iFuentes.ElementAt(cbx_Fuente.SelectedIndex).FuenteId, fechaDesde.Value, fechaHasta.Value, iHorarios.OrderBy(h => h.HoraInicio).ToList(), iDias);
@@ -240,7 +248,7 @@ namespace UI
                     if (!(item.HoraInicio.CompareTo(desde) > 0 && item.HoraInicio.CompareTo(hasta) >= 0)
                         &&
                         (!(item.HoraFin.CompareTo(desde) <= 0 && item.HoraFin.CompareTo(hasta) < 0)))
-                        throw new Exception("El Horario elegido intersecta con los elegidos recientemente");
+                        throw new Exception("Horario ya seleccionado");
                 }
 
                 iHorarios.Add(new RangoHorario(desde, hasta));
@@ -347,38 +355,31 @@ namespace UI
         {
             CargarItems();
         }
+
         private void CargarItems()
         {
             try
             {
-                IFuente _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+                _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
                 txbTipoFuente.Text = _Fuente.GetType().Name;
 
                 Loger.Info("Tipo Fuente elegida " + txbTipoFuente.Text);
                 if (txbTipoFuente.Text != "FuenteRSS")
+                {
+                    pictureBox1.Visible = false;
+                    txlabel_peticionRss.Visible = false;
                     iItemBindingSource.DataSource = new ControladorFuentes().ItemsFuenteTexto(_Fuente.FuenteId, null, null);
+                }
                 else
                 {
-                    IRssReader mRssReader = new RawXmlRssReader();
-                    var Fuente = (FuenteRSS)_Fuente;
-                    var items = mRssReader.Read(Fuente.URL).ToList();
-                    Loger.Debug("Petición de Fuente RSS: " + Fuente.URL);
-                    if (items.Count > 0)
-                    {
-                        new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
-                        iItemBindingSource.DataSource = items.ToList();
-                        Loger.Debug("Actualizando Items Rss en BD");
-                        new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
-                    }
-                    else
-                    {
-                        new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
-                        RssSinItems(Fuente);
-                    }
+                    txlabel_peticionRss.Visible = true;
+                    pictureBox1.Visible = true;
+                    iItemBindingSource.Clear();
                 }
-                iItemBindingSource.ResetBindings(false);
+
+                iItemBindingSource.ResetBindings(true);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
                 RssSinItems((FuenteRSS)iFuentes.ElementAt(cbx_Fuente.SelectedIndex));
@@ -387,6 +388,7 @@ namespace UI
 
         private void RssSinItems(FuenteRSS _Fuente)
         {
+            string msg = "";
             _Fuente.Items.Clear();
             var itemsRss = new ControladorFuentes().ItemsFuenteRss(_Fuente.FuenteId, null, null);
 
@@ -394,20 +396,61 @@ namespace UI
             {
                 Loger.Debug("Items anteriores en BD para la Fuente seleccionada");
                 _Fuente.Items.AddRange(itemsRss.OrderByDescending(f => f.Fecha));
+                msg = "Se asignaron los items locales de la última petición";
             }
             else // no tiene items rss anteriores en bd
             {
                 Loger.Debug("No exiten items en BD para la Fuente seleccionada");
                 Loger.Debug("Se asignaron items de la fuente por defecto");
                 _Fuente.Items.AddRange(new ControladorFuentes().ItemsFuenteTexto(1, null, null).OrderByDescending(f => f.Fecha));
+                msg = "Se asignaron items de la fuente por defecto";
             }
 
             iItemBindingSource.DataSource = _Fuente.Items;
+
+            new VentanaEmergente(msg, VentanaEmergente.TipoMensaje.Informacion).ShowDialog();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             ControlFecha();
+        }
+
+        //btn_peticionRss
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                _Fuente = iFuentes.ElementAt(cbx_Fuente.SelectedIndex);
+                txbTipoFuente.Text = _Fuente.GetType().Name;
+
+                if (txbTipoFuente.Text == "FuenteRSS")
+                {
+                    IRssReader mRssReader = new RawXmlRssReader();
+                    var Fuente = (FuenteRSS)_Fuente;
+                    var items = mRssReader.Read(Fuente.URL).ToList();
+                    Loger.Debug("Petición de Fuente RSS: " + Fuente.URL);
+                    if (items.Count > 0)
+                    {
+                        iItemBindingSource.DataSource = items.ToList();
+                        Loger.Debug("Actualizando Items Rss en BD");
+                        new ControladorFuentes().ActualizarItemsRss(items, _Fuente.FuenteId);
+                        new VentanaEmergente("Solicitud RSS exitosa", VentanaEmergente.TipoMensaje.Exito).ShowDialog();
+                    }
+                    else
+                    {
+                        new VentanaEmergente("No se obtuvieron items en la solicitud RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                        RssSinItems(Fuente);
+                    }
+                }
+
+                iItemBindingSource.ResetBindings(false);
+            }
+            catch (Exception)
+            {
+                new VentanaEmergente("No se ha podido establecer conexión a RSS", VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
+                RssSinItems((FuenteRSS)iFuentes.ElementAt(cbx_Fuente.SelectedIndex));
+            }
         }
     }
 }
