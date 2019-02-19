@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Persistencia.DAL.EntityFramework;
+using Dominio.Modelos;
 using AutoMapper;
 
-namespace Dominio
+namespace Dominio.Controladores
 {
 	public class ControladorCampania
 	{
@@ -190,5 +191,21 @@ namespace Dominio
 			if (pIntTiempo == 0)
 				throw new Exception("Debe seleccionar un intervalo de tiempo");
 		}
-	}
+
+        /// <summary>
+        /// Actualiza las Campanias que tienen intersección con el rango de fechas elegido para usar como control.
+        /// </summary>
+        /// 
+        public void ActualizarCampaniasEnRangoFecha(DateTime pFechaDesde, DateTime pFechaHasta, CampaniaRangoFecha pCampaniaRangoFecha)
+        {
+            List<Campania> lCampanias = new List<Campania>();
+
+            foreach (var item in iUOfW.RepositorioCampania.GetCampaniasEntreFechas(pFechaDesde, pFechaHasta))
+            {
+                lCampanias.Add(Mapper.Map<Persistencia.Dominio.Campania, Campania>(item));
+            }
+
+            pCampaniaRangoFecha.ActualizarCampanias(lCampanias);
+        }
+    }
 }

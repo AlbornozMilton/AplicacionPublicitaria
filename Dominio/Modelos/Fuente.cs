@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-namespace Dominio
+using Dominio.Interfaces;
+
+namespace Dominio.Modelos
 {
 	public class Fuente: IFuente
 	{

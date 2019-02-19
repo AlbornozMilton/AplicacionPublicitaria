@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Persistencia.DAL.EntityFramework;
 using AutoMapper;
+using Dominio.Modelos;
+using Dominio.Interfaces;
 
-namespace Dominio
+namespace Dominio.Controladores
 {
 	public class ControladorFuentes
 	{

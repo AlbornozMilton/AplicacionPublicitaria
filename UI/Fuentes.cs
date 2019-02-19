@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Dominio;
+using Dominio.Modelos;
+using Dominio.Controladores;
+using Dominio.Interfaces;
 using Dominio.RSS;
 
 namespace UI

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Dominio
+namespace Dominio.Interfaces
 {
 	public interface IItem
 	{

@@ -61,33 +61,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapper.cs" />
-    <Compile Include="Banner.cs" />
-    <Compile Include="Campania.cs" />
-    <Compile Include="ControladorBanner.cs" />
-    <Compile Include="ControladorCampania.cs" />
-    <Compile Include="ControladorExtra.cs" />
-    <Compile Include="ControladorFuentes.cs" />
-    <Compile Include="Fuente.cs" />
-    <Compile Include="FuenteRSS.cs" />
-    <Compile Include="IFuente.cs" />
-    <Compile Include="IItem.cs" />
-    <Compile Include="Imagen.cs" />
-    <Compile Include="ItemGenerico.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Modelos\Banner.cs" />
+    <Compile Include="Modelos\BannerRangoFecha.cs" />
+    <Compile Include="Modelos\Campania.cs" />
+    <Compile Include="Controladores\ControladorBanner.cs" />
+    <Compile Include="Controladores\ControladorCampania.cs" />
+    <Compile Include="Controladores\ControladorFuentes.cs" />
+    <Compile Include="Modelos\CampaniaRangoFecha.cs" />
+    <Compile Include="Modelos\Fuente.cs" />
+    <Compile Include="Modelos\FuenteRSS.cs" />
+    <Compile Include="Helpers\DateHelper.cs" />
+    <Compile Include="Interfaces\IFuente.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Modelos\Imagen.cs" />
+    <Compile Include="Modelos\ItemGenerico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RangoFecha.cs" />
-    <Compile Include="RangoHorario.cs" />
+    <Compile Include="Modelos\RangoFecha.cs" />
+    <Compile Include="Modelos\RangoHorario.cs" />
     <Compile Include="RSS\IRssReader.cs" />
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssItem.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
-    <Compile Include="TextoFijo.cs" />
+    <Compile Include="Modelos\TextoFijo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

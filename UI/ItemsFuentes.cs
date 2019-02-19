@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Dominio;
+using Dominio.Interfaces;
+using Dominio.Controladores;
 
 namespace UI
 {

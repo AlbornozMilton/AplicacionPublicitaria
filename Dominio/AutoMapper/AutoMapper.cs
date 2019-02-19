@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using pers = Persistencia.Dominio;
+using Dominio.Modelos;
+using Dominio.Interfaces;
+using Dominio.Controladores;
 
 namespace Dominio.AutoMapper
 {
