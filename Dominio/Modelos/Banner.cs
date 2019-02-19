@@ -1,4 +1,6 @@
-﻿namespace Dominio
+﻿using Dominio.Interfaces;
+
+namespace Dominio.Modelos
 {
     public class Banner
     {

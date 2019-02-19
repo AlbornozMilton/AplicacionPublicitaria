@@ -103,7 +103,7 @@
 			// 
 			// iItemBindingSource
 			// 
-			this.iItemBindingSource.DataSource = typeof(Dominio.IItem);
+			this.iItemBindingSource.DataSource = typeof(Dominio.Interfaces.IItem);
 			// 
 			// textoTextBox
 			// 

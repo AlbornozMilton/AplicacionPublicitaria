@@ -249,7 +249,7 @@
 			// 
 			// rangoHorarioBindingSource
 			// 
-			this.rangoHorarioBindingSource.DataSource = typeof(Dominio.RangoHorario);
+			this.rangoHorarioBindingSource.DataSource = typeof(Dominio.Modelos.RangoHorario);
 			// 
 			// panel1
 			// 

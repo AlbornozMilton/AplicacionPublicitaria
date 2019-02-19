@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+
+namespace Dominio.Modelos
+{
 	/*  int result = lFecha1.ComapreTo(lFecha2);  o bien--> int result = lFecha1.Date.ComapreTo(lFecha2.Date);
         result = -1 : Fecha1 es menor que Fecha2 
         result =  0 : Fecha1 es igual que Fecha2
         result = +1 : Fecha1 es menor que Fecha2 */
-namespace Dominio
-{
+
    public class RangoFecha
     {
         private int iCodRangoFecha;

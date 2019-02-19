@@ -5,8 +5,9 @@ using AutoMapper;
 using System.Threading;
 using Dominio.RSS;
 using System.Linq;
+using Dominio.Modelos;
 
-namespace Dominio
+namespace Dominio.Controladores
 {
 	public class ControladorBanner
 	{
@@ -214,5 +215,18 @@ namespace Dominio
 			var rfMapped = Mapper.Map<RangoFecha, Persistencia.Dominio.RangoFecha>(rf);
 			iUOfW.RepositorioBanner.ModificarBanner(pBannerMod, pNombre, pIdFuente, rfMapped);
 		}
-	}
+
+        public void ActualizarBannersEnRangoFecha(int pBannerExcluido, DateTime pFechaDesde, DateTime pFechaHasta, BannerRangoFecha pBannerRangoFecha)
+        {
+            List<Banner> lBanners = new List<Banner>();
+
+            foreach (var item in iUOfW.RepositorioBanner.BannersEnRangoFecha(pFechaDesde.Date, pFechaHasta.Date))
+            {
+                lBanners.Add(Mapper.Map<Persistencia.Dominio.Banner, Banner>(item));
+            }
+
+            pBannerRangoFecha.ActualizarBanners(pBannerExcluido, lBanners);
+        }
+
+    }
 }

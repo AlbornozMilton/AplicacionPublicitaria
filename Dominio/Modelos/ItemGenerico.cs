@@ -1,6 +1,7 @@
 ﻿using System;
+using Dominio.Interfaces;
 
-namespace Dominio
+namespace Dominio.Modelos
 {
 	public class ItemGenerico:IItem
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Dominio
+namespace Dominio.Modelos
 {
     public class Campania
     {
