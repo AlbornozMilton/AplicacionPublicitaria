@@ -8,7 +8,7 @@ namespace Dominio.Helpers
     public static class DateTimeHelper
     {
         /// <summary>
-        /// Comprueba si un horairo esta disponible para agregar un Banner o Campaña
+        /// Comprueba si un horario esta disponible para agregar un Banner o Campaña
         /// </summary>
         public static void ComprobarHorario(RangoFecha pRangoFecha, TimeSpan pHoraInicio, TimeSpan pHoraFin, string pDias)
         {
