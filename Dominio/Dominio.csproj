@@ -70,7 +70,7 @@
     <Compile Include="Modelos\CampaniaRangoFecha.cs" />
     <Compile Include="Modelos\Fuente.cs" />
     <Compile Include="Modelos\FuenteRSS.cs" />
-    <Compile Include="Helpers\DateHelper.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Interfaces\IFuente.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Modelos\Imagen.cs" />

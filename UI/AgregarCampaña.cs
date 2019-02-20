@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio.Controladores;
 using Dominio.Modelos;
+using Dominio.Helpers;
 
 namespace UI
 {
@@ -179,7 +180,7 @@ namespace UI
             try
             {
                 string dias = DevolverDias();
-                iControladorCampania.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value);
+                this.ControlCamposObligatorios(tbx_Nombre.Text, dias.Split('-').Count(), dgv_Horarios.Rows.Count, dgv_Imagenes.Rows.Count, numUD_IntTiempo.Value);
                 LlenarListaImagenes(dgv_Imagenes);
                 if (iCampaniaModificar != null)
                 {
@@ -199,6 +200,21 @@ namespace UI
             {
                 new VentanaEmergente(E.Message, VentanaEmergente.TipoMensaje.Alerta).ShowDialog();
             }
+        }
+
+        public void ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
+        {
+            // no es necesario los else -  cuando sucede una excepcion, corta el flujo y lanza la excepcion
+            if (pNombre == "")
+                throw new Exception("Se debe ingresar un Nombre para la campaña");
+            if (pDias == 0)
+                throw new Exception("Debe seleccionar los dias");
+            if (pHorarios == 0)
+                throw new Exception("Debe ingresar como mínimo un rango horario");
+            if (pImagenes == 0)
+                throw new Exception("Se deben insertar las imagenes a mostrar");
+            if (pIntTiempo == 0)
+                throw new Exception("Debe seleccionar un intervalo de tiempo");
         }
 
         private void btn_BorrarHora_Click(object sender, EventArgs e)
@@ -230,7 +246,7 @@ namespace UI
                 TimeSpan horaHasta = new TimeSpan(dtp_HoraHasta.Value.Hour, dtp_HoraHasta.Value.Minute, 00);
                 if (horaHasta.TotalMinutes > horaDesde.TotalMinutes)
                 {
-                    if (iControladorCampania.ControlColisionHorarios(horarios, horaDesde, horaHasta))
+                    if (DateTimeHelper.ControlColisionHorarios(horarios, horaDesde, horaHasta))
                     {
                         if (iCampaniaModificar != null)
                         {
@@ -294,7 +310,7 @@ namespace UI
                     throw new Exception("La fecha de fin deber ser mayor o igual a la fecha de inicio");
                 }
 
-                List<string> dias = iControladorCampania.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
+                List<string> dias = DateTimeHelper.DiasEntreFechas(dtp_FechaDesde.Value.Date, dtp_FechaHasta.Value.Date);
                 foreach (var dia in checksDias)
                 {
                     if (dias.Contains(dia.Name))

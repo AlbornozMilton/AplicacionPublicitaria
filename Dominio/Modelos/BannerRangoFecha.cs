@@ -46,7 +46,7 @@ namespace Dominio.Modelos
                     RangoFecha auxRFecha = mBanner.RangoFecha;
                     foreach (RangoHorario item in pHorarios)
                     {
-                        DateHelper.ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias);
+                        DateTimeHelper.ComprobarHorario(auxRFecha, item.HoraInicio, item.HoraFin, pDias);
                     }
                 }
             }

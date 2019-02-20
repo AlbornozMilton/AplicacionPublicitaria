@@ -40,7 +40,7 @@ namespace Dominio.Modelos
             foreach (Campania mCampania in iCampaniasEnRangoFecha)
             {
                 RangoFecha auxRFecha = mCampania.RangoFecha;
-                DateHelper.ComprobarHorario(auxRFecha, pHoraInicio, pHoraFin, pDias);
+                DateTimeHelper.ComprobarHorario(auxRFecha, pHoraInicio, pHoraFin, pDias);
             }
         }
 

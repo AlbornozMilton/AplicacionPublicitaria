@@ -136,33 +136,6 @@ namespace Dominio.Controladores
 			return campaniaSiguiente;
 		}
 
-		public Boolean ControlColisionHorarios(List<RangoHorario> pHorarios, TimeSpan pHoraDesde, TimeSpan pHoraHasta)
-		{
-			foreach (var rangHor in pHorarios)
-			{
-				if ((pHoraDesde >= rangHor.HoraInicio && pHoraDesde < rangHor.HoraFin) || (pHoraHasta <= rangHor.HoraFin && pHoraHasta > rangHor.HoraInicio))
-				{
-					throw new Exception("El rango ingresado se superpone con otro ya cargado");
-				}
-			}
-			return true;
-		}
-
-		public List<string> DiasEntreFechas(DateTime pFechaDesde, DateTime pFechaHasta)
-		{
-			List<string> listaDias = new List<string>();
-			TimeSpan diferencia = pFechaHasta - pFechaDesde;
-			for (int i = 0; i <= (diferencia.Days); i++)
-			{
-				DateTime nuevaFecha = pFechaDesde.AddDays(i);
-				if (!listaDias.Contains(nuevaFecha.DayOfWeek.ToString()))
-				{
-					listaDias.Add(nuevaFecha.DayOfWeek.ToString());
-				}
-			}
-			return listaDias;
-		}
-
 		public List<Campania> ObtenerCampaniasFiltradas(Dictionary<Type, object> pFiltros)
 		{
 			if (pFiltros.ContainsKey(typeof(RangoFecha)))
@@ -175,21 +148,6 @@ namespace Dominio.Controladores
 			IEnumerable<Persistencia.Dominio.Campania> listaCampFiltradas = iUOfW.RepositorioCampania.GetFiltradas(pFiltros);
 			List<Campania> listaCampanias = Mapper.Map<IEnumerable<Persistencia.Dominio.Campania>, List<Campania>>(listaCampFiltradas);
 			return listaCampanias;
-		}
-
-		public void ControlCamposObligatorios(string pNombre, int pDias, int pHorarios, int pImagenes, decimal pIntTiempo)
-		{
-			// no es necesario los else -  cuando sucede una excepcion, corta el flujo y lanza la excepcion
-			if (pNombre == "")
-				throw new Exception("Se debe ingresar un Nombre para la campaña");
-			if (pDias == 0)
-				throw new Exception("Debe seleccionar los dias");
-			if (pHorarios == 0)
-				throw new Exception("Debe ingresar como mínimo un rango horario");
-			if (pImagenes == 0)
-				throw new Exception("Se deben insertar las imagenes a mostrar");
-			if (pIntTiempo == 0)
-				throw new Exception("Debe seleccionar un intervalo de tiempo");
 		}
 
         /// <summary>
